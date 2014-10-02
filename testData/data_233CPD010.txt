@@ -1,0 +1,41 @@
+﻿[
+    {
+        "TIME": 1984,
+        "datasetID": "233CPD010",
+        "ITEM": "79",
+        "VALUE": 398320,
+        "FLAG": null
+    },
+    {
+        "TIME": 1984,
+        "datasetID": "233CPD010",
+        "ITEM": "56",
+        "VALUE": 82888,
+        "FLAG": null
+    },
+    {
+        "TIME": 1984,
+        "datasetID": "233CPD010",
+        "ITEM": "27",
+        "VALUE": 29803,
+        "FLAG": null
+    },
+    {
+        "TIME": 1984,
+        "datasetID": "233CPD010",
+        "ITEM": "402",
+        "VALUE": null,
+        "FLAG": [
+            "5"
+        ]
+    },
+    {
+        "TIME": 1985,
+        "datasetID": "233CPD010",
+        "ITEM": "402",
+        "VALUE": "ff",
+        "FLAG": [
+            "5"
+        ]
+    }
+]
