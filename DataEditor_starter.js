@@ -1,12 +1,14 @@
-﻿// Place third party dependencies in the lib folder
+﻿var locale = localStorage.getItem('locale' || 'en-us');
+// Place third party dependencies in the lib folder
 requirejs.config({
+    config: { i18n: { locale: locale} },
     "baseUrl": "lib",
     "paths": {
         config: "../config",
         js: "../js",
         templates: "../templates",
-        multiLang:"../multiLang",
-        root:".."
+        multiLang: "../multiLang",
+        root: ".."
     }
 });
 
@@ -26,11 +28,28 @@ require([
 
         dataEditWr.setCodelistUrlFinder({ get: function (system, version) { return "http://faostat3.fao.org:7788/msd/cl/system/" + system + "/" + version; } });
 
+        $('#btnEN').click(function () { setLang('en'); });
+        $('#btnFR').click(function () { setLang('fr'); });
+        dataEditWr.setDataLang(localStorage.getItem('locale'));
 
         /*Test*/
         //var metaAdapter = { source: { url: 'http://localhost:1031/dataUpload_03/js/z_tmp/dataset_233CPD010.txt'} };
         //dataEditWr.setMetaAdapter(metaAdapter);
         dataEditWr.setColsAndData(JSON.parse(testDatasetMETA).dsd.columns, JSON.parse(testDatasetDATA));
         /*END Test*/
+
+        
     }
+
+    /*Multilang test*/
+    //var setLang = function (lang) {
+    function setLang(lang) {
+        var loc = localStorage.getItem('locale');
+        if (loc && loc.toUpperCase() == lang)
+            return;
+        localStorage.setItem('locale', lang.toLowerCase());
+        location.reload();
+
+    }
+    /*END Multilang test*/
 });

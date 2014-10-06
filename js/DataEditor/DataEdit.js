@@ -101,8 +101,8 @@ function ($, mlRes, jqx, DataEditor, ValidationResultsViewer, ResourcesDownloade
 
     //MultiLang
     DataEdit.prototype.doML = function () {
-        this.$dataEditor.find('#btnAddRow').attr('value', mlRes['add']);
-        this.$dataEditor.find('#btnDelRow').attr('value', mlRes['delete']);
+        this.$dataEditor.find('#btnAddRow').html(mlRes['add']);
+        this.$dataEditor.find('#btnDelRow').html(mlRes['delete']);
     }
     DataEdit.prototype.setDataLang = function (langCode) {
         this.dataEditor.setDataLang(langCode);

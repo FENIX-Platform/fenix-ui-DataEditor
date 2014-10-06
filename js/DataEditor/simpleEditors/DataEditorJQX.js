@@ -22,8 +22,11 @@ function ($, jqx, DataEditor_ColumnCreatorJQX, MLUtils) {
     DataEditorJQX.prototype.render = function (container, lang) {
         if (lang)
             this.dataLang = lang;
+
         this.$dataGrid = container;
         this.initGrid();
+
+        //this.setDataLang(localStorage.getItem('locale'));
     }
 
     DataEditorJQX.prototype.initGrid = function () {
@@ -77,7 +80,7 @@ function ($, jqx, DataEditor_ColumnCreatorJQX, MLUtils) {
             //updaterow: function (rowid, rowdata, commit) { commit(true); }
         };
         var valsDataAdapter = new $.jqx.dataAdapter(valsDataSource);
-        this.$dataGrid.jqxGrid({ source: valsDataAdapter, columns: createTableColumns(this.cols, this.dataLang, this.labelDataPostfix), columnsresize:true, editable: true, rendered: function () { me.$dataGrid.trigger('gridRendered.' + me.widgetName + '.fenix'); } });
+        this.$dataGrid.jqxGrid({ source: valsDataAdapter, columns: createTableColumns(this.cols, this.dataLang, this.labelDataPostfix), columnsresize: true, editable: true, rendered: function () { me.$dataGrid.trigger('gridRendered.' + me.widgetName + '.fenix'); } });
     }
 
     var isColToSkip = function (col) {
