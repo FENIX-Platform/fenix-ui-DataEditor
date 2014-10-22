@@ -213,6 +213,7 @@ function ($, DataEdit, ResourcesDownloader) {
 
     //Multilang
     DataEditWr.prototype.setDataLang = function (langCode) {
+        if (langCode)
         this.dataEdit.setDataLang(langCode.toUpperCase());
     }
     //END Multilang
