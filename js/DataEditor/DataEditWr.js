@@ -1,222 +1,227 @@
 ﻿define([
-'jquery',
-'js/DataEditor/DataEdit',
-  'js/DataEditor/helpers/ResourcesDownloader'
+        'jquery',
+        'js/DataEditor/DataEdit',
+        'js/DataEditor/helpers/ResourcesDownloader'
 //,
 //'resources/DataServices',
-  ],
+    ],
 //function ($, DataEdit, ResourcesDownloader, DataServices) {
-function ($, DataEdit, ResourcesDownloader) {
-    var DataEditWr = function () {
-        this.dataEdit = new DataEdit();
-        this.meta;
-        this.cols;
-        this.data;
+    function ($, DataEdit, ResourcesDownloader) {
+        var DataEditWr = function () {
+            this.dataEdit = new DataEdit();
+            this.meta;
+            this.cols;
+            this.data;
 
-        this.metaConnector;
-        this.dataConnector;
-        this.codelistUrlFinder;
-    };
+            this.metaConnector;
+            this.dataConnector;
+            this.codelistUrlFinder;
+        };
 
-    //Render - creation
-    DataEditWr.prototype.render = function (container) { this.dataEdit.render(container); }
-
-    DataEditWr.prototype.setColsAndData = function (columns, data, callB) {
-        var toDL = [];
-        this.cols = columns;
-        this.data = data;
-
-        var toDL = getCodelistsToDL(this.cols);
-
-        //Download all needed codelists
-        if (toDL.length > 0) {
-            //var DS = new DataServices();
-            if (!this.codelistUrlFinder)
-                throw new Error('A codelists URL must be set, use the setCodelistUrlFinder method');
-            var urls = [];
-            for (var i = 0; i < toDL.length; i++)
-            //urls.push(DS.getCodeListWebServiceAddress(toDL[i].system, toDL[i].version));
-                urls.push(this.getCodelistUrl(toDL[i].system, toDL[i].version));
-
-            var resDown = new ResourcesDownloader();
-            var me = this;
-            resDown.downloadResources(urls, function (data) { me.codelistsDownloaded(data); });
+        //Render - creation
+        DataEditWr.prototype.render = function (container) {
+            this.dataEdit.render(container);
         }
-        else {
-            this.dataEdit.setData(columns, data);
-        }
-    }
-    //Codelists
-    DataEditWr.prototype.setCodelistUrlFinder = function (urlFinder) {
-        this.codelistUrlFinder = urlFinder;
-    }
-    DataEditWr.prototype.getCodelistUrl = function (system, version) {
-        return this.codelistUrlFinder.get(system, version);
-    }
 
-    //Meta and data load
-    DataEditWr.prototype.setMetaAdapter = function (metaAdapter) {
-        this.loadMeta(metaAdapter.source);
-    }
-    DataEditWr.prototype.loadMeta = function (source) {
-        var me = this;
-        $.ajax({
-            url: source.url,
-            data: source.data,
-            crossDomain: true,
-            dataType: "json",
-            success: function (data) { me.metaLoaded(data); },
-            error: function (jqXHR, textStatus, errorThrown) { throw new Error(jqXHR, textStatus, errorThrown); }
-        });
-    }
-    DataEditWr.prototype.metaLoaded = function (data) {
-        this.meta = data;
-        this.cols = data.dsd.columns;
-        this.updateGrid();
-    }
-    DataEditWr.prototype.loadData = function (source) {
-        var me = this;
-        $.ajax({
-            url: source.url,
-            data: source.data,
-            crossDomain: true,
-            dataType: "json",
-            success: function (data) { me.dataLoaded(data); },
-            error: function (jqXHR, textStatus, errorThrown) { throw new Error(jqXHR, textStatus, errorThrown); }
-        });
-    }
-    DataEditWr.prototype.dataLoaded = function (data) {
-        this.data = data;
-        this.updateGrid();
-    }
+        DataEditWr.prototype.setColsAndData = function (columns, data, callB) {
+            var toDL = [];
+            this.cols = columns;
+            this.data = data;
 
-    DataEditWr.prototype.setMeta = function (meta) { this.metaLoaded(meta); }
-    DataEditWr.prototype.setData = function (data) { this.dataLoaded(data); }
-    DataEditWr.prototype.getData = function () { return this.dataEdit.getData(); }
+            var toDL = getCodelistsToDL(this.cols);
 
-    //DataEditWr.prototype.saveData = function (){ }
-    DataEditWr.prototype.updateGrid = function () {
-        if (!this.cols)
-            return;
-        if (!this.data)
-            return;
+            //Download all needed codelists
+            if (toDL.length > 0) {
+                //var DS = new DataServices();
+                if (!this.codelistUrlFinder)
+                    throw new Error('A codelists URL must be set, use the setCodelistUrlFinder method');
+                var urls = [];
+                for (var i = 0; i < toDL.length; i++)
+                    urls.push(this.getCodelistUrl(toDL[i].idCodeList, toDL[i].version));
 
-        this.setColsAndData(this.cols, this.data);
-    }
-
-    //END Meta and data load
-
-    //Codelists search/download
-    var getCodelistsToDL = function (cols) {
-        var toRet = [];
-        if (!cols)
-            return toRet;
-
-        for (var i = 0; i < cols.length; i++) {
-            if (cols[i].virtualColumn && cols[i].virtualColumn == 'INTERNAL')
-                continue;
-            var tmpToDl = getCLToDL(cols[i]);
-            if (tmpToDl)
-            //Make sure it is not already in the list
-                if (!codesystemInArray(tmpToDl, toRet))
-                    toRet.push(tmpToDl);
-        }
-        return toRet;
-    }
-    var getCLToDL = function (col) {
-        if (col.dataType != 'code') return null;
-        if (!col.domain.codeSystem)
-            throw new Error("Code column must have a codeSystem");
-        if (!col.domain.codeSystem.system)
-            throw new Error("Code column must have a codelist system");
-        if (!col.domain.codeSystem.version)
-            throw new Error("Code column must have a codelist version");
-        return col.domain.codeSystem;
-    }
-    var codesystemInArray = function (codeSystem, arr) {
-        if (!arr)
-            return false;
-        for (var i = 0; i < arr.length; i++)
-            if (arr.system == codeSystem.system && arr.version == codeSystem.version)
-                return true;
-        return false;
-    }
-
-    //Codelists downloaded, attach them to the col's codes property
-    DataEditWr.prototype.codelistsDownloaded = function (resDown) {
-        for (var i = 0; i < this.cols.length; i++) {
-            if (this.cols[i].dataType == 'code') {
-                var tmpCodes = getCodes(this.cols[i].domain.codeSystem, resDown);
-                if (tmpCodes)
-                    this.cols[i].codes = tmpCodes;
+                var resDown = new ResourcesDownloader();
+                var me = this;
+                resDown.downloadResources(urls, function (data) {
+                    me.codelistsDownloaded(data);
+                });
+            }
+            else {
+                this.dataEdit.setData(columns, data);
             }
         }
-        this.dataEdit.setData(this.cols, this.data);
-    }
-    //Include the level param
-    var getCodes = function (codeSystem, codelists) {
-        if (!codelists)
-            return null;
-        if (!codeSystem)
-            return null;
+        //Codelists
+        DataEditWr.prototype.setCodelistUrlFinder = function (urlFinder) {
+            this.codelistUrlFinder = urlFinder;
+        }
+        DataEditWr.prototype.getCodelistUrl = function (system, version) {
+            return this.codelistUrlFinder.get(system, version);
+        }
 
-        for (var i = 0; i < codelists.length; i++) {
+        //Meta and data load
+        DataEditWr.prototype.setMetaAdapter = function (metaAdapter) {
+            this.loadMeta(metaAdapter.source);
+        }
+        DataEditWr.prototype.loadMeta = function (source) {
+            var me = this;
+            $.ajax({
+                url: source.url,
+                data: source.data,
+                crossDomain: true,
+                dataType: "json",
+                success: function (data) {
+                    me.metaLoaded(data);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    throw new Error(jqXHR, textStatus, errorThrown);
+                }
+            });
+        }
+        DataEditWr.prototype.metaLoaded = function (data) {
+            this.meta = data;
+            this.cols = data.dsd.columns;
+            this.updateGrid();
+        }
+        DataEditWr.prototype.loadData = function (source) {
+            var me = this;
+            $.ajax({
+                url: source.url,
+                data: source.data,
+                crossDomain: true,
+                dataType: "json",
+                success: function (data) {
+                    me.dataLoaded(data);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    throw new Error(jqXHR, textStatus, errorThrown);
+                }
+            });
+        }
+        DataEditWr.prototype.dataLoaded = function (data) {
+            this.data = data;
+            this.updateGrid();
+        }
 
+        DataEditWr.prototype.setMeta = function (meta) {
+            this.metaLoaded(meta);
+        }
+        DataEditWr.prototype.setData = function (data) {
+            this.dataLoaded(data);
+        }
+        DataEditWr.prototype.getData = function () {
+            return this.dataEdit.getData();
+        }
 
-            //if (codelists[i].system == codeSystem.system && codelists[i].version == codeSystem.version) {
-            if (sameCodeSys(codelists[i], codeSystem)) {
-                if (codelists[i].rootCodes)
-                    return codelists[i].rootCodes;
-                else {
-                    var flatCodes = [];
-                    recursiveCodeGet(codelists[i].data, flatCodes);
-                    return flatCodes;
+        //DataEditWr.prototype.saveData = function (){ }
+        DataEditWr.prototype.updateGrid = function () {
+            if (!this.cols)
+                return;
+            /*if (!this.data)
+             return;*/
+
+            this.setColsAndData(this.cols, this.data);
+        }
+
+        //END Meta and data load
+
+        //Codelists search/download
+        var getCodelistsToDL = function (cols) {
+            var toRet = [];
+            if (!cols)
+                return toRet;
+
+            for (var i = 0; i < cols.length; i++) {
+                if (cols[i].virtualColumn && cols[i].virtualColumn == 'INTERNAL')
+                    continue;
+                var tmpToDl = getCLToDL(cols[i]);
+                if (tmpToDl)
+                //Make sure it is not already in the list
+                    if (!codesystemInArray(tmpToDl, toRet))
+                        toRet.push(tmpToDl);
+            }
+            return toRet;
+        }
+        var getCLToDL = function (col) {
+            if (col.dataType != 'code') return null;
+            if (!col.domain.codes)
+                throw new Error("Code column must have a codes field");
+            //TODO: Extend to multiple codes elements
+            if (!col.domain.codes[0].idCodeList)
+                throw new Error("Code column must have a idCodeList field");
+            if (!col.domain.codes[0].version)
+                throw new Error("Code column must have a version field");
+            return col.domain.codes[0];
+        }
+        var codesystemInArray = function (codeSystem, arr) {
+            if (!arr)
+                return false;
+            for (var i = 0; i < arr.length; i++)
+                if (arr.idCodeList == codeSystem.idCodeList && arr.version == codeSystem.version)
+                    return true;
+            return false;
+        }
+
+        //Codelists downloaded, attach them to the col's codes property
+        DataEditWr.prototype.codelistsDownloaded = function (resDown) {
+            for (var i = 0; i < this.cols.length; i++) {
+                if (this.cols[i].dataType == 'code') {
+                    var tmpCodes = getCodes(this.cols[i].domain.codes, resDown);
+                    if (tmpCodes)
+                        this.cols[i].codes = tmpCodes;
                 }
             }
+            this.dataEdit.setData(this.cols, this.data);
+        }
+        //Include the level param
+        var getCodes = function (codeSystems, codelists) {
+            if (!codelists)
+                return null;
+            if (!codeSystems)
+                return null;
+            for (var i = 0; i < codelists.length; i++) {
+                //if (codelists[i].system == codeSystem.system && codelists[i].version == codeSystem.version) {
+                //TODO make codesystems multielement
+                if (sameCodeSys(codelists[i], codeSystems[0])) {
+                    if (codelists[i].rootCodes)
+                        return codelists[i].rootCodes;
+                    else {
+                        var flatCodes = [];
+                        recursiveCodeGet(codelists[i].data, flatCodes);
+                        return flatCodes;
+                    }
+                }
+            }
+
+            return null;
         }
 
-        /*for (var i = 0; i < codelists.length; i++) {
-        if (codelists[i].system == codeSystem.system && codelists[i].version == codeSystem.version)
-        return codelists[i].rootCodes;
-        }*/
+        var sameCodeSys = function (codelist, codeSys) {
+            if (!codelist)
+                return false;
+            if (!codeSys)
+                return false;
 
-        return null;
-    }
-
-    var sameCodeSys = function (codelist, codeSys) {
-        if (!codelist)
-            return false;
-        if (!codeSys)
-            return false;
-        if (codelist.system) {
-            if (codelist.system == codeSys.system && codelist.version == codeSys.version)
+            if (codelist.metadata.uid == codeSys.idCodeList && codelist.metadata.version == codeSys.version)
                 return true;
+            return false;
         }
-        else {
-            if (codelist.metadata.uid == codeSys.system && codelist.metadata.version == codeSys.version)
-                return true;
+
+        var recursiveCodeGet = function (node, flatCodes) {
+            if (!node)
+                return;
+            for (var i = 0; i < node.length; i++) {
+                flatCodes.push({ code: node[i].code, title: node[i].title });
+                if (node[i].children)
+                    recursiveCodeGet(node[i].children, flatCodes);
+            }
         }
-        return false;
-    }
+        //END Codelists search/download
 
-    var recursiveCodeGet = function (node, flatCodes) {
-
-        if (!node)
-            return;
-        for (var i = 0; i < node.length; i++) {
-            flatCodes.push({ code: node[i].code, node: node[i].title });
-            if (node[i].children)
-                recursiveCodeGet(node[i].children, flatCodes);
+        //Multilang
+        DataEditWr.prototype.setDataLang = function (langCode) {
+            if (langCode)
+                this.dataEdit.setDataLang(langCode.toUpperCase());
         }
-    }
-    //END Codelists search/download
+        //END Multilang
 
-    //Multilang
-    DataEditWr.prototype.setDataLang = function (langCode) {
-        if (langCode)
-        this.dataEdit.setDataLang(langCode.toUpperCase());
-    }
-    //END Multilang
-
-    return DataEditWr;
-});
+        return DataEditWr;
+    });
