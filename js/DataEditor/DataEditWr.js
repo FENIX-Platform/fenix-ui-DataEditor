@@ -36,8 +36,12 @@
                 if (!this.codelistUrlFinder)
                     throw new Error('A codelists URL must be set, use the setCodelistUrlFinder method');
                 var urls = [];
-                for (var i = 0; i < toDL.length; i++)
+                for (var i = 0; i < toDL.length; i++) {
+                    if (toDL[i].version)
                     urls.push(this.getCodelistUrl(toDL[i].idCodeList, toDL[i].version));
+                    else
+                        urls.push(this.getCodelistUrl(toDL[i].idCodeList));
+                }
 
                 var resDown = new ResourcesDownloader();
                 var me = this;
@@ -54,7 +58,10 @@
             this.codelistUrlFinder = urlFinder;
         }
         DataEditWr.prototype.getCodelistUrl = function (system, version) {
+            if (version)
             return this.codelistUrlFinder.get(system, version);
+            else
+            return this.codelistUrlFinder.get(system);
         }
 
         //Meta and data load
@@ -147,15 +154,14 @@
             //TODO: Extend to multiple codes elements
             if (!col.domain.codes[0].idCodeList)
                 throw new Error("Code column must have a idCodeList field");
-            if (!col.domain.codes[0].version)
-                throw new Error("Code column must have a version field");
             return col.domain.codes[0];
         }
         var codesystemInArray = function (codeSystem, arr) {
             if (!arr)
                 return false;
             for (var i = 0; i < arr.length; i++)
-                if (arr.idCodeList == codeSystem.idCodeList && arr.version == codeSystem.version)
+                //if (arr.idCodeList == codeSystem.idCodeList && arr.version == codeSystem.version)
+                if (arr.idCodeList == codeSystem.idCodeList)
                     return true;
             return false;
         }
