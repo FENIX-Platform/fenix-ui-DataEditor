@@ -85,17 +85,17 @@
             } });
         }
 
-        var isColToSkip = function (col) {
-            if (col.virtualColumn && col.virtualColumn == 'INTERNAL')
-                return true;
-            return false;
-        }
+        /*       var isColToSkip = function (col) {
+         if (col.virtualColumn && col.virtualColumn == 'INTERNAL')
+         return true;
+         return false;
+         }*/
 
         var createDatafields = function (cols, lang, lblPostfix) {
             var toRet = [];
             for (var i = 0; i < cols.length; i++) {
-                if (isColToSkip(cols[i]))
-                    continue;
+                /*if (isColToSkip(cols[i]))
+                 continue;*/
                 toRet.push({ name: cols[i].id, type: 'string' });
                 if (cols[i].dataType == 'code')
                     toRet.push({ name: cols[i].id + lblPostfix, type: 'string' });
@@ -114,15 +114,15 @@
 
             //First the key cols
             for (var i = 0; i < cols.length; i++) {
-                if (isColToSkip(cols[i]))
-                    continue;
+                /*if (isColToSkip(cols[i]))
+                 continue;*/
                 if (cols[i].key)
                     toRet.push(colCreator.create(cols[i], lang, lblPostfix));
             }
             //Then the non key cols
             for (i = 0; i < cols.length; i++) {
-                if (isColToSkip(cols[i]))
-                    continue;
+                /* if (isColToSkip(cols[i]))
+                 continue;*/
                 if (!cols[i].key)
                     toRet.push(colCreator.create(cols[i], lang, lblPostfix));
             }
@@ -164,12 +164,21 @@
                 return;
 
             for (var i = 0; i < data.length; i++)
-                this.data[i] = data[i];
-
+                this.data[i] = this.D3SDataToTableRow(data[i]);
             addLabelsToData(this.cols, this.data, this.labelDataPostfix, this.dataLang);
-
             this.$dataGrid.jqxGrid('updatebounddata');
         }
+
+
+        DataEditorJQX.prototype.D3SDataToTableRow = function (row) {
+            var toRet = {};
+
+            for (var i = 0; i < this.cols.length; i++) {
+                toRet[this.cols[i].id] = row[i];
+            }
+            return toRet;
+        }
+
         var addLabelsToData = function (cols, data, labelPostfix, lang) {
             if (!cols)
                 return;
@@ -200,13 +209,40 @@
             return null;
         }
 
+
+        /*DataEditorJQX.prototype.tableRowToD3SData = function (row) {
+         var toRet = [];
+         //calc once to speed it up, speed can be increased if necessary
+         var postfixLen = this.labelDataPostfix.length;
+         for (var p in row) {
+         //return if is is not an helper property (ending with this.labelDataPostfix)
+         if ((p.indexOf(this.labelDataPostfix, p.length - postfixLen) == -1) && (p != "uid"))
+         toRet.push(row[p]);
+         }
+         return toRet;
+         }*/
+
         DataEditorJQX.prototype.tableRowToD3SData = function (row) {
-            var toRet = {};
-            //calc once to speed it up, speed can be increased if necessary
-            var postLen = this.labelDataPostfix.length;
-            for (var p in row) {
-                if (p.indexOf(this.labelDataPostfix, p.length - postLen) == -1)
-                    toRet[p] = row[p];
+            var toRet = [];
+            for (var c = 0; c < this.cols.length; c++) {
+                if (!row[this.cols[c].id]) {
+                    toRet.push(null);
+                }
+                else {
+                    switch (this.cols[c].dataType) {
+                        case "year":
+                        case "month":
+                        case "date":
+                            toRet.push(parseInt(row[this.cols[c].id]));
+                            break;
+                        case "number":
+                            toRet.push(parseFloat(row[this.cols[c].id]));
+                            break;
+                        default:
+                            toRet.push(row[this.cols[c].id]);
+                            break;
+                    }
+                }
             }
             return toRet;
         }
@@ -222,10 +258,10 @@
         DataEditorJQX.prototype.getData = function () {
             return this.tableRowsToD3SData();
         }
-        //END Data
+//END Data
 
 
-        //Validation results
+//Validation results
         DataEditorJQX.prototype.showValidationResults = function (valRes) {
             this.resetValidationResults();
 
@@ -264,10 +300,10 @@
             $(htmlCell).css("background-color", color);
         }
 
-        //END Validation results
+//END Validation results
 
 
-        //Lang
+//Lang
         DataEditorJQX.prototype.setDataLang = function (dataLang) {
             this.dataLang = dataLang;
             this.updateML(dataLang);
@@ -278,9 +314,9 @@
 
             if (this.cols) {
                 for (var i = 0; i < this.cols.length; i++)
-                    if (!isColToSkip(this.cols[i])) {
-                        this.$dataGrid.jqxGrid('setcolumnproperty', this.cols[i].id, 'text', MLUtils_getAvailableString(this.cols[i].title, langCode));
-                    }
+                    //if (!isColToSkip(this.cols[i])) {
+                    this.$dataGrid.jqxGrid('setcolumnproperty', this.cols[i].id, 'text', MLUtils_getAvailableString(this.cols[i].title, langCode));
+                //}
             }
 
             this.addMLToCodeColumns(langCode);
@@ -293,8 +329,8 @@
             if (!this.cols)
                 return;
             for (var i = 0; i < this.cols.length; i++) {
-                if (isColToSkip(this.cols[i]))
-                    continue;
+                //if (isColToSkip(this.cols[i]))
+                //    continue;
                 if (this.cols[i].dataType == 'code')
                     addMLToColCodes(this.cols[i].codes, langCode);
             }
@@ -305,7 +341,8 @@
             for (var i = 0; i < codes.length; i++)
                 codes[i].MLTitle = MLUtils_getAvailableString(codes[i].title, lang) + " [" + codes[i].code + "]";
         }
-        //END Lang
+//END Lang
 
         return DataEditorJQX;
-    });
+    })
+;

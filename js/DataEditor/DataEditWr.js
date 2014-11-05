@@ -76,7 +76,7 @@
                 }
             });
         }
-        DataEditWr.prototype.metaLoaded = function (data) {
+        DataEditWr.prototype.metaLoaded = function (data, callB) {
             this.meta = data;
             this.cols = data.dsd.columns;
             this.updateGrid();
