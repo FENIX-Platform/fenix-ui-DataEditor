@@ -4,11 +4,10 @@ define([
     'domReady!'
 ], function ($, DataEditWr) {
 
-    var dataEditWr;
 
     function DataEditor_starter() {
-        dataEditWr = new DataEditWr();
-        dataEditWr.render($('#DataEditorMainContainer'));
+        var dataEditWr = new DataEditWr();
+        dataEditWr.render($('#mainContainer'));
 
         $("#btnGetData").click(function () {
             dataEditDone(dataEditWr.getData());
@@ -16,7 +15,10 @@ define([
 
         //dataEditWr.setCodelistUrlFinder({ get: function (system, version) { return "http://faostat3.fao.org:7788/msd/cl/system/" + system + "/" + version; } });
         dataEditWr.setCodelistUrlFinder({ get: function (system, version) {
-            return "http://faostat3.fao.org:7799/v2/msd/resources/" + system + "/" + version;
+            if (version)
+                return "http://faostat3.fao.org:7799/v2/msd/resources/" + system + "/" + version;
+            else
+                return "http://faostat3.fao.org:7799/v2/msd/resources/" + system;
         } });
 
         /*$('#btnEN').click(function () {
@@ -27,6 +29,7 @@ define([
          });*/
         dataEditWr.setDataLang(localStorage.getItem('locale'));
 
+
         //Test
         //var metaAdapter = { source: { url: 'http://localhost:1031/dataUpload_03/js/z_tmp/dataset_233CPD010.txt'} };
         /*var metaAdapter = { source: { url: 'http://faostat3.fao.org:7799/v2/msd/resources/metadata/dan2/1.0?dsd=true'} };
@@ -36,7 +39,6 @@ define([
          [null, 2001, null]]);*/
         //dataEditWr.setColsAndData(JSON.parse(testDatasetMETA).dsd.columns, JSON.parse(testDatasetDATA));
         //END Test
-
     }
 
     function dataEditDone(data) {
@@ -54,12 +56,7 @@ define([
 
     }
 
-    return { init: DataEditor_starter,
-        set: function (id) {
-            console.log(id)
-            dataEditWr.setMeta(id);
-        }
-    };
+    return {init: DataEditor_starter}
 
     /*END Multilang test*/
 });
