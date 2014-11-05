@@ -4,10 +4,10 @@ define([
     'domReady!'
 ], function ($, DataEditWr) {
 
-
+    var dataEditWr;
     function DataEditor_starter() {
-        var dataEditWr = new DataEditWr();
-        dataEditWr.render($('#mainContainer'));
+        dataEditWr = new DataEditWr();
+        dataEditWr.render($('#DataEditorMainContainer'));
 
         $("#btnGetData").click(function () {
             dataEditDone(dataEditWr.getData());
@@ -56,7 +56,9 @@ define([
 
     }
 
-    return {init: DataEditor_starter}
+    return {init: DataEditor_starter, set: function (id){
+        dataEditWr.setMeta(id)
+    }}
 
     /*END Multilang test*/
 });
