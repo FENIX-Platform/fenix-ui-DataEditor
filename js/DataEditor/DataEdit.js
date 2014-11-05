@@ -1,13 +1,13 @@
 ﻿define([
 'jquery',
-'i18n!multiLang/DataEditor/nls/ML_DataEdit',
+'i18n!fx-DataEditor/multiLang/DataEditor/nls/ML_DataEdit',
 'jqxall',
-'js/DataEditor/simpleEditors/DataEditorJQX',
-'js/DataEditor/simpleEditors/ValidationResultsViewer',
-'js/DataEditor/helpers/ResourcesDownloader',
-'js/DataEditor/helpers/DataServices',
-'js/DataEditor/helpers/Data_Validator',
-'text!templates/DataEditor/DataEdit.htm'
+'fx-DataEditor/js/DataEditor/simpleEditors/DataEditorJQX',
+'fx-DataEditor/js/DataEditor/simpleEditors/ValidationResultsViewer',
+'fx-DataEditor/js/DataEditor/helpers/ResourcesDownloader',
+'fx-DataEditor/js/DataEditor/helpers/DataServices',
+'fx-DataEditor/js/DataEditor/helpers/Data_Validator',
+'text!fx-DataEditor/templates/DataEditor/DataEdit.htm'
 ],
 function ($, mlRes, jqx, DataEditor, ValidationResultsViewer, ResourcesDownloader, DataServices, Data_Validator, DataEditHTML) {
     var DataEdit = function () {

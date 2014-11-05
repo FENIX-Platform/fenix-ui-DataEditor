@@ -1,7 +1,7 @@
 ﻿define([
         'jquery',
-        'js/DataEditor/DataEdit',
-        'js/DataEditor/helpers/ResourcesDownloader'
+        'fx-DataEditor/js/DataEditor/DataEdit',
+        'fx-DataEditor/js/DataEditor/helpers/ResourcesDownloader'
 //,
 //'resources/DataServices',
     ],

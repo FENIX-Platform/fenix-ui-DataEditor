@@ -1,8 +1,8 @@
 ﻿define([
         'jquery',
         'jqxall',
-        'js/DataEditor/simpleEditors/DataEditor_ColumnCreatorJQX',
-        'js/DataEditor/helpers/MLUtils'
+        'fx-DataEditor/js/DataEditor/simpleEditors/DataEditor_ColumnCreatorJQX',
+        'fx-DataEditor/js/DataEditor/helpers/MLUtils'
     ],
     function ($, jqx, DataEditor_ColumnCreatorJQX, MLUtils) {
         var DataEditorJQX = function () {
@@ -208,19 +208,6 @@
                 }
             return null;
         }
-
-
-        /*DataEditorJQX.prototype.tableRowToD3SData = function (row) {
-         var toRet = [];
-         //calc once to speed it up, speed can be increased if necessary
-         var postfixLen = this.labelDataPostfix.length;
-         for (var p in row) {
-         //return if is is not an helper property (ending with this.labelDataPostfix)
-         if ((p.indexOf(this.labelDataPostfix, p.length - postfixLen) == -1) && (p != "uid"))
-         toRet.push(row[p]);
-         }
-         return toRet;
-         }*/
 
         DataEditorJQX.prototype.tableRowToD3SData = function (row) {
             var toRet = [];

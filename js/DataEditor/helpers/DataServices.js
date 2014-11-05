@@ -1,6 +1,4 @@
-﻿define([
-'jquery'
-  ],
+﻿define(['jquery'],
 function ($) {
 
     var DataServices = function () {

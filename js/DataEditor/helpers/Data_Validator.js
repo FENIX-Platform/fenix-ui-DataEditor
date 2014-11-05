@@ -1,5 +1,4 @@
-﻿define(['jquery'
-    ],
+﻿define(['jquery'],
     function ($) {
 
         //Columns/headers validation
@@ -220,15 +219,15 @@
         }
 
         /*var getKeyIds = function (cols) {
-            if (!cols)
-                return null;
-            var toRet = [];
-            for (var i = 0; i < cols.length; i++)
-                if (cols[i].key)
-                    toRet.push(cols[i].id);
+         if (!cols)
+         return null;
+         var toRet = [];
+         for (var i = 0; i < cols.length; i++)
+         if (cols[i].key)
+         toRet.push(cols[i].id);
 
-            return toRet;
-        }*/
+         return toRet;
+         }*/
 
         var arrConcat = function (dest, toAdd) {
             if (!dest)

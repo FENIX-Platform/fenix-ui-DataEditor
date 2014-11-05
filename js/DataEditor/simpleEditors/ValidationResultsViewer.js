@@ -1,7 +1,7 @@
 ﻿define([
 'jquery',
  'jqxall',
- 'js/DataEditor/helpers/MLUtils'
+ 'fx-DataEditor/js/DataEditor/helpers/MLUtils'
   ],
 function ($, jqx, MLUtils) {
     var ValidationResultsViewer = function () {
