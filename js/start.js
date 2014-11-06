@@ -5,6 +5,7 @@ define([
 ], function ($, DataEditWr) {
 
     var dataEditWr;
+
     function DataEditor_starter() {
         dataEditWr = new DataEditWr();
         dataEditWr.render($('#DataEditorMainContainer'));
@@ -18,7 +19,7 @@ define([
             if (version)
                 return "http://faostat3.fao.org:7799/v2/msd/resources/" + system + "/" + version;
             else
-                return "http://faostat3.fao.org:7799/v2/msd/resources/" + system;
+                return "http://faostat3.fao.org:7799/v2/msd/resources/uid/" + system;
         } });
 
         /*$('#btnEN').click(function () {
@@ -28,6 +29,15 @@ define([
          setLang('fr');
          });*/
         dataEditWr.setDataLang(localStorage.getItem('locale'));
+
+
+        /*dataEditWr.setMeta({dsd: {columns: [
+            {"id": "CODE", "title": {"EN": "Item"}, "key": true, "dataType": "code", "domain": {"codes": [
+                {"idCodeList": "UAE_Elements"}
+            ]}, "subject": {"uid": "item"}, "supplemental": {}},
+            {"id": "YEAR", "title": {"EN": "Year"}, "key": true, "dataType": "year", "domain": null, "subject": {"uid": "time"}, "supplemental": {}},
+            {"id": "NUMBER", "title": {"EN": "Val"}, "key": false, "dataType": "number", "supplemental": {}}
+        ]}});*/
 
 
         //Test
@@ -56,7 +66,7 @@ define([
 
     }
 
-    return {init: DataEditor_starter, set: function (id){
+    return {init: DataEditor_starter, set: function (id) {
         dataEditWr.setMeta(id)
     }}
 

@@ -7,6 +7,7 @@
         var DataEditor_ColumnCreatorJQX = function () {
             this.defYMin = 0;
             this.defYMax = 3000;
+            this.defY = new Date().getFullYear();
         };
 
         //Render - creation
