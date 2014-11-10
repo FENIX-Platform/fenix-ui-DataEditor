@@ -245,6 +245,29 @@
         DataEditorJQX.prototype.getData = function () {
             return this.tableRowsToD3SData();
         }
+        DataEditorJQX.prototype.getCodeColumnsDistinct = function () {
+            var toRet = {};
+            for (var i = 0; i < this.cols.length; i++)
+                if (this.cols[i].dataType == "code") {
+                    toRet[this.cols[i].id] = this.getCodeColumnDistinct(this.cols[i].id);
+                }
+            return toRet;
+        }
+        DataEditorJQX.prototype.getCodeColumnDistinct = function (colId) {
+            for (var i = 0; i < this.cols.length; i++)
+                if (this.cols[i].dataType == "code" && this.cols[i].id == colId) {
+                    return getDistinctCodes(this.getData(), i);
+                }
+        }
+        var getDistinctCodes = function (data, colIndex) {
+            var toRet = [];
+            if (!data)
+                return toRet;
+            for (var i = 0; i < data.length; i++)
+                if ($.inArray(data[i], toRet) == -1)
+                    toRet.push(data[i]);
+            return toRet;
+        }
 //END Data
 
 

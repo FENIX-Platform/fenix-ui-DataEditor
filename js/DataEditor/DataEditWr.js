@@ -38,7 +38,7 @@
                 var urls = [];
                 for (var i = 0; i < toDL.length; i++) {
                     if (toDL[i].version)
-                    urls.push(this.getCodelistUrl(toDL[i].idCodeList, toDL[i].version));
+                        urls.push(this.getCodelistUrl(toDL[i].idCodeList, toDL[i].version));
                     else
                         urls.push(this.getCodelistUrl(toDL[i].idCodeList));
                 }
@@ -59,9 +59,9 @@
         }
         DataEditWr.prototype.getCodelistUrl = function (system, version) {
             if (version)
-            return this.codelistUrlFinder.get(system, version);
+                return this.codelistUrlFinder.get(system, version);
             else
-            return this.codelistUrlFinder.get(system);
+                return this.codelistUrlFinder.get(system);
         }
 
         //Meta and data load
