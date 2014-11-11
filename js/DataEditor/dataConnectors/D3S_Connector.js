@@ -37,7 +37,7 @@ define(['jquery'],
                 addr = addr + "/" + uid + "/" + version;
             else
                 addr = addr + "/uid/" + uid;
-            $.get(addr, {dsd: true}, function (data, textStatus, jqXHR) {
+            $.get(addr, {dsd: true, full: true}, function (data, textStatus, jqXHR) {
                 if (callB)
                     callB(data);
             }, 'json').fail(function (xhr, ajaxOptions, thrownError) {
@@ -140,6 +140,9 @@ define(['jquery'],
                     data: JSON.stringify(DSD),
                     crossDomain: true,
                     success: function (data, textStatus, jqXHR) {
+                        console.log("updateDSD success if")
+                        console.log(callB)
+                        console.log(data)
                         if (callB)
                             callB(data);
                     },
@@ -167,6 +170,9 @@ define(['jquery'],
                     data: JSON.stringify(toPatch),
                     crossDomain: true,
                     success: function (data, textStatus, jqXHR) {
+                        console.log("updateDSD success else")
+                        console.log(callB)
+                        console.log(data)
                         if (callB)
                             callB(data);
                     },
@@ -182,7 +188,10 @@ define(['jquery'],
 
         //DATA
         Connector.prototype.putData = function (existingMeta, data, callB) {
+            console.log(callB)
             var addr = "http://faostat3.fao.org/d3s2/v2/msd/resources"
+            console.log(existingMeta)
+
             if (existingMeta.dsd && existingMeta.dsd.rid) {
 
                 var toPut = {
@@ -198,6 +207,10 @@ define(['jquery'],
                     data: JSON.stringify(toPut),
                     crossDomain: true,
                     success: function (data, textStatus, jqXHR) {
+                        console.log("putData success if")
+                        console.log(callB)
+                        console.log(data)
+
                         if (callB)
                             callB(data);
                     },
