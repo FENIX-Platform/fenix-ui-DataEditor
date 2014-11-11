@@ -68,22 +68,22 @@ define([
 
     }
 
-    function updateDSD(uid, version, dsd) {
+    function updateDSD(uid, version, dsd, callback) {
         var conn = new Connector();
         conn.getMetadata(uid, version, function (meta) {
             if (!meta)
                 throw new Error("Cannot find metadata with UID " + uid + " and version " + version);
-            conn.updateDSD(meta, dsd);
+            conn.updateDSD(meta, dsd ,callback);
         });
     }
 
-    function updateData(uid, version, data) {
+    function updateData(uid, version, data, callback) {
         var conn = new Connector();
 
         conn.getMetadata(uid, version, function (meta) {
             if (!meta)
                 throw new Error("Cannot find metadata with UID " + uid + " and version " + version);
-            conn.putData(meta, data);
+            conn.putData(meta, data, callback);
         });
     }
 
