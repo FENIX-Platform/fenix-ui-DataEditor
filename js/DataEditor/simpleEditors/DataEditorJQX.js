@@ -245,17 +245,18 @@
         DataEditorJQX.prototype.getData = function () {
             return this.tableRowsToD3SData();
         }
-        DataEditorJQX.prototype.getCodeColumnsDistinct = function () {
+        DataEditorJQX.prototype.getColumnsDistinct = function () {
             var toRet = {};
-            for (var i = 0; i < this.cols.length; i++)
-                if (this.cols[i].dataType == "code") {
-                    toRet[this.cols[i].id] = this.getCodeColumnDistinct(this.cols[i].id);
-                }
+            for (var i = 0; i < this.cols.length; i++) {
+                if (this.cols[i].dataType != "number")
+                    toRet[this.cols[i].id] = this.getColumnDistinct(this.cols[i].id);
+            }
+
             return toRet;
         }
-        DataEditorJQX.prototype.getCodeColumnDistinct = function (colId) {
+        DataEditorJQX.prototype.getColumnDistinct = function (colId) {
             for (var i = 0; i < this.cols.length; i++)
-                if (this.cols[i].dataType == "code" && this.cols[i].id == colId) {
+                if (this.cols[i].id == colId) {
                     return getDistinctCodes(this.getData(), i);
                 }
         }
@@ -264,8 +265,8 @@
             if (!data)
                 return toRet;
             for (var i = 0; i < data.length; i++)
-                if ($.inArray(data[i], toRet) == -1)
-                    toRet.push(data[i]);
+                if ($.inArray(data[i][colIndex], toRet) == -1)
+                    toRet.push(data[i][colIndex]);
             return toRet;
         }
 //END Data

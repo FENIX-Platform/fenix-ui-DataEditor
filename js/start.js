@@ -1,8 +1,9 @@
 define([
     'jquery',
     'fx-DataEditor/js/DataEditor/DataEditWr',
+    'fx-DataEditor/js/DataEditor/dataConnectors/D3S_Connector',
     'domReady!'
-], function ($, DataEditWr) {
+], function ($, DataEditWr, Connector) {
 
     var dataEditWr;
 
@@ -17,9 +18,9 @@ define([
         //dataEditWr.setCodelistUrlFinder({ get: function (system, version) { return "http://faostat3.fao.org:7788/msd/cl/system/" + system + "/" + version; } });
         dataEditWr.setCodelistUrlFinder({ get: function (system, version) {
             if (version)
-                return "http://faostat3.fao.org:7799/v2/msd/resources/" + system + "/" + version;
+                return "http://faostat3.fao.org/d3s2/v2/msd/resources/" + system + "/" + version;
             else
-                return "http://faostat3.fao.org:7799/v2/msd/resources/uid/" + system;
+                return "http://faostat3.fao.org/d3s2/v2/msd/resources/uid/" + system;
         } });
 
         /*$('#btnEN').click(function () {
@@ -32,12 +33,12 @@ define([
 
 
         /*dataEditWr.setMeta({dsd: {columns: [
-            {"id": "CODE", "title": {"EN": "Item"}, "key": true, "dataType": "code", "domain": {"codes": [
-                {"idCodeList": "UAE_Elements"}
-            ]}, "subject": {"uid": "item"}, "supplemental": {}},
-            {"id": "YEAR", "title": {"EN": "Year"}, "key": true, "dataType": "year", "domain": null, "subject": {"uid": "time"}, "supplemental": {}},
-            {"id": "NUMBER", "title": {"EN": "Val"}, "key": false, "dataType": "number", "supplemental": {}}
-        ]}});*/
+         {"id": "CODE", "title": {"EN": "Item"}, "key": true, "dataType": "code", "domain": {"codes": [
+         {"idCodeList": "UAE_Elements"}
+         ]}, "subject": {"uid": "item"}, "supplemental": {}},
+         {"id": "YEAR", "title": {"EN": "Year"}, "key": true, "dataType": "year", "domain": null, "subject": {"uid": "time"}, "supplemental": {}},
+         {"id": "NUMBER", "title": {"EN": "Val"}, "key": false, "dataType": "number", "supplemental": {}}
+         ]}});*/
 
 
         //Test
@@ -59,6 +60,7 @@ define([
     //var setLang = function (lang) {
     function setLang(lang) {
         var loc = localStorage.getItem('locale');
+        var loc = localStorage.getItem('locale');
         if (loc && loc.toUpperCase() == lang)
             return;
         localStorage.setItem('locale', lang.toLowerCase());
@@ -66,9 +68,46 @@ define([
 
     }
 
-    return {init: DataEditor_starter, set: function (id) {
-        dataEditWr.setMeta(id)
-    }}
+    function updateDSD(uid, version, dsd) {
+        var conn = new Connector();
+        conn.getMetadata(uid, version, function (meta) {
+            if (!meta)
+                throw new Error("Cannot find metadata with UID " + uid + " and version " + version);
+            conn.updateDSD(meta, dsd);
+        });
+    }
+
+    function updateData(uid, version, data) {
+        var conn = new Connector();
+
+        conn.getMetadata(uid, version, function (meta) {
+            if (!meta)
+                throw new Error("Cannot find metadata with UID " + uid + " and version " + version);
+            conn.putData(meta, data);
+        });
+    }
+
+    return {
+        init: DataEditor_starter,
+        set: function (meta) {
+            dataEditWr.setMeta(meta)
+        },
+        getData: function () {
+            return dataEditWr.getData();
+        },
+        setData:function(){dataEditWr.setData();},
+        getDistincts: function () {
+            return dataEditWr.getColumnsDistinct();
+        },
+        updateDSD: updateDSD,
+        updateData: updateData,
+        getMeta:function()
+        {
+         return dataEditWr.getMeta();
+        }
+
+
+    }
 
     /*END Multilang test*/
 });

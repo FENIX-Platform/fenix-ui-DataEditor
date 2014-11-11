@@ -117,6 +117,13 @@
         DataEditWr.prototype.getData = function () {
             return this.dataEdit.getData();
         }
+        DataEditWr.prototype.getMeta = function () {
+            return this.meta;
+        }
+
+        DataEditWr.prototype.getColumnsDistinct = function () {
+            return this.dataEdit.getColumnsDistinct();
+        }
 
         //DataEditWr.prototype.saveData = function (){ }
         DataEditWr.prototype.updateGrid = function () {

@@ -33,7 +33,7 @@ require([
 
         //dataEditWr.setCodelistUrlFinder({ get: function (system, version) { return "http://faostat3.fao.org:7788/msd/cl/system/" + system + "/" + version; } });
         dataEditWr.setCodelistUrlFinder({ get: function (system, version) {
-            return "http://faostat3.fao.org:7799/v2/msd/resources/" + system + "/" + version;
+            return "http://faostat3.fao.org/d3s2/v2/msd/resources/" + system + "/" + version;
         } });
 
         $('#btnEN').click(function () {
@@ -46,7 +46,7 @@ require([
 
         /*Test*/
         //var metaAdapter = { source: { url: 'http://localhost:1031/dataUpload_03/js/z_tmp/dataset_233CPD010.txt'} };
-        var metaAdapter = { source: { url: 'http://faostat3.fao.org:7799/v2/msd/resources/metadata/dan2/1.0?dsd=true'} };
+        var metaAdapter = { source: { url: 'http://faostat3.fao.org/d3s2/v2/msd/resources/metadata/dan2/1.0?dsd=true'} };
         dataEditWr.setMetaAdapter(metaAdapter);
         dataEditWr.setData([
             ["01059", 2000, 4],
