@@ -8,7 +8,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/FENIX-Platform/fenix-ui-DSDEditor.git"
+        "url": "https://github.com/FENIX-Platform/fenix-ui-DataEditor.git"
     },
     "keywords": [
         "FENIX"
@@ -16,9 +16,9 @@
     "author": "FENIX Development Team",
     "license": "GPL3",
     "bugs": {
-        "url": "https://github.com/FENIX-Platform/fenix-ui-DSDEditor/issues"
+        "url": "https://github.com/FENIX-Platform/fenix-ui-DataEditor/issues"
     },
-    "homepage": "https://github.com/FENIX-Platform/fenix-ui-DSDEditor",
+    "homepage": "https://github.com/FENIX-Platform/fenix-ui-DataEditor",
     "dependencies": {
         "jquery": "~2.1.0",
         "jstree": "~3.0.8",
