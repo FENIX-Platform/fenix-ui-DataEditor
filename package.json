@@ -23,6 +23,6 @@
         "jquery": "~2.1.0",
         "jstree": "~3.0.8",
         "bootstrap" :  "~3.2.0",
-        "requirejs" : "~2.1.14",
+        "requirejs" : "~2.1.14"
     }
 }
