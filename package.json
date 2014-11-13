@@ -1,0 +1,28 @@
+{
+    "name": "fenix-ui-DataEditor",
+    "version": "0.0.1",
+    "description": "Component to Data Editor",
+    "main": "index.html",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/FENIX-Platform/fenix-ui-DSDEditor.git"
+    },
+    "keywords": [
+        "FENIX"
+    ],
+    "author": "FENIX Development Team",
+    "license": "GPL3",
+    "bugs": {
+        "url": "https://github.com/FENIX-Platform/fenix-ui-DSDEditor/issues"
+    },
+    "homepage": "https://github.com/FENIX-Platform/fenix-ui-DSDEditor",
+    "dependencies": {
+        "jquery": "~2.1.0",
+        "jstree": "~3.0.8",
+        "bootstrap" :  "~3.2.0",
+        "requirejs" : "~2.1.14",
+    }
+}
