@@ -116,12 +116,12 @@ define(['jquery'],
          });
          }*/
 
-        Connector.prototype.updateDSD = function (existingMeta, DSD, callB) {
+        Connector.prototype.updateDSD = function (existingMeta, DSD, dataSource, contextSys, callB) {
             if (!existingMeta)
                 throw "existing meta is null";
 
-            DSD.datasource = "CountrySTAT";
-            DSD.contextSystem = "CountrySTAT";
+            DSD.datasource = dataSource;
+            DSD.contextSystem = contextSys;
 
             //console.log(JSON.stringify(DSD));
             //return;
