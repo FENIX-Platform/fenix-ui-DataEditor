@@ -68,12 +68,12 @@ define([
 
     }
 
-    function updateDSD(uid, version, dsd, callback) {
+    function updateDSD(uid, version, dsd, datasource, contextSys, callback) {
         var conn = new Connector();
         conn.getMetadata(uid, version, function (meta) {
             if (!meta)
                 throw new Error("Cannot find metadata with UID " + uid + " and version " + version);
-            conn.updateDSD(meta, dsd ,callback);
+            conn.updateDSD(meta, dsd ,datasource, contextSys,callback);
         });
     }
 
