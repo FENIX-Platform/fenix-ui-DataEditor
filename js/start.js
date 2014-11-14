@@ -68,7 +68,7 @@ define([
 
     }
 
-    function updateDSD(uid, version, dsd, datasource, contextSys callback) {
+    function updateDSD(uid, version, dsd, datasource, contextSys, callback) {
         var conn = new Connector();
         conn.getMetadata(uid, version, function (meta) {
             if (!meta)
