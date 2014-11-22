@@ -94,7 +94,7 @@ define([
         getData: function () {
             return dataEditWr.getData();
         },
-        setData:function(){dataEditWr.setData();},
+        setData:function(data){dataEditWr.setData(data);},
         getDistincts: function () {
             return dataEditWr.getColumnsDistinct();
         },
