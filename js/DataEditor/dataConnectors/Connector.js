@@ -44,7 +44,7 @@ define(['jquery'],
 
 
         //AJAX Methods
-        var ajaxGET = function (url, queryParam, callB) {
+        Connector.prototype.ajaxGET = function (url, queryParam, callB) {
             $.ajax({
                 url: url,
                 crossDomain: true,
@@ -59,14 +59,15 @@ define(['jquery'],
                 }*/
             });
         }
-        var ajaxPUT = function (url, JSONToPut, callB) {
-            ajaxPUT_PATCH(url, JSONToPut, 'PUT', callB);
+        Connector.prototype.ajaxPUT = function (url, JSONToPut, callB) {
+            this.ajaxPUT_PATCH(url, JSONToPut, 'PUT', callB);
         }
-        var ajaxPATCH = function (url, JSONToPatch, callB) {
-            ajaxPUT_PATCH(url, JSONToPatch, 'PATCH', callB);
+        Connector.prototype.ajaxPATCH = function (url, JSONToPatch, callB) {
+            this.ajaxPUT_PATCH(url, JSONToPatch, 'PATCH', callB);
         }
 
-        var ajaxPUT_PATCH = function (url, JSONtoSend, method, callB) {
+        Connector.prototype.ajaxPUT_PATCH = function (url, JSONtoSend, method, callB) {
+            console.log(JSONtoSend);
             $.ajax({
                 contentType: "application/json",
                 url: url,

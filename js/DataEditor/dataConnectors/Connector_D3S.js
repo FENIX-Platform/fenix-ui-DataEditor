@@ -30,7 +30,7 @@ define([
                 this.connector.ajaxGET(addr, queryParam, callB);
             }
             catch (ex) {
-                throw new Error("Cannot find Metadata at " + url);
+                throw new Error("Cannot find Metadata at " + addr);
             }
         }
 
