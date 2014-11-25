@@ -9,7 +9,6 @@ define([
     this.config = {};
 
     function init(containerID, config, callB) {
-        containerID
         dataEditWr = new DataEditWr(config);
         dataEditWr.render($(containerID));
 
