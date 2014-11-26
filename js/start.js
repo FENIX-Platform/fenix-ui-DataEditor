@@ -39,7 +39,7 @@ define([
             conn = new Connector(this.config.servicesUrls);
         else
             conn = new Connector();
-        conn.updateDSD(uid, version, dsd, datasource, contextSys, callB);
+        conn.updateDSD(uid, version, dsd, datasource, contextSys, callback);
 
 
         /*var conn = new Connector();
