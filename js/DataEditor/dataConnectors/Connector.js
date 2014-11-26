@@ -76,7 +76,8 @@ define(['jquery'],
                 data: JSON.stringify(JSONtoSend),
                 crossDomain: true,
                 success: function (data, textStatus, jqXHR) {
-                    if (callB) callB;
+                    if (callB)
+                        callB();
                 }
                 /*error: function (jqXHR, textStatus, errorThrown) {
                     throw new Error(errorMessage);
