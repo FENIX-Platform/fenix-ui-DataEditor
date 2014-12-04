@@ -1,4 +1,76 @@
+//Config
+/*
+
+
+*/
+
 define([
+    'jquery',
+    'fx-DataEditor/js/DataEditor/DataEdit',
+    'fx-DataEditor/js/DataEditor/dataConnectors/Connector_D3S',
+    'domReady!'
+], function ($, DataEdit, Connector) {
+
+    this.config = {};
+
+    function init(containerID, config, callB) {
+        this.config = config;
+        dataEdit = new DataEdit();
+        dataEdit.render($(containerID), config, callB);
+
+        /*//dataEditWr.setCodelistUrlFinder({ get: function (system, version) { return "http://faostat3.fao.org:7788/msd/cl/system/" + system + "/" + version; } });
+        dataEditWr.setCodelistUrlFinder({
+            get: function (system, version) {
+                return "http://faostat3.fao.org:7799/v2/msd/resources/" + system + "/" + version;
+            }
+        });
+
+        //TEST
+        //var metaAdapter = { source: { url: 'http://localhost:1031/dataUpload_03/js/z_tmp/dataset_233CPD010.txt'} };
+        var metaAdapter = { source: { url: 'http://faostat3.fao.org:7799/v2/msd/resources/metadata/dan2/1.0?dsd=true' } };
+        dataEditWr.setMetaAdapter(metaAdapter);
+        dataEditWr.setData([
+            ["01059", 2000, 4],
+            [null, 2001, null]]);
+        //dataEditWr.setColsAndData(JSON.parse(testDatasetMETA).dsd.columns, JSON.parse(testDatasetDATA));
+        //END Test*/
+    }
+
+    function setColsAndData(cols, data, callB) {
+        getCodelists(cols, function (codelists) {
+            dataEdit.setColsAndData(cols, codelists, data);
+            if (callB) callB();
+        });
+
+    }
+
+    function getCodelists(cols, callB) {
+        if (!cols)
+            return null;
+        if (this.config.servicesUrls)
+            var conn = new Connector(this.config.servicesUrls);
+
+        var codelistsToGet = [];
+        var toRet = {};
+        for (var i = 0; i < cols.length; i++)
+            if (cols[i].dataType == 'code') {
+                codelistsToGet.push({ uid: cols[i].domain.codes[0].idCodeList, version: cols[i].domain.codes[0].version });
+            }
+        var conn = new Connector();
+        conn.getCodelists(codelistsToGet, function (cLists) {
+            if (callB)
+                callB(cLists);
+        })
+
+    }
+
+    return {
+        init: init,
+        setColsAndData: setColsAndData
+    }
+});
+
+/*define([
     'jquery',
     'fx-DataEditor/js/DataEditor/DataEditWr',
     'domReady!'
@@ -26,7 +98,7 @@ define([
         });
         dataEditWr.setDataLang(localStorage.getItem('locale'));
 
-        /*Test*/
+        //TEST
         //var metaAdapter = { source: { url: 'http://localhost:1031/dataUpload_03/js/z_tmp/dataset_233CPD010.txt'} };
         var metaAdapter = { source: { url: 'http://faostat3.fao.org:7799/v2/msd/resources/metadata/dan2/1.0?dsd=true'} };
         dataEditWr.setMetaAdapter(metaAdapter);
@@ -34,7 +106,7 @@ define([
             ["01059", 2000, 4],
             [null, 2001, null]]);
         //dataEditWr.setColsAndData(JSON.parse(testDatasetMETA).dsd.columns, JSON.parse(testDatasetDATA));
-        /*END Test*/
+        //END Test
 
 
     }
@@ -43,7 +115,7 @@ define([
         console.log(data);
     }
 
-    /*Multilang test*/
+    //Multilang test
     //var setLang = function (lang) {
     function setLang(lang) {
         var loc = localStorage.getItem('locale');
@@ -56,5 +128,6 @@ define([
 
     return {init:DataEditor_starter}
 
-    /*END Multilang test*/
+    //END Multilang test
 });
+*/

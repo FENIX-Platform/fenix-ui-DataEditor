@@ -1,4 +1,8 @@
-﻿//Render - creation
+﻿//Used to get the string in a multilanguage text structure
+//It returns:
+//The string for the langCode passed
+//If not found returns the EN string
+//If not found returns the first language available
 var MLUtils_getAvailableString = function (ml, lang) {
     var lCode = MLUtils_getAvailableLang(ml, lang);
     if (lCode == "")
