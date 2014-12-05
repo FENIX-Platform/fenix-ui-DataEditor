@@ -77,6 +77,9 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
 
         this.$dataEditor.find('#btnAddRow').click(function (args) { me.dataEditor.newRow(); });
         this.$dataEditor.find('#btnDelRow').click(function (args) { me.dataEditor.deleteSelectedRow(); });
+
+        if (callB)
+            callB();
     }
 
     DataEdit.prototype.setColsAndData = function (columns, codelists, data) {
@@ -111,8 +114,28 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
             }
     }
 
-    DataEdit.prototype.getData = function ()
-    { return this.dataEditor.getData(); }
+    DataEdit.prototype.getData = function () { return this.dataEditor.getData(); }
+    //Column Distincts
+    DataEdit.prototype.getDistincts = function () {
+        var data = this.dataEditor.getData();
+        var toRet = {};
+        for (var i = 0; i < this.cols.length; i++) {
+            if (this.cols[i].dataType != "number")
+                toRet[this.cols[i].id] = getColumnDistinct(data, i);
+        }
+        return toRet;
+    }
+    var getColumnDistinct = function (data, idx) {
+        var toRet = [];
+        if (!data)
+            return toRet;
+        for (var i = 0; i < data.length; i++)
+            if ($.inArray(data[i][idx], toRet) == -1)
+                toRet.push(data[i][idx]);
+        return toRet;
+    }
+    //End column Distincts
+
 
     DataEdit.prototype.dataToGrid = function () {
         this.dataEditor.setColumns(this.cols, this.codelists);

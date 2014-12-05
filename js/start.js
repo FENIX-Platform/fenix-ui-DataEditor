@@ -1,7 +1,16 @@
-//Config
 /*
+config format:
 
-
+{
+    "D3SConnector": {
+        "datasource": "CountrySTAT",
+        "contextSystem": "CountrySTAT",
+        "metadataUrl": "http://exldvsdmxreg1.ext.fao.org:7788/v2/msd/resources/metadata",
+        "dsdUrl": "http://exldvsdmxreg1.ext.fao.org:7788/v2/msd/resources/dsd",
+        "dataUrl": "http://exldvsdmxreg1.ext.fao.org:7788/v2/msd/resources",
+        "codelistUrl": "http://faostat3.fao.org:7799/v2/msd/resources/data"
+    }
+}
 */
 
 define([
@@ -44,15 +53,15 @@ define([
         });
     }
 
-    function getData() {
-        dataEdit.getData();
-    }
+    function getData() { dataEdit.getData(); }
+    function setData(data) { dataEdit.setData(data); }
+    function getDistincts() { dataEdit.getDistincts(); }
 
     function getCodelists(cols, callB) {
         if (!cols)
             return null;
-        if (cfg.servicesUrls)
-            var conn = new Connector(cfg.servicesUrls);
+        if (cfg.D3SConnector)
+            var conn = new Connector(cfg.D3SConnector);
 
         var codelistsToGet = [];
         var toRet = {};
@@ -68,10 +77,34 @@ define([
 
     }
 
+    //Conn
+    function updateDSD(uid, version, dsd, callB) {
+        var conn;
+        if (cfg.D3SConnector.servicesUrls)
+            conn = new Connector(cfg.D3SConnector);
+        else
+            conn = new Connector();
+        conn.updateDSD(uid, version, dsd, callB);
+    }
+
+    function updateData(uid, version, data, callB) {
+        var conn;
+        if (cfg.D3SConnector)
+            conn = new Connector(cfg.D3SConnector);
+        else
+            conn = new Connector();
+        conn.putData(uid, version, data, callB);
+    }
+    //END Conn
+
     return {
         init: init,
         setColsAndData: setColsAndData,
-        getData:getData
+        getData: getData,
+        setData: setData,
+        updateDSD: updateDSD,
+        updateData: updateData,
+        getDistincts: getDistincts
     }
 });
 
