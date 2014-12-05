@@ -87,6 +87,6 @@ define([
         setData: setData,
         updateDSD: updateDSD,
         updateData: updateData,
-        getDistincts: getDistincts
+        getColumnsWithDistincts: getColumnsWithDistincts
     }
 });

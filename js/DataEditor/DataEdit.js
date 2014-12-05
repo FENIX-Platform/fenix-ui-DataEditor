@@ -93,42 +93,71 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
         checkCodeColumnsAndCodelists(columns, codelists)
 
         this.dataToGrid();
-        }
+    }
 
-    var checkCodeColumnsAndCodelists=function(cols, cLists)
-    {
+    var checkCodeColumnsAndCodelists = function (cols, cLists) {
         if (!cols)
             return;
-        for (var i=0;i<cols.length;i++)
-            if (cols[i].dataType=='code')
-            {
+        for (var i = 0; i < cols.length; i++)
+            if (cols[i].dataType == 'code') {
                 if (!cLists)
-                    throw new Error("Codelist for the column "+ cols[i].id + " missing");
+                    throw new Error("Codelist for the column " + cols[i].id + " missing");
                 //TODO: extend to multiple codelists
-                var cListId=cols[i].domain.codes[0].idCodeList;
+                var cListId = cols[i].domain.codes[0].idCodeList;
                 if (cols[i].domain.codes[0].version)
-                    cListId=cListId + "|" + cols[i].domain.codes[0].version;
+                    cListId = cListId + "|" + cols[i].domain.codes[0].version;
 
                 if (!(cListId in cLists))
-                    throw new Error("Codelist for the column "+ cols[i].id + " missing");
+                    throw new Error("Codelist for the column " + cols[i].id + " missing");
             }
     }
 
     DataEdit.prototype.getData = function () { return this.dataEditor.getData(); }
     //Column Distincts
-    DataEdit.prototype.getDistincts = function () {
+    DataEdit.prototype.getColumnsWithDistincts = function () {
         var data = this.dataEditor.getData();
-        var toRet = {};
         for (var i = 0; i < this.cols.length; i++) {
-            if (this.cols[i].dataType != "number")
-                toRet[this.cols[i].id] = getColumnDistinct(data, i);
+            var col = this.cols[i];
+            switch (col.dataType) {
+                case 'code':
+                case 'customCode':
+                    var dist = getColumnDistinct(data, i);
+                    if (dist) {
+                        col.values.codes = [];
+                        col.values.codes[0] = { idCodeList: col.domain.codes[0].idCodeList };
+                        if (col.domain.codes[0].version)
+                            col.values.codes[0].version = col.domain.codes[0].version;
+                        for (var d = 0; d < dist.length; d++) {
+                            col.values.codes[0].codes.push({ code: dist[d] });
+                        }
+                    }
+                    else col.values = null;
+                    break;
+                case 'date':
+                case 'month':
+                case 'year':
+                    if (dist)
+                        col.values = { timeList: dist };
+                    else
+                        col.values = null;
+                    break;
+            }
         }
-        return toRet;
+        return this.cols;
     }
+    /* DataEdit.prototype.getDistincts = function () {
+         var data = this.dataEditor.getData();
+         var toRet = {};
+         for (var i = 0; i < this.cols.length; i++) {
+             if (this.cols[i].dataType != "number")
+                 toRet[this.cols[i].id] = getColumnDistinct(data, i);
+         }
+         return toRet;
+     }*/
     var getColumnDistinct = function (data, idx) {
         var toRet = [];
         if (!data)
-            return toRet;
+            return null;
         for (var i = 0; i < data.length; i++)
             if ($.inArray(data[i][idx], toRet) == -1)
                 toRet.push(data[i][idx]);
