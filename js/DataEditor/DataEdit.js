@@ -24,6 +24,7 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
         this.valResView;
         this.$valResView;
 
+        this.dsd;
         this.cols;
         this.data;
         this.codelists;
@@ -82,15 +83,16 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
             callB();
     }
 
-    DataEdit.prototype.setColsAndData = function (columns, codelists, data) {
-        this.cols = columns;
+    DataEdit.prototype.setDSDAndData = function (dsd, codelists, data) {
+        this.dsd = dsd;
+        this.cols = dsd.columns;
         this.data = data;
         this.codelists = codelists;
 
         //Check if codelist and code columns are matching
-        if (!columns || columns.length == 0)
+        if (!this.cols || this.cols.length == 0)
             throw new Error("At least one column must be defined");
-        checkCodeColumnsAndCodelists(columns, codelists)
+        checkCodeColumnsAndCodelists(this.cols, codelists)
 
         this.dataToGrid();
     }
@@ -114,7 +116,7 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
 
     DataEdit.prototype.getData = function () { return this.dataEditor.getData(); }
     //Column Distincts
-    DataEdit.prototype.getColumnsWithDistincts = function () {
+    DataEdit.prototype.getDSDWithDistincts = function () {
         var data = this.dataEditor.getData();
         for (var i = 0; i < this.cols.length; i++) {
             var col = this.cols[i];
@@ -145,7 +147,7 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
                     break;
             }
         }
-        return this.cols;
+        return this.dsd;
     }
     /* DataEdit.prototype.getDistincts = function () {
          var data = this.dataEditor.getData();

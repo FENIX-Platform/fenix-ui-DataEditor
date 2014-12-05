@@ -29,16 +29,16 @@ define([
         dataEdit.render($(containerID), cfg, callB);
     }
 
-    function setColsAndData(cols, data, callB) {
-        getCodelists(cols, function (codelists) {
-            dataEdit.setColsAndData(cols, codelists, data);
+    function setDSDAndData(dsd, data, callB) {
+        getCodelists(dsd.columns, function (codelists) {
+            dataEdit.setDSDAndData(dsd, codelists, data);
             if (callB) callB();
         });
     }
 
     function getData() { return dataEdit.getData(); }
     function setData(data) { dataEdit.setData(data); }
-    function getColumnsWithDistincts() { return dataEdit.getColumnsWithDistincts(); }
+    function getDSDWithDistincts() { return dataEdit.getDSDWithDistincts(); }
 
 
     function getCodelists(cols, callB) {
@@ -83,11 +83,11 @@ define([
 
     return {
         init: init,
-        setColsAndData: setColsAndData,
+        setDSDAndData: setDSDAndData,
         getData: getData,
         setData: setData,
         updateDSD: updateDSD,
         updateData: updateData,
-        getColumnsWithDistincts: getColumnsWithDistincts
+        getDSDWithDistincts: getDSDWithDistincts
     }
 });

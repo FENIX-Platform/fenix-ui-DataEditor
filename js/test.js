@@ -19,25 +19,25 @@
                 var callB = null;
                 Editor.init("#mainContainer", config, callB);
 
-                var testCols = [{ "id": "CODE", "title": { "EN": "Item" }, "key": true, "dataType": "code", "domain": { "codes": [{ "idCodeList": "ECO_AgeRange" }] }, "subject": "item", "supplemental": null }, { "id": "YEAR", "title": { "EN": "Year" }, "key": true, "dataType": "year", "domain": null, "subject": "time", "supplemental": null }, { "id": "NUMBER", "title": { "EN": "Value" }, "key": false, "dataType": "number", "subject": "value", "supplemental": null }];
+                var testCols = { columns: [{ "id": "CODE", "title": { "EN": "Item" }, "key": true, "dataType": "code", "domain": { "codes": [{ "idCodeList": "ECO_AgeRange" }] }, "subject": "item", "supplemental": null }, { "id": "YEAR", "title": { "EN": "Year" }, "key": true, "dataType": "year", "domain": null, "subject": "time", "supplemental": null }, { "id": "NUMBER", "title": { "EN": "Value" }, "key": false, "dataType": "number", "subject": "value", "supplemental": null }] };
                 /*var testCols = [
                     { "id": "CODE", "title": { "EN": "Item" }, "key": true, "dataType": "code", "domain": { "codes": [{ "idCodeList": "ECO_AgeRange" }] }, "subject": "item", "supplemental": null },
                     { "id": "YEAR", "title": { "EN": "Year" }, "key": true, "dataType": "code", "domain": { "codes": [{ "idCodeList": "UAE_DOMAINS" }] }, "subject": "time", "supplemental": null },
                     { "id": "NUMBER", "title": { "EN": "Value" }, "key": false, "dataType": "number", "subject": "value", "supplemental": null }
                 ];*/
-                Editor.setColsAndData(testCols, null, function () { Editor.setData([['1', 2000, 6], ['2', 2000, 6], ['1', 2001, 6]]); });
-                
+                Editor.setDSDAndData(testCols, null, function () { Editor.setData([['1', 2000, 6], ['2', 2000, 6], ['1', 2001, 6]]); });
+
 
                 $('#btnGetData').click(function () {
                     var data = Editor.getData();
-                    var cols = Editor.getColumnsWithDistincts();
+                    var cols = Editor.getDSDWithDistincts();
 
                     console.log("data");
                     console.log(data);
                     console.log("cols");
                     console.log(cols);
                 });
-                
+
             });
         });
     }, 0);
