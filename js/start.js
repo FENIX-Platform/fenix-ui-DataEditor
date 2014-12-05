@@ -51,8 +51,8 @@ define([
     function getCodelists(cols, callB) {
         if (!cols)
             return null;
-        if (this.config.servicesUrls)
-            var conn = new Connector(this.config.servicesUrls);
+        if (cfg.servicesUrls)
+            var conn = new Connector(cfg.servicesUrls);
 
         var codelistsToGet = [];
         var toRet = {};
