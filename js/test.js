@@ -25,8 +25,18 @@
                     { "id": "YEAR", "title": { "EN": "Year" }, "key": true, "dataType": "code", "domain": { "codes": [{ "idCodeList": "UAE_DOMAINS" }] }, "subject": "time", "supplemental": null },
                     { "id": "NUMBER", "title": { "EN": "Value" }, "key": false, "dataType": "number", "subject": "value", "supplemental": null }
                 ];*/
-                Editor.setColsAndData(testCols, null, null);
+                Editor.setColsAndData(testCols, null, function () { Editor.setData([['1', 2000, 6], ['2', 2000, 6], ['1', 2001, 6]]); });
+                
 
+                $('#btnGetData').click(function () {
+                    var data = Editor.getData();
+                    var cols = Editor.getColumnsWithDistincts();
+
+                    console.log("data");
+                    console.log(data);
+                    console.log("cols");
+                    console.log(cols);
+                });
                 
             });
         });

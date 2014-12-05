@@ -36,9 +36,9 @@ define([
         });
     }
 
-    function getData() { dataEdit.getData(); }
+    function getData() { return dataEdit.getData(); }
     function setData(data) { dataEdit.setData(data); }
-    function getColumnsWithDistincts() { dataEdit.getColumnsWithDistincts(); }
+    function getColumnsWithDistincts() { return dataEdit.getColumnsWithDistincts(); }
 
 
     function getCodelists(cols, callB) {

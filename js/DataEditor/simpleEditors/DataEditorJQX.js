@@ -84,7 +84,7 @@
             };
             var valsDataAdapter = new $.jqx.dataAdapter(valsDataSource);
             this.$dataGrid.jqxGrid({
-                source: valsDataAdapter, columns: createTableColumns(this.cols, this.codelists, this.config.dataLang, this.labelDataPostfix), columnsresize: true, editable: true, rendered: function () {
+                source: valsDataAdapter, columns: createTableColumns(this.cols, this.codelists, this.labelDataPostfix), columnsresize: true, editable: true, rendered: function () {
                     me.$dataGrid.trigger(EVT_GRID_RENDERED);
                 }
             });
@@ -146,10 +146,9 @@
 
             for (var i = 0; i < data.length; i++)
                 this.data[i] = this.D3SDataToTableRow(data[i]);
-            addLabelsToData(this.cols, this.data, this.labelDataPostfix, this.config.dataLang);
+            addLabelsToData(this.cols, this.codelists, this.data, this.labelDataPostfix, this.config.dataLang);
             this.$dataGrid.jqxGrid('updatebounddata');
         }
-
 
         DataEditorJQX.prototype.D3SDataToTableRow = function (row) {
             var toRet = {};
@@ -159,7 +158,7 @@
             return toRet;
         }
 
-        var addLabelsToData = function (cols, data, labelPostfix, lang) {
+        var addLabelsToData = function (cols, codelists, data, labelPostfix, lang) {
             if (!cols)
                 return;
             if (!data)
@@ -168,10 +167,14 @@
             for (var i = 0; i < cols.length; i++) {
                 if (cols[i].dataType != 'code')
                     continue;
+                //TODO Make it handle multiple Codelists
+                var cListUid = cols[i].domain.codes[0].idCodeList;
+                if (cols[i].domain.codes[0].version)
+                    cListUid += "|" + cols[i].domain.codes[0].version;
                 for (var d = 0; d < data.length; d++) {
                     //data has an entry for the column (ex. ITEM=57) -> look for the label
                     if (data[d][cols[i].id]) {
-                        var lbl = getCodeLabel(cols[i].codes, data[d][cols[i].id], lang);
+                        var lbl = getCodeLabel(codelists[cListUid], data[d][cols[i].id], lang);
                         if (lbl) data[d][cols[i].id + labelPostfix] = lbl;
                     }
                 }

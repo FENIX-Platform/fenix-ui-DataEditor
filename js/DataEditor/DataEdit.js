@@ -123,10 +123,12 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
                 case 'customCode':
                     var dist = getColumnDistinct(data, i);
                     if (dist) {
-                        col.values.codes = [];
+                        //TODO: Allow multiple codelists
+                        col.values = { codes: [] };
                         col.values.codes[0] = { idCodeList: col.domain.codes[0].idCodeList };
                         if (col.domain.codes[0].version)
                             col.values.codes[0].version = col.domain.codes[0].version;
+                        col.values.codes[0].codes = [];
                         for (var d = 0; d < dist.length; d++) {
                             col.values.codes[0].codes.push({ code: dist[d] });
                         }
@@ -170,6 +172,8 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
         this.dataEditor.setColumns(this.cols, this.codelists);
         this.dataEditor.setData(this.data);
     }
+
+    DataEdit.prototype.setData = function (data) { this.data = data; this.dataEditor.setData(data); }
 
     DataEdit.prototype.updateValRes = function (valRes) {
         if (!valRes)
