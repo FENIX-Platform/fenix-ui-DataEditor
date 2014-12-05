@@ -11,12 +11,13 @@ define([
     'domReady!'
 ], function ($, DataEdit, Connector) {
 
-    this.config = {};
+    var cfg = {};
+    var dataEdit;
 
     function init(containerID, config, callB) {
-        this.config = config;
+        cfg = config;
         dataEdit = new DataEdit();
-        dataEdit.render($(containerID), config, callB);
+        dataEdit.render($(containerID), cfg, callB);
 
         /*//dataEditWr.setCodelistUrlFinder({ get: function (system, version) { return "http://faostat3.fao.org:7788/msd/cl/system/" + system + "/" + version; } });
         dataEditWr.setCodelistUrlFinder({
@@ -41,7 +42,10 @@ define([
             dataEdit.setColsAndData(cols, codelists, data);
             if (callB) callB();
         });
+    }
 
+    function getData() {
+        dataEdit.getData();
     }
 
     function getCodelists(cols, callB) {
@@ -66,7 +70,8 @@ define([
 
     return {
         init: init,
-        setColsAndData: setColsAndData
+        setColsAndData: setColsAndData,
+        getData:getData
     }
 });
 
