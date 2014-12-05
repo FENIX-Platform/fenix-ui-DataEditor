@@ -38,7 +38,8 @@ define([
 
     function getData() { dataEdit.getData(); }
     function setData(data) { dataEdit.setData(data); }
-    function getDistincts() { dataEdit.getDistincts(); }
+    function getColumnsWithDistincts() { dataEdit.getColumnsWithDistincts(); }
+
 
     function getCodelists(cols, callB) {
         if (!cols)
