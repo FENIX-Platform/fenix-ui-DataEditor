@@ -10,7 +10,9 @@ define([
             metadataUrl: "http://exldvsdmxreg1.ext.fao.org:7788/v2/msd/resources/metadata",
             dsdUrl: "http://exldvsdmxreg1.ext.fao.org:7788/v2/msd/resources/dsd",
             dataUrl: "http://exldvsdmxreg1.ext.fao.org:7788/v2/msd/resources",
-            codelistUrl: "http://faostat3.fao.org:7799/v2/msd/resources/data"
+            codelistUrl: "http://faostat3.fao.org:7799/v2/msd/resources/data",
+            contextSystem: "CountrySTAT",
+            datasource:"CountrySTAT"
         };
 
         var Connector_D3S = function (config) {
@@ -35,16 +37,16 @@ define([
             }
         }
 
-        Connector_D3S.prototype.updateDSD = function (uid, version, newDSD, datasource, contextSys, callB) {
+        Connector_D3S.prototype.updateDSD = function (uid, version, newDSD, callB) {
             if (!newDSD)
                 throw new Error("DSD to update cannot be null");
-            if (!datasource)
+            if (!this.config.datasource)
                 throw new Error("Datasource cannot be null");
-            if (!contextSys)
+            if (!this.config.contextSystem)
                 throw new Error("ContextSystem cannot be null");
 
-            newDSD.datasource = datasource;
-            newDSD.contextSystem = contextSys;
+            newDSD.datasource = this.config.datasource;
+            newDSD.contextSystem = this.config.contextSystem;
 
             var me = this;
             this.getMetadata(uid, version, function (meta) {
@@ -87,7 +89,6 @@ define([
                 }
             });
         }
-
 
         //CODELISTS
         Connector_D3S.prototype.getCodelist = function (uid, version, callB) {
