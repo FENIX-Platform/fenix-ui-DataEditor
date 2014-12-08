@@ -137,6 +137,13 @@
             }
         }
 
+        DataEditorJQX.prototype.isEditable = function (editable) {
+            if (typeof (editable) != 'undefined')
+                this.$dataGrid.jqxGrid({ editable: editable });
+            else
+                return this.$dataGrid.jqxGrid('editable');
+        }
+
 
         //DATA
         DataEditorJQX.prototype.setData = function (data) {

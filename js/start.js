@@ -3,12 +3,14 @@ config format:
 
 {
     "D3SConnector": {
-        "datasource": "CountrySTAT",
-        "contextSystem": "CountrySTAT",
-        "metadataUrl": "http://exldvsdmxreg1.ext.fao.org:7788/v2/msd/resources/metadata",
-        "dsdUrl": "http://exldvsdmxreg1.ext.fao.org:7788/v2/msd/resources/dsd",
-        "dataUrl": "http://exldvsdmxreg1.ext.fao.org:7788/v2/msd/resources",
-        "codelistUrl": "http://faostat3.fao.org:7799/v2/msd/resources/data"
+        metadataUrl: "http://exldvsdmxreg1.ext.fao.org:7788/v2/msd/resources/metadata",
+        dsdUrl: "http://exldvsdmxreg1.ext.fao.org:7788/v2/msd/resources/dsd",
+        dataUrl: "http://exldvsdmxreg1.ext.fao.org:7788/v2/msd/resources",
+        getDataUrl: "http://exldvsdmxreg1.ext.fao.org:7788/v2/msd/resources/data",
+        getMetaAndDataUrl: "http://exldvsdmxreg1.ext.fao.org:7788/v2/msd/resources/uid/dan3?dsd=true",
+        codelistUrl: "http://faostat3.fao.org:7799/v2/msd/resources/data",
+        contextSystem: "CountrySTAT",
+        datasource:"CountrySTAT"
     }
 }
 */
@@ -63,31 +65,42 @@ define([
 
     //Conn
     function updateDSD(uid, version, dsd, callB) {
-        var conn;
-        if (cfg.D3SConnector.servicesUrls)
-            conn = new Connector(cfg.D3SConnector);
-        else
-            conn = new Connector();
+        var conn = getConnector();
         conn.updateDSD(uid, version, dsd, callB);
     }
 
     function updateData(uid, version, data, callB) {
-        var conn;
-        if (cfg.D3SConnector)
-            conn = new Connector(cfg.D3SConnector);
-        else
-            conn = new Connector();
+        var conn = getConnector();
         conn.putData(uid, version, data, callB);
     }
+    function loadMetaAndData(uid, version, callB) {
+        var conn = getConnector();
+        conn.getMetaAndData(uid, version, callB);
+    }
+    function getConnector() {
+        if (cfg.D3SConnector)
+            return new Connector(cfg.D3SConnector);
+        else
+            return new Connector();
+    }
     //END Conn
+
+    function isEditable(editable) {
+        if (typeof(editable) != 'undefined')
+            dataEdit.isEditable(editable);
+        else
+            return dataEdit.isEditable();
+    }
 
     return {
         init: init,
         setDSDAndData: setDSDAndData,
+        loadMetaAndData: loadMetaAndData,
         getData: getData,
         setData: setData,
         updateDSD: updateDSD,
         updateData: updateData,
-        getDSDWithDistincts: getDSDWithDistincts
+        getDSDWithDistincts: getDSDWithDistincts,
+        isEditable: isEditable
     }
 });

@@ -48,39 +48,25 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
         this.doML();
 
         var me = this;
+
         //Merge valueChanged, rowAdded and rowDeleted?
-        this.$dataEditor.on('valueChanged.DataEditor.fenix', function (evt, param) {
-            var val = new Data_Validator();
-            var valRes = val.validate(me.cols, param.allData);
-            me.updateValRes(valRes);
-            me.dataEditor.showValidationResults(valRes);
-        });
-        this.$dataEditor.on('rowAdded.DataEditor.fenix', function (evt, param) {
-            var val = new Data_Validator();
-            var valRes = val.validate(me.cols, param.allData);
-            me.updateValRes(valRes);
-            me.dataEditor.showValidationResults(valRes);
-        });
-        this.$dataEditor.on('rowDeleted.DataEditor.fenix', function (evt, param) {
-            var val = new Data_Validator();
-            var valRes = val.validate(me.cols, param.allData);
-            me.updateValRes(valRes);
-            me.dataEditor.showValidationResults(valRes);
-        });
-
-        this.$dataEditor.on('gridRendered.DataEditor.fenix', function (evt, param) {
-            var val = new Data_Validator();
-            var valRes = val.validate(me.cols, me.data);
-
-            me.dataEditor.showValidationResults(valRes);
-            me.updateValRes(valRes);
-        });
+        this.$dataEditor.on('valueChanged.DataEditor.fenix', function (evt, param) { me.updateValidation(param.allData); });
+        this.$dataEditor.on('rowAdded.DataEditor.fenix', function (evt, param) { me.updateValidation(param.allData); });
+        this.$dataEditor.on('rowDeleted.DataEditor.fenix', function (evt, param) { me.updateValidation(param.allData); });
+        this.$dataEditor.on('gridRendered.DataEditor.fenix', function (evt, param) { me.updateValidation(me.data); });
 
         this.$dataEditor.find('#btnAddRow').click(function (args) { me.dataEditor.newRow(); });
         this.$dataEditor.find('#btnDelRow').click(function (args) { me.dataEditor.deleteSelectedRow(); });
 
         if (callB)
             callB();
+    }
+
+    DataEdit.prototype.updateValidation = function (dataToValidate) {
+        var val = new Data_Validator();
+        var valRes = val.validate(this.cols, dataToValidate);
+        this.updateValRes(valRes);
+        this.dataEditor.showValidationResults(valRes);
     }
 
     DataEdit.prototype.setDSDAndData = function (dsd, codelists, data) {
@@ -115,6 +101,8 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
     }
 
     DataEdit.prototype.getData = function () { return this.dataEditor.getData(); }
+    DataEdit.prototype.setData = function (data) { this.data = data; this.dataEditor.setData(data); }
+
     //Column Distincts
     DataEdit.prototype.getDSDWithDistincts = function () {
         var data = this.dataEditor.getData();
@@ -149,15 +137,7 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
         }
         return this.dsd;
     }
-    /* DataEdit.prototype.getDistincts = function () {
-         var data = this.dataEditor.getData();
-         var toRet = {};
-         for (var i = 0; i < this.cols.length; i++) {
-             if (this.cols[i].dataType != "number")
-                 toRet[this.cols[i].id] = getColumnDistinct(data, i);
-         }
-         return toRet;
-     }*/
+
     var getColumnDistinct = function (data, idx) {
         var toRet = [];
         if (!data)
@@ -175,8 +155,6 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
         this.dataEditor.setData(this.data);
     }
 
-    DataEdit.prototype.setData = function (data) { this.data = data; this.dataEditor.setData(data); }
-
     DataEdit.prototype.updateValRes = function (valRes) {
         if (!valRes)
             this.$valResView.hide();
@@ -186,6 +164,13 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
             this.$valResView.show();
             this.valResView.setValidationResults(valRes);
         }
+    }
+
+    DataEdit.prototype.isEditable = function (editable) {
+        if (typeof (editable) != 'undefined')
+            this.dataEditor.isEditable(editable);
+        else
+            return this.dataEditor.isEditable();
     }
 
     //MultiLang

@@ -15,7 +15,8 @@
             require([
                 'fx-DataEditor/start'
             ], function (Editor) {
-                var config = { testMode: true };
+                //var config = {};
+                var config = { D3SConnector: { getMetaAndDataUrl: "http://faostat3.fao.org:7799/v2/msd/resources" } };
                 var callB = null;
                 Editor.init("#mainContainer", config, callB);
 
@@ -25,17 +26,22 @@
                     { "id": "YEAR", "title": { "EN": "Year" }, "key": true, "dataType": "code", "domain": { "codes": [{ "idCodeList": "UAE_DOMAINS" }] }, "subject": "time", "supplemental": null },
                     { "id": "NUMBER", "title": { "EN": "Value" }, "key": false, "dataType": "number", "subject": "value", "supplemental": null }
                 ];*/
-                Editor.setDSDAndData(testCols, null, function () { Editor.setData([['1', 2000, 6], ['2', 2000, 6], ['1', 2001, 6]]); });
+                //Editor.setDSDAndData(testCols, null, function () { Editor.setData([['1', 2000, 6], ['2', 2000, 6], ['1', 2001, 6]]); });
+
+                Editor.loadMetaAndData("dan3", null, function (d) { Editor.setDSDAndData(d.metadata.dsd,d.data,null); })
 
 
                 $('#btnGetData').click(function () {
+                    /*var e = Editor.isEditable();
+                    Editor.isEditable(Editor.isEditable());*/
+                    /*
                     var data = Editor.getData();
                     var cols = Editor.getDSDWithDistincts();
 
                     console.log("data");
                     console.log(data);
                     console.log("cols");
-                    console.log(cols);
+                    console.log(cols);*/
                 });
 
             });

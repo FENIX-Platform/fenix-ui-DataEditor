@@ -10,6 +10,8 @@ define([
             metadataUrl: "http://exldvsdmxreg1.ext.fao.org:7788/v2/msd/resources/metadata",
             dsdUrl: "http://exldvsdmxreg1.ext.fao.org:7788/v2/msd/resources/dsd",
             dataUrl: "http://exldvsdmxreg1.ext.fao.org:7788/v2/msd/resources",
+            getDataUrl: "http://exldvsdmxreg1.ext.fao.org:7788/v2/msd/resources/data",
+            getMetaAndDataUrl: "http://exldvsdmxreg1.ext.fao.org:7788/v2/msd/resources/uid/dan3?dsd=true",
             codelistUrl: "http://faostat3.fao.org:7799/v2/msd/resources/data",
             contextSystem: "CountrySTAT",
             datasource:"CountrySTAT"
@@ -74,6 +76,25 @@ define([
             });
         }
 
+        //Meta and Data
+        Connector_D3S.prototype.getMetaAndData=function(uid, version, callB)
+        {
+            var addr = this.config.getMetaAndDataUrl;
+            if (!version)
+                addr += "/uid/" + uid
+            else
+                addr += "/" + uid + "/" + version;
+            var queryParam = { dsd: true };
+            try {
+                this.connector.ajaxGET(addr, queryParam, callB);
+            }
+            catch (ex)
+            {
+                throw new Error("Cannot find data at " + addr);
+            }
+        }
+
+        //Data
         Connector_D3S.prototype.putData = function (uid, version, data, callB) {
             var me = this;
             this.getMetadata(uid, version, function (meta) {
@@ -88,6 +109,22 @@ define([
                     throw new Error("Cannot put data");
                 }
             });
+        }
+
+        Connector_D3S.prototype.getData = function (uid, version, callB)
+        {
+            var addr = this.config.getDataUrl();
+            if (!version)
+                addr += "/uid/" + uid
+            else
+                addr += "/" + uid + "/" + version;
+            try {
+                this.connector.ajaxGET(addr, null, callB);
+            }
+            catch (ex)
+            {
+                throw new Error("Cannot find data at " + addr);
+            }
         }
 
         //CODELISTS
