@@ -116,11 +116,33 @@
         }
 
         DataEditorJQX.prototype.newRow = function () {
-            this.$dataGrid.jqxGrid('addrow', null, {});
+            //var rowToAdd = {};
+            var rowToAdd = guessNewRow(this.cols, this.codelists, this.getData());
+            this.$dataGrid.jqxGrid('addrow', null, rowToAdd);
 
             var evtArgs = {};
             evtArgs.allData = this.tableRowsToD3SData();
             this.$dataGrid.trigger(EVT_ROW_ADDED, evtArgs)
+        }
+
+        var guessNewRow = function (cols, cLists, data) {
+            var toRet={};
+           /* for (var c = 0; c < cols.length; c++) {
+                switch(cols[c].dataType)
+                {
+                    case "year":
+                        var y = new Date().getFullYear();
+                        console.log(data[data.length - 1][cols[c].id]);
+                        if (data && (data.length > 0))
+                            if (data[data.length - 1][cols[c].id])
+                                y = data[data.length-1][cols[c].id];
+                        toRet[cols[c].id]=y;
+                        break;
+                    default:
+                        break;
+                }
+            }*/
+            return toRet;
         }
 
         DataEditorJQX.prototype.deleteSelectedRow = function () {
@@ -147,6 +169,8 @@
 
         //DATA
         DataEditorJQX.prototype.setData = function (data) {
+            if (!this.cols)
+                throw new Error("Cannot set data without table structure, use setColumns befor setData");
             this.data.length = 0;
             if (!data)
                 return;
@@ -283,19 +307,19 @@
         //END Validation results
 
 
-       /* DataEditorJQX.prototype.updateML = function (langCode) {
-            var rows = this.$dataGrid.jqxGrid('getrows');
-
-            if (this.cols) {
-                for (var i = 0; i < this.cols.length; i++)
-                    this.$dataGrid.jqxGrid('setcolumnproperty', this.cols[i].id, 'text', MLUtils_getAvailableString(this.cols[i].title, langCode));
-            }
-
-            this.addMLToCodelists();
-
-            addLabelsToData(this.cols, this.data, this.labelDataPostfix, this.config.dataLang);
-            this.$dataGrid.jqxGrid('updatebounddata');
-        }*/
+        /* DataEditorJQX.prototype.updateML = function (langCode) {
+             var rows = this.$dataGrid.jqxGrid('getrows');
+ 
+             if (this.cols) {
+                 for (var i = 0; i < this.cols.length; i++)
+                     this.$dataGrid.jqxGrid('setcolumnproperty', this.cols[i].id, 'text', MLUtils_getAvailableString(this.cols[i].title, langCode));
+             }
+ 
+             this.addMLToCodelists();
+ 
+             addLabelsToData(this.cols, this.data, this.labelDataPostfix, this.config.dataLang);
+             this.$dataGrid.jqxGrid('updatebounddata');
+         }*/
 
         DataEditorJQX.prototype.addMLToCodelists = function () {
             if (!this.codelists)

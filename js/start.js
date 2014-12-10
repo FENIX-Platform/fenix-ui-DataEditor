@@ -31,9 +31,10 @@ define([
         dataEdit.render($(containerID), cfg, callB);
     }
 
-    function setDSDAndData(dsd, data, callB) {
+    function setDSD(dsd, callB) {
         getCodelists(dsd.columns, function (codelists) {
-            dataEdit.setDSDAndData(dsd, codelists, data);
+            //dataEdit.setDSDAndData(dsd, codelists, data);
+            dataEdit.setDSD(dsd, codelists);
             if (callB) callB();
         });
     }
@@ -94,7 +95,7 @@ define([
 
     return {
         init: init,
-        setDSDAndData: setDSDAndData,
+        setDSD: setDSD,
         loadMetaAndData: loadMetaAndData,
         getData: getData,
         setData: setData,

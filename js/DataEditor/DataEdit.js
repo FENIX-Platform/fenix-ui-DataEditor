@@ -69,7 +69,7 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
         this.dataEditor.showValidationResults(valRes);
     }
 
-    DataEdit.prototype.setDSDAndData = function (dsd, codelists, data) {
+    /*DataEdit.prototype.setDSDAndData = function (dsd, codelists, data) {
         this.dsd = dsd;
         this.cols = dsd.columns;
         this.data = data;
@@ -80,7 +80,22 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
             throw new Error("At least one column must be defined");
         checkCodeColumnsAndCodelists(this.cols, codelists)
 
-        this.dataToGrid();
+        this.dataEditor.setColumns(this.cols, this.codelists);
+        this.dataEditor.setData(this.data);
+    }*/
+
+    DataEdit.prototype.setDSD = function (dsd, codelists) {
+        this.dsd = dsd;
+        this.cols = dsd.columns;
+        this.codelists = codelists;
+        //Check if codelist and code columns are matching
+        if (!this.cols || this.cols.length == 0)
+            throw new Error("At least one column must be defined");
+        checkCodeColumnsAndCodelists(this.cols, codelists)
+        this.dataEditor.setColumns(this.cols, this.codelists);
+
+        if (this.data)
+            this.dataEditor.setData(this.data);
     }
 
     var checkCodeColumnsAndCodelists = function (cols, cLists) {
@@ -101,7 +116,11 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
     }
 
     DataEdit.prototype.getData = function () { return this.dataEditor.getData(); }
-    DataEdit.prototype.setData = function (data) { this.data = data; this.dataEditor.setData(data); }
+    DataEdit.prototype.setData = function (data) {
+        this.data = data;
+        if (this.cols)
+            this.dataEditor.setData(this.data);
+    }
 
     //Column Distincts
     DataEdit.prototype.getDSDWithDistincts = function () {
@@ -149,11 +168,6 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
     }
     //End column Distincts
 
-
-    DataEdit.prototype.dataToGrid = function () {
-        this.dataEditor.setColumns(this.cols, this.codelists);
-        this.dataEditor.setData(this.data);
-    }
 
     DataEdit.prototype.updateValRes = function (valRes) {
         if (!valRes)
