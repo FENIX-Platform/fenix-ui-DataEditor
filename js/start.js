@@ -58,11 +58,35 @@ define([
             }
         var conn = new Connector();
         conn.getCodelists(codelistsToGet, function (cLists) {
+            //Temporary solution, add multilevel codelists handling
+            for (cl in cLists)
+                cLists[cl] = flattenCodelist(cLists[cl]);
+            //END Temporary solution, add multilevel codelists handling
             if (callB)
                 callB(cLists);
         })
-
     }
+
+    //Temporary solution, add multilevel codelists handling
+    function flattenCodelist(cl)
+    {
+        var toRet = [];
+        recFlatten(cl, toRet);
+        for (var i = 0; i < toRet.length; i++)
+            toRet[i].children = null;
+        return toRet;
+    }
+    function recFlatten(node, toRet)
+    {
+        if (!node)
+            return;
+        for (var i = 0; i < node.length; i++) {
+            toRet.push(node[i]);
+            if (node[i].children)
+                recFlatten(node[i].children, toRet);
+        }
+    }
+    //END Temporary solution, add multilevel codelists handling
 
     //Conn
     function updateDSD(uid, version, dsd, callB) {
