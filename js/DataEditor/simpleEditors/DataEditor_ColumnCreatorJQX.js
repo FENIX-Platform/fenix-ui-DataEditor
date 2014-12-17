@@ -1,21 +1,22 @@
 ﻿define([
         'jquery',
         'jqxall',
+        'i18n!fx-DataEditor/multiLang/DataEditor/nls/ML_DataEdit',
         'fx-DataEditor/js/DataEditor/helpers/MLUtils'
-    ],
-    function ($, jqx, MLUtils) {
-        var DataEditor_ColumnCreatorJQX = function () {
-            this.defYMin = 0;
-            this.defYMax = 3000;
-            this.defY = new Date().getFullYear();
+],
+    function ($, jqx, mlRes, MLUtils) {
+        var defConfig = { YMin: 0, YMax: 3000, dataLang: 'EN' };
+        var DataEditor_ColumnCreatorJQX = function (config) {
+            this.config = {};
+            $.extend(true, this.config, defConfig, config);
         };
 
         //Render - creation
-        DataEditor_ColumnCreatorJQX.prototype.create = function (col, lang, labelPostfix) {
-            var colTitle = MLUtils_getAvailableString(col.title, lang);
+        DataEditor_ColumnCreatorJQX.prototype.create = function (col, codelists, labelPostfix) {
+            var colTitle = MLUtils_getAvailableString(col.title, this.config.dataLang);
             switch (col.dataType) {
                 case 'code':
-                    return this.createCodeCol(col, colTitle, labelPostfix);
+                    return this.createCodeCol(col, colTitle, codelists, labelPostfix);
                     break;
                 case 'customCode':
                     return this.createCustomCodeCol(col, colTitle);
@@ -42,9 +43,14 @@
             }
         }
 
-        DataEditor_ColumnCreatorJQX.prototype.createCodeCol = function (col, colTitle, labelPostfix) {
+        DataEditor_ColumnCreatorJQX.prototype.createCodeCol = function (col, colTitle, codelists, labelPostfix) {
             if (!labelPostfix)
                 throw new Error("A label postfix must be selected for code columns, param is nul");
+
+            //TODO make it handle multiple codelists
+            var codelistUid = col.domain.codes[0].idCodeList;
+            if (col.domain.codes[0].version)
+                codelistUid += "|" + col.domain.codes[0].version;
 
             var toRet = {
                 text: colTitle,
@@ -52,10 +58,12 @@
                 columntype: 'combobox',
                 displayfield: col.id + labelPostfix,
                 createeditor: function (row, cellvalue, editor, celltext, cellwidth, cellheigth) {
-                    var codesTextSrc = { localdata: col.codes, datatype: 'array', datafields: [
-                        { name: 'code', type: 'string' },
-                        { name: 'MLTitle', type: 'string'}
-                    ] };
+                    var codesTextSrc = {
+                        localdata: codelists[codelistUid], datatype: 'array', datafields: [
+                            { name: 'code', type: 'string' },
+                            { name: 'MLTitle', type: 'string' }
+                        ]
+                    };
                     var codesTextDataAdapter = new $.jqx.dataAdapter(codesTextSrc);
                     editor.jqxComboBox({ source: codesTextDataAdapter, displayMember: 'MLTitle', valueMember: 'code', promptText: '', autoComplete: true, searchMode: 'containsignorecase' });
                 }
@@ -79,11 +87,8 @@
         }
 
         DataEditor_ColumnCreatorJQX.prototype.createYearCol = function (col, colTitle) {
-
-            //TODO:Multilang validation error message
-
-            var yMin = this.defYMin;
-            var yMax = this.defYMax;
+            var yMin = this.config.YMin;
+            var yMax = this.config.YMax;
 
             if (col.domain && col.domain.period) {
                 yMin = col.domain.period.from;
@@ -95,8 +100,9 @@
                 datafield: col.id,
                 columntype: 'numberinput',
                 validation: function (cell, val) {
-                    if (val < yMin || val > yMax)
-                        return { result: false, message: 'Year must be in the ' + yMin + ", " + yMax + " interval" };
+                    if (val < yMin || val > yMax) {
+                        return { result: false, message: mlRes.yearInterval + "(" + this.config.YMin + ".." + this.config.YMax + ")" };
+                    }
                     return true;
                 }
             };
@@ -104,9 +110,6 @@
         }
 
         DataEditor_ColumnCreatorJQX.prototype.createMonthCol = function (col, colTitle) {
-
-            //TODO:Multilang validation error message
-
             var yMin = this.defYMin;
             var yMax = this.defYMax;
 
@@ -126,13 +129,14 @@
                     var m = val.substring(0, 2);
                     var y = val.substring(3, 7);
                     if (isNaN(m))
-                        return { result: false, message: "Month must be a number(1..12)" };
-                    if (isNaN(y))
-                        return { result: false, message: "Year must be a number(" + yMin + ".." + yMax + ")" };
+                        return { result: false, message: mlRes.monthInterval };
+                    if (isNaN(y)) {
+                        return { result: false, message: mlRes.yearInterval + "(" + this.config.YMin + ".." + this.config.YMax + ")" };
+                    }
                     if (m < 1 || m > 12)
-                        return { result: false, message: "Month must be a number(1..12)" };
+                        return { result: false, message: mlRes.monthInterval };
                     if (y < yMin || y > yMax)
-                        return { result: false, message: "Year must be a number(" + yMin + ".." + yMax + ")" };
+                        return { result: false, message: mlRes.yearInterval + "(" + this.config.YMin + ".." + this.config.YMax + ")" };
                     return true;
                 }
             };
@@ -161,9 +165,6 @@
         }
 
         DataEditor_ColumnCreatorJQX.prototype.createNumberCol = function (col, colTitle) {
-
-            //TODO:Multilang validation error message
-
             var toRet = {
                 text: colTitle,
                 datafield: col.id,
@@ -176,7 +177,7 @@
                     if ($.isNumeric(val))
                         return true;
 
-                    return { result: false, message: "Not a number" };
+                    return { result: false, message: mlRes.invalidNumber };
                 }
             };
             return toRet;

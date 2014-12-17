@@ -1,92 +1,131 @@
+/*
+config format:
+
+{
+    "D3SConnector": {
+        metadataUrl: "http://exldvsdmxreg1.ext.fao.org:7788/v2/msd/resources/metadata",
+        dsdUrl: "http://exldvsdmxreg1.ext.fao.org:7788/v2/msd/resources/dsd",
+        dataUrl: "http://exldvsdmxreg1.ext.fao.org:7788/v2/msd/resources",
+        getDataUrl: "http://exldvsdmxreg1.ext.fao.org:7788/v2/msd/resources/data",
+        getMetaAndDataUrl: "http://exldvsdmxreg1.ext.fao.org:7788/v2/msd/resources/uid/dan3?dsd=true",
+        codelistUrl: "http://faostat3.fao.org:7799/v2/msd/resources/data",
+        contextSystem: "CountrySTAT",
+        datasource:"CountrySTAT"
+    }
+}
+*/
+
 define([
     'jquery',
-    'fx-DataEditor/js/DataEditor/DataEditWr',
+    'fx-DataEditor/js/DataEditor/DataEdit',
     'fx-DataEditor/js/DataEditor/dataConnectors/Connector_D3S',
     'domReady!'
-], function ($, DataEditWr, Connector) {
+], function ($, DataEdit, Connector) {
 
-    var dataEditWr;
-    this.config = {};
+    var cfg = {};
+    var dataEdit;
 
     function init(containerID, config, callB) {
-        this.config = config;
+        cfg = config;
+        dataEdit = new DataEdit();
+        dataEdit.render($(containerID), cfg, callB);
+    }
 
-
-        dataEditWr = new DataEditWr(config);
-        dataEditWr.render($(containerID));
-
-        $("#btnGetData").click(function () {
-            dataEditDone(dataEditWr.getData());
+    function setDSD(dsd, callB) {
+        getCodelists(dsd.columns, function (codelists) {
+            //dataEdit.setDSDAndData(dsd, codelists, data);
+            dataEdit.setDSD(dsd, codelists);
+            if (callB) callB();
         });
-
-        dataEditWr.setCodelistUrlFinder({ get: function (system, version) {
-            if (version)
-                return "http://faostat3.fao.org/d3s2/v2/msd/resources/" + system + "/" + version;
-            else
-                return "http://faostat3.fao.org/d3s2/v2/msd/resources/uid/" + system;
-        } });
-
-        dataEditWr.setDataLang(localStorage.getItem('locale'));
     }
 
-    function dataEditDone(data) {
-        console.log(data);
+    function getData() { return dataEdit.getData(); }
+    function setData(data) { dataEdit.setData(data); }
+    function getDSDWithDistincts() { return dataEdit.getDSDWithDistincts(); }
+
+
+    function getCodelists(cols, callB) {
+        if (!cols)
+            return null;
+        if (cfg.D3SConnector)
+            var conn = new Connector(cfg.D3SConnector);
+
+        var codelistsToGet = [];
+        var toRet = {};
+        for (var i = 0; i < cols.length; i++)
+            if (cols[i].dataType == 'code') {
+                codelistsToGet.push({ uid: cols[i].domain.codes[0].idCodeList, version: cols[i].domain.codes[0].version });
+            }
+        var conn = new Connector();
+        conn.getCodelists(codelistsToGet, function (cLists) {
+            //Temporary solution, add multilevel codelists handling
+            for (cl in cLists)
+                cLists[cl] = flattenCodelist(cLists[cl]);
+            //END Temporary solution, add multilevel codelists handling
+            if (callB)
+                callB(cLists);
+        })
     }
 
-    function updateDSD(uid, version, dsd, datasource, contextSys, callback) {
-        var conn;
-        if (this.config.servicesUrls)
-            conn = new Connector(this.config.servicesUrls);
+    //Temporary solution, add multilevel codelists handling
+    function flattenCodelist(cl)
+    {
+        var toRet = [];
+        recFlatten(cl, toRet);
+        for (var i = 0; i < toRet.length; i++)
+            toRet[i].children = null;
+        return toRet;
+    }
+    function recFlatten(node, toRet)
+    {
+        if (!node)
+            return;
+        for (var i = 0; i < node.length; i++) {
+            toRet.push(node[i]);
+            if (node[i].children)
+                recFlatten(node[i].children, toRet);
+        }
+    }
+    //END Temporary solution, add multilevel codelists handling
+
+    //Conn
+    function updateDSD(uid, version, dsd, callB) {
+        var conn = getConnector();
+        conn.updateDSD(uid, version, dsd, callB);
+    }
+
+    function updateData(uid, version, data, callB) {
+        var conn = getConnector();
+        conn.putData(uid, version, data, callB);
+    }
+    function loadMetaAndData(uid, version, callB) {
+        var conn = getConnector();
+        conn.getMetaAndData(uid, version, callB);
+    }
+    function getConnector() {
+        if (cfg.D3SConnector)
+            return new Connector(cfg.D3SConnector);
         else
-            conn = new Connector();
-        conn.updateDSD(uid, version, dsd, datasource, contextSys, callback);
-
-
-        /*var conn = new Connector();
-        conn.getMetadata(uid, version, function (meta) {
-            if (!meta)
-                throw new Error("Cannot find metadata with UID " + uid + " and version " + version);
-            conn.updateDSD(meta, dsd ,datasource, contextSys,callback);
-        });*/
+            return new Connector();
     }
+    //END Conn
 
-    function updateData(uid, version, data, callback) {
-        var conn;
-        if (this.config.servicesUrls)
-            conn = new Connector(this.config.servicesUrls);
+    function isEditable(editable) {
+        if (typeof(editable) != 'undefined')
+            dataEdit.isEditable(editable);
         else
-            conn = new Connector();
-        conn.putData(uid, version, data, callback);
-
-        /*var conn = new Connector();
-        conn.getMetadata(uid, version, function (meta) {
-            if (!meta)
-                throw new Error("Cannot find metadata with UID " + uid + " and version " + version);
-            conn.putData(meta, data, callback);
-        });*/
+            return dataEdit.isEditable();
     }
 
     return {
         init: init,
-        set: function (meta) {
-            dataEditWr.setMeta(meta)
-        },
-        getData: function () {
-            return dataEditWr.getData();
-        },
-        setData:function(data){dataEditWr.setData(data);},
-        getDistincts: function () {
-            return dataEditWr.getColumnsDistinct();
-        },
+        setDSD: setDSD,
+        loadMetaAndData: loadMetaAndData,
+        getData: getData,
+        setData: setData,
         updateDSD: updateDSD,
         updateData: updateData,
-        getMeta:function()
-        {
-         return dataEditWr.getMeta();
-        }
-
-
+        getDSDWithDistincts: getDSDWithDistincts,
+        isEditable: isEditable
     }
-
-    /*END Multilang test*/
 });

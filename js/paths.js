@@ -13,8 +13,7 @@ define(function() {
         "fx-DataEditor/multiLang": "../multiLang",
         "bootstrap": "https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min",
         'jquery': '../lib/jquery',
-        'jqxall': "http://fenixapps.fao.org/repository/js/jqwidgets/3.1/jqx-light"
-
+        'jqxall' : '../lib/jqxall'
 
     };
 

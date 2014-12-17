@@ -8,7 +8,6 @@ require([
 // and never actually go fetch the files in the browser. There's probably a
 // better way to handle this, but I don't know what it is.
     setTimeout(function () {
-        //console.log(Editor);
         /*
          @param: prefix of Components paths to reference them also in absolute mode
          @param: paths to override

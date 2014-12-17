@@ -1,129 +1,198 @@
 ﻿define([
-        'jquery',
-        'i18n!fx-DataEditor/multiLang/DataEditor/nls/ML_DataEdit',
-        'jqxall',
-        'fx-DataEditor/js/DataEditor/simpleEditors/DataEditorJQX',
-        'fx-DataEditor/js/DataEditor/simpleEditors/ValidationResultsViewer',
-        'fx-DataEditor/js/DataEditor/helpers/ResourcesDownloader',
-        'fx-DataEditor/js/DataEditor/helpers/DataServices',
-        'fx-DataEditor/js/DataEditor/helpers/Data_Validator',
-        'text!fx-DataEditor/templates/DataEditor/DataEdit.htm'
-    ],
-    function ($, mlRes, jqx, DataEditor, ValidationResultsViewer, ResourcesDownloader, DataServices, Data_Validator, DataEditHTML) {
-        var DataEdit = function () {
-            this.widgetName = "DataEdit";
-            this.$container;
+'jquery',
+'jqxall',
+'i18n!fx-DataEditor/multiLang/DataEditor/nls/ML_DataEdit',
+'fx-DataEditor/js/DataEditor/simpleEditors/DataEditorJQX',
+'fx-DataEditor/js/DataEditor/simpleEditors/ValidationResultsViewer',
+'fx-DataEditor/js/DataEditor/helpers/Data_Validator',
+'text!fx-DataEditor/templates/DataEditor/DataEdit.htm'
+],
+function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, DataEditHTML) {
 
-            this.dataEditor;
-            this.$dataEditor;
+    var widgetName = "DataEdit";
+    var defConfig = {};
 
-            this.valResView;
-            this.$valResView;
+    var DataEdit = function (config) {
+        this.config = {};
+        $.extend(true, this.config, defConfig, config);
 
-            this.cols;
-            this.data;
+        this.$container;
 
-            this.dataLang = 'EN';
-        };
+        this.dataEditor;
+        this.$dataEditor;
 
-        //Render - creation
-        DataEdit.prototype.render = function (container) {
-            this.$container = container;
-            this.$container.html(DataEditHTML);
+        this.valResView;
+        this.$valResView;
 
-            this.$dataEditor = this.$container.find('#divDataEditor');
-            this.dataEditor = new DataEditor();
-            this.dataEditor.render(this.$container.find('#divDataGrid'), this.dataLang);
+        this.dsd;
+        this.cols;
+        this.data;
+        this.codelists;
+    };
 
-            this.$valResView = this.$container.find('#divValRes');
-            this.valResView = new ValidationResultsViewer();
-            this.valResView.render(this.$valResView);
+    //Render - creation
+    DataEdit.prototype.render = function (container, config, callB) {
+        $.extend(true, this.config, config);
 
-            this.doML();
+        this.$container = container;
+        this.$container.html(DataEditHTML);
 
-            var me = this;
-            //Merge valueChanged, rowAdded and rowDeleted?
-            this.$dataEditor.on('valueChanged.DataEditor.fenix', function (evt, param) {
-                var val = new Data_Validator();
-                var valRes = val.validate(me.cols, param.allData);
-                me.updateValRes(valRes);
-                me.dataEditor.showValidationResults(valRes);
-            });
-            this.$dataEditor.on('rowAdded.DataEditor.fenix', function (evt, param) {
-                var val = new Data_Validator();
-                var valRes = val.validate(me.cols, param.allData);
-                me.updateValRes(valRes);
-                me.dataEditor.showValidationResults(valRes);
-            });
-            this.$dataEditor.on('rowDeleted.DataEditor.fenix', function (evt, param) {
-                var val = new Data_Validator();
-                var valRes = val.validate(me.cols, param.allData);
-                me.updateValRes(valRes);
-                me.dataEditor.showValidationResults(valRes);
-            });
+        this.$dataEditor = this.$container.find('#divDataEditor');
+        this.dataEditor = new DataEditor();
+        this.dataEditor.render(this.$container.find('#divDataGrid'), this.config);
 
-            this.$dataEditor.on('gridRendered.DataEditor.fenix', function (evt, param) {
-                var val = new Data_Validator();
-                var valRes = val.validate(me.cols, me.data);
+        this.$valResView = this.$container.find('#divValRes');
+        this.valResView = new ValidationResultsViewer();
+        this.valResView.render(this.$valResView);
 
-                me.dataEditor.showValidationResults(valRes);
-                me.updateValRes(valRes);
-            });
+        this.doML();
 
-            this.$dataEditor.find('#btnAddRow').click(function (args) {
-                me.dataEditor.newRow();
-            });
-            this.$dataEditor.find('#btnDelRow').click(function (args) {
-                me.dataEditor.deleteSelectedRow();
-            });
-        }
+        var me = this;
 
-        DataEdit.prototype.setData = function (columns, data) {
-            this.cols = columns;
-            this.data = data;
-            this.dataToGrid();
-        }
+        //Merge valueChanged, rowAdded and rowDeleted?
+        this.$dataEditor.on('valueChanged.DataEditor.fenix', function (evt, param) { me.updateValidation(param.allData); });
+        this.$dataEditor.on('rowAdded.DataEditor.fenix', function (evt, param) { me.updateValidation(param.allData); });
+        this.$dataEditor.on('rowDeleted.DataEditor.fenix', function (evt, param) { me.updateValidation(param.allData); });
+        this.$dataEditor.on('gridRendered.DataEditor.fenix', function (evt, param) { me.updateValidation(me.data); });
 
-        DataEdit.prototype.getData = function () {
-            return this.dataEditor.getData();
-        }
+        this.$dataEditor.find('#btnAddRow').click(function (args) { me.dataEditor.newRow(); });
+        this.$dataEditor.find('#btnDelRow').click(function (args) { me.dataEditor.deleteSelectedRow(); });
 
-        DataEdit.prototype.getValidationResults=function(){
-            var val = new Data_Validator();
-            return val.validate(me.cols, param.allData);
-        }
+        if (callB)
+            callB();
+    }
 
-        DataEdit.prototype.getColumnsDistinct=function()
-        {
-            return this.dataEditor.getColumnsDistinct();
-        }
+    DataEdit.prototype.updateValidation = function (dataToValidate) {
+        var val = new Data_Validator();
+        var valRes = val.validate(this.cols, dataToValidate);
+        this.updateValRes(valRes);
+        this.dataEditor.showValidationResults(valRes);
+    }
 
+    /*DataEdit.prototype.setDSDAndData = function (dsd, codelists, data) {
+        this.dsd = dsd;
+        this.cols = dsd.columns;
+        this.data = data;
+        this.codelists = codelists;
 
-        DataEdit.prototype.dataToGrid = function () {
-            this.dataEditor.setColumns(this.cols);
+        //Check if codelist and code columns are matching
+        if (!this.cols || this.cols.length == 0)
+            throw new Error("At least one column must be defined");
+        checkCodeColumnsAndCodelists(this.cols, codelists)
+
+        this.dataEditor.setColumns(this.cols, this.codelists);
+        this.dataEditor.setData(this.data);
+    }*/
+
+    DataEdit.prototype.setDSD = function (dsd, codelists) {
+        this.dsd = dsd;
+        this.cols = dsd.columns;
+        this.codelists = codelists;
+        //Check if codelist and code columns are matching
+        if (!this.cols || this.cols.length == 0)
+            throw new Error("At least one column must be defined");
+        checkCodeColumnsAndCodelists(this.cols, codelists)
+        this.dataEditor.setColumns(this.cols, this.codelists);
+
+        if (this.data)
             this.dataEditor.setData(this.data);
-        }
+    }
 
-        DataEdit.prototype.updateValRes = function (valRes) {
-            if (!valRes)
-                this.$valResView.hide();
-            else if (valRes.length == 0)
-                this.$valResView.hide();
-            else {
-                this.$valResView.show();
-                this.valResView.setValidationResults(valRes);
+    var checkCodeColumnsAndCodelists = function (cols, cLists) {
+        if (!cols)
+            return;
+        for (var i = 0; i < cols.length; i++)
+            if (cols[i].dataType == 'code') {
+                if (!cLists)
+                    throw new Error("Codelist for the column " + cols[i].id + " missing");
+                //TODO: extend to multiple codelists
+                var cListId = cols[i].domain.codes[0].idCodeList;
+                if (cols[i].domain.codes[0].version)
+                    cListId = cListId + "|" + cols[i].domain.codes[0].version;
+
+                if (!(cListId in cLists))
+                    throw new Error("Codelist for the column " + cols[i].id + " missing");
+            }
+    }
+
+    DataEdit.prototype.getData = function () { return this.dataEditor.getData(); }
+    DataEdit.prototype.setData = function (data) {
+        this.data = data;
+        if (this.cols)
+            this.dataEditor.setData(this.data);
+    }
+
+    //Column Distincts
+    DataEdit.prototype.getDSDWithDistincts = function () {
+        var data = this.dataEditor.getData();
+        for (var i = 0; i < this.cols.length; i++) {
+            var col = this.cols[i];
+            switch (col.dataType) {
+                case 'code':
+                case 'customCode':
+                    var dist = getColumnDistinct(data, i);
+                    if (dist) {
+                        //TODO: Allow multiple codelists
+                        col.values = { codes: [] };
+                        col.values.codes[0] = { idCodeList: col.domain.codes[0].idCodeList };
+                        if (col.domain.codes[0].version)
+                            col.values.codes[0].version = col.domain.codes[0].version;
+                        col.values.codes[0].codes = [];
+                        for (var d = 0; d < dist.length; d++) {
+                            col.values.codes[0].codes.push({ code: dist[d] });
+                        }
+                    }
+                    else col.values = null;
+                    break;
+                case 'date':
+                case 'month':
+                case 'year':
+                    if (dist)
+                        col.values = { timeList: dist };
+                    else
+                        col.values = null;
+                    break;
             }
         }
+        return this.dsd;
+    }
 
-        //MultiLang
-        DataEdit.prototype.doML = function () {
-            this.$dataEditor.find('#btnAddRow').html(mlRes['add']);
-            this.$dataEditor.find('#btnDelRow').html(mlRes['delete']);
-        }
-        DataEdit.prototype.setDataLang = function (langCode) {
-            this.dataEditor.setDataLang(langCode);
-        }
-        //END Multilang
+    var getColumnDistinct = function (data, idx) {
+        var toRet = [];
+        if (!data)
+            return null;
+        for (var i = 0; i < data.length; i++)
+            if ($.inArray(data[i][idx], toRet) == -1)
+                toRet.push(data[i][idx]);
+        return toRet;
+    }
+    //End column Distincts
 
-        return DataEdit;
-    });
+
+    DataEdit.prototype.updateValRes = function (valRes) {
+        if (!valRes)
+            this.$valResView.hide();
+        else if (valRes.length == 0)
+            this.$valResView.hide();
+        else {
+            this.$valResView.show();
+            this.valResView.setValidationResults(valRes);
+        }
+    }
+
+    DataEdit.prototype.isEditable = function (editable) {
+        if (typeof (editable) != 'undefined')
+            this.dataEditor.isEditable(editable);
+        else
+            return this.dataEditor.isEditable();
+    }
+
+    //MultiLang
+    DataEdit.prototype.doML = function () {
+        this.$dataEditor.find('#btnAddRow').html(mlRes['add']);
+        this.$dataEditor.find('#btnDelRow').html(mlRes['delete']);
+    }
+    //END Multilang
+
+    return DataEdit;
+});

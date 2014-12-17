@@ -1,6 +1,15 @@
 ﻿define(['jquery'],
     function ($) {
 
+        var MSG_NULL_KEY = 'nullKey';
+        var MSG_SAME_KEY_VALS = 'sameKeyVals';
+        var MSG_UNKNOWN_CODE = 'unknownCode';
+        var MSG_INVALID_YEAR = 'invalidYear';
+        var MSG_INVALID_MONTH = 'invalidMonth';
+        var MSG_INVALID_DATE = 'invalidDate';
+        var MSG_INVALID_NUMBER = 'invalidNumber';
+        var MSG_INVALID_BOOL = 'invalidBool';
+
         //Columns/headers validation
         function Data_Validator() {
         };
@@ -34,7 +43,7 @@
                     if (cols[c].key) {
                         if (!data[i][c])
 
-                            toRet.push({ error: 'nullKey', colId: cols[c].id, dataIndex: i });
+                            toRet.push({ error: MSG_NULL_KEY, colId: cols[c].id, dataIndex: i });
                     }
                 }
 
@@ -50,8 +59,8 @@
             for (var r1 = 0; r1 < data.length - 1; r1++)
                 for (var r2 = r1 + 1; r2 < data.length; r2++)
                     if (sameDimVals(data[r1], data[r2], cols)) {
-                        toRet.push({ error: 'sameKeyVals', dataIndex: r1 });
-                        toRet.push({ error: 'sameKeyVals', dataIndex: r2 });
+                        toRet.push({ error: MSG_SAME_KEY_VALS, dataIndex: r1 });
+                        toRet.push({ error: MSG_SAME_KEY_VALS, dataIndex: r2 });
                     }
 
             return toRet;
@@ -91,29 +100,29 @@
                 switch (colInfo[d].dataType) {
                     case 'code':
                         if (!checkCode(data[d], colInfo[d].codes))
-                            toRet.push({ error: 'unknownCode', dataIndex: rowIdx, colId: d });
+                            toRet.push({ error: MSG_UNKNOWN_CODE, dataIndex: rowIdx, colId: d });
                         break;
                     case 'year':
                         if (!checkYear(data[d]))
-                            toRet.push({ error: 'invalidYear', dataIndex: rowIdx, colId: d });
+                            toRet.push({ error: MSG_INVALID_YEAR, dataIndex: rowIdx, colId: d });
                         else {
                             if (colInfo[d].domain && colInfo[d].domain.period) {
                                 if (colInfo[d].domain.period.from)//Check from
                                     if (data[d] < colInfo[d].domain.period.from)
-                                        toRet.push({ error: 'invalidYear', dataIndex: rowIdx, colId: d, yearLimitFrom: colInfo[d].domain.period.from, yearValue: data[d] });
+                                        toRet.push({ error: MSG_INVALID_YEAR, dataIndex: rowIdx, colId: d, yearLimitFrom: colInfo[d].domain.period.from, yearValue: data[d] });
                                 if (colInfo[d].domain.period.to) //Check to
                                     if (data[d] > colInfo[d].domain.period.to)
-                                        toRet.push({ error: 'invalidYear', dataIndex: rowIdx, colId: d, yearLimitTo: colInfo[d].domain.period.to, yearValue: data[d] });
+                                        toRet.push({ error: MSG_INVALID_YEAR, dataIndex: rowIdx, colId: d, yearLimitTo: colInfo[d].domain.period.to, yearValue: data[d] });
                             }
                         }
                         break;
                     case 'month':
                         if (!checkMonth(data[d]))
-                            toRet.push({ error: 'invalidMonth', dataIndex: rowIdx, colId: d });
+                            toRet.push({ error: MSG_INVALID_MONTH, dataIndex: rowIdx, colId: d });
                         break;
                     case 'date':
                         if (!checkDate(data[d]))
-                            toRet.push({ error: 'invalidDate', dataIndex: rowIdx, colId: d });
+                            toRet.push({ error: MSG_INVALID_DATE, dataIndex: rowIdx, colId: d });
                         break;
                     case 'customCode':
                         //TODO: Check custom code
@@ -121,11 +130,11 @@
                     case 'number':
                     case 'percentage':
                         if (!checkNumber(data[d]))
-                            toRet.push({ error: 'invalidNumber', dataIndex: rowIdx, colId: d });
+                            toRet.push({ error: MSG_INVALID_NUMBER, dataIndex: rowIdx, colId: d });
                         break;
                     case 'boolean':
                         if (!checkBool(data[d]))
-                            toRet.push({ error: 'invalidBoolean', dataIndex: rowIdx, colId: d });
+                            toRet.push({ error: MSG_INVALID_BOOL, dataIndex: rowIdx, colId: d });
                         break;
                 }
             }
@@ -217,17 +226,6 @@
                     return true;
             return false;
         }
-
-        /*var getKeyIds = function (cols) {
-         if (!cols)
-         return null;
-         var toRet = [];
-         for (var i = 0; i < cols.length; i++)
-         if (cols[i].key)
-         toRet.push(cols[i].id);
-
-         return toRet;
-         }*/
 
         var arrConcat = function (dest, toAdd) {
             if (!dest)

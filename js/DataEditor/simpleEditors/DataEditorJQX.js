@@ -3,34 +3,40 @@
         'jqxall',
         'fx-DataEditor/js/DataEditor/simpleEditors/DataEditor_ColumnCreatorJQX',
         'fx-DataEditor/js/DataEditor/helpers/MLUtils'
-    ],
+],
     function ($, jqx, DataEditor_ColumnCreatorJQX, MLUtils) {
-        var DataEditorJQX = function () {
-            this.widgetName = "DataEditor";
+        var widgetName = "DataEditor";
+        var EVT_VALUE_CHANGED = 'valueChanged.' + widgetName + '.fenix';
+        var EVT_GRID_RENDERED = 'gridRendered.' + widgetName + '.fenix';
+        var EVT_ROW_ADDED = 'rowAdded.' + widgetName + '.fenix';
+        var EVT_ROW_DELETED = 'rowDeleted.' + widgetName + '.fenix';
+
+        var defConfig = { dataLang: 'EN' };
+
+        var COLOR_ERROR = "error";
+        var COLOR_DEFAULT = "default";
+
+        var DataEditorJQX = function (config) {
+            this.config = {};
+            $.extend(true, this.config, defConfig, config);
 
             this.$dataGrid;
             this.cols;
+            this.codelists;
             this.data = [];
 
-            this.dataLang = 'EN';
-
             this.labelDataPostfix = "_lbl";
-            this.validationErrorColor = "red";
         };
 
         //Render - creation
-        DataEditorJQX.prototype.render = function (container, lang) {
-            if (lang)
-                this.dataLang = lang;
+        DataEditorJQX.prototype.render = function (container, config) {
+            $.extend(true, this.config, config);
 
             this.$dataGrid = container;
             this.initGrid();
-
-            //this.setDataLang(localStorage.getItem('locale'));
         }
 
         DataEditorJQX.prototype.initGrid = function () {
-
             this.$dataGrid.jqxGrid({ source: createEmptyDataAdapter(), width: "100%" });
 
             var me = this;
@@ -40,7 +46,6 @@
                 var newVal = args.newvalue;
                 var oldVal = args.oldvalue;
 
-                //var rows = me.$dataGrid.jqxGrid('getrows');
                 var rowData = me.$dataGrid.jqxGrid('getrowdata', rowIdx);
 
                 var evtArgs = {};
@@ -51,7 +56,7 @@
 
                 //Update the source array (used to refresh the labels when the language is changed)
                 me.data[rowIdx] = evtArgs.newData;
-                me.$dataGrid.trigger('valueChanged.' + me.widgetName + '.fenix', evtArgs)
+                me.$dataGrid.trigger(EVT_VALUE_CHANGED, evtArgs)
             });
         }
 
@@ -61,41 +66,33 @@
             return valsDataAdapter;
         }
 
-        DataEditorJQX.prototype.setColumns = function (cols) {
+        DataEditorJQX.prototype.setColumns = function (cols, codelists) {
             this.cols = cols;
+            this.codelists = codelists;
             if (!cols) {
                 this.$dataGrid.jqxGrid({ source: createEmptyDataAdapter(), width: "100%" });
                 return;
             }
 
-            this.addMLToCodeColumns(this.dataLang);
+            this.addMLToCodelists();
 
             var me = this;
             var valsDataSource = {
                 localdata: this.data,
                 datatype: "array",
-                datafields: createDatafields(this.cols, this.dataLang, this.labelDataPostfix)
-                //,
-                //addrow: function (rowid, rowdata, position, commit) { commit(true); },
-                //updaterow: function (rowid, rowdata, commit) { commit(true); }
+                datafields: createDatafields(this.cols, this.config.dataLang, this.labelDataPostfix)
             };
             var valsDataAdapter = new $.jqx.dataAdapter(valsDataSource);
-            this.$dataGrid.jqxGrid({ source: valsDataAdapter, columns: createTableColumns(this.cols, this.dataLang, this.labelDataPostfix), columnsresize: true, editable: true, rendered: function () {
-                me.$dataGrid.trigger('gridRendered.' + me.widgetName + '.fenix');
-            } });
+            this.$dataGrid.jqxGrid({
+                source: valsDataAdapter, columns: createTableColumns(this.cols, this.codelists, this.labelDataPostfix), columnsresize: true, editable: true, rendered: function () {
+                    me.$dataGrid.trigger(EVT_GRID_RENDERED);
+                }
+            });
         }
-
-        /*       var isColToSkip = function (col) {
-         if (col.virtualColumn && col.virtualColumn == 'INTERNAL')
-         return true;
-         return false;
-         }*/
 
         var createDatafields = function (cols, lang, lblPostfix) {
             var toRet = [];
             for (var i = 0; i < cols.length; i++) {
-                /*if (isColToSkip(cols[i]))
-                 continue;*/
                 toRet.push({ name: cols[i].id, type: 'string' });
                 if (cols[i].dataType == 'code')
                     toRet.push({ name: cols[i].id + lblPostfix, type: 'string' });
@@ -103,28 +100,12 @@
             return toRet;
         }
 
-        var createTableColumns = function (cols, lang, lblPostfix) {
+        var createTableColumns = function (cols, codelists, lblPostfix) {
             var toRet = [];
             var colCreator = new DataEditor_ColumnCreatorJQX();
 
-            //The col's number
-            //toRet.push({ pinned: true, exportable: false, text: "", columntype: 'number', cellsrenderer: function (row, col, val) { return '<div style="text-align: center; margin-top: 5px">' + (1 + val) + '</div>'; } });
-
-            //Add the multilanguage to the column codes
-
-            //First the key cols
             for (var i = 0; i < cols.length; i++) {
-                /*if (isColToSkip(cols[i]))
-                 continue;*/
-                if (cols[i].key)
-                    toRet.push(colCreator.create(cols[i], lang, lblPostfix));
-            }
-            //Then the non key cols
-            for (i = 0; i < cols.length; i++) {
-                /* if (isColToSkip(cols[i]))
-                 continue;*/
-                if (!cols[i].key)
-                    toRet.push(colCreator.create(cols[i], lang, lblPostfix));
+                toRet.push(colCreator.create(cols[i], codelists, lblPostfix));
             }
 
             var colW = 100 / toRet.length + "%";
@@ -135,51 +116,80 @@
         }
 
         DataEditorJQX.prototype.newRow = function () {
-            this.$dataGrid.jqxGrid('addrow', null, {});
+            //var rowToAdd = {};
+            var rowToAdd = guessNewRow(this.cols, this.codelists, this.getData());
+            this.$dataGrid.jqxGrid('addrow', null, rowToAdd);
 
             var evtArgs = {};
             evtArgs.allData = this.tableRowsToD3SData();
-            this.$dataGrid.trigger('rowAdded.' + this.widgetName + '.fenix', evtArgs)
+            this.$dataGrid.trigger(EVT_ROW_ADDED, evtArgs)
+        }
+
+        var guessNewRow = function (cols, cLists, data) {
+            var toRet={};
+           /* for (var c = 0; c < cols.length; c++) {
+                switch(cols[c].dataType)
+                {
+                    case "year":
+                        var y = new Date().getFullYear();
+                        console.log(data[data.length - 1][cols[c].id]);
+                        if (data && (data.length > 0))
+                            if (data[data.length - 1][cols[c].id])
+                                y = data[data.length-1][cols[c].id];
+                        toRet[cols[c].id]=y;
+                        break;
+                    default:
+                        break;
+                }
+            }*/
+            return toRet;
         }
 
         DataEditorJQX.prototype.deleteSelectedRow = function () {
             var selRowIdx = this.$dataGrid.jqxGrid('getselectedrowindex');
             if (selRowIdx == -1)
                 return;
-            var res = confirm("Delete ?");
+            var res = confirm(mlRes.confirmDelete);
             if (res) {
                 var id = this.$dataGrid.jqxGrid('getrowid', selRowIdx);
                 this.$dataGrid.jqxGrid('deleterow', id);
                 var evtArgs = {};
                 evtArgs.allData = this.tableRowsToD3SData();
-                this.$dataGrid.trigger('rowDeleted.' + this.widgetName + '.fenix', evtArgs)
+                this.$dataGrid.trigger(EVT_ROW_DELETED, evtArgs);
             }
+        }
+
+        DataEditorJQX.prototype.isEditable = function (editable) {
+            if (typeof (editable) != 'undefined')
+                this.$dataGrid.jqxGrid({ editable: editable });
+            else
+                return this.$dataGrid.jqxGrid('editable');
         }
 
 
         //DATA
         DataEditorJQX.prototype.setData = function (data) {
+            if (!this.cols)
+                throw new Error("Cannot set data without table structure, use setColumns befor setData");
             this.data.length = 0;
             if (!data)
                 return;
 
             for (var i = 0; i < data.length; i++)
                 this.data[i] = this.D3SDataToTableRow(data[i]);
-            addLabelsToData(this.cols, this.data, this.labelDataPostfix, this.dataLang);
+            addLabelsToData(this.cols, this.codelists, this.data, this.labelDataPostfix, this.config.dataLang);
             this.$dataGrid.jqxGrid('updatebounddata');
         }
 
-
         DataEditorJQX.prototype.D3SDataToTableRow = function (row) {
             var toRet = {};
-
             for (var i = 0; i < this.cols.length; i++) {
                 toRet[this.cols[i].id] = row[i];
             }
             return toRet;
         }
 
-        var addLabelsToData = function (cols, data, labelPostfix, lang) {
+        var addLabelsToData = function (cols, codelists, data, labelPostfix, lang) {
             if (!cols)
                 return;
             if (!data)
@@ -188,10 +198,14 @@
             for (var i = 0; i < cols.length; i++) {
                 if (cols[i].dataType != 'code')
                     continue;
+                //TODO Make it handle multiple Codelists
+                var cListUid = cols[i].domain.codes[0].idCodeList;
+                if (cols[i].domain.codes[0].version)
+                    cListUid += "|" + cols[i].domain.codes[0].version;
                 for (var d = 0; d < data.length; d++) {
                     //data has an entry for the column (ex. ITEM=57) -> look for the label
                     if (data[d][cols[i].id]) {
-                        var lbl = getCodeLabel(cols[i].codes, data[d][cols[i].id], lang);
+                        var lbl = getCodeLabel(codelists[cListUid], data[d][cols[i].id], lang);
                         if (lbl) data[d][cols[i].id + labelPostfix] = lbl;
                     }
                 }
@@ -245,34 +259,10 @@
         DataEditorJQX.prototype.getData = function () {
             return this.tableRowsToD3SData();
         }
-        DataEditorJQX.prototype.getColumnsDistinct = function () {
-            var toRet = {};
-            for (var i = 0; i < this.cols.length; i++) {
-                if (this.cols[i].dataType != "number")
-                    toRet[this.cols[i].id] = this.getColumnDistinct(this.cols[i].id);
-            }
-
-            return toRet;
-        }
-        DataEditorJQX.prototype.getColumnDistinct = function (colId) {
-            for (var i = 0; i < this.cols.length; i++)
-                if (this.cols[i].id == colId) {
-                    return getDistinctCodes(this.getData(), i);
-                }
-        }
-        var getDistinctCodes = function (data, colIndex) {
-            var toRet = [];
-            if (!data)
-                return toRet;
-            for (var i = 0; i < data.length; i++)
-                if ($.inArray(data[i][colIndex], toRet) == -1)
-                    toRet.push(data[i][colIndex]);
-            return toRet;
-        }
-//END Data
+        //END Data
 
 
-//Validation results
+        //Validation results
         DataEditorJQX.prototype.showValidationResults = function (valRes) {
             this.resetValidationResults();
 
@@ -280,16 +270,16 @@
                 return;
             for (var i = 0; i < valRes.length; i++) {
                 if (valRes[i].colId)
-                    this.setCellColor(valRes[i].dataIndex, valRes[i].colId, this.validationErrorColor);
+                    this.setCellColor(valRes[i].dataIndex, valRes[i].colId, COLOR_ERROR);
                 else
-                    this.setRowColor(valRes[i].dataIndex, this.validationErrorColor);
+                    this.setRowColor(valRes[i].dataIndex, COLOR_ERROR);
             }
         }
 
         DataEditorJQX.prototype.resetValidationResults = function () {
             var rowCount = this.$dataGrid.jqxGrid('getrows').length;
             for (var i = 0; i < rowCount; i++)
-                this.setRowColor(i, '');
+                this.setRowColor(i, COLOR_DEFAULT);
         }
 
         DataEditorJQX.prototype.setRowColor = function (rowIdx, color) {
@@ -308,51 +298,42 @@
         }
 
         DataEditorJQX.prototype.changeCellBackgroundColor = function (htmlCell, color) {
-            $(htmlCell).css("background-color", color);
+            if (color == COLOR_ERROR)
+                $(htmlCell).addClass("fx-red-cell");
+            else if (color == COLOR_DEFAULT)
+                $(htmlCell).removeClass("fx-red-cell");
         }
 
-//END Validation results
+        //END Validation results
 
 
-//Lang
-        DataEditorJQX.prototype.setDataLang = function (dataLang) {
-            this.dataLang = dataLang;
-            this.updateML(dataLang);
-        }
+        /* DataEditorJQX.prototype.updateML = function (langCode) {
+             var rows = this.$dataGrid.jqxGrid('getrows');
+ 
+             if (this.cols) {
+                 for (var i = 0; i < this.cols.length; i++)
+                     this.$dataGrid.jqxGrid('setcolumnproperty', this.cols[i].id, 'text', MLUtils_getAvailableString(this.cols[i].title, langCode));
+             }
+ 
+             this.addMLToCodelists();
+ 
+             addLabelsToData(this.cols, this.data, this.labelDataPostfix, this.config.dataLang);
+             this.$dataGrid.jqxGrid('updatebounddata');
+         }*/
 
-        DataEditorJQX.prototype.updateML = function (langCode) {
-            var rows = this.$dataGrid.jqxGrid('getrows');
-
-            if (this.cols) {
-                for (var i = 0; i < this.cols.length; i++)
-                    //if (!isColToSkip(this.cols[i])) {
-                    this.$dataGrid.jqxGrid('setcolumnproperty', this.cols[i].id, 'text', MLUtils_getAvailableString(this.cols[i].title, langCode));
-                //}
-            }
-
-            this.addMLToCodeColumns(langCode);
-
-            addLabelsToData(this.cols, this.data, this.labelDataPostfix, this.dataLang);
-            this.$dataGrid.jqxGrid('updatebounddata');
-        }
-
-        DataEditorJQX.prototype.addMLToCodeColumns = function (langCode) {
-            if (!this.cols)
+        DataEditorJQX.prototype.addMLToCodelists = function () {
+            if (!this.codelists)
                 return;
-            for (var i = 0; i < this.cols.length; i++) {
-                //if (isColToSkip(this.cols[i]))
-                //    continue;
-                if (this.cols[i].dataType == 'code')
-                    addMLToColCodes(this.cols[i].codes, langCode);
-            }
+            for (var c in this.codelists)
+                addMLToCodes(this.codelists[c], this.config.dataLang);
         }
 
-        var addMLToColCodes = function (codes, lang) {
+        var addMLToCodes = function (codes, lang) {
             if (!codes) return;
             for (var i = 0; i < codes.length; i++)
                 codes[i].MLTitle = MLUtils_getAvailableString(codes[i].title, lang) + " [" + codes[i].code + "]";
         }
-//END Lang
+        //END Lang
 
         return DataEditorJQX;
     })
