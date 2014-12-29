@@ -23,25 +23,24 @@ define([
 ], function ($, DataEdit, Connector) {
 
     var cfg = {};
-    var dataEdit;
 
     function init(containerID, config, callB) {
         cfg = config;
-        dataEdit = new DataEdit();
-        dataEdit.render($(containerID), cfg, callB);
+        this.dataEdit = new DataEdit();
+        this.dataEdit.render($(containerID), cfg, callB);
     }
 
     function setDSD(dsd, callB) {
         getCodelists(dsd.columns, function (codelists) {
-            //dataEdit.setDSDAndData(dsd, codelists, data);
-            dataEdit.setDSD(dsd, codelists);
+            //this.dataEdit.setDSDAndData(dsd, codelists, data);
+            this.dataEdit.setDSD(dsd, codelists);
             if (callB) callB();
         });
     }
 
-    function getData() { return dataEdit.getData(); }
-    function setData(data) { dataEdit.setData(data); }
-    function getDSDWithDistincts() { return dataEdit.getDSDWithDistincts(); }
+    function getData() { return this.dataEdit.getData(); }
+    function setData(data) { this.dataEdit.setData(data); }
+    function getDSDWithDistincts() { return this.dataEdit.getDSDWithDistincts(); }
 
 
     function getCodelists(cols, callB) {
@@ -112,9 +111,9 @@ define([
 
     function isEditable(editable) {
         if (typeof(editable) != 'undefined')
-            dataEdit.isEditable(editable);
+            this.dataEdit.isEditable(editable);
         else
-            return dataEdit.isEditable();
+            return this.dataEdit.isEditable();
     }
 
     return {
