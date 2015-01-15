@@ -69,21 +69,6 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
         this.dataEditor.showValidationResults(valRes);
     }
 
-    /*DataEdit.prototype.setDSDAndData = function (dsd, codelists, data) {
-        this.dsd = dsd;
-        this.cols = dsd.columns;
-        this.data = data;
-        this.codelists = codelists;
-
-        //Check if codelist and code columns are matching
-        if (!this.cols || this.cols.length == 0)
-            throw new Error("At least one column must be defined");
-        checkCodeColumnsAndCodelists(this.cols, codelists)
-
-        this.dataEditor.setColumns(this.cols, this.codelists);
-        this.dataEditor.setData(this.data);
-    }*/
-
     DataEdit.prototype.setDSD = function (dsd, codelists) {
         this.dsd = dsd;
         this.cols = dsd.columns;

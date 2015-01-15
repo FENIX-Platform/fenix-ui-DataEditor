@@ -2,16 +2,17 @@
         'jquery',
         'jqxall',
         'fx-DataEditor/js/DataEditor/simpleEditors/DataEditor_ColumnCreatorJQX',
-        'fx-DataEditor/js/DataEditor/helpers/MLUtils'
+        'fx-DataEditor/js/DataEditor/helpers/MLUtils',
+        'fx-DataEditor/js/DataEditor/helpers/NewRowHelper'
 ],
-    function ($, jqx, DataEditor_ColumnCreatorJQX, MLUtils) {
+    function ($, jqx, DataEditor_ColumnCreatorJQX, MLUtils, NewRowHelper) {
         var widgetName = "DataEditor";
         var EVT_VALUE_CHANGED = 'valueChanged.' + widgetName + '.fenix';
         var EVT_GRID_RENDERED = 'gridRendered.' + widgetName + '.fenix';
         var EVT_ROW_ADDED = 'rowAdded.' + widgetName + '.fenix';
         var EVT_ROW_DELETED = 'rowDeleted.' + widgetName + '.fenix';
 
-        var defConfig = { dataLang: 'EN' };
+        var defConfig = {};
 
         var COLOR_ERROR = "error";
         var COLOR_DEFAULT = "default";
@@ -26,6 +27,8 @@
             this.data = [];
 
             this.labelDataPostfix = "_lbl";
+
+            this.lang = 'EN';
         };
 
         //Render - creation
@@ -34,6 +37,9 @@
 
             this.$dataGrid = container;
             this.initGrid();
+
+            if (localStorage.getItem('locale'))
+                this.lang = localStorage.getItem('locale');
         }
 
         DataEditorJQX.prototype.initGrid = function () {
@@ -68,13 +74,11 @@
 
         DataEditorJQX.prototype.setColumns = function (cols, codelists) {
             this.cols = cols;
-            this.codelists = codelists;
+            this.codelists = convertCodelists(codelists, this.lang);
             if (!cols) {
                 this.$dataGrid.jqxGrid({ source: createEmptyDataAdapter(), width: "100%" });
                 return;
             }
-
-            this.addMLToCodelists();
 
             var me = this;
             var valsDataSource = {
@@ -116,7 +120,6 @@
         }
 
         DataEditorJQX.prototype.newRow = function () {
-            //var rowToAdd = {};
             var rowToAdd = guessNewRow(this.cols, this.codelists, this.getData());
             this.$dataGrid.jqxGrid('addrow', null, rowToAdd);
 
@@ -126,23 +129,9 @@
         }
 
         var guessNewRow = function (cols, cLists, data) {
-            var toRet={};
-           /* for (var c = 0; c < cols.length; c++) {
-                switch(cols[c].dataType)
-                {
-                    case "year":
-                        var y = new Date().getFullYear();
-                        console.log(data[data.length - 1][cols[c].id]);
-                        if (data && (data.length > 0))
-                            if (data[data.length - 1][cols[c].id])
-                                y = data[data.length-1][cols[c].id];
-                        toRet[cols[c].id]=y;
-                        break;
-                    default:
-                        break;
-                }
-            }*/
-            return toRet;
+            //var nRH = new NewRowHelper
+            //return nRH.guessNewRow(cols, cLists, data);
+            return {};
         }
 
         DataEditorJQX.prototype.deleteSelectedRow = function () {
@@ -205,23 +194,22 @@
                 for (var d = 0; d < data.length; d++) {
                     //data has an entry for the column (ex. ITEM=57) -> look for the label
                     if (data[d][cols[i].id]) {
-                        var lbl = getCodeLabel(codelists[cListUid], data[d][cols[i].id], lang);
+                        var lbl = getCodeLabel(codelists[cListUid].data, data[d][cols[i].id]);
                         if (lbl) data[d][cols[i].id + labelPostfix] = lbl;
                     }
                 }
             }
         }
-        var getCodeLabel = function (codes, code, lang) {
+        var getCodeLabel = function (codes, code) {
             if (!codes)
                 return null;
             for (var i = 0; i < codes.length; i++)
-                if (codes[i].code == code) {
-                    var toRet = MLUtils_getAvailableString(codes[i].title, lang);
-                    toRet += " [" + code + "]";
-                    return toRet;
-                }
+                if (codes[i].code == code)
+                    //return codes[i].title + " [" + code + "]";
+                    return codes[i].title;
             return null;
         }
+
 
         DataEditorJQX.prototype.tableRowToD3SData = function (row) {
             var toRet = [];
@@ -306,35 +294,45 @@
 
         //END Validation results
 
-
-        /* DataEditorJQX.prototype.updateML = function (langCode) {
-             var rows = this.$dataGrid.jqxGrid('getrows');
- 
-             if (this.cols) {
-                 for (var i = 0; i < this.cols.length; i++)
-                     this.$dataGrid.jqxGrid('setcolumnproperty', this.cols[i].id, 'text', MLUtils_getAvailableString(this.cols[i].title, langCode));
-             }
- 
-             this.addMLToCodelists();
- 
-             addLabelsToData(this.cols, this.data, this.labelDataPostfix, this.config.dataLang);
-             this.$dataGrid.jqxGrid('updatebounddata');
-         }*/
-
-        DataEditorJQX.prototype.addMLToCodelists = function () {
-            if (!this.codelists)
+        //Codelists helpers
+        function convertCodelists(codelists, lang) {
+            var toRet = {};
+            for (var cl in codelists) {
+                toRet[cl] = { metadata: { levels: codelists[cl].metadata.meContent.seCodeList.numberOfLevels } };
+                toRet[cl].data = convertCodes(toRet[cl].metadata.levels, codelists[cl].data, lang);
+            }
+            return toRet;
+        }
+        function convertCodes(levels, codes, lang) {
+            if (!codes)
+                return null;
+            var toRet = [];
+            if (levels == 1) {
+                for (var i = 0; i < codes.length; i++)
+                    toRet.push(convertCode(codes[i], lang));
+            }
+            else {
+                recFlatten(codes, toRet, lang)
+            }
+            return toRet;
+        }
+        function recFlatten(node, list, lang) {
+            if (!node)
                 return;
-            for (var c in this.codelists)
-                addMLToCodes(this.codelists[c], this.config.dataLang);
+            for (var i = 0; i < node.length; i++) {
+                list.push(convertCode(node[i], lang));
+                if (node[i].children)
+                    recFlatten(node[i].children, list);
+            }
         }
-
-        var addMLToCodes = function (codes, lang) {
-            if (!codes) return;
-            for (var i = 0; i < codes.length; i++)
-                codes[i].MLTitle = MLUtils_getAvailableString(codes[i].title, lang) + " [" + codes[i].code + "]";
+        function convertCode(code, lang) {
+            return {
+                level: code.level,
+                title: MLUtils_getAvailableString(code.title, lang) + " [" + code.code + "]",
+                code: code.code
+            };
         }
-        //END Lang
+        //End Codelists helpers
 
         return DataEditorJQX;
-    })
-;
+    });

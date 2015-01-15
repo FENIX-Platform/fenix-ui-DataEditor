@@ -1,4 +1,5 @@
 /*global requirejs, define*/
+var locale = localStorage.getItem('locale' || 'en-us');
 
 define(function() {
 
@@ -43,6 +44,7 @@ define(function() {
 
         var config = {
             paths: fullpaths,
+            config: { i18n: { locale: locale } },
             shim: {
                 "jqrangeslider": {
                     deps: ["jquery", "jqueryui"]

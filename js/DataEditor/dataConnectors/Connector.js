@@ -15,6 +15,9 @@ define(['jquery'],
                 }
             });
         }
+        Connector.prototype.ajaxPOST = function (url, JSONToPost, callB) {
+            this.ajaxPUT_PATCH(url, JSONToPost, 'POST', callB);
+        }
         Connector.prototype.ajaxPUT = function (url, JSONToPut, callB) {
             this.ajaxPUT_PATCH(url, JSONToPut, 'PUT', callB);
         }
@@ -31,7 +34,7 @@ define(['jquery'],
                 data: JSON.stringify(JSONtoSend),
                 crossDomain: true,
                 success: function (data, textStatus, jqXHR) {
-                    if (callB) callB();
+                    if (callB) callB(data);
                 }
             });
         }
