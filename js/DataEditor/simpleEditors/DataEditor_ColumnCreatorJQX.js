@@ -9,21 +9,10 @@
         var DataEditor_ColumnCreatorJQX = function (config) {
             this.config = {};
             $.extend(true, this.config, defConfig, config);
-
-            //transformedClists;
         };
 
         //Render - creation
         DataEditor_ColumnCreatorJQX.prototype.create = function (col, codelists, labelPostfix) {
-            /*this.transformedCodelists = {};
-            for (var cl in codelists) {
-                this.transformedCodelists[cl] = [];
-                for (var i = 0; i < codelists[cl].length; i++)
-                    this.clToTreeStructure(this.transformedCodelists[cl], codelists[cl][i]);
-            }*/
-
-            //console.log(this.transformedClists);
-
             var colTitle = MLUtils_getAvailableString(col.title, this.config.dataLang);
             switch (col.dataType) {
                 case 'code':
@@ -55,34 +44,6 @@
             }
         }
 
-        /*DataEditor_ColumnCreatorJQX.prototype.createCodeCol = function (col, colTitle, codelists, labelPostfix) {
-            if (!labelPostfix)
-                throw new Error("A label postfix must be selected for code columns, param is nul");
-
-            //TODO make it handle multiple codelists
-            var codelistUid = col.domain.codes[0].idCodeList;
-            if (col.domain.codes[0].version)
-                codelistUid += "|" + col.domain.codes[0].version;
-
-            var toRet = {
-                text: colTitle,
-                datafield: col.id,
-                columntype: 'combobox',
-                displayfield: col.id + labelPostfix,
-                createeditor: function (row, cellvalue, editor, celltext, cellwidth, cellheigth) {
-                    var codesTextSrc = {
-                        localdata: codelists[codelistUid], datatype: 'array', datafields: [
-                            { name: 'code', type: 'string' },
-                            { name: 'MLTitle', type: 'string' }
-                        ]
-                    };
-                    var codesTextDataAdapter = new $.jqx.dataAdapter(codesTextSrc);
-                    editor.jqxComboBox({ source: codesTextDataAdapter, displayMember: 'MLTitle', valueMember: 'code', promptText: '', autoComplete: true, searchMode: 'containsignorecase' });
-                }
-            };
-            return toRet;
-        }*/
-
         DataEditor_ColumnCreatorJQX.prototype.createTreeCodeCol = function (col, colTitle, codelists, labelPostfix) {
             if (!labelPostfix)
                 throw new Error("A label postfix must be selected for code columns, param is nul");
@@ -101,7 +62,6 @@
                     var codesTextSrc = {
                         localdata: codelists[codelistUid].data, datatype: 'array', datafields: [
                             { name: 'code', type: 'string' },
-                            //{ name: 'MLTitle', type: 'string' },
                             { name: 'title', type: 'string' },
                             { name: 'level', type: 'string' }
                         ]
@@ -115,12 +75,8 @@
                         autoComplete: true,
                         searchMode: 'containsignorecase',
                         renderer: function (index, label, value) {
-                            //if (codelists[codelistUid][index].level==1)
-                            //return codelists[codelistUid][index].level + "[" + value + "]" + label;
-                            //var toRet = label + " [" + value + "]";
                             if (codelists[codelistUid].metadata.levels == 1)
                                 return label;
-
                             switch (codelists[codelistUid].data[index].level) {
                                 case 1:
                                     return '<span class="cl_lev1">' + label + '</span>';
@@ -138,26 +94,12 @@
                                     return '<span class="cl_lev5">&nbsp;&nbsp;&nbsp;&nbsp;' + label + '</span>';
                                     break;
                             }
-
-
-                            //return toRet;
-                            //return codelists[codelistUid][index].level 
-                            //label+ " [" + value + "]";
-
                         }
 
                     });
                 }
             };
             return toRet;
-
-
-
-
-            //
-            //http://www.jqwidgets.com/community/topic/dropdown-list-with-hierarchy/
-            //
-
         }
 
 
