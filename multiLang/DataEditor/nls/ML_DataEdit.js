@@ -2,6 +2,7 @@
     "root": {
         "add": "Add",
         "delete": "Delete",
+        "edit":"Edit",
         "confirmDelete": "Delete?",
         "yearInterval": "Year must be a number ",
         "monthInterval": "Month must be a number (1..12)",

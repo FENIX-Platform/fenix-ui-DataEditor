@@ -39,7 +39,7 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
 
         this.$dataEditor = this.$container.find('#divDataEditor');
         this.dataEditor = new DataEditor();
-        this.dataEditor.render(this.$container.find('#divDataGrid'), this.config);
+        this.dataEditor.render(this.$container.find('#divDataEdit'), this.config);
 
         this.$valResView = this.$container.find('#divValRes');
         this.valResView = new ValidationResultsViewer();
@@ -56,7 +56,7 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
         this.$dataEditor.on('gridRendered.DataEditor.fenix', function (evt, param) { me.updateValidation(me.data); });
 
         this.$dataEditor.find('#btnAddRow').click(function (args) { me.dataEditor.newRow(); });
-        this.$dataEditor.find('#btnDelRow').click(function (args) { me.dataEditor.deleteSelectedRow(); });
+        //this.$dataEditor.find('#btnDelRow').click(function (args) { me.dataEditor.deleteSelectedRow(); });
 
         if (callB)
             callB();
@@ -132,6 +132,7 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
                 case 'date':
                 case 'month':
                 case 'year':
+                    var dist = getColumnDistinct(data, i);
                     if (dist)
                         col.values = { timeList: dist };
                     else
@@ -175,7 +176,7 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
     //MultiLang
     DataEdit.prototype.doML = function () {
         this.$dataEditor.find('#btnAddRow').html(mlRes['add']);
-        this.$dataEditor.find('#btnDelRow').html(mlRes['delete']);
+        //this.$dataEditor.find('#btnDelRow').html(mlRes['delete']);
     }
     //END Multilang
 
