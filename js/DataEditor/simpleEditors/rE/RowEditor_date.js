@@ -4,6 +4,8 @@
 ],
 function ($, jqx) {
     var defConfig = { yMin: 0, yMax: 3000 };
+    var ERROR_OUT_OF_RANGE = "OutOfRange";
+    var ERROR_NULL = "Null";
 
     var RowEditor_date = function (config) {
         this.config = {};
@@ -18,26 +20,15 @@ function ($, jqx) {
 
         this.$cnt.jqxCalendar();
         var me = this;
+
         this.$cnt.jqxValidator({
             rules: [{
-                input: me.$cnt, message: '__MSG Date limit', action: 'valuechanged, blur',
-                rule: function (input, commit) {
-                    var val = me.$cnt.jqxCalendar('value');
-                    var y = val.getFullYear();
-                    if (y < me.config.yMin) return false;
-                    if (y > me.config.yMax) return false;
-                    return true;
-                }
-            },
-            {
-                input: me.$cnt, message: '__MSG Date null', action: 'valuechanged, blur',
-                rule: function (input, commit) {
-                    if (!me.mandatory)
-                        return true;
-                    var val = me.$cnt.jqxCalendar('value');
-                    if (!val)
-                        return false;
-                    return true;
+                input: me.$cnt, message: 'E', action: 'blur, valuechanged',
+                rule: function () {
+                    var isValid = me.isValid();
+                    if (!isValid)
+                        this.rules[0].message = me.validate();
+                    return isValid;
                 }
             }]
         });
@@ -57,6 +48,7 @@ function ($, jqx) {
             var y = val.substring(4, 8);
             this.$cnt.jqxCalendar('setDate', new Date(y, m, d));
         }
+
     }
     RowEditor_date.prototype.getValue = function () {
         var dt = this.$cnt.jqxCalendar('getDate');
@@ -77,6 +69,21 @@ function ($, jqx) {
         if (m == 'undefined')
             return this.mandatory;
         this.mandatory = m;
+    }
+
+    RowEditor_date.prototype.validate = function () {
+        var val = this.getValue();
+        if (this.mandatory && !val)
+            return ERROR_NULL;
+        var y = val.substring(4, 8);
+        if (y < this.config.yMin) return ERROR_OUT_OF_RANGE;
+        if (y > this.config.yMax) return ERROR_OUT_OF_RANGE;
+        return null;
+    }
+    RowEditor_date.prototype.isValid = function () {
+        if (this.validate() == null)
+            return true;
+        return false;
     }
 
     return RowEditor_date;

@@ -6,6 +6,7 @@ function ($, jqx) {
     var defConfig = {};
     var emptyEntryValue = "-";
     var emptyEntryLabel = "-";
+    var ERROR_NULL = "Null";
 
     var RowEditor_code = function (config) {
         this.config = {};
@@ -68,22 +69,15 @@ function ($, jqx) {
         this.$cnt.jqxComboBox('insertAt', { label: emptyEntryLabel, value: emptyEntryValue }, 0);
 
         this.$cnt.jqxValidator({
-            rules: [
-                {
-                    message: '__not null!',
-                    action: 'select',
-                    input: this.$cnt,
-                    rule: function (input) {
-                        if (!me.$cnt)
-                            return true;
-                        if (!me.mandatory)
-                            return;
-                        val = me.$cnt.jqxComboBox('getSelectedItem').value;
-                        if (val == emptyEntryValue)
-                            return false;
-                        return true;
-                    }
-                }]
+            rules: [{
+                input: this.$cnt, message: 'E', action: 'select, change',
+                rule: function () {
+                    var isValid = me.isValid();
+                    if (!isValid)
+                        this.rules[0].message = me.validate();
+                    return isValid;
+                }
+            }]
         });
     }
 
@@ -94,13 +88,13 @@ function ($, jqx) {
     RowEditor_code.prototype.setValue = function (val) {
         this.reset();
         if (!val)
-            return;
+            val = emptyEntryValue;
         var items = this.$cnt.jqxComboBox('getItems');
         for (var i = 0; i < items.length; i++)
             if (items[i].value == val) {
                 this.$cnt.jqxComboBox('selectIndex', i);
-                return;
             }
+        this.$cnt.jqxValidator('validate');
     }
     RowEditor_code.prototype.getValue = function () {
         var item = this.$cnt.jqxComboBox('getSelectedItem');
@@ -120,6 +114,18 @@ function ($, jqx) {
         if (m == 'undefined')
             return this.mandatory;
         this.mandatory = m;
+    }
+
+    RowEditor_code.prototype.validate = function () {
+        var val = this.getValue();
+        if (this.mandatory && val == null)
+            return ERROR_NULL;
+        return null;
+    }
+    RowEditor_code.prototype.isValid = function () {
+        if (this.validate() == null)
+            return true;
+        return false;
     }
 
     return RowEditor_code;

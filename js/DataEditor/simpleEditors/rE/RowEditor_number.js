@@ -4,6 +4,8 @@
 ],
 function ($, jqx) {
     var defConfig = { decimalDigits: 5 };
+    var ERROR_NAN = "NAN";
+    var ERROR_NULL = "Null";
 
     var RowEditor_number = function (config) {
         this.config = {};
@@ -20,14 +22,12 @@ function ($, jqx) {
         var me = this;
         this.$cnt.jqxValidator({
             rules: [{
-                input: me.$cnt, message: '__MSG number null', action: 'blur, keyup, click',
+                input: me.$cnt, message: 'E', action: 'blur, keyup, click',
                 rule: function () {
-                    if (!me.mandatory)
-                        return true;
-                    val = me.$cnt.jqxNumberInput('val');
-                    if (val == '')
-                        return false;
-                    return true;
+                    var isValid = me.isValid();
+                    if (!isValid)
+                        this.rules[0].message = me.validate();
+                    return isValid;
                 }
             }]
         });
@@ -48,6 +48,20 @@ function ($, jqx) {
         if (m == 'undefined')
             return this.mandatory;
         this.mandatory = m;
+    }
+
+    RowEditor_number.prototype.validate = function () {
+        var val = this.getValue();
+        if (this.mandatory && val == '')
+            return ERROR_NULL;
+        if (isNaN(val))
+            return ERROR_NAN;
+        return null;
+    }
+    RowEditor_number.prototype.isValid = function () {
+        if (this.validate() == null)
+            return true;
+        return false;
     }
 
     return RowEditor_number;

@@ -4,6 +4,8 @@
 ],
 function ($, jqx) {
     var defConfig = { yMin: 0, yMax: 3000 };
+    var ERROR_NAN = "NAN";
+    var ERROR_OUT_OF_RANGE = "OutOfRange";
 
     var RowEditor_month = function (config) {
         this.config = {};
@@ -17,44 +19,18 @@ function ($, jqx) {
         this.$cnt = container;
         var me = this;
         this.$cnt.jqxMaskedInput({ mask: '##-####', width: 120 });
+
         this.$cnt.jqxValidator({
             rules: [{
-                input: me.$cnt, message: '__MSG Month limit', action: 'valuechanged, blur',
+                input: me.$cnt, message: 'E', action: 'blur, valuechanged',
                 rule: function () {
-                    var val = me.$cnt.jqxMaskedInput('val');
-                    var promptChar = me.$cnt.jqxMaskedInput('promptChar');
-                    var m = val.substring(0, 2);
-                    var y = val.substring(3, 7);
-                    m = m.split(promptChar).join("");
-                    y = y.split(promptChar).join("");
-
-                    if (m == '' && y == '') //empty val
-                        return true;
-                    if (isNaN(m))
-                        return false;
-                    if (isNaN(y))
-                        return false;
-                    if (m < 1 || m > 12)
-                        return false;
-                    if (y < me.config.yMin || y > me.config.yMax)
-                        return false;
-                    return true;
+                    var isValid = me.isValid();
+                    if (!isValid)
+                        this.rules[0].message = me.validate();
+                    return isValid;
                 }
-            },
-            {
-                input: me.$cnt, message: '__MSG Month null', action: 'blur, keyup, click',
-                rule: function () {
-                    if (!me.mandatory)
-                        return true;
-                    var val = me.$cnt.jqxMaskedInput('val');
-                    if (val == '')
-                        return false;
-                    return true;
-                }
-            }
-            ]
+            }]
         });
-
     }
     RowEditor_month.prototype.reset = function () {
         this.$cnt.jqxMaskedInput('clear');
@@ -77,5 +53,32 @@ function ($, jqx) {
             return this.mandatory;
         this.mandatory = m;
     }
+
+    RowEditor_month.prototype.validate = function () {
+        var val = this.$cnt.jqxMaskedInput('val');
+        var promptChar = this.$cnt.jqxMaskedInput('promptChar');
+        var m = val.substring(0, 2);
+        var y = val.substring(3, 7);
+        m = m.split(promptChar).join("");
+        y = y.split(promptChar).join("");
+
+        if (this.mandatory && (m == '' || y == ''))
+            return ERROR_NULL;
+        if (isNaN(m))
+            return ERROR_NAN;
+        if (isNaN(y))
+            return ERROR_NAN;
+        if (m < 1 || m > 12)
+            return ERROR_OUT_OF_RANGE;
+        if (y < this.config.yMin || y > this.config.yMax)
+            return ERROR_OUT_OF_RANGE;
+        return null;
+    }
+    RowEditor_month.prototype.isValid = function () {
+        if (this.validate() == null)
+            return true;
+        return false;
+    }
+
     return RowEditor_month;
 });

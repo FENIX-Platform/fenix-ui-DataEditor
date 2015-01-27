@@ -106,6 +106,13 @@ function ($, jqx, MLUtils, reFactory) {
         }
     }
 
+    RowEditorPopupJQX.prototype.isValid = function () {
+        for (var i = 0; i < this.cols.length; i++)
+            if (!this.editors[i].isValid())
+                return false;
+        return true;
+    }
+
     RowEditorPopupJQX.prototype.setRow = function (row) {
         this.reset();
         if (!this.cols)

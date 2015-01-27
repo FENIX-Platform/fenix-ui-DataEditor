@@ -4,6 +4,7 @@
 ],
 function ($, jqx) {
     var defConfig = {};
+    var ERROR_NULL = "Null";
 
     var RowEditor_string = function (config) {
         this.config = {};
@@ -22,14 +23,12 @@ function ($, jqx) {
         var me = this;
         this.$cnt.jqxValidator({
             rules: [{
-                input: txt, message: '__MSG String null', action: 'blur, keyup, click',
+                input: txt, message: 'E', action: 'blur, keyup, click',
                 rule: function () {
-                    if (!me.mandatory)
-                        return true;
-                    var val = txt.val();
-                    if (val.trim() == '')
-                        return false;
-                    return true;
+                    var isValid = me.isValid();
+                    if (!isValid)
+                        this.rules[0].message = me.validate();
+                    return isValid;
                 }
             }]
         });
@@ -49,6 +48,18 @@ function ($, jqx) {
         if (m == 'undefined')
             return this.mandatory;
         this.mandatory = m;
+    }
+
+    RowEditor_string.prototype.validate = function () {
+        var val = this.getValue();
+        if (this.mandatory && val.trim() == '')
+            return ERROR_NULL;
+        return null;
+    }
+    RowEditor_string.prototype.isValid = function () {
+        if (this.validate() == null)
+            return true;
+        return false;
     }
 
     return RowEditor_string;

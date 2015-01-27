@@ -175,6 +175,8 @@
         }
 
         DataEditorJQX.prototype.rowEditOk = function () {
+            if (!this.rowEditor.isValid())
+                return;
             var row = this.rowEditor.getRow();
             //Add label to codes
             addLabelsToData(this.cols, this.codelists, [row], this.labelDataPostfix, this.config.dataLang);
