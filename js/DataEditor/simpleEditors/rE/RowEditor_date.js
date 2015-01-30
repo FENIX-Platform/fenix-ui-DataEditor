@@ -1,8 +1,10 @@
 ﻿define([
         'jquery',
-        'jqxall'
+        'jqxall',
+        'i18n!fx-DataEditor/multiLang/DataEditor/nls/ML_DataEdit',
+        'bootstrap'
 ],
-function ($, jqx) {
+function ($, jqx, mlRes) {
     var defConfig = { yMin: 0, yMax: 3000 };
     var ERROR_OUT_OF_RANGE = "OutOfRange";
     var ERROR_NULL = "Null";
@@ -20,23 +22,23 @@ function ($, jqx) {
 
         this.$cnt.jqxCalendar();
         var me = this;
-
-        this.$cnt.jqxValidator({
-            rules: [{
-                input: me.$cnt, message: 'E', action: 'blur, valuechanged',
-                rule: function () {
-                    var isValid = me.isValid();
-                    if (!isValid)
-                        this.rules[0].message = me.validate();
-                    return isValid;
-                }
-            }]
-        });
+        this.$cnt.on('change', function () { me.updateValidationHelp(); });
+    }
+    RowEditor_date.prototype.updateValidationHelp = function () {
+        var error = this.validate();
+        if (error == null) {
+            this.$cnt.popover('destroy');
+        }
+        else {
+            var errMSG = mlRes[error];
+            this.$cnt.popover({ container: this.$cnt, content: errMSG, html: true });
+            this.$cnt.popover('show');
+        }
     }
 
     RowEditor_date.prototype.reset = function () {
         this.$cnt.jqxCalendar('clear');
-        this.$cnt.jqxValidator('hide');
+        this.$cnt.popover('destroy');
     }
     RowEditor_date.prototype.setValue = function (val) {
         this.reset();

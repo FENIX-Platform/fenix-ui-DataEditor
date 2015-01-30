@@ -1,8 +1,10 @@
 ﻿define([
         'jquery',
-        'jqxall'
+        'jqxall',
+        'i18n!fx-DataEditor/multiLang/DataEditor/nls/ML_DataEdit',
+        'bootstrap'
 ],
-function ($, jqx) {
+function ($, jqx, mlRes) {
     var defConfig = {};
     var ERROR_NULL = "Null";
 
@@ -10,7 +12,6 @@ function ($, jqx) {
         this.config = {};
         $.extend(true, this.config, defConfig, config);
         this.$cnt;
-
         this.mandatory = false;
     };
 
@@ -21,20 +22,24 @@ function ($, jqx) {
         this.$cnt.html(html);
 
         var me = this;
-        this.$cnt.jqxValidator({
-            rules: [{
-                input: this.$cnt, message: 'E', action: 'change',
-                rule: function () {
-                    var isValid = me.isValid();
-                    if (!isValid)
-                        this.rules[0].message = me.validate();
-                    return isValid;
-                }
-            }]
-        });
+
+        var $chk = this.$cnt.find('input');
+        $chk.on('click', function () { me.updateValidationHelp(); });
+    }
+    RowEditor_bool.prototype.updateValidationHelp = function () {
+        var error = this.validate();
+        if (error == null) {
+            this.$cnt.popover('destroy');
+        }
+        else {
+            var errMSG = mlRes[error];
+            this.$cnt.popover({ container: this.$cnt, content: errMSG, html: true });
+            this.$cnt.popover('show');
+        }
     }
     RowEditor_bool.prototype.reset = function () {
         this.$cnt.prop('checked', false);
+        this.$cnt.popover('destroy');
     }
     RowEditor_bool.prototype.setValue = function (val) {
         this.reset();
@@ -50,8 +55,9 @@ function ($, jqx) {
     }
     RowEditor_bool.prototype.validate = function () {
         var val = this.getValue();
+        var toRet = [];
         if (this.mandatory && !val)
-            return ERROR_NULL;
+             return ERROR_NULL;
         return null;
     }
     RowEditor_bool.prototype.isValid = function () {

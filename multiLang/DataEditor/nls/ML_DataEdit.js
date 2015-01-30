@@ -15,7 +15,11 @@
         "invalidMonth": "Month is not valid",
         "invalidDate": "Date is not valid",
         "invalidNumber": "Number is not valid",
-        "invalidBool": "Boolean is not valid"
+        "invalidBool": "Boolean is not valid",
+
+        "NAN": "Value is not a number",
+        "OutOfRange":"Value is out of the allowed range",
+        "Null": "Value cannot be blank"
     },
     "fr": true
 });

@@ -91,6 +91,8 @@ function ($, jqx, MLUtils, reFactory) {
                     this.editors[i].render(cnt, null);
                     break;
             }
+            if (col.key)
+                this.editors[i].isMandatory(true);
         }
     }
 
@@ -105,6 +107,17 @@ function ($, jqx, MLUtils, reFactory) {
             this.editors[i].reset();
         }
     }
+    
+    RowEditorPopupJQX.prototype.updateValidationHelp = function () {
+        if (!this.cols)
+            return;
+        for (var i = 0; i < this.cols.length; i++) {
+            if (this.editors[i].updateValidationHelp)
+            this.editors[i].updateValidationHelp();
+        }
+    }
+    
+
 
     RowEditorPopupJQX.prototype.isValid = function () {
         for (var i = 0; i < this.cols.length; i++)
@@ -124,8 +137,6 @@ function ($, jqx, MLUtils, reFactory) {
         for (var i = 0; i < this.cols.length; i++)
             if (this.editors[i]) {
                 this.editors[i].setValue(row[this.cols[i].id]);
-                if (this.cols[i].key)
-                    this.editors[i].isMandatory(true);
             }
             else
                 throw new Error('Editor cannot be null for dataType ' + this.cols[i].dataType);

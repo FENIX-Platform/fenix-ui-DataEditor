@@ -1,8 +1,10 @@
 ﻿define([
         'jquery',
-        'jqxall'
+        'jqxall',
+        'i18n!fx-DataEditor/multiLang/DataEditor/nls/ML_DataEdit',
+        'bootstrap'
 ],
-function ($, jqx) {
+function ($, jqx, mlRes) {
     var defConfig = {};
     var emptyEntryValue = "-";
     var emptyEntryLabel = "-";
@@ -67,23 +69,23 @@ function ($, jqx) {
         });
 
         this.$cnt.jqxComboBox('insertAt', { label: emptyEntryLabel, value: emptyEntryValue }, 0);
-
-        this.$cnt.jqxValidator({
-            rules: [{
-                input: this.$cnt, message: 'E', action: 'select, change',
-                rule: function () {
-                    var isValid = me.isValid();
-                    if (!isValid)
-                        this.rules[0].message = me.validate();
-                    return isValid;
-                }
-            }]
-        });
+        this.$cnt.on('select', function () { me.updateValidationHelp(); });
+    }
+    RowEditor_code.prototype.updateValidationHelp = function () {
+        var error = this.validate();
+        if (error == null) {
+            this.$cnt.popover('destroy');
+        }
+        else {
+            var errMSG = mlRes[error];
+            this.$cnt.popover({ container: this.$cnt, content: errMSG, html: true });
+            this.$cnt.popover('show');
+        }
     }
 
     RowEditor_code.prototype.reset = function () {
-        this.$cnt.jqxComboBox('clearSelection');
-        this.$cnt.jqxValidator('hide');
+        this.$cnt.jqxComboBox('selectIndex', 0)
+        this.$cnt.popover('destroy');
     }
     RowEditor_code.prototype.setValue = function (val) {
         this.reset();
@@ -94,7 +96,7 @@ function ($, jqx) {
             if (items[i].value == val) {
                 this.$cnt.jqxComboBox('selectIndex', i);
             }
-        this.$cnt.jqxValidator('validate');
+        this.updateValidationHelp();
     }
     RowEditor_code.prototype.getValue = function () {
         var item = this.$cnt.jqxComboBox('getSelectedItem');
@@ -118,7 +120,7 @@ function ($, jqx) {
 
     RowEditor_code.prototype.validate = function () {
         var val = this.getValue();
-        if (this.mandatory && val == null)
+        if (this.mandatory && !val)
             return ERROR_NULL;
         return null;
     }

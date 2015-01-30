@@ -175,25 +175,26 @@
         }
 
         DataEditorJQX.prototype.rowEditOk = function () {
-            if (!this.rowEditor.isValid())
+            if (!this.rowEditor.isValid()) {
+                this.rowEditor.updateValidationHelp()
                 return;
+            }
             var row = this.rowEditor.getRow();
             //Add label to codes
             addLabelsToData(this.cols, this.codelists, [row], this.labelDataPostfix, this.config.dataLang);
             if (row.uid != -1) {
                 this.$dataGrid.jqxGrid('updaterow', row.uid, row);
-                /*
-                evtArgs.changed = {};
-                evtArgs.changed[col] = oldVal;
-                evtArgs.newData = me.tableRowToD3SData(rowData);
-                evtArgs.allData = me.tableRowsToD3SData();*/
+
                 var evtArgs = {};
+                evtArgs.changed = {};
+                evtArgs.newData = this.tableRowToD3SData(row);
+                evtArgs.allData = this.tableRowsToD3SData();
                 this.$dataGrid.trigger(EVT_VALUE_CHANGED, evtArgs)
             }
             else {
                 this.$dataGrid.jqxGrid('addrow', null, row);
-                //evtArgs.allData = this.tableRowsToD3SData();*/
                 var evtArgs = {};
+                evtArgs.allData = this.tableRowsToD3SData();
                 this.$dataGrid.trigger(EVT_ROW_ADDED, evtArgs);
             }
 

@@ -14,5 +14,9 @@
     "invalidMonth": "FR Month is not valid",
     "invalidDate": "FR Date is not valid",
     "invalidNumber": "FR Number is not valid",
-    "invalidBool": "FR Boolean is not valid"
+    "invalidBool": "FR Boolean is not valid",
+
+    "NAN": "FR Value is not a number",
+    "OutOfRange": "FR Value is out of the allowed range",
+    "Null": "FR Value cannot be blank"
 });

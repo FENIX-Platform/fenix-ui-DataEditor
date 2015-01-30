@@ -41,10 +41,12 @@
                     { "id": "BOOL", "title": { "EN": "bool" }, "key": false, "dataType": "boolean", "subject": "item", "supplemental": null }
                 ];
 
-
                 Editor.setDSD({ columns: testCols }, callB);
                 //Editor.setData([["01063", "2000", 5, "test"]]);
-                var data = [["434", 2000, '012015', '20012015', 777, "testString", true]];
+                var data = [
+                    ["434", 2000, '012015', '20012015', 777, "testString", true],
+                    ["152", 2000, '012015', '20012015', 777, "testString", true]
+                ];
                 Editor.setData(data);
                 Editor.isEditable(true);
 
