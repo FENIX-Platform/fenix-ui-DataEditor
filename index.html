@@ -4,12 +4,33 @@
     <title>DataEditor</title>
     <meta charset="utf-8">
     <meta name="author" content="Daniele Olivotti <daniele.olivotti[at]fao.org>">
+    <!--Scripts-->
     <!--CSS-->
     <link rel="stylesheet" href="lib/jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <style>
+        .cl_lev1 {
+            font-weight: bolder;
+        }
+
+        .cl_lev2 {
+            font-weight: bold;
+        }
+
+        .cl_lev3 {
+            font-weight: normal;
+        }
+
+        .cl_lev4 {
+            font-weight: lighter;
+            color: #666666;
+        }
+    </style>
     <!--END CSS-->
 </head>
 <body>
-    <!--<button id="btnEN" type="button">EN</button><button id="btnFR" type="button">FR</button>-->
+    <button id="btnEN" type="button">EN</button><button id="btnFR" type="button">FR</button>
     <div id="mainContainer"></div>
     <!-- Javascript -->
     <script type="text/javascript" data-main="js/test" src="lib/require.js"></script>

@@ -16,7 +16,8 @@
             var colTitle = MLUtils_getAvailableString(col.title, this.config.dataLang);
             switch (col.dataType) {
                 case 'code':
-                    return this.createCodeCol(col, colTitle, codelists, labelPostfix);
+                    //return this.createCodeCol(col, colTitle, codelists, labelPostfix);
+                    return this.createTreeCodeCol(col, colTitle, codelists, labelPostfix);
                     break;
                 case 'customCode':
                     return this.createCustomCodeCol(col, colTitle);
@@ -43,7 +44,7 @@
             }
         }
 
-        DataEditor_ColumnCreatorJQX.prototype.createCodeCol = function (col, colTitle, codelists, labelPostfix) {
+        DataEditor_ColumnCreatorJQX.prototype.createTreeCodeCol = function (col, colTitle, codelists, labelPostfix) {
             if (!labelPostfix)
                 throw new Error("A label postfix must be selected for code columns, param is nul");
 
@@ -59,17 +60,171 @@
                 displayfield: col.id + labelPostfix,
                 createeditor: function (row, cellvalue, editor, celltext, cellwidth, cellheigth) {
                     var codesTextSrc = {
-                        localdata: codelists[codelistUid], datatype: 'array', datafields: [
+                        localdata: codelists[codelistUid].data, datatype: 'array', datafields: [
                             { name: 'code', type: 'string' },
-                            { name: 'MLTitle', type: 'string' }
+                            { name: 'title', type: 'string' },
+                            { name: 'level', type: 'string' }
                         ]
                     };
                     var codesTextDataAdapter = new $.jqx.dataAdapter(codesTextSrc);
-                    editor.jqxComboBox({ source: codesTextDataAdapter, displayMember: 'MLTitle', valueMember: 'code', promptText: '', autoComplete: true, searchMode: 'containsignorecase' });
+                    editor.jqxComboBox({
+                        source: codesTextDataAdapter,
+                        displayMember: 'title',
+                        valueMember: 'code',
+                        promptText: '',
+                        autoComplete: true,
+                        searchMode: 'containsignorecase',
+                        renderer: function (index, label, value) {
+                            if (codelists[codelistUid].metadata.levels == 1)
+                                return label;
+                            switch (codelists[codelistUid].data[index].level) {
+                                case 1:
+                                    return '<span class="cl_lev1">' + label + '</span>';
+                                    break;
+                                case 2:
+                                    return '<span class="cl_lev2">&nbsp;' + label + '</span>';
+                                    break;
+                                case 3:
+                                    return '<span class="cl_lev3">&nbsp;&nbsp;' + label + '</span>';
+                                    break;
+                                case 4:
+                                    return '<span class="cl_lev4">&nbsp;&nbsp;&nbsp;' + label + '</span>';
+                                    break;
+                                default:
+                                    return '<span class="cl_lev5">&nbsp;&nbsp;&nbsp;&nbsp;' + label + '</span>';
+                                    break;
+                            }
+                        }
+
+                    });
                 }
             };
             return toRet;
         }
+
+
+
+        //TEST TREE COLS
+        /*DataEditor_ColumnCreatorJQX.prototype.createTreeCodeCol = function (col, colTitle, codelists, labelPostfix) {
+
+            if (!labelPostfix)
+                throw new Error("A label postfix must be selected for code columns, param is nul");
+
+
+
+            //TODO make it handle multiple codelists
+            var codelistUid = col.domain.codes[0].idCodeList;
+            if (col.domain.codes[0].version)
+                codelistUid += "|" + col.domain.codes[0].version;
+            var me = this;
+            var toRet = {
+                text: colTitle,
+                datafield: col.id,
+                columntype: 'custom',
+                cellsrenderer: function (row, column, value) {
+                    //return '<input type="Button" onClick="buttonclick()" value="' + value + '"/>';
+
+                }
+
+                //displayfield: col.id + labelPostfix,
+               // createeditor: function (row, cellvalue, editor, celltext, cellwidth, cellheigth) {
+                    //editor.jqxTree({ source: me.transformedCodelists[codelistUid], height: 300 });
+                    
+                    //'custom' - sets a custom editor as a default editor for a cell. That setting enables you to have multiple editors in a Grid column. The editors should be created in the "createeditor" callback - it is called for each row when the "columntype=custom". The editors should be synchronized with the cell's value in the "initeditor" callback. The editor's value should be retrieved in the "geteditorvalue" callback.
+                    
+                //}
+            };
+            return toRet;
+        }*/
+
+
+
+
+        /*DataEditor_ColumnCreatorJQX.prototype.createTreeCodeCol = function (col, colTitle, codelists, labelPostfix) {
+
+            if (!labelPostfix)
+                throw new Error("A label postfix must be selected for code columns, param is nul");
+
+
+
+            //TODO make it handle multiple codelists
+            var codelistUid = col.domain.codes[0].idCodeList;
+            if (col.domain.codes[0].version)
+                codelistUid += "|" + col.domain.codes[0].version;
+            var me = this;
+            var toRet = {
+                text: colTitle,
+                datafield: col.id,
+                columntype: 'button',
+                cellsrenderer: function (row, column, value) {
+                    return value;
+                },
+                buttonclick: function (row) {
+                    editrow = row;
+                    var offset = $("#jqxgrid").offset();
+                    $("#popupWindow").jqxWindow({ position: { x: parseInt(offset.left) + 60, y: parseInt(offset.top) + 60 } });
+                    // get the clicked row's data and initialize the input fields.
+                    
+                    var dataRecord = $("#jqxgrid").jqxGrid('getrowdata', editrow);
+                    console.log(dataRecord);
+
+                    $("#firstName").val(dataRecord.firstname);
+                    $("#lastName").val(dataRecord.lastname);
+                    $("#product").val(dataRecord.productname);
+                    $("#quantity").jqxNumberInput({ decimal: dataRecord.quantity });
+                    $("#price").jqxNumberInput({ decimal: dataRecord.price });
+                    // show the popup window.
+                    $("#popupWindow").jqxWindow('open');
+                }
+
+                //displayfield: col.id + labelPostfix,
+                // createeditor: function (row, cellvalue, editor, celltext, cellwidth, cellheigth) {
+                //editor.jqxTree({ source: me.transformedCodelists[codelistUid], height: 300 });
+                
+                //'custom' - sets a custom editor as a default editor for a cell. That setting enables you to have multiple editors in a Grid column. The editors should be created in the "createeditor" callback - it is called for each row when the "columntype=custom". The editors should be synchronized with the cell's value in the "initeditor" callback. The editor's value should be retrieved in the "geteditorvalue" callback.
+                
+                //}
+            };
+            return toRet;
+        }*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*DataEditor_ColumnCreatorJQX.prototype.clToTreeStructure = function (treeNode, clNode) {
+            var toAdd = { value: clNode.code, label: clNode.title.EN, expanded: false }
+            if (clNode.children) {
+                toAdd.items = [];
+                for (var i = 0; i < clNode.children.length; i++) {
+                    this.clToTreeStructure(toAdd.items, clNode.children[i]);
+                }
+            }
+            treeNode.push(toAdd);
+        }*/
+        /*DataEditor_ColumnCreatorJQX.prototype.clToTreeStructure = function (list, clNode) {
+            list.push({ value: clNode.code, label: clNode.title.EN, level: clNode.level });
+            if (clNode.children) {
+                for (var i = 0; i < clNode.children.length; i++) {
+                    this.clToTreeStructure(list, clNode.children[i]);
+                }
+            }
+        }*/
+        //END TEST
+
+
+
+
+
+
 
         DataEditor_ColumnCreatorJQX.prototype.createCustomCodeCol = function (col, colTitle) {
             var toRet = {
