@@ -24,7 +24,6 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
         this.valResView;
         this.$valResView;
 
-        this.dsd;
         this.cols;
         this.data;
         this.codelists;
@@ -69,9 +68,8 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
         this.dataEditor.showValidationResults(valRes);
     }
 
-    DataEdit.prototype.setDSD = function (dsd, codelists) {
-        this.dsd = dsd;
-        this.cols = dsd.columns;
+    DataEdit.prototype.setColumns = function (columns, codelists) {
+        this.cols = columns;
         this.codelists = codelists;
         //Check if codelist and code columns are matching
         if (!this.cols || this.cols.length == 0)
@@ -108,7 +106,7 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
     }
 
     //Column Distincts
-    DataEdit.prototype.getDSDWithDistincts = function () {
+    DataEdit.prototype.getColumnsWithDistincts = function () {
         var data = this.dataEditor.getData();
         for (var i = 0; i < this.cols.length; i++) {
             var col = this.cols[i];
@@ -140,7 +138,7 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
                     break;
             }
         }
-        return this.dsd;
+        return this.cols;
     }
 
     var getColumnDistinct = function (data, idx) {
