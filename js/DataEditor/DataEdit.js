@@ -147,6 +147,7 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
                 case 'date':
                 case 'month':
                 case 'year':
+                    var dist = getColumnDistinct(data, i);
                     if (dist)
                         col.values = { timeList: dist };
                     else
