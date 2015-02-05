@@ -18,8 +18,7 @@ config format:
 define([
     'jquery',
     'fx-DataEditor/js/DataEditor/DataEdit',
-    'fx-DataEditor/js/DataEditor/dataConnectors/Connector_D3S',
-    'domReady!'
+    'fx-DataEditor/js/DataEditor/dataConnectors/Connector_D3S'
 ], function ($, DataEdit, Connector) {
 
     var cfg = {};
@@ -31,11 +30,11 @@ define([
     }
 
     function setDSD(dsd, callB) {
-        getCodelists(dsd.columns, function (codelists) {
+        getCodelists(dsd.columns, $.proxy(function (codelists) {
             //this.dataEdit.setDSDAndData(dsd, codelists, data);
             this.dataEdit.setDSD(dsd, codelists);
             if (callB) callB();
-        });
+        }, this));
     }
 
     function getData() { return this.dataEdit.getData(); }
