@@ -119,7 +119,8 @@
                             if (!val)
                                 return '';
                             val = "" + val;
-                            return val.substring(0, 2) + "-" + val.substring(2, 4) + "-" + val.substring(4, 10);
+                            //return val.substring(0, 2) + "-" + val.substring(2, 4) + "-" + val.substring(4, 10);
+                            return val.substring(6, 8) + "-" + val.substring(4, 6) + "-" + val.substring(0, 4);
                         }
                         break;
                     case 'month':
@@ -127,7 +128,7 @@
                             if (!val)
                                 return '';
                             val = "" + val;
-                            return val.substring(0, 2) + "-" + val.substring(2, 6);
+                            return val.substring(4, 6) + "-" + val.substring(0, 4);
                         }
                         break;
                     case 'number':

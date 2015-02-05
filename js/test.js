@@ -44,8 +44,8 @@
                 Editor.setDSD({ columns: testCols }, callB);
                 //Editor.setData([["01063", "2000", 5, "test"]]);
                 var data = [
-                    ["434", 2000, '012015', '20012015', 777, "testString", true],
-                    ["152", 2000, '012015', '20012015', 777, "testString", true]
+                    ["434", 2000, '201502', '20150205', 777, "testString", true],
+                    ["152", 2000, '201503', '20150206', 777, "testString", true]
                 ];
                 Editor.setData(data);
                 Editor.isEditable(true);

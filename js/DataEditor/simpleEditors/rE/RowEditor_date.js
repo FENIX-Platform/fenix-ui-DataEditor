@@ -36,10 +36,10 @@ function ($, jqx, mlRes, rowEditorBase) {
         this.reset();
         if (val) {
             val = "" + val;
-            var d = val.substring(0, 2);
-            var m = val.substring(2, 4);
+            var d = val.substring(6, 8);
+            var m = val.substring(4, 6);
             m = m - 1;
-            var y = val.substring(4, 8);
+            var y = val.substring(0, 4);
             this.$cnt.jqxCalendar('setDate', new Date(y, m, d));
         }
 
@@ -57,7 +57,7 @@ function ($, jqx, mlRes, rowEditorBase) {
             m = "0" + m;
         while (y.length < 4)
             y = "0" + y;
-        return d + m + y;
+        return y + m + d;
     }
     RowEditor_date.prototype.isMandatory = function (m) {
         if (m == 'undefined')

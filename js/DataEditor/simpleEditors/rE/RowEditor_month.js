@@ -7,6 +7,7 @@
 ],
 function ($, jqx, mlRes, rowEditorBase) {
     var defConfig = { yMin: 0, yMax: 3000 };
+    var separator = "-";
     //var months = ['-', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
     var RowEditor_month = function (config) {
@@ -20,7 +21,7 @@ function ($, jqx, mlRes, rowEditorBase) {
         $.extend(true, this.config, config);
         this.$cnt = container;
         var me = this;
-        this.$cnt.jqxMaskedInput({ mask: '##-####', width: 120 });
+        this.$cnt.jqxMaskedInput({ mask: '##' + separator + '####', width: 120 });
         this.$cnt.on('valuechanged', function () { me.updateValidationHelp(); });
     }
     RowEditor_month.prototype.updateValidationHelp = function () {
@@ -33,14 +34,21 @@ function ($, jqx, mlRes, rowEditorBase) {
     }
     RowEditor_month.prototype.setValue = function (val) {
         this.reset();
-        if (val)
-            this.$cnt.jqxMaskedInput('inputValue', val);
+        if (val) {
+            var y = val.substring(0, 4) + "";
+            var m = val.substring(4, 6) + "";
+            this.$cnt.jqxMaskedInput('val', m + separator + y);
+        }
+        //if (val)
+        //this.$cnt.jqxMaskedInput('inputValue', val);
     }
     RowEditor_month.prototype.getValue = function () {
         var val = this.$cnt.jqxMaskedInput('val');
+        /*var m = val.substring(0, 2) + "";
+        var y = val.substring(3, 7) + "";*/
         var m = val.substring(0, 2) + "";
         var y = val.substring(3, 7) + "";
-        return m + y;
+        return y + m;
     }
     RowEditor_month.prototype.isMandatory = function (m) {
         if (m == 'undefined')
