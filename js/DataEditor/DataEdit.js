@@ -24,7 +24,6 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
         this.valResView;
         this.$valResView;
 
-        this.dsd;
         this.cols;
         this.data;
         this.codelists;
@@ -39,7 +38,7 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
 
         this.$dataEditor = this.$container.find('#divDataEditor');
         this.dataEditor = new DataEditor();
-        this.dataEditor.render(this.$container.find('#divDataGrid'), this.config);
+        this.dataEditor.render(this.$container.find('#divDataEdit'), this.config);
 
         this.$valResView = this.$container.find('#divValRes');
         this.valResView = new ValidationResultsViewer();
@@ -56,7 +55,7 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
         this.$dataEditor.on('gridRendered.DataEditor.fenix', function (evt, param) { me.updateValidation(me.data); });
 
         this.$dataEditor.find('#btnAddRow').click(function (args) { me.dataEditor.newRow(); });
-        this.$dataEditor.find('#btnDelRow').click(function (args) { me.dataEditor.deleteSelectedRow(); });
+        //this.$dataEditor.find('#btnDelRow').click(function (args) { me.dataEditor.deleteSelectedRow(); });
 
         if (callB)
             callB();
@@ -69,24 +68,8 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
         this.dataEditor.showValidationResults(valRes);
     }
 
-    /*DataEdit.prototype.setDSDAndData = function (dsd, codelists, data) {
-        this.dsd = dsd;
-        this.cols = dsd.columns;
-        this.data = data;
-        this.codelists = codelists;
-
-        //Check if codelist and code columns are matching
-        if (!this.cols || this.cols.length == 0)
-            throw new Error("At least one column must be defined");
-        checkCodeColumnsAndCodelists(this.cols, codelists)
-
-        this.dataEditor.setColumns(this.cols, this.codelists);
-        this.dataEditor.setData(this.data);
-    }*/
-
-    DataEdit.prototype.setDSD = function (dsd, codelists) {
-        this.dsd = dsd;
-        this.cols = dsd.columns;
+    DataEdit.prototype.setColumns = function (columns, codelists) {
+        this.cols = columns;
         this.codelists = codelists;
         //Check if codelist and code columns are matching
         if (!this.cols || this.cols.length == 0)
@@ -123,7 +106,7 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
     }
 
     //Column Distincts
-    DataEdit.prototype.getDSDWithDistincts = function () {
+    DataEdit.prototype.getColumnsWithDistincts = function () {
         var data = this.dataEditor.getData();
         for (var i = 0; i < this.cols.length; i++) {
             var col = this.cols[i];
@@ -147,6 +130,7 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
                 case 'date':
                 case 'month':
                 case 'year':
+                    var dist = getColumnDistinct(data, i);
                     if (dist)
                         col.values = { timeList: dist };
                     else
@@ -154,7 +138,7 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
                     break;
             }
         }
-        return this.dsd;
+        return this.cols;
     }
 
     var getColumnDistinct = function (data, idx) {
@@ -190,7 +174,7 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
     //MultiLang
     DataEdit.prototype.doML = function () {
         this.$dataEditor.find('#btnAddRow').html(mlRes['add']);
-        this.$dataEditor.find('#btnDelRow').html(mlRes['delete']);
+        //this.$dataEditor.find('#btnDelRow').html(mlRes['delete']);
     }
     //END Multilang
 

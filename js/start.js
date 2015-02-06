@@ -1,16 +1,20 @@
 /*
 config format:
-
 {
     "D3SConnector": {
-        metadataUrl: "http://exldvsdmxreg1.ext.fao.org:7788/v2/msd/resources/metadata",
-        dsdUrl: "http://exldvsdmxreg1.ext.fao.org:7788/v2/msd/resources/dsd",
-        dataUrl: "http://exldvsdmxreg1.ext.fao.org:7788/v2/msd/resources",
-        getDataUrl: "http://exldvsdmxreg1.ext.fao.org:7788/v2/msd/resources/data",
-        getMetaAndDataUrl: "http://exldvsdmxreg1.ext.fao.org:7788/v2/msd/resources/uid/dan3?dsd=true",
-        codelistUrl: "http://faostat3.fao.org:7799/v2/msd/resources/data",
+        baseAddress: "http://fenix.fao.org/d3s_dev/msd",
+        metadataUrl: "resources/metadata",
+        dsdUrl: "resources/dsd",
+        dataUrl: "resources",
+        getDataUrl: "resources/data",
+        getMetaAndDataUrl: "resources",
+        
+        codelistUrl: "http://faostat3.fao.org:7799/v2/msd/resources",
+        codelistMetaUrl: "http://faostat3.fao.org:7799/v2/msd/resources/metadata",
+        codelistFilteredUrl: "http://faostat3.fao.org:7799/v2/msd/codes/filter",
+        
         contextSystem: "CountrySTAT",
-        datasource:"CountrySTAT"
+        datasource: "D3S"
     }
 }
 */
@@ -18,8 +22,7 @@ config format:
 define([
     'jquery',
     'fx-DataEditor/js/DataEditor/DataEdit',
-    'fx-DataEditor/js/DataEditor/dataConnectors/Connector_D3S',
-    'domReady!'
+    'fx-DataEditor/js/DataEditor/dataConnectors/Connector_D3S'
 ], function ($, DataEdit, Connector) {
 
     var cfg = {};
@@ -31,17 +34,16 @@ define([
         dataEdit.render($(containerID), cfg, callB);
     }
 
-    function setDSD(dsd, callB) {
-        getCodelists(dsd.columns, function (codelists) {
-            //dataEdit.setDSDAndData(dsd, codelists, data);
-            dataEdit.setDSD(dsd, codelists);
+    function setColumns(columns, callB) {
+        getCodelists(columns, function (codelists) {
+            dataEdit.setColumns(columns, codelists);
             if (callB) callB();
         });
     }
 
     function getData() { return dataEdit.getData(); }
     function setData(data) { dataEdit.setData(data); }
-    function getDSDWithDistincts() { return dataEdit.getDSDWithDistincts(); }
+    function getColumnsWithDistincts() { return dataEdit.getColumnsWithDistincts(); }
 
 
     function getCodelists(cols, callB) {
@@ -58,42 +60,16 @@ define([
             }
         var conn = new Connector();
         conn.getCodelists(codelistsToGet, function (cLists) {
-            //Temporary solution, add multilevel codelists handling
-            for (cl in cLists)
-                cLists[cl] = flattenCodelist(cLists[cl]);
-            //END Temporary solution, add multilevel codelists handling
             if (callB)
                 callB(cLists);
         })
     }
-
-    //Temporary solution, add multilevel codelists handling
-    function flattenCodelist(cl)
-    {
-        var toRet = [];
-        recFlatten(cl, toRet);
-        for (var i = 0; i < toRet.length; i++)
-            toRet[i].children = null;
-        return toRet;
-    }
-    function recFlatten(node, toRet)
-    {
-        if (!node)
-            return;
-        for (var i = 0; i < node.length; i++) {
-            toRet.push(node[i]);
-            if (node[i].children)
-                recFlatten(node[i].children, toRet);
-        }
-    }
-    //END Temporary solution, add multilevel codelists handling
 
     //Conn
     function updateDSD(uid, version, dsd, callB) {
         var conn = getConnector();
         conn.updateDSD(uid, version, dsd, callB);
     }
-
     function updateData(uid, version, data, callB) {
         var conn = getConnector();
         conn.putData(uid, version, data, callB);
@@ -111,7 +87,7 @@ define([
     //END Conn
 
     function isEditable(editable) {
-        if (typeof(editable) != 'undefined')
+        if (typeof (editable) != 'undefined')
             dataEdit.isEditable(editable);
         else
             return dataEdit.isEditable();
@@ -119,13 +95,13 @@ define([
 
     return {
         init: init,
-        setDSD: setDSD,
+        setColumns:setColumns,
         loadMetaAndData: loadMetaAndData,
         getData: getData,
         setData: setData,
         updateDSD: updateDSD,
         updateData: updateData,
-        getDSDWithDistincts: getDSDWithDistincts,
+        getColumnsWithDistincts: getColumnsWithDistincts,
         isEditable: isEditable
     }
 });
