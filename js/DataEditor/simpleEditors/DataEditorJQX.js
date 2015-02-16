@@ -38,7 +38,7 @@
         };
 
         //Render - creation
-        DataEditorJQX.prototype.render = function (container, config) {
+        DataEditorJQX.prototype.render = function (container, config, callB) {
             $.extend(true, this.config, config);
 
             this.$container = container;
@@ -56,6 +56,8 @@
             this.$container.find('#btnEditRowCanc').click(function () { me.$editWindow.modal('hide'); });
             this.$container.find('#btnEditRowOk').click(function () { me.rowEditOk(); });
             this.$editWindow.on('hidden.bs.modal', function (e) { me.rowEditor.reset(); });
+
+            if (callB) callB();
         }
 
         DataEditorJQX.prototype.initGrid = function () {
@@ -197,6 +199,12 @@
                 var evtArgs = {};
                 evtArgs.allData = this.tableRowsToD3SData();
                 this.$dataGrid.trigger(EVT_ROW_ADDED, evtArgs);
+
+                //Bug in JQXGrid? The grids are not rendered properly when the grid starts with null data.
+                //Call a render only on the first dataRow added
+                if (evtArgs.allData.length == 1) {
+                    this.$dataGrid.jqxGrid('render');
+                }
             }
 
             this.$editWindow.modal('hide');
