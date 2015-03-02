@@ -23,6 +23,10 @@ function ($, jqx, mlRes, rowEditorBase) {
         var me = this;
         this.$cnt.on('change', function () { me.updateValidationHelp(); });
     }
+    RowEditor_date.prototype.destroy = function () {
+        this.$cnt.jqxCalendar('destroy');
+        this.$cnt.off('change');
+    }
     RowEditor_date.prototype.updateValidationHelp = function () {
         var error = this.validate();
         this.parent.updateValidationHelp.call(this, error);

@@ -117,8 +117,6 @@ function ($, jqx, MLUtils, reFactory) {
         }
     }
     
-
-
     RowEditorPopupJQX.prototype.isValid = function () {
         for (var i = 0; i < this.cols.length; i++)
             if (!this.editors[i].isValid())
@@ -148,6 +146,13 @@ function ($, jqx, MLUtils, reFactory) {
         for (var i = 0; i < this.cols.length; i++)
             toRet[this.cols[i].id] = this.editors[i].getValue();
         return toRet;
+    }
+
+    RowEditorPopupJQX.prototype.destroy = function (){
+        if (!this.cols)
+            return;
+        for (var i = 0; i < this.cols.length; i++)
+            this.editors[i].destroy();
     }
 
     return RowEditorPopupJQX;

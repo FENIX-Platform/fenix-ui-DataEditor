@@ -53,8 +53,8 @@
                 this.lang = localStorage.getItem('locale');
 
             var me = this;
-            this.$container.find('#btnEditRowCanc').click(function () { me.$editWindow.modal('hide'); });
-            this.$container.find('#btnEditRowOk').click(function () { me.rowEditOk(); });
+            this.$container.find('#btnEditRowCanc').on('click', function () { me.$editWindow.modal('hide'); });
+            this.$container.find('#btnEditRowOk').on('click', function () { me.rowEditOk(); });
             this.$editWindow.on('hidden.bs.modal', function (e) { me.rowEditor.reset(); });
 
             if (callB) callB();
@@ -176,6 +176,23 @@
 
             return toRet;
         }
+
+
+
+        DataEditorJQX.prototype.destroy = function () {
+            this.$container.find('#btnEditRowCanc').off('click');
+            this.$container.find('#btnEditRowOk').off('click');
+            this.$editWindow.off('hidden.bs.modal');
+
+            this.$dataGrid.jqxGrid('destroy');
+            this.rowEditor.destroy();
+            /*
+            'fx-DataEditor/js/DataEditor/simpleEditors/RowEditorPopupJQX',
+        */
+        }
+
+
+
 
         DataEditorJQX.prototype.rowEditOk = function () {
             if (!this.rowEditor.isValid()) {

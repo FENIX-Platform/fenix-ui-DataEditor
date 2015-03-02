@@ -24,6 +24,8 @@ function ($, jqx, mlRes, rowEditorBase) {
         var $chk = this.$cnt.find('input');
         $chk.on('click', function () { me.updateValidationHelp(); });
     }
+    RowEditor_bool.prototype.destroy = function () { this.$cnt.find('input').off('click'); }
+
     RowEditor_bool.prototype.updateValidationHelp = function () {
         var error = this.validate();
         this.parent.updateValidationHelp.call(this, error);

@@ -69,6 +69,10 @@ function ($, jqx, mlRes, rowEditorBase) {
         this.$cnt.jqxComboBox('insertAt', { label: emptyEntryLabel, value: emptyEntryValue }, 0);
         this.$cnt.on('select', function () { me.updateValidationHelp(); });
     }
+    RowEditor_code.prototype.destroy = function () {
+        this.$cnt.jqxComboBox('destroy');
+        this.$cnt.off('select');
+    }
     RowEditor_code.prototype.updateValidationHelp = function () {
         var error = this.validate();
         this.parent.updateValidationHelp.call(this, error);

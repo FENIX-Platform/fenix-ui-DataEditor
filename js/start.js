@@ -92,16 +92,18 @@ define([
         else
             return dataEdit.isEditable();
     }
+    function destroy() { dataEdit.destroy(); }
 
     return {
         init: init,
-        setColumns:setColumns,
+        setColumns: setColumns,
         loadMetaAndData: loadMetaAndData,
         getData: getData,
         setData: setData,
         updateDSD: updateDSD,
         updateData: updateData,
         getColumnsWithDistincts: getColumnsWithDistincts,
-        isEditable: isEditable
+        isEditable: isEditable,
+        destroy: destroy
     }
 });

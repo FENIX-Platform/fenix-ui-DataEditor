@@ -25,6 +25,9 @@ function ($, jqx, mlRes, rowEditorBase) {
         var me = this;
         this.$cnt.on('valueChanged', function () { me.updateValidationHelp(); });
     }
+    RowEditor_string.prototype.destroy = function () {
+        this.$cnt.off('valuechanged');
+    }
     RowEditor_string.prototype.updateValidationHelp = function () {
         var error = this.validate();
         this.parent.updateValidationHelp.call(this, error);

@@ -24,6 +24,9 @@ function ($, jqx, mlRes, rowEditorBase) {
         var me = this;
         txt.on('keyup', function () { me.updateValidationHelp(); });
     }
+    RowEditor_year.prototype.destroy = function () {
+        this.$cnt.find('input').off('keyup');
+    }
     RowEditor_year.prototype.updateValidationHelp = function () {
         var error = this.validate();
         this.parent.updateValidationHelp.call(this, error);

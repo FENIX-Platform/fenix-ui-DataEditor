@@ -24,6 +24,10 @@ function ($, jqx, mlRes, rowEditorBase) {
         this.$cnt.jqxMaskedInput({ mask: '##' + separator + '####', width: 120 });
         this.$cnt.on('valuechanged', function () { me.updateValidationHelp(); });
     }
+    RowEditor_month.prototype.destroy = function () {
+        this.$cnt.jqxMaskedInput('destroy');
+        this.$cnt.off('valuechanged');
+    }
     RowEditor_month.prototype.updateValidationHelp = function () {
         var error = this.validate();
         this.parent.updateValidationHelp.call(this, error);

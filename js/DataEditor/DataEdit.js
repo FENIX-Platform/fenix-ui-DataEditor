@@ -54,7 +54,7 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
         this.$dataEditor.on('rowDeleted.DataEditor.fenix', function (evt, param) { me.updateValidation(param.allData); });
         this.$dataEditor.on('gridRendered.DataEditor.fenix', function (evt, param) { me.updateValidation(me.data); });
 
-        this.$dataEditor.find('#btnAddRow').click(function (args) { me.dataEditor.newRow(); });
+        this.$dataEditor.find('#btnAddRow').on('click',function (args) { me.dataEditor.newRow(); });
         //this.$dataEditor.find('#btnDelRow').click(function (args) { me.dataEditor.deleteSelectedRow(); });
 
         if (callB)
@@ -170,11 +170,18 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
         else
             return this.dataEditor.isEditable();
     }
+    DataEdit.prototype.destroy = function () {
+        this.$dataEditor.off('valueChanged.DataEditor.fenix');
+        this.$dataEditor.off('rowAdded.DataEditor.fenix');
+        this.$dataEditor.off('rowDeleted.DataEditor.fenix');
+        this.$dataEditor.off('gridRendered.DataEditor.fenix');
+        this.$dataEditor.find('#btnAddRow').off('click');
+        this.dataEditor.destroy();
+    }
 
     //MultiLang
     DataEdit.prototype.doML = function () {
         this.$dataEditor.find('#btnAddRow').html(mlRes['add']);
-        //this.$dataEditor.find('#btnDelRow').html(mlRes['delete']);
     }
     //END Multilang
 
