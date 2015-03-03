@@ -32,6 +32,7 @@ define([
         cfg = config;
         dataEdit = new DataEdit();
         dataEdit.render($(containerID), cfg, callB);
+        return data
     }
 
     function setColumns(columns, callB) {
