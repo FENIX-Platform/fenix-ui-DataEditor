@@ -93,7 +93,10 @@ define([
         else
             return dataEdit.isEditable();
     }
-    function destroy() { dataEdit.destroy(); }
+    function destroy() {
+        if (dataEdit)
+            dataEdit.destroy();
+    }
 
     return {
         init: init,
