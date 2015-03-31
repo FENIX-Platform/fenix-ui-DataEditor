@@ -14,7 +14,7 @@ config format:
         codelistFilteredUrl: "http://faostat3.fao.org:7799/v2/msd/codes/filter",
         
         contextSystem: "CountrySTAT",
-        datasource: "D3S"
+        datasources: ["D3S"]
     }
 }
 */
