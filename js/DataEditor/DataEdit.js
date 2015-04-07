@@ -27,6 +27,8 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
         this.cols;
         this.data;
         this.codelists;
+
+        this.editEnabled = true;
     };
 
     //Render - creation
@@ -165,10 +167,16 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
     }
 
     DataEdit.prototype.isEditable = function (editable) {
-        if (typeof (editable) != 'undefined')
+        if (typeof (editable) != 'undefined') {
+            if (editable)
+                this.$dataEditor.find('#btnAddRow').show();
+            else
+                this.$dataEditor.find('#btnAddRow').hide();
+            this.editEnabled = editable;
             this.dataEditor.isEditable(editable);
+        }
         else
-            return this.dataEditor.isEditable();
+            return this.editEnabled;
     }
     DataEdit.prototype.destroy = function () {
         this.$dataEditor.off('valueChanged.DataEditor.fenix');

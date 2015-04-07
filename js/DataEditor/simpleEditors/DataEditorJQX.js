@@ -89,7 +89,7 @@
             });
             this.rowEditor.setColumns(cols, this.codelists);
 
-            this.isEditable(this.editEnabled);
+            //this.isEditable(this.editEnabled);
         }
 
         var createDatafields = function (cols, lang, lblPostfix) {
@@ -251,9 +251,9 @@
                     this.$dataGrid.jqxGrid('hidecolumn', 'edit');
                     this.$dataGrid.jqxGrid('hidecolumn', 'delete');
                 }
-                for (var i = 0; i < this.cols.length; i++) {
+                for (var i = 0; i < this.cols.length; i++) 
                     this.$dataGrid.jqxGrid('setcolumnproperty', this.cols[i].id, 'width', colsW);
-                }
+                this.$dataGrid.jqxGrid('render');
             }
             else
                 return this.editEnabled;
