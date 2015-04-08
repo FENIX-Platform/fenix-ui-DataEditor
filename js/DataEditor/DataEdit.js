@@ -5,9 +5,10 @@
 'fx-DataEditor/js/DataEditor/simpleEditors/DataEditorJQX',
 'fx-DataEditor/js/DataEditor/simpleEditors/ValidationResultsViewer',
 'fx-DataEditor/js/DataEditor/helpers/Data_Validator',
+'fx-DataEditor/js/DataEditor/dataConnectors/Connector_D3S',
 'text!fx-DataEditor/templates/DataEditor/DataEdit.htm'
 ],
-function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, DataEditHTML) {
+function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Connector, DataEditHTML) {
 
     var widgetName = "DataEdit";
     var defConfig = {};
@@ -56,7 +57,7 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
         this.$dataEditor.on('rowDeleted.DataEditor.fenix', function (evt, param) { me.updateValidation(param.allData); });
         this.$dataEditor.on('gridRendered.DataEditor.fenix', function (evt, param) { me.updateValidation(me.data); });
 
-        this.$dataEditor.find('#btnAddRow').on('click',function (args) { me.dataEditor.newRow(); });
+        this.$dataEditor.find('#btnAddRow').on('click', function (args) { me.dataEditor.newRow(); });
         //this.$dataEditor.find('#btnDelRow').click(function (args) { me.dataEditor.deleteSelectedRow(); });
 
         if (callB)
@@ -70,17 +71,36 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
         this.dataEditor.showValidationResults(valRes);
     }
 
-    DataEdit.prototype.setColumns = function (columns, codelists) {
+    //DataEdit.prototype.setColumns = function (columns, codelists) {
+    DataEdit.prototype.setColumns = function (columns) {
+        //function getCodelists(cols, cfg, callB) {
         this.cols = columns;
-        this.codelists = codelists;
-        //Check if codelist and code columns are matching
         if (!this.cols || this.cols.length == 0)
             throw new Error("At least one column must be defined");
-        checkCodeColumnsAndCodelists(this.cols, codelists)
-        this.dataEditor.setColumns(this.cols, this.codelists);
 
-        if (this.data)
-            this.dataEditor.setData(this.data);
+        this.uiEnabled(false);
+        var me = this;
+        getCodelists(this.cols, this.config, function (d) {
+            me.codelists = d;
+            //Check if codelist and code columns are matching
+            checkCodeColumnsAndCodelists(me.cols, me.codelists);
+            me.dataEditor.setColumns(me.cols, me.codelists);
+
+            if (me.data)
+                me.dataEditor.setData(me.data);
+            me.uiEnabled(true);
+        })
+    }
+
+    DataEdit.prototype.uiEnabled = function (enabled) {
+        if (enabled) {
+            this.$dataEditor.find('#btnAddRow').removeAttr('disabled');
+            this.$dataEditor.removeAttr('disabled');
+        }
+        else {
+            this.$dataEditor.find('#btnAddRow').attr('disabled', 'disabled');
+            this.$dataEditor.attr('disabled', 'disabled');
+        }
     }
 
     var checkCodeColumnsAndCodelists = function (cols, cLists) {
@@ -186,6 +206,27 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
         this.$dataEditor.find('#btnAddRow').off('click');
         this.dataEditor.destroy();
     }
+
+    //Connections
+    function getCodelists(cols, cfg, callB) {
+        if (!cols)
+            return null;
+        //if (cfg.D3SConnector)
+        var conn = new Connector(cfg.D3SConnector);
+
+        var codelistsToGet = [];
+        var toRet = {};
+        for (var i = 0; i < cols.length; i++)
+            if (cols[i].dataType == 'code') {
+                codelistsToGet.push({ uid: cols[i].domain.codes[0].idCodeList, version: cols[i].domain.codes[0].version });
+            }
+        //var conn = new Connector();
+        conn.getCodelists(codelistsToGet, function (cLists) {
+            if (callB)
+                callB(cLists);
+        })
+    }
+    //END Connections
 
     //MultiLang
     DataEdit.prototype.doML = function () {

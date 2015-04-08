@@ -24,7 +24,6 @@ define([
     'fx-DataEditor/js/DataEditor/DataEdit',
     'fx-DataEditor/js/DataEditor/dataConnectors/Connector_D3S'
 ], function ($, DataEdit, Connector) {
-
     var cfg = {};
     var dataEdit;
 
@@ -36,10 +35,11 @@ define([
     }
 
     function setColumns(columns, callB) {
-        getCodelists(columns, function (codelists) {
+        dataEdit.setColumns(columns, callB);
+        /*getCodelists(columns, function (codelists) {
             dataEdit.setColumns(columns, codelists);
             if (callB) callB();
-        });
+        });*/
     }
 
     function getData() { return dataEdit.getData(); }
@@ -47,7 +47,7 @@ define([
     function getColumnsWithDistincts() { return dataEdit.getColumnsWithDistincts(); }
 
 
-    function getCodelists(cols, callB) {
+    /*function getCodelists(cols, callB) {
         if (!cols)
             return null;
         if (cfg.D3SConnector)
@@ -64,7 +64,7 @@ define([
             if (callB)
                 callB(cLists);
         })
-    }
+    }*/
 
     //Conn
     function updateDSD(uid, version, dsd, callB) {
