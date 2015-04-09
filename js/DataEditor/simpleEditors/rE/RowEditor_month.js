@@ -48,8 +48,6 @@ function ($, jqx, mlRes, rowEditorBase) {
     }
     RowEditor_month.prototype.getValue = function () {
         var val = this.$cnt.jqxMaskedInput('val');
-        /*var m = val.substring(0, 2) + "";
-        var y = val.substring(3, 7) + "";*/
         var m = val.substring(0, 2) + "";
         var y = val.substring(3, 7) + "";
         return y + m;

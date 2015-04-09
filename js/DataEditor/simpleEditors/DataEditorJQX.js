@@ -87,7 +87,15 @@
                     me.$dataGrid.trigger(EVT_GRID_RENDERED);
                 }
             });
-            this.rowEditor.setColumns(cols, this.codelists);
+
+            //Bug fix: Value field was not always show
+            //Try to show/render/hide. Find another solution if it not yet showing
+            this.$editWindow.on('shown.bs.modal', function (e) {
+                me.rowEditor.setColumns(cols, me.codelists);
+                me.$editWindow.off('shown.bs.modal');
+                me.$editWindow.modal('hide');
+            });
+            me.$editWindow.modal('show');
 
             //this.isEditable(this.editEnabled);
         }
@@ -251,7 +259,7 @@
                     this.$dataGrid.jqxGrid('hidecolumn', 'edit');
                     this.$dataGrid.jqxGrid('hidecolumn', 'delete');
                 }
-                for (var i = 0; i < this.cols.length; i++) 
+                for (var i = 0; i < this.cols.length; i++)
                     this.$dataGrid.jqxGrid('setcolumnproperty', this.cols[i].id, 'width', colsW);
                 this.$dataGrid.jqxGrid('render');
             }

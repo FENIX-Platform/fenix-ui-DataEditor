@@ -72,7 +72,7 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Co
     }
 
     //DataEdit.prototype.setColumns = function (columns, codelists) {
-    DataEdit.prototype.setColumns = function (columns) {
+    DataEdit.prototype.setColumns = function (columns, callB) {
         //function getCodelists(cols, cfg, callB) {
         this.cols = columns;
         if (!this.cols || this.cols.length == 0)
@@ -89,6 +89,8 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Co
             if (me.data)
                 me.dataEditor.setData(me.data);
             me.uiEnabled(true);
+
+            if (callB) callB();
         })
     }
 
