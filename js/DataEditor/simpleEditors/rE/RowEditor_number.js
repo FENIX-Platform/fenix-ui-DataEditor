@@ -18,7 +18,7 @@ function ($, jqx, mlRes, rowEditorBase) {
     RowEditor_number.prototype.render = function (container, config) {
         $.extend(true, this.config, config);
         this.$cnt = container;
-        this.$cnt.jqxNumberInput({ spinButtons: false, inputMode:'simple', promptChar: '_', decimalDigits: this.config.decimalDigits, groupSeparator: '' });
+        this.$cnt.jqxNumberInput({ spinButtons: false, inputMode:'simple', promptChar: '_', decimalDigits: this.config.decimalDigits, groupSeparator: '', width:'100%' });
 
         var me = this;
         this.$cnt.on('valueChanged', function () { me.updateValidationHelp(); });

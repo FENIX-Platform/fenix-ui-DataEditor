@@ -90,12 +90,13 @@
 
             //Bug fix: Value field was not always show
             //Try to show/render/hide. Find another solution if it not yet showing
-            this.$editWindow.on('shown.bs.modal', function (e) {
+            /*this.$editWindow.on('shown.bs.modal', function (e) {
                 me.rowEditor.setColumns(cols, me.codelists);
                 me.$editWindow.off('shown.bs.modal');
                 me.$editWindow.modal('hide');
-            });
-            me.$editWindow.modal('show');
+            });*/
+            me.rowEditor.setColumns(this.cols, this.codelists);
+            //me.$editWindow.modal('show');
 
             //this.isEditable(this.editEnabled);
         }
@@ -154,10 +155,17 @@
             var editCol = {
                 text: '', datafield: 'edit', columntype: 'button',
                 cellsrenderer: function () { return mlRes.edit; },
+                /*buttonclick: function (row) {
+                    var dataRow = me.$dataGrid.jqxGrid('getrowdata', row);
+                    me.$editWindow.on('shown.bs.modal', function (e) {
+                        me.rowEditor.setRow(dataRow);
+                        me.$editWindow.off('shown.bs.modal');
+                    });
+                    me.$editWindow.modal('show');
+                }*/
                 buttonclick: function (row) {
                     var dataRow = me.$dataGrid.jqxGrid('getrowdata', row);
-                    me.rowEditor.setRow(dataRow);
-                    me.$editWindow.modal('show');
+                    me._showEditWindow(dataRow);
                 }
             }
             var delCol = {
@@ -186,6 +194,21 @@
         }
 
 
+        DataEditorJQX.prototype._showEditWindow = function (row) {
+            this.$editWindow.modal('show');
+            this.rowEditor.reset();
+            if (row)
+                this.rowEditor.setRow(row);
+            /*var me = this;
+            this.$editWindow.on('shown.bs.modal', function (e) {
+                me.rowEditor.reset();
+                if (row)
+                    me.rowEditor.setRow(row);
+                me.$editWindow.off('shown.bs.modal');
+            });
+            this.$editWindow.modal('show');*/
+        }
+
 
         DataEditorJQX.prototype.destroy = function () {
             this.$container.find('#btnEditRowCanc').off('click');
@@ -194,9 +217,6 @@
 
             this.$dataGrid.jqxGrid('destroy');
             this.rowEditor.destroy();
-            /*
-            'fx-DataEditor/js/DataEditor/simpleEditors/RowEditorPopupJQX',
-        */
         }
 
 
@@ -236,8 +256,9 @@
         }
 
         DataEditorJQX.prototype.newRow = function () {
-            this.rowEditor.reset();
-            this.$editWindow.modal('show');
+            /*this.rowEditor.reset();
+            this.$editWindow.modal('show');*/
+            this._showEditWindow(null);
         }
 
         DataEditorJQX.prototype.isEditable = function (editable) {

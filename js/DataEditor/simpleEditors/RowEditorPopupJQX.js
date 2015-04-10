@@ -82,7 +82,7 @@ function ($, jqx, MLUtils, reFactory) {
                     break;
                 case 'number':
                 case 'percentage':
-                    this.editors[i].render(cnt, { decimalDigits: this.config.decimalDigits });
+                    this.editors[i].render(cnt, { decimalDigits: this.config.decimalDigits});
                     break;
                 case 'month':
                 case 'date':
