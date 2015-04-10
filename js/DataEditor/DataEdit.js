@@ -52,16 +52,29 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Co
         var me = this;
 
         //Merge valueChanged, rowAdded and rowDeleted?
-        this.$dataEditor.on('valueChanged.DataEditor.fenix', function (evt, param) { me.updateValidation(param.allData); });
-        this.$dataEditor.on('rowAdded.DataEditor.fenix', function (evt, param) { me.updateValidation(param.allData); });
-        this.$dataEditor.on('rowDeleted.DataEditor.fenix', function (evt, param) { me.updateValidation(param.allData); });
-        this.$dataEditor.on('gridRendered.DataEditor.fenix', function (evt, param) { me.updateValidation(me.data); });
+        this.$dataEditor.on('valueChanged.DataEditor.fenix', function (evt, param) {
+            me.updateValidation(param.allData);
+        });
+        this.$dataEditor.on('rowAdded.DataEditor.fenix', function (evt, param) {
+            me.updateValidation(param.allData);
+        });
+        this.$dataEditor.on('rowDeleted.DataEditor.fenix', function (evt, param) {
+            me.updateValidation(param.allData);
+        });
+        this.$dataEditor.on('gridRendered.DataEditor.fenix', function (evt, param) {
+            me.updateValidation(me.data);
+        });
 
         this.$dataEditor.find('#btnAddRow').on('click', function (args) { me.dataEditor.newRow(); });
         //this.$dataEditor.find('#btnDelRow').click(function (args) { me.dataEditor.deleteSelectedRow(); });
 
         if (callB)
             callB();
+    }
+
+    DataEdit.prototype.getValidationResults = function () {
+        var val = new Data_Validator();
+        return val.validate(this.cols, this.dataEditor.getData());
     }
 
     DataEdit.prototype.updateValidation = function (dataToValidate) {
@@ -122,7 +135,13 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Co
             }
     }
 
-    DataEdit.prototype.getData = function () { return this.dataEditor.getData(); }
+    DataEdit.prototype.getData = function () {
+        var valRes = this.getValidationResults();
+        if (valRes == null || valRes.length == 0)
+            return this.dataEditor.getData();
+        else
+            return false;
+    }
     DataEdit.prototype.setData = function (data) {
         this.data = data;
         if (this.cols)

@@ -132,7 +132,7 @@
                         if (!checkNumber(data[d]))
                             toRet.push({ error: MSG_INVALID_NUMBER, dataIndex: rowIdx, colId: d });
                         break;
-                    case 'boolean':
+                    case 'bool':
                         if (!checkBool(data[d]))
                             toRet.push({ error: MSG_INVALID_BOOL, dataIndex: rowIdx, colId: d });
                         break;

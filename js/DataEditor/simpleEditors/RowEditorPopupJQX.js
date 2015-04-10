@@ -86,8 +86,8 @@ function ($, jqx, MLUtils, reFactory) {
                     break;
                 case 'month':
                 case 'date':
-                case 'string':
-                case 'boolean':
+                case 'text':
+                case 'bool':
                     this.editors[i].render(cnt, null);
                     break;
             }

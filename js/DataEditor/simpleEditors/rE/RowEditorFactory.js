@@ -38,10 +38,10 @@ function ($, jqx, reBool, reCode, reDate, reMonth, reNumber, reString, reYear) {
             case 'percentage':
                 return new reNumber(config);
                 break;
-            case 'string':
+            case 'text':
                 return new reString(config);
                 break;
-            case 'boolean':
+            case 'bool':
                 return new reBool(config);
                 break;
         }
