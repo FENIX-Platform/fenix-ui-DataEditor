@@ -40,7 +40,7 @@ function ($, jqx, mlRes, rowEditorBase) {
         this.parent.updateValidationHelp.call(this, error);
     }
     RowEditor_bool.prototype.reset = function () {
-        this.$cnt.prop('checked', false);
+        this.$cnt.find('input').prop('checked', false);
         this.$cnt.popover('destroy');
     }
     RowEditor_bool.prototype.setValue = function (val) {
