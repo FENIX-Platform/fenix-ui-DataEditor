@@ -57,6 +57,7 @@
             this.$container.find('#btnEditRowOk').on('click', function () { me.rowEditOk(); });
             this.$editWindow.on('hidden.bs.modal', function (e) { me.rowEditor.reset(); });
 
+            this._doML();
             if (callB) callB();
         }
 
@@ -87,18 +88,7 @@
                     me.$dataGrid.trigger(EVT_GRID_RENDERED);
                 }
             });
-
-            //Bug fix: Value field was not always show
-            //Try to show/render/hide. Find another solution if it not yet showing
-            /*this.$editWindow.on('shown.bs.modal', function (e) {
-                me.rowEditor.setColumns(cols, me.codelists);
-                me.$editWindow.off('shown.bs.modal');
-                me.$editWindow.modal('hide');
-            });*/
             me.rowEditor.setColumns(this.cols, this.codelists);
-            //me.$editWindow.modal('show');
-
-            //this.isEditable(this.editEnabled);
         }
 
         var createDatafields = function (cols, lang, lblPostfix) {
@@ -155,14 +145,6 @@
             var editCol = {
                 text: '', datafield: 'edit', columntype: 'button',
                 cellsrenderer: function () { return mlRes.edit; },
-                /*buttonclick: function (row) {
-                    var dataRow = me.$dataGrid.jqxGrid('getrowdata', row);
-                    me.$editWindow.on('shown.bs.modal', function (e) {
-                        me.rowEditor.setRow(dataRow);
-                        me.$editWindow.off('shown.bs.modal');
-                    });
-                    me.$editWindow.modal('show');
-                }*/
                 buttonclick: function (row) {
                     var dataRow = me.$dataGrid.jqxGrid('getrowdata', row);
                     me._showEditWindow(dataRow);
@@ -199,16 +181,7 @@
             this.rowEditor.reset();
             if (row)
                 this.rowEditor.setRow(row);
-            /*var me = this;
-            this.$editWindow.on('shown.bs.modal', function (e) {
-                me.rowEditor.reset();
-                if (row)
-                    me.rowEditor.setRow(row);
-                me.$editWindow.off('shown.bs.modal');
-            });
-            this.$editWindow.modal('show');*/
         }
-
 
         DataEditorJQX.prototype.destroy = function () {
             this.$container.find('#btnEditRowCanc').off('click');
@@ -218,9 +191,6 @@
             this.$dataGrid.jqxGrid('destroy');
             this.rowEditor.destroy();
         }
-
-
-
 
         DataEditorJQX.prototype.rowEditOk = function () {
             if (!this.rowEditor.isValid()) {
@@ -256,8 +226,6 @@
         }
 
         DataEditorJQX.prototype.newRow = function () {
-            /*this.rowEditor.reset();
-            this.$editWindow.modal('show');*/
             this._showEditWindow(null);
         }
 
@@ -351,12 +319,10 @@
         }
 
 
-
-
         DataEditorJQX.prototype.tableRowToD3SData = function (row) {
             var toRet = [];
             for (var c = 0; c < this.cols.length; c++) {
-                if (!row[this.cols[c].id]) {
+                if (!row[this.cols[c].id] == null) {
                     toRet.push(null);
                 }
                 else {
@@ -381,8 +347,9 @@
         DataEditorJQX.prototype.tableRowsToD3SData = function () {
             var rows = this.$dataGrid.jqxGrid('getrows');
             var toRet = [];
-            for (var i = 0; i < rows.length; i++)
+            for (var i = 0; i < rows.length; i++) {
                 toRet.push(this.tableRowToD3SData(rows[i]));
+            }
             return toRet;
         }
 
@@ -475,6 +442,11 @@
             };
         }
         //End Codelists helpers
+
+        DataEditorJQX.prototype._doML = function () {
+            this.$container.find('#btnEditRowCanc').html(mlRes.cancel);
+            this.$container.find('#btnEditRowOk').html(mlRes.ok);
+        }
 
         return DataEditorJQX;
     });
