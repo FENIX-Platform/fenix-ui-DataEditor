@@ -1,8 +1,10 @@
 ﻿define({
     "root": {
+        "ok": "Ok",
+        "cancel": "Cancel",
         "add": "Add",
         "delete": "Delete",
-        "edit":"Edit",
+        "edit": "Edit",
         "confirmDelete": "Delete?",
         "yearInterval": "Year must be a number ",
         "monthInterval": "Month must be a number (1..12)",
@@ -18,7 +20,7 @@
         "invalidBool": "Boolean is not valid",
 
         "NAN": "Value is not a number",
-        "OutOfRange":"Value is out of the allowed range",
+        "OutOfRange": "Value is out of the allowed range",
         "Null": "Value cannot be blank"
     },
     "fr": true
