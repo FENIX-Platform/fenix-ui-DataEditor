@@ -25,8 +25,6 @@ function ($, jqx, mlRes) {
             valRes[i].mlError = mlRes[valRes[i].error];
         }
 
-        //console.log(mlRes);
-
         var DS = { localdata: valRes, datatype: "array", datafields: createDatafields };
         var DA = new $.jqx.dataAdapter(DS);
         this.$valResGrid.jqxGrid({ source: DA, columns: createTableColumns(), editable: false});
