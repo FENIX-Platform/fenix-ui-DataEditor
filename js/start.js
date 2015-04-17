@@ -36,35 +36,11 @@ define([
 
     function setColumns(columns, callB) {
         dataEdit.setColumns(columns, callB);
-        /*getCodelists(columns, function (codelists) {
-            dataEdit.setColumns(columns, codelists);
-            if (callB) callB();
-        });*/
     }
 
     function getData() { return dataEdit.getData(); }
     function setData(data) { dataEdit.setData(data); }
     function getColumnsWithDistincts() { return dataEdit.getColumnsWithDistincts(); }
-
-
-    /*function getCodelists(cols, callB) {
-        if (!cols)
-            return null;
-        if (cfg.D3SConnector)
-            var conn = new Connector(cfg.D3SConnector);
-
-        var codelistsToGet = [];
-        var toRet = {};
-        for (var i = 0; i < cols.length; i++)
-            if (cols[i].dataType == 'code') {
-                codelistsToGet.push({ uid: cols[i].domain.codes[0].idCodeList, version: cols[i].domain.codes[0].version });
-            }
-        var conn = new Connector();
-        conn.getCodelists(codelistsToGet, function (cLists) {
-            if (callB)
-                callB(cLists);
-        })
-    }*/
 
     //Conn
     function updateDSD(uid, version, dsd, callB) {
@@ -97,6 +73,7 @@ define([
         if (dataEdit)
             dataEdit.destroy();
     }
+    function hasChanged() { return dataEdit.hasChanged(); }
 
     return {
         init: init,
@@ -108,6 +85,7 @@ define([
         updateData: updateData,
         getColumnsWithDistincts: getColumnsWithDistincts,
         isEditable: isEditable,
-        destroy: destroy
+        destroy: destroy,
+        hasChanged: hasChanged
     }
 });

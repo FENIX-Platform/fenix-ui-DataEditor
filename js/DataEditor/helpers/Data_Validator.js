@@ -42,7 +42,6 @@
                 for (var c = 0; c < cols.length; c++) {
                     if (cols[c].key) {
                         if (!data[i][c])
-
                             toRet.push({ error: MSG_NULL_KEY, colId: cols[c].id, dataIndex: i });
                     }
                 }

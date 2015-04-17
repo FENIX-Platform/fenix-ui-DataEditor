@@ -82,7 +82,7 @@ function ($, jqx, MLUtils, reFactory) {
                     break;
                 case 'number':
                 case 'percentage':
-                    this.editors[i].render(cnt, { decimalDigits: this.config.decimalDigits});
+                    this.editors[i].render(cnt, { decimalDigits: this.config.decimalDigits });
                     break;
                 case 'month':
                 case 'date':
@@ -107,16 +107,16 @@ function ($, jqx, MLUtils, reFactory) {
             this.editors[i].reset();
         }
     }
-    
+
     RowEditorPopupJQX.prototype.updateValidationHelp = function () {
         if (!this.cols)
             return;
         for (var i = 0; i < this.cols.length; i++) {
             if (this.editors[i].updateValidationHelp)
-            this.editors[i].updateValidationHelp();
+                this.editors[i].updateValidationHelp();
         }
     }
-    
+
     RowEditorPopupJQX.prototype.isValid = function () {
         for (var i = 0; i < this.cols.length; i++)
             if (!this.editors[i].isValid())
@@ -148,7 +148,7 @@ function ($, jqx, MLUtils, reFactory) {
         return toRet;
     }
 
-    RowEditorPopupJQX.prototype.destroy = function (){
+    RowEditorPopupJQX.prototype.destroy = function () {
         if (!this.cols)
             return;
         for (var i = 0; i < this.cols.length; i++)

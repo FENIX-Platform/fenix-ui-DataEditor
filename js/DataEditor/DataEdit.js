@@ -30,6 +30,7 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Co
         this.codelists;
 
         this.editEnabled = true;
+        this.changed = false;
     };
 
     //Render - creation
@@ -53,12 +54,15 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Co
 
         //Merge valueChanged, rowAdded and rowDeleted?
         this.$dataEditor.on('valueChanged.DataEditor.fenix', function (evt, param) {
+            me.changed = true;
             me.updateValidation(param.allData);
         });
         this.$dataEditor.on('rowAdded.DataEditor.fenix', function (evt, param) {
+            me.changed = true;
             me.updateValidation(param.allData);
         });
         this.$dataEditor.on('rowDeleted.DataEditor.fenix', function (evt, param) {
+            me.changed = true;
             me.updateValidation(param.allData);
         });
         this.$dataEditor.on('gridRendered.DataEditor.fenix', function (evt, param) {
@@ -66,7 +70,6 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Co
         });
 
         this.$dataEditor.find('#btnAddRow').on('click', function (args) { me.dataEditor.newRow(); });
-        //this.$dataEditor.find('#btnDelRow').click(function (args) { me.dataEditor.deleteSelectedRow(); });
 
         if (callB)
             callB();
@@ -84,9 +87,7 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Co
         this.dataEditor.showValidationResults(valRes);
     }
 
-    //DataEdit.prototype.setColumns = function (columns, codelists) {
     DataEdit.prototype.setColumns = function (columns, callB) {
-        //function getCodelists(cols, cfg, callB) {
         this.cols = columns;
         if (!this.cols || this.cols.length == 0)
             throw new Error("At least one column must be defined");
@@ -104,7 +105,7 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Co
             me.uiEnabled(true);
 
             if (callB) callB();
-        })
+        });
     }
 
     DataEdit.prototype.uiEnabled = function (enabled) {
@@ -146,6 +147,10 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Co
         this.data = data;
         if (this.cols)
             this.dataEditor.setData(this.data);
+        this.changed = false;
+    }
+    DataEdit.prototype.hasChanged = function () {
+        return this.changed;
     }
 
     //Column Distincts
@@ -241,11 +246,16 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Co
             if (cols[i].dataType == 'code') {
                 codelistsToGet.push({ uid: cols[i].domain.codes[0].idCodeList, version: cols[i].domain.codes[0].version });
             }
-        //var conn = new Connector();
-        conn.getCodelists(codelistsToGet, function (cLists) {
+        if (codelistsToGet.length > 0) {
+            conn.getCodelists(codelistsToGet, function (cLists) {
+                if (callB)
+                    callB(cLists);
+            })
+        }
+        else {
             if (callB)
-                callB(cLists);
-        })
+                callB();
+        }
     }
     //END Connections
 
