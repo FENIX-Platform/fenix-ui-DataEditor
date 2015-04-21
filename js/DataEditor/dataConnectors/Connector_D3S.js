@@ -28,14 +28,14 @@ define([
             getDataUrl: "resources/data",
             getMetaAndDataUrl: "resources",
             //Codelists
-            codelistUrl: "http://fenix.fao.org/d3s_fenix/msd/resources",
+            /*codelistUrl: "http://fenix.fao.org/d3s_fenix/msd/resources",
             codelistMetaUrl: "http://fenix.fao.org/d3s_fenix/msd/resources/metadata",
-            codelistFilteredUrl: "http://fenix.fao.org/d3s_fenix/msd/codes/filter",
+            codelistFilteredUrl: "http://fenix.fao.org/d3s_fenix/msd/codes/filter",*/
 
 
-            /*codelistUrl: "http://faostat3.fao.org:7799/v2/msd/resources",
-codelistMetaUrl: "http://faostat3.fao.org:7799/v2/msd/resources/metadata",
-codelistFilteredUrl: "http://faostat3.fao.org:7799/v2/msd/codes/filter",*/
+            codelistUrl: "http://faostat3.fao.org:7799/v2/msd/resources",
+            codelistMetaUrl: "http://faostat3.fao.org:7799/v2/msd/resources/metadata",
+            codelistFilteredUrl: "http://faostat3.fao.org:7799/v2/msd/codes/filter",
 
 
             contextSystem: "CountrySTAT",
