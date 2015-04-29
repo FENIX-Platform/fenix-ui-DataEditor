@@ -5,10 +5,9 @@
 'fx-DataEditor/js/DataEditor/simpleEditors/DataEditorJQX',
 'fx-DataEditor/js/DataEditor/simpleEditors/ValidationResultsViewer',
 'fx-DataEditor/js/DataEditor/helpers/Data_Validator',
-'fx-DataEditor/js/DataEditor/dataConnectors/Connector_D3S',
 'text!fx-DataEditor/templates/DataEditor/DataEdit.htm'
 ],
-function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Connector, DataEditHTML) {
+function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, DataEditHTML) {
 
     var widgetName = "DataEdit";
     var defConfig = {};
@@ -87,25 +86,17 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Co
         this.dataEditor.showValidationResults(valRes);
     }
 
-    DataEdit.prototype.setColumns = function (columns, callB) {
+    //Set columns and codelists
+    DataEdit.prototype.setColumns = function (columns, codelists) {
         this.cols = columns;
+        this.codelists = codelists;
         if (!this.cols || this.cols.length == 0)
             throw new Error("At least one column must be defined");
 
         this.uiEnabled(false);
-        var me = this;
-        getCodelists(this.cols, this.config, function (d) {
-            me.codelists = d;
-            //Check if codelist and code columns are matching
-            checkCodeColumnsAndCodelists(me.cols, me.codelists);
-            me.dataEditor.setColumns(me.cols, me.codelists);
-
-            if (me.data)
-                me.dataEditor.setData(me.data);
-            me.uiEnabled(true);
-
-            if (callB) callB();
-        });
+        checkCodeColumnsAndCodelists(this.cols, this.codelists);
+        this.dataEditor.setColumns(this.cols, this.codelists);
+        this.uiEnabled(true);
     }
 
     DataEdit.prototype.uiEnabled = function (enabled) {
@@ -231,31 +222,6 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Co
         this.$dataEditor.off('gridRendered.DataEditor.fenix');
         this.$dataEditor.find('#btnAddRow').off('click');
         this.dataEditor.destroy();
-    }
-
-    //Connections
-    function getCodelists(cols, cfg, callB) {
-        if (!cols)
-            return null;
-        //if (cfg.D3SConnector)
-        var conn = new Connector(cfg.D3SConnector);
-
-        var codelistsToGet = [];
-        var toRet = {};
-        for (var i = 0; i < cols.length; i++)
-            if (cols[i].dataType == 'code') {
-                codelistsToGet.push({ uid: cols[i].domain.codes[0].idCodeList, version: cols[i].domain.codes[0].version });
-            }
-        if (codelistsToGet.length > 0) {
-            conn.getCodelists(codelistsToGet, function (cLists) {
-                if (callB)
-                    callB(cLists);
-            })
-        }
-        else {
-            if (callB)
-                callB();
-        }
     }
     //END Connections
 

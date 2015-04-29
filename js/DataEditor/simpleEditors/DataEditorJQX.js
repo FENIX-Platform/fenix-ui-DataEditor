@@ -260,7 +260,7 @@
         //DATA
         DataEditorJQX.prototype.setData = function (data) {
             if (!this.cols)
-                throw new Error("Cannot set data without table structure, use setColumns befor setData");
+                throw new Error("Cannot set data without table structure, use setColumns before setData");
             this.data.length = 0;
             if (!data)
                 return;
