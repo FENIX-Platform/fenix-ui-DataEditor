@@ -53,9 +53,14 @@
                 this.lang = localStorage.getItem('locale');
 
             var me = this;
-            this.$container.find('#btnEditRowCanc').on('click', function () { me.$editWindow.modal('hide'); });
+            this.$container.find('#btnEditRowCanc').on('click', function () {
+                me.$editWindow.modal('hide');
+            });
             this.$container.find('#btnEditRowOk').on('click', function () { me.rowEditOk(); });
-            this.$editWindow.on('hidden.bs.modal', function (e) { me.rowEditor.reset(); });
+            this.$editWindow.on('hidden.bs.modal', function (e) {
+                me.rowEditor.reset();
+                me.$editWindow.off("keyup");
+            });
 
             this._doML();
             if (callB) callB();
@@ -181,6 +186,13 @@
             this.rowEditor.reset();
             if (row)
                 this.rowEditor.setRow(row);
+
+            var me = this;
+            this.$editWindow.on("keyup", function (evt) {
+                if (evt.keyCode == 13) {
+                    me.rowEditOk();
+                }
+            });
         }
 
         DataEditorJQX.prototype.destroy = function () {
