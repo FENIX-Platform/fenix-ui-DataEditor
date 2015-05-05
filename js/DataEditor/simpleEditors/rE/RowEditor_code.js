@@ -44,24 +44,29 @@ function ($, jqx, mlRes, rowEditorBase) {
             autoComplete: true,
             searchMode: 'containsignorecase',
             renderer: function (index, label, value) {
+/*                console.log("me.codelists");
+                console.log(me.codelists);*/
+
                 if (me.codelists[0].metadata.levels == 1)
                     return label;
-                switch (me.codelists[0].data[index].level) {
-                    case 1:
-                        return '<span class="cl_lev1">' + label + '</span>';
-                        break;
-                    case 2:
-                        return '<span class="cl_lev2">&nbsp;' + label + '</span>';
-                        break;
-                    case 3:
-                        return '<span class="cl_lev3">&nbsp;&nbsp;' + label + '</span>';
-                        break;
-                    case 4:
-                        return '<span class="cl_lev4">&nbsp;&nbsp;&nbsp;' + label + '</span>';
-                        break;
-                    default:
-                        return '<span class="cl_lev5">&nbsp;&nbsp;&nbsp;&nbsp;' + label + '</span>';
-                        break;
+                if (me.codelists[0].data[index]){
+                    switch (me.codelists[0].data[index].level) {
+                        case 1:
+                            return '<span class="cl_lev1">' + label + '</span>';
+                            break;
+                        case 2:
+                            return '<span class="cl_lev2">&nbsp;' + label + '</span>';
+                            break;
+                        case 3:
+                            return '<span class="cl_lev3">&nbsp;&nbsp;' + label + '</span>';
+                            break;
+                        case 4:
+                            return '<span class="cl_lev4">&nbsp;&nbsp;&nbsp;' + label + '</span>';
+                            break;
+                        default:
+                            return '<span class="cl_lev5">&nbsp;&nbsp;&nbsp;&nbsp;' + label + '</span>';
+                            break;
+                    }
                 }
             }
         });
