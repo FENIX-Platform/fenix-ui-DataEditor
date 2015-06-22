@@ -93,7 +93,7 @@
                     me.$dataGrid.trigger(EVT_GRID_RENDERED);
                 }
             });
-            me.rowEditor.setColumns(this.cols, this.codelists);
+            this.rowEditor.setColumns(this.cols, this.codelists);
         }
 
         var createDatafields = function (cols, lang, lblPostfix) {
@@ -419,12 +419,24 @@
         function convertCodelists(codelists, lang) {
             var toRet = {};
             for (var cl in codelists) {
-                toRet[cl] = { metadata: { levels: codelists[cl].metadata.meContent.seCodeList.numberOfLevels } };
-                toRet[cl].data = convertCodes(toRet[cl].metadata.levels, codelists[cl].data, lang);
+                //toRet[cl] = { metadata: { levels: codelists[cl].metadata.meContent.seCodeList.numberOfLevels } };
+                toRet[cl] = { metadata: {} };
+                //toRet[cl].data = convertCodes(toRet[cl].metadata.levels, codelists[cl].data, lang);
+                //toRet[cl] = {};
+                toRet[cl].data = convertCodes(codelists[cl].data, lang);
             }
             return toRet;
         }
-        function convertCodes(levels, codes, lang) {
+        //number of levels for a codelist is not always available.
+        //Always call the recursive flatten
+        function convertCodes(codes, lang) {
+            if (!codes)
+                return null;
+            var toRet = [];
+            recFlatten(codes, toRet, lang)
+            return toRet;
+        }
+        /*function convertCodes(levels, codes, lang) {
             if (!codes)
                 return null;
             var toRet = [];
@@ -436,7 +448,7 @@
                 recFlatten(codes, toRet, lang)
             }
             return toRet;
-        }
+        }*/
         function recFlatten(node, list, lang) {
             if (!node)
                 return;
