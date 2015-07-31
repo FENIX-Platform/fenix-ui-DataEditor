@@ -1,6 +1,5 @@
 ﻿define([
         'jquery',
-        'jqxall',
         'fx-DataEditor/js/DataEditor/simpleEditors/rE/RowEditor_bool',
         'fx-DataEditor/js/DataEditor/simpleEditors/rE/RowEditor_code',
         'fx-DataEditor/js/DataEditor/simpleEditors/rE/RowEditor_date',
@@ -9,7 +8,7 @@
         'fx-DataEditor/js/DataEditor/simpleEditors/rE/RowEditor_string',
         'fx-DataEditor/js/DataEditor/simpleEditors/rE/RowEditor_year'
 ],
-function ($, jqx, reBool, reCode, reDate, reMonth, reNumber, reString, reYear) {
+function ($, reBool, reCode, reDate, reMonth, reNumber, reString, reYear) {
     var defConfig = {};
 
     var RowEditorFactory = function (config) {

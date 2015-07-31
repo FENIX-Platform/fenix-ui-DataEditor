@@ -1,10 +1,3 @@
-/*
-config format:
-{
-
-}
-*/
-
 define([
     'jquery',
     'fx-DataEditor/js/DataEditor/DataEdit'
@@ -16,7 +9,6 @@ define([
         cfg = config;
         dataEdit = new DataEdit();
         dataEdit.render($(containerID), cfg, callB);
-        return data
     }
 
     function setColumns(columns, cLists) {

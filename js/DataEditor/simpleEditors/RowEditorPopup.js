@@ -1,19 +1,17 @@
 ﻿define([
         'jquery',
-        'jqxall',
         'fx-DataEditor/js/DataEditor/helpers/MLUtils',
         'fx-DataEditor/js/DataEditor/simpleEditors/rE/RowEditorFactory'
 ],
-function ($, jqx, MLUtils, reFactory) {
+function ($, MLUtils, reFactory) {
     var widgetName = "DataEditorPopup";
     var yMax = 3000;
     var yMin = 0;
-    //var EVT_VALUE_CHANGED = 'valueChanged.' + widgetName + '.fenix';
 
     var defConfig = { YMin: 0, YMax: 3000, decimalDigits: 5 };
     var reFactory = new reFactory();
 
-    var RowEditorPopupJQX = function (config) {
+    var RowEditorPopup = function (config) {
         this.config = {};
         $.extend(true, this.config, defConfig, config);
 
@@ -29,11 +27,11 @@ function ($, jqx, MLUtils, reFactory) {
         this.uidInEdit = -1;
     };
 
-    RowEditorPopupJQX.prototype.render = function (container, config) {
+    RowEditorPopup.prototype.render = function (container, config) {
         $.extend(true, this.config, config);
         this.$window = container;
     }
-    RowEditorPopupJQX.prototype.setColumns = function (cols, codelists) {
+    RowEditorPopup.prototype.setColumns = function (cols, codelists) {
         this.cols = cols;
         this.codelists = codelists;
         if (!cols) {
@@ -42,7 +40,7 @@ function ($, jqx, MLUtils, reFactory) {
         this.createStrucure();
     }
 
-    RowEditorPopupJQX.prototype.createStrucure = function () {
+    RowEditorPopup.prototype.createStrucure = function () {
         this.editors = [];
 
         var $tbl = this.$window.find('#tblRowEditor');
@@ -99,7 +97,7 @@ function ($, jqx, MLUtils, reFactory) {
     function generateEditFiledId(id) {
         return 'trRowEdit_' + id;
     }
-    RowEditorPopupJQX.prototype.reset = function (row) {
+    RowEditorPopup.prototype.reset = function (row) {
         this.uidInEdit = -1;
         if (!this.cols)
             return;
@@ -108,7 +106,7 @@ function ($, jqx, MLUtils, reFactory) {
         }
     }
 
-    RowEditorPopupJQX.prototype.updateValidationHelp = function () {
+    RowEditorPopup.prototype.updateValidationHelp = function () {
         if (!this.cols)
             return;
         for (var i = 0; i < this.cols.length; i++) {
@@ -117,14 +115,14 @@ function ($, jqx, MLUtils, reFactory) {
         }
     }
 
-    RowEditorPopupJQX.prototype.isValid = function () {
+    RowEditorPopup.prototype.isValid = function () {
         for (var i = 0; i < this.cols.length; i++)
             if (!this.editors[i].isValid())
                 return false;
         return true;
     }
 
-    RowEditorPopupJQX.prototype.setRow = function (row) {
+    RowEditorPopup.prototype.setRow = function (row) {
         this.reset();
         if (!this.cols)
             throw new Error('cannot set row when columns are null');
@@ -139,7 +137,7 @@ function ($, jqx, MLUtils, reFactory) {
             else
                 throw new Error('Editor cannot be null for dataType ' + this.cols[i].dataType);
     }
-    RowEditorPopupJQX.prototype.getRow = function (row) {
+    RowEditorPopup.prototype.getRow = function (row) {
         if (!this.cols)
             throw new Error('cannot get row when columns are null');
         var toRet = { uid: this.uidInEdit };
@@ -148,12 +146,12 @@ function ($, jqx, MLUtils, reFactory) {
         return toRet;
     }
 
-    RowEditorPopupJQX.prototype.destroy = function () {
+    RowEditorPopup.prototype.destroy = function () {
         if (!this.cols)
             return;
         for (var i = 0; i < this.cols.length; i++)
             this.editors[i].destroy();
     }
 
-    return RowEditorPopupJQX;
+    return RowEditorPopup;
 });

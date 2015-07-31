@@ -1,13 +1,13 @@
 ﻿define([
         'jquery',
         'jqxall',
-        'fx-DataEditor/js/DataEditor/simpleEditors/RowEditorPopupJQX',
-        'text!fx-DataEditor/templates/DataEditor/simpleEditors/DataEditorJQX.htm',
+        'fx-DataEditor/js/DataEditor/simpleEditors/RowEditorPopup',
+        'text!fx-DataEditor/templates/DataEditor/simpleEditors/DataEditor.htm',
         'i18n!fx-DataEditor/multiLang/DataEditor/nls/ML_DataEdit',
         'fx-DataEditor/js/DataEditor/helpers/MLUtils',
         'bootstrap'
 ],
-    function ($, jqx, RowEditorPopupJQX, DataEditorJQXHTML, mlRes, MLUtils) {
+    function ($, jqx, RowEditorPopup, DataEditorHTML, mlRes, MLUtils) {
         var widgetName = "DataEditor";
         var EVT_VALUE_CHANGED = 'valueChanged.' + widgetName + '.fenix';
         var EVT_GRID_RENDERED = 'gridRendered.' + widgetName + '.fenix';
@@ -23,7 +23,7 @@
             this.config = {};
             $.extend(true, this.config, defConfig, config);
 
-            this.rowEditor = new RowEditorPopupJQX();
+            this.rowEditor = new RowEditorPopup();
 
             this.$container;
             this.$editWindow;
@@ -42,7 +42,7 @@
             $.extend(true, this.config, config);
 
             this.$container = container;
-            this.$container.html(DataEditorJQXHTML);
+            this.$container.html(DataEditorHTML);
             this.$dataGrid = this.$container.find('#divDataGrid');
             this.initGrid();
 
@@ -205,8 +205,12 @@
         }
 
         DataEditorJQX.prototype.rowEditOk = function () {
-            if (!this.rowEditor.isValid()) {
+            /*if (!this.rowEditor.isValid()) {
                 this.rowEditor.updateValidationHelp()
+                return;
+            }*/
+            if (!this.rowEditor.isValid()) {
+                this.rowEditor.updateValidationHelp();
                 return;
             }
             var row = this.rowEditor.getRow();
