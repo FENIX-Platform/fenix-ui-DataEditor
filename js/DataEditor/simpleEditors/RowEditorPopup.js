@@ -123,6 +123,7 @@ function ($, MLUtils, reFactory) {
     }
 
     RowEditorPopup.prototype.setRow = function (row) {
+        /*
         this.reset();
         if (!this.cols)
             throw new Error('cannot set row when columns are null');
@@ -136,13 +137,30 @@ function ($, MLUtils, reFactory) {
             }
             else
                 throw new Error('Editor cannot be null for dataType ' + this.cols[i].dataType);
+                */
+
+        this.reset();
+        if (!this.cols)
+            throw new Error('cannot set row when columns are null');
+        if (row.uid != 'undefined')
+            this.uidInEdit = row.uid;
+        else
+            this.uidInEdit = -1;
+        for (var i = 0; i < this.cols.length; i++)
+            if (this.editors[i]) {
+                //this.editors[i].setValue(row[this.cols[i].id]);
+                this.editors[i].setValue(row.data[i]);
+            }
+            else
+                throw new Error('Editor cannot be null for dataType ' + this.cols[i].dataType);
     }
     RowEditorPopup.prototype.getRow = function (row) {
         if (!this.cols)
             throw new Error('cannot get row when columns are null');
-        var toRet = { uid: this.uidInEdit };
+        var toRet = { uid: this.uidInEdit, data: [] };
         for (var i = 0; i < this.cols.length; i++)
-            toRet[this.cols[i].id] = this.editors[i].getValue();
+            //toRet[this.cols[i].id] = this.editors[i].getValue();
+            toRet.data[i] = this.editors[i].getValue();
         return toRet;
     }
 

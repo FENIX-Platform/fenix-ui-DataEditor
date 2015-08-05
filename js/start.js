@@ -11,8 +11,8 @@ define([
         dataEdit.render($(containerID), cfg, callB);
     }
 
-    function setColumns(columns, cLists) {
-        dataEdit.setColumns(columns, cLists);
+    function setColumns(columns, cLists, callB) {
+        dataEdit.setColumns(columns, cLists, callB);
     }
 
     function getData() { return dataEdit.getData(); }

@@ -1,20 +1,39 @@
 ﻿define([
         'jquery',
-        'jqxall',
         'fx-DataEditor/js/DataEditor/simpleEditors/RowEditorPopup',
         'text!fx-DataEditor/templates/DataEditor/simpleEditors/DataEditor.htm',
         'i18n!fx-DataEditor/multiLang/DataEditor/nls/ML_DataEdit',
         'fx-DataEditor/js/DataEditor/helpers/MLUtils',
-        'bootstrap'
+        'bootstrap',
+        'amplify'
 ],
-    function ($, jqx, RowEditorPopup, DataEditorHTML, mlRes, MLUtils) {
+    function ($, RowEditorPopup, DataEditorHTML, mlRes, MLUtils) {
         var widgetName = "DataEditor";
-        var EVT_VALUE_CHANGED = 'valueChanged.' + widgetName + '.fenix';
-        var EVT_GRID_RENDERED = 'gridRendered.' + widgetName + '.fenix';
-        var EVT_ROW_ADDED = 'rowAdded.' + widgetName + '.fenix';
-        var EVT_ROW_DELETED = 'rowDeleted.' + widgetName + '.fenix';
 
-        var defConfig = {};
+
+        var defConfig = {
+            thButtons: "<th>E</th><th>D</th>"
+        };
+        var e = {
+            EVT_VALUE_CHANGED: 'valueChanged.' + widgetName + '.fenix',
+            EVT_GRID_RENDERED: 'gridRendered.' + widgetName + '.fenix',
+            EVT_ROW_ADDED: 'rowAdded.' + widgetName + '.fenix',
+            EVT_ROW_DELETED: 'rowDeleted.' + widgetName + '.fenix'
+        };
+        var h = {
+            divDataGrid: '#divDataGrid',
+            divRowEditorPopup: '#divRowEditorPopup',
+            btnEditRowCanc: '#btnEditRowCanc',
+            btnEditRowOk: '#btnEditRowOk',
+            tblDataBody: '#tblDataBody',
+            tblDataHead: '#tblDataHead',
+            editButtonsClass: 'bE',
+            delButtonsClass: 'bD'
+        };
+        var html = {
+            btnEdit: '<button type="button" class="btn btn-default bE" data-rid=%idx%><span class="glyphicon glyphicon-pencil"></span></button>',
+            btnDel: '<button type="button" class="btn btn-default bD"data-rid=%idx%><span class="glyphicon glyphicon-trash"></span></button>'
+        };
 
         var COLOR_ERROR = "error";
         var COLOR_DEFAULT = "default";
@@ -25,15 +44,15 @@
 
             this.rowEditor = new RowEditorPopup();
 
-            this.$container;
+            this.$cnt;
             this.$editWindow;
             this.$dataGrid;
             this.cols;
             this.codelists;
             this.data = [];
+            this.$tBody;
             this.editEnabled = true;
 
-            this.labelDataPostfix = "_lbl";
             this.lang = 'EN';
         };
 
@@ -41,145 +60,47 @@
         DataEditorJQX.prototype.render = function (container, config, callB) {
             $.extend(true, this.config, config);
 
-            this.$container = container;
-            this.$container.html(DataEditorHTML);
-            this.$dataGrid = this.$container.find('#divDataGrid');
-            this.initGrid();
+            this.$cnt = container;
+            this.$cnt.html(DataEditorHTML);
+            this.$dataGrid = this.$cnt.find(h.divDataGrid);
 
-            this.$editWindow = this.$container.find('#divRowEditorPopup');
+            this.$editWindow = this.$cnt.find(h.divRowEditorPopup);
             this.rowEditor.render(this.$editWindow);
 
             if (localStorage.getItem('locale'))
                 this.lang = localStorage.getItem('locale');
 
             var me = this;
-            this.$container.find('#btnEditRowCanc').on('click', function () {
+            this.$cnt.find(h.btnEditRowCanc).on('click', function () {
                 me.$editWindow.modal('hide');
             });
-            this.$container.find('#btnEditRowOk').on('click', function () { me.rowEditOk(); });
+            this.$cnt.find(h.btnEditRowOk).on('click', function () { me.rowEditOk(); });
             this.$editWindow.on('hidden.bs.modal', function (e) {
                 me.rowEditor.reset();
                 me.$editWindow.off("keyup");
             });
+            this.$tBody = this.$cnt.find(h.tblDataBody);
 
             this._doML();
             if (callB) callB();
         }
 
-        DataEditorJQX.prototype.initGrid = function () {
-            this.$dataGrid.jqxGrid({ width: "100%" });
-        }
-
-        DataEditorJQX.prototype.setColumns = function (cols, codelists) {
+        DataEditorJQX.prototype.setColumns = function (cols, codelists, callB) {
             this.cols = cols;
             this.codelists = convertCodelists(codelists, this.lang);
             if (!cols) {
                 return;
             }
+            //The table
+            this.updateTableHeader();
 
-            var me = this;
-            var valsDataSource = {
-                localdata: this.data,
-                datatype: "array",
-                datafields: createDatafields(this.cols, this.config.dataLang, this.labelDataPostfix)
-            };
-            var valsDataAdapter = new $.jqx.dataAdapter(valsDataSource);
-            this.$dataGrid.jqxGrid({
-                editable: false,
-                source: valsDataAdapter,
-                columns: this.createTableColumns(),
-                columnsresize: true,
-                rendered: function () {
-                    me.$dataGrid.trigger(EVT_GRID_RENDERED);
-                }
-            });
+            //The row editor
             this.rowEditor.setColumns(this.cols, this.codelists);
-        }
-
-        var createDatafields = function (cols, lang, lblPostfix) {
-            var toRet = [];
-            for (var i = 0; i < cols.length; i++) {
-                toRet.push({ name: cols[i].id, type: 'string' });
-                if (cols[i].dataType == 'code')
-                    toRet.push({ name: cols[i].id + lblPostfix, type: 'string' });
-            }
-            return toRet;
-        }
-
-        DataEditorJQX.prototype.createTableColumns = function () {
-            var toRet = [];
-            for (var i = 0; i < this.cols.length; i++) {
-                var toAdd = {
-                    text: MLUtils_getAvailableString(this.cols[i].title, this.config.dataLang),
-                    datafield: this.cols[i].id,
-                };
-                switch (this.cols[i].dataType) {
-                    case 'code':
-                        toAdd.displayfield = this.cols[i].id + this.labelDataPostfix;
-                        break;
-                    case 'boolean':
-                        toAdd.columntype = 'checkbox';
-                        break;
-                    case 'date':
-                        toAdd.cellsrenderer = function (row, colField, val, defaultHtml, colProperties) {
-                            if (!val)
-                                return '';
-                            val = "" + val;
-                            //return val.substring(0, 2) + "-" + val.substring(2, 4) + "-" + val.substring(4, 10);
-                            return val.substring(6, 8) + "-" + val.substring(4, 6) + "-" + val.substring(0, 4);
-                        }
-                        break;
-                    case 'month':
-                        toAdd.cellsrenderer = function (row, colField, val, defaultHtml, colProperties) {
-                            if (!val)
-                                return '';
-                            val = "" + val;
-                            return val.substring(4, 6) + "-" + val.substring(0, 4);
-                        }
-                        break;
-                    case 'number':
-                    case 'percentage':
-                        toAdd.columntype = 'number';
-                        break;
-                }
-                toRet.push(toAdd);
-            }
-
-            //edit btn
-            var me = this;
-            var editCol = {
-                text: '', datafield: 'edit', columntype: 'button',
-                cellsrenderer: function () { return mlRes.edit; },
-                buttonclick: function (row) {
-                    var dataRow = me.$dataGrid.jqxGrid('getrowdata', row);
-                    me._showEditWindow(dataRow);
-                }
-            }
-            var delCol = {
-                text: '', datafield: 'delete', columntype: 'button',
-                cellsrenderer: function () { return mlRes.delete; },
-                buttonclick: function (row) {
-                    var dataRow = me.$dataGrid.jqxGrid('getrowdata', row);
-                    var res = confirm(mlRes.confirmDelete);
-                    if (res) {
-                        var id = me.$dataGrid.jqxGrid('getrowid', row);
-                        me.$dataGrid.jqxGrid('deleterow', id);
-                        var evtArgs = {};
-                        evtArgs.allData = me.tableRowsToD3SData();
-                        me.$dataGrid.trigger(EVT_ROW_DELETED, evtArgs);
-                    }
-                }
-            }
-            toRet.push(editCol);
-            toRet.push(delCol);
-
-            var colW = 100 / toRet.length + "%";
-            for (i = 0; i < toRet.length; i++)
-                toRet[i].width = colW;
-
-            return toRet;
-        }
-
+            if (callB) callB();
+        };
+        var createTH = function (label) {
+            return '<th>' + label + '</th>';
+        };
 
         DataEditorJQX.prototype._showEditWindow = function (row) {
             this.$editWindow.modal('show');
@@ -196,48 +117,39 @@
         }
 
         DataEditorJQX.prototype.destroy = function () {
-            this.$container.find('#btnEditRowCanc').off('click');
-            this.$container.find('#btnEditRowOk').off('click');
+            this.$cnt.find(h.btnEditRowCanc).off('click');
+            this.$cnt.find(h.btnEditRowOk).off('click');
             this.$editWindow.off('hidden.bs.modal');
 
-            this.$dataGrid.jqxGrid('destroy');
             this.rowEditor.destroy();
+
+            this.$tBody.find('.' + h.editButtonsClass).off('click');
+            this.$tBody.find('.' + h.delButtonsClass).off('click');
+            this.$tBody.html('');
         }
 
         DataEditorJQX.prototype.rowEditOk = function () {
-            /*if (!this.rowEditor.isValid()) {
-                this.rowEditor.updateValidationHelp()
-                return;
-            }*/
             if (!this.rowEditor.isValid()) {
                 this.rowEditor.updateValidationHelp();
                 return;
             }
             var row = this.rowEditor.getRow();
-            //Add label to codes
-            addLabelsToData(this.cols, this.codelists, [row], this.labelDataPostfix, this.config.dataLang);
-            if (row.uid != -1) {
-                this.$dataGrid.jqxGrid('updaterow', row.uid, row);
+            if (row.uid != -1) {//Edit
+                this.data[row.uid] = row.data;
+                var evtArgs = {};
+                evtArgs.newData = row.data;
+                evtArgs.allData = this.data;
+                amplify.publish(e.EVT_VALUE_CHANGED, evtArgs);
+            }
+            else {//New
+                this.data.push(row.data);
 
                 var evtArgs = {};
-                evtArgs.changed = {};
-                evtArgs.newData = this.tableRowToD3SData(row);
-                evtArgs.allData = this.tableRowsToD3SData();
-                this.$dataGrid.trigger(EVT_VALUE_CHANGED, evtArgs)
+                evtArgs.allData = this.data;
+                amplify.publish(e.EVT_ROW_ADDED, evtArgs);
             }
-            else {
-                this.$dataGrid.jqxGrid('addrow', null, row);
-                var evtArgs = {};
-                evtArgs.allData = this.tableRowsToD3SData();
-                this.$dataGrid.trigger(EVT_ROW_ADDED, evtArgs);
-
-                //Bug in JQXGrid? The grids are not rendered properly when the grid starts with null data.
-                //Call a render only on the first dataRow added
-                if (evtArgs.allData.length == 1) {
-                    this.$dataGrid.jqxGrid('render');
-                }
-            }
-
+            //DO NOT UPDATE ALL THE TABLE!!!
+            this.updateTable();
             this.$editWindow.modal('hide');
         }
 
@@ -249,29 +161,11 @@
             this.editEnabled = editable;
             if (!this.cols)
                 return;
-            if (typeof (editable) != 'undefined') {
-                var colsW;
-                if (editable) {
-                    colsW = (100 / (this.cols.length + 2)) + '%';
-                    this.$dataGrid.jqxGrid('showcolumn', 'edit');
-                    this.$dataGrid.jqxGrid('showcolumn', 'delete');
-
-                    this.$dataGrid.jqxGrid('setcolumnproperty', 'edit', 'width', colsW);
-                    this.$dataGrid.jqxGrid('setcolumnproperty', 'delete', 'width', colsW);
-                }
-                else {
-                    colsW = (100 / this.cols.length) + '%';
-                    this.$dataGrid.jqxGrid('hidecolumn', 'edit');
-                    this.$dataGrid.jqxGrid('hidecolumn', 'delete');
-                }
-                for (var i = 0; i < this.cols.length; i++)
-                    this.$dataGrid.jqxGrid('setcolumnproperty', this.cols[i].id, 'width', colsW);
-                this.$dataGrid.jqxGrid('render');
-            }
-            else
+            if (typeof (editable) == 'undefined')
                 return this.editEnabled;
+            this.updateTableHeader();
+            this.updateTable();
         }
-
 
         //DATA
         DataEditorJQX.prototype.setData = function (data) {
@@ -280,50 +174,78 @@
             this.data.length = 0;
             if (!data)
                 return;
-
-            for (var i = 0; i < data.length; i++)
-                this.data[i] = this.D3SDataToTableRow(data[i]);
-            addLabelsToData(this.cols, this.codelists, this.data, this.labelDataPostfix, this.config.dataLang);
-            this.$dataGrid.jqxGrid('updatebounddata');
-        }
-
-        DataEditorJQX.prototype.D3SDataToTableRow = function (row) {
-            var toRet = {};
+            this.data = data;
+            this.updateTable();
+        };
+        DataEditorJQX.prototype.updateTableHeader = function () {
+            var tHead = this.$cnt.find(h.tblDataHead);
+            tHead.html('');
             for (var i = 0; i < this.cols.length; i++) {
-                toRet[this.cols[i].id] = row[i];
+                //MLUtils get multilanguage string
+                tHead.append(createTH(this.cols[i].title[this.lang]));
             }
+            if (this.editEnabled) {
+                tHead.append(this.config.thButtons);
+            }
+        };
+        DataEditorJQX.prototype.updateTable = function () {
+            this.$tBody.html('');
+            if (!this.data)
+                return;
+            for (var i = 0; i < this.data.length; i++) {
+                this.$tBody.append(createTblRow(i, this.cols, this.codelists, this.data[i], this.editEnabled));
+            }
+            //Attach all the events
+            if (this.editEnabled) {
+                var me = this;
+                this.$tBody.find('.' + h.editButtonsClass).on('click', function () {
+                    var rowId = $(this).data('rid');
+                    me._showEditWindow({ uid: rowId, data: me.data[rowId] });
+                });
+                this.$tBody.find('.' + h.delButtonsClass).on('click', function () {
+                    var res = confirm(mlRes.confirmDelete);
+                    if (!res)
+                        return;
+                    me.deleteRow($(this).data('rid'));
+                });
+            }
+        };
+        DataEditorJQX.prototype.deleteRow = function (index) {
+            this.data.splice(index, 1);
+            this.updateTable();
+            amplify.publish(e.EVT_ROW_DELETED, this.data);
+        };
+
+        function createTblRow(idx, cols, codelists, row, editControls) {
+            var toRet = '<tr>';
+            for (var i = 0; i < row.length; i++) {
+                toRet += '<td>';
+                if (cols[i].dataType == 'code')
+                    toRet += addLabelToData(cols[i], codelists, row[i], this.lang);
+                else
+                    toRet += row[i];
+                toRet += '</td>';
+            }
+            if (editControls) {
+                toRet += '<td>' + html.btnEdit.replace('%idx%', idx) + '</td>';
+                toRet += '<td>' + html.btnDel.replace('%idx%', idx) + '</td>';
+            }
+            toRet += '</tr>';
             return toRet;
-        }
-
-
+        };
         var getCodelistUid = function (domain) {
             //Make it handle multiple codelsits
             var cListUid = domain.codes[0].idCodeList;
             if (domain.codes[0].version)
                 cListUid += "|" + domain.codes[0].version;
             return cListUid;
-        }
-        var addLabelsToData = function (cols, codelists, data, labelPostfix, lang) {
-            if (!cols)
-                return;
-            if (!data)
-                return;
-            //each coded column
-            for (var i = 0; i < cols.length; i++) {
-                if (cols[i].dataType != 'code')
-                    continue;
-                //TODO Make it handle multiple Codelists
-                var cListUid = getCodelistUid(cols[i].domain);
-                for (var d = 0; d < data.length; d++) {
-                    //data has an entry for the column (ex. ITEM=57) -> look for the label
-                    if (data[d][cols[i].id]) {
-                        var lbl = getCodeLabel(codelists[cListUid].data, data[d][cols[i].id]);
-                        if (lbl) data[d][cols[i].id + labelPostfix] = lbl;
-                    }
-                }
-            }
-        }
-
+        };
+        function addLabelToData(col, codelists, data, lang) {
+            //TODO Make it handle multiple Codelists
+            var cListUID = getCodelistUid(col.domain);
+            var lbl = getCodeLabel(codelists[cListUID].data, data);
+            return lbl;
+        };
         var getCodeLabel = function (codes, code) {
             if (!codes)
                 return null;
@@ -332,89 +254,54 @@
                     //return codes[i].title + " [" + code + "]";
                     return codes[i].title;
             return null;
-        }
-
-
-        DataEditorJQX.prototype.tableRowToD3SData = function (row) {
-            var toRet = [];
-            for (var c = 0; c < this.cols.length; c++) {
-                if (!row[this.cols[c].id] == null) {
-                    toRet.push(null);
-                }
-                else {
-                    switch (this.cols[c].dataType) {
-                        case "year":
-                        case "month":
-                        case "date":
-                            toRet.push(parseInt(row[this.cols[c].id]));
-                            break;
-                        case "number":
-                            toRet.push(parseFloat(row[this.cols[c].id]));
-                            break;
-                        default:
-                            toRet.push(row[this.cols[c].id]);
-                            break;
-                    }
-                }
-            }
-            return toRet;
-        }
-
-        DataEditorJQX.prototype.tableRowsToD3SData = function () {
-            var rows = this.$dataGrid.jqxGrid('getrows');
-            var toRet = [];
-            for (var i = 0; i < rows.length; i++) {
-                toRet.push(this.tableRowToD3SData(rows[i]));
-            }
-            return toRet;
-        }
+        };
 
         DataEditorJQX.prototype.getData = function () {
-            return this.tableRowsToD3SData();
+            return this.data;
         }
         //END Data
 
 
         //Validation results
         DataEditorJQX.prototype.showValidationResults = function (valRes) {
-            this.resetValidationResults();
-
-            if (!valRes)
-                return;
-            for (var i = 0; i < valRes.length; i++) {
-                if (valRes[i].colId)
-                    this.setCellColor(valRes[i].dataIndex, valRes[i].colId, COLOR_ERROR);
-                else
-                    this.setRowColor(valRes[i].dataIndex, COLOR_ERROR);
-            }
+            /* this.resetValidationResults();
+        
+             if (!valRes)
+                 return;
+             for (var i = 0; i < valRes.length; i++) {
+                 if (valRes[i].colId)
+                     this.setCellColor(valRes[i].dataIndex, valRes[i].colId, COLOR_ERROR);
+                 else
+                     this.setRowColor(valRes[i].dataIndex, COLOR_ERROR);
+             }*/
         }
 
         DataEditorJQX.prototype.resetValidationResults = function () {
-            var rowCount = this.$dataGrid.jqxGrid('getrows').length;
+            /*var rowCount = this.$dataGrid.jqxGrid('getrows').length;
             for (var i = 0; i < rowCount; i++)
-                this.setRowColor(i, COLOR_DEFAULT);
+                this.setRowColor(i, COLOR_DEFAULT);*/
         }
 
         DataEditorJQX.prototype.setRowColor = function (rowIdx, color) {
-            var cols = this.$dataGrid.jqxGrid('columns');
-
+            /*var cols = this.$dataGrid.jqxGrid('columns');
+        
             for (var i = 0; i < cols.records.length; i++)
-                this.setCellColor(rowIdx, cols.records[i].datafield, color);
+                this.setCellColor(rowIdx, cols.records[i].datafield, color);*/
         }
 
         DataEditorJQX.prototype.setCellColor = function (rowIdx, colId, color) {
-            var htmlRows = this.$dataGrid.find("div[role='row']");
+            /*var htmlRows = this.$dataGrid.find("div[role='row']");
             var htmlRow = htmlRows[rowIdx];
             var colIdx = this.$dataGrid.jqxGrid('getcolumnindex', colId);
             var tds = $(htmlRow).find("div[role='gridcell']");
-            this.changeCellBackgroundColor(tds[colIdx], color);
+            this.changeCellBackgroundColor(tds[colIdx], color);*/
         }
 
         DataEditorJQX.prototype.changeCellBackgroundColor = function (htmlCell, color) {
-            if (color == COLOR_ERROR)
+            /*if (color == COLOR_ERROR)
                 $(htmlCell).addClass("fx-red-cell");
             else if (color == COLOR_DEFAULT)
-                $(htmlCell).removeClass("fx-red-cell");
+                $(htmlCell).removeClass("fx-red-cell");*/
         }
 
         //END Validation results
@@ -423,10 +310,7 @@
         function convertCodelists(codelists, lang) {
             var toRet = {};
             for (var cl in codelists) {
-                //toRet[cl] = { metadata: { levels: codelists[cl].metadata.meContent.seCodeList.numberOfLevels } };
                 toRet[cl] = { metadata: {} };
-                //toRet[cl].data = convertCodes(toRet[cl].metadata.levels, codelists[cl].data, lang);
-                //toRet[cl] = {};
                 toRet[cl].data = convertCodes(codelists[cl].data, lang);
             }
             return toRet;
@@ -472,8 +356,8 @@
         //End Codelists helpers
 
         DataEditorJQX.prototype._doML = function () {
-            this.$container.find('#btnEditRowCanc').html(mlRes.cancel);
-            this.$container.find('#btnEditRowOk').html(mlRes.ok);
+            this.$cnt.find('#btnEditRowCanc').html(mlRes.cancel);
+            this.$cnt.find('#btnEditRowOk').html(mlRes.ok);
         }
 
         return DataEditorJQX;

@@ -1,9 +1,6 @@
 ﻿define({
     "ok": "OkFR",
     "cancel": "CancelFR",
-    "add": "AddFR",
-    "delete": "DeleteFR",
-    "edit": "EditFR",
     "confirmDelete": "DeleteFR?",
     "yearInterval": "Year must be a number FR",
     "monthInterval": "Month must be a number (1..12) FR",
