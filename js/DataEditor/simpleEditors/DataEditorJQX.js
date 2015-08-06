@@ -300,6 +300,7 @@
             return cListUid;
         }
         var addLabelsToData = function (cols, codelists, data, labelPostfix, lang) {
+            console.log("addingLabelsToData");
             if (!cols)
                 return;
             if (!data)
@@ -373,6 +374,7 @@
 
         //Validation results
         DataEditorJQX.prototype.showValidationResults = function (valRes) {
+            return;
             this.resetValidationResults();
 
             if (!valRes)
