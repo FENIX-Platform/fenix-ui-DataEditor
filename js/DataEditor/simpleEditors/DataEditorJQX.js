@@ -16,7 +16,6 @@
         };
         var e = {
             EVT_VALUE_CHANGED: 'valueChanged.' + widgetName + '.fenix',
-            EVT_GRID_RENDERED: 'gridRendered.' + widgetName + '.fenix',
             EVT_ROW_ADDED: 'rowAdded.' + widgetName + '.fenix',
             EVT_ROW_DELETED: 'rowDeleted.' + widgetName + '.fenix'
         };
@@ -180,6 +179,7 @@
         DataEditorJQX.prototype.updateTableHeader = function () {
             var tHead = this.$cnt.find(h.tblDataHead);
             tHead.html('');
+            tHead.append('<th style="display:none;"></th>');
             for (var i = 0; i < this.cols.length; i++) {
                 //MLUtils get multilanguage string
                 tHead.append(createTH(this.cols[i].title[this.lang]));
@@ -209,15 +209,34 @@
                     me.deleteRow($(this).data('rid'));
                 });
             }
+
+            //var row = this.getRowByRowId('2');
+            //row.css('background-color', 'red');
         };
         DataEditorJQX.prototype.deleteRow = function (index) {
             this.data.splice(index, 1);
             this.updateTable();
             amplify.publish(e.EVT_ROW_DELETED, this.data);
         };
+        DataEditorJQX.prototype.getRowByRowId = function (rowId) {
+            //Test which one is faster
+            /*return this.$tBody.find('tr td:first-child').filter(function () {
+                console.log($(this).html()==rowId);
+                return ($(this).html() == rowId);
+            }).closest('tr');*/
+
+            var rows = this.$tBody.find('tr');
+            for (var i = 0; i < rows.length; i++) {
+                if (rowId == $(rows[i]).find('td:first').html())
+                    return $(rows[i]);
+            };
+            return null;
+        };
 
         function createTblRow(idx, cols, codelists, row, editControls) {
             var toRet = '<tr>';
+            //toRet += '<td style="display:none;">' + idx + '</td>'
+            toRet += '<td>' + idx + '</td>'
             for (var i = 0; i < row.length; i++) {
                 toRet += '<td>';
                 if (cols[i].dataType == 'code')
@@ -265,6 +284,17 @@
         //Validation results
         DataEditorJQX.prototype.showValidationResults = function (valRes) {
             /* this.resetValidationResults();
+             if (!valRes)
+                 return;
+             for (var i = 0; i < valRes.length; i++) {
+                 if (valRes[i].colId)
+                     this.setCellError(valRes[i].dataIndex, valRes[i].colId);
+                 else
+                     this.setRowError(valRes[i].dataIndex, valRes[i].colId);
+             }*/
+
+
+            /* this.resetValidationResults();
         
              if (!valRes)
                  return;
@@ -296,6 +326,18 @@
             var tds = $(htmlRow).find("div[role='gridcell']");
             this.changeCellBackgroundColor(tds[colIdx], color);*/
         }
+        DataEditorJQX.prototype.setCellError = function (rowIdx, colId) {
+            /*var colIndex = -1;
+            for (var i = 0; i < this.cols.length; i++) {
+                if (colId == this.cols[i]) {
+                    colIndex = i;
+                }
+            }
+            var row = $tBody.find('td:first');
+            console.log(row);*/
+
+
+        };
 
         DataEditorJQX.prototype.changeCellBackgroundColor = function (htmlCell, color) {
             /*if (color == COLOR_ERROR)

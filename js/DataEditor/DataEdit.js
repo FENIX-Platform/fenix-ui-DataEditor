@@ -5,12 +5,18 @@
 'fx-DataEditor/js/DataEditor/simpleEditors/DataEditorJQX',
 'fx-DataEditor/js/DataEditor/simpleEditors/ValidationResultsViewer',
 'fx-DataEditor/js/DataEditor/helpers/Data_Validator',
-'text!fx-DataEditor/templates/DataEditor/DataEdit.htm'
+'text!fx-DataEditor/templates/DataEditor/DataEdit.htm',
+'amplify'
 ],
 function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, DataEditHTML) {
 
     var widgetName = "DataEdit";
     var defConfig = {};
+    var e = {
+        dataEditorValueChanged: 'valueChanged.DataEditor.fenix',
+        dataEditorRowAdded: 'rowAdded.DataEditor.fenix',
+        dataEditorRowDeleted: 'rowDeleted.DataEditor.fenix'
+    };
 
     var DataEdit = function (config) {
         this.config = {};
@@ -52,7 +58,10 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
         var me = this;
 
         //Merge valueChanged, rowAdded and rowDeleted?
-        this.$dataEditor.on('valueChanged.DataEditor.fenix', function (evt, param) {
+        amplify.subscribe(e.dataEditorValueChanged, this, this.updateValidation);
+        amplify.subscribe(e.dataEditorRowAdded, this, this.updateValidation);
+        amplify.subscribe(e.dataEditorRowDeleted, this, this.updateValidation);
+        /*this.$dataEditor.on('valueChanged.DataEditor.fenix', function (evt, param) {
             me.changed = true;
             me.updateValidation(param.allData);
         });
@@ -63,10 +72,10 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
         this.$dataEditor.on('rowDeleted.DataEditor.fenix', function (evt, param) {
             me.changed = true;
             me.updateValidation(param.allData);
-        });
-        this.$dataEditor.on('gridRendered.DataEditor.fenix', function (evt, param) {
+        });*/
+        /*this.$dataEditor.on('gridRendered.DataEditor.fenix', function (evt, param) {
             me.updateValidation(me.data);
-        });
+        });*/
 
         this.$dataEditor.find('#btnAddRow').on('click', function (args) { me.dataEditor.newRow(); });
 
@@ -74,17 +83,19 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
             callB();
     }
 
+    DataEdit.prototype.updateValidation = function (evt) {
+        this.changed = true;
+        var val = new Data_Validator();
+        var valRes = val.validate(this.cols, evt.allData);
+        this.updateValRes(valRes);
+        this.dataEditor.showValidationResults(valRes);
+    };
+
+
     DataEdit.prototype.getValidationResults = function () {
         var val = new Data_Validator();
         return val.validate(this.cols, this.dataEditor.getData());
-    }
-
-    DataEdit.prototype.updateValidation = function (dataToValidate) {
-        var val = new Data_Validator();
-        var valRes = val.validate(this.cols, dataToValidate);
-        this.updateValRes(valRes);
-        this.dataEditor.showValidationResults(valRes);
-    }
+    };
 
     //Set columns and codelists
     DataEdit.prototype.setColumns = function (columns, codelists, callB) {
@@ -97,7 +108,7 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
         checkCodeColumnsAndCodelists(this.cols, this.codelists);
         this.dataEditor.setColumns(this.cols, this.codelists, callB);
         this.uiEnabled(true);
-    }
+    };
 
     DataEdit.prototype.uiEnabled = function (enabled) {
         if (enabled) {
@@ -108,7 +119,7 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
             this.$dataEditor.find('#btnAddRow').attr('disabled', 'disabled');
             this.$dataEditor.attr('disabled', 'disabled');
         }
-    }
+    };
 
     var checkCodeColumnsAndCodelists = function (cols, cLists) {
         if (!cols)
@@ -125,7 +136,7 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
                 if (!(cListId in cLists))
                     throw new Error("Codelist for the column " + cols[i].id + " missing");
             }
-    }
+    };
 
     DataEdit.prototype.getData = function () {
         var valRes = this.getValidationResults();
@@ -133,16 +144,16 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
             return this.dataEditor.getData();
         else
             return false;
-    }
+    };
     DataEdit.prototype.setData = function (data) {
         this.data = data;
         if (this.cols)
             this.dataEditor.setData(this.data);
         this.changed = false;
-    }
+    };
     DataEdit.prototype.hasChanged = function () {
         return this.changed;
-    }
+    };
 
     //Column Distincts
     DataEdit.prototype.getColumnsWithDistincts = function () {
@@ -178,7 +189,7 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
             }
         }
         return this.cols;
-    }
+    };
 
     var getColumnDistinct = function (data, idx) {
         var toRet = [];
@@ -188,7 +199,7 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
             if ($.inArray(data[i][idx], toRet) == -1)
                 toRet.push(data[i][idx]);
         return toRet;
-    }
+    };
     //End column Distincts
 
 
@@ -201,7 +212,7 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
             this.$valResView.show();
             this.valResView.setValidationResults(valRes);
         }
-    }
+    };
 
     DataEdit.prototype.isEditable = function (editable) {
         if (typeof (editable) != 'undefined') {
@@ -214,21 +225,24 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
         }
         else
             return this.editEnabled;
-    }
+    };
     DataEdit.prototype.destroy = function () {
-        this.$dataEditor.off('valueChanged.DataEditor.fenix');
+        /*this.$dataEditor.off('valueChanged.DataEditor.fenix');
         this.$dataEditor.off('rowAdded.DataEditor.fenix');
         this.$dataEditor.off('rowDeleted.DataEditor.fenix');
-        this.$dataEditor.off('gridRendered.DataEditor.fenix');
+        this.$dataEditor.off('gridRendered.DataEditor.fenix');*/
+        amplify.unsubscribe(e.dataEditorValueChanged, this.updateValidation);
+        amplify.unsubscribe(e.dataEditorRowAdded, this.updateValidation);
+        amplify.unsubscribe(e.dataEditorRowDeleted, this.updateValidation);
         this.$dataEditor.find('#btnAddRow').off('click');
         this.dataEditor.destroy();
-    }
+    };
     //END Connections
 
     //MultiLang
     DataEdit.prototype.doML = function () {
         this.$dataEditor.find('#btnAddRow').html(mlRes['add']);
-    }
+    };
     //END Multilang
 
     return DataEdit;
