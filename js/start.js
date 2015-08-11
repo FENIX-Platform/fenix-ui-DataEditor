@@ -14,9 +14,11 @@ define([
     function setColumns(columns, cLists, callB) {
         dataEdit.setColumns(columns, cLists, callB);
     }
+    function getColumns() { return dataEdit.getColumns(); }
 
     function getData() { return dataEdit.getData(); }
     function setData(data) { dataEdit.setData(data); }
+    function appendData(data) { dataEdit.appendData(data); }
     function getColumnsWithDistincts() { return dataEdit.getColumnsWithDistincts(); }
 
     function isEditable(editable) {
@@ -34,8 +36,10 @@ define([
     return {
         init: init,
         setColumns: setColumns,
+        getColumns: getColumns,
         getData: getData,
         setData: setData,
+        appendData: appendData,
         getColumnsWithDistincts: getColumnsWithDistincts,
         isEditable: isEditable,
         destroy: destroy,

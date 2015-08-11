@@ -176,6 +176,14 @@
             this.data = data;
             this.updateTable();
         };
+        DataEditorJQX.prototype.appendData = function (data) {
+            if (!this.cols)
+                throw new Error("Cannot append data without table structure, use setColumns before setData");
+            if (!data)
+                return;
+            Array.prototype.push.apply(this.data, data);
+            this.updateTable();
+        };
         DataEditorJQX.prototype.updateTableHeader = function () {
             var tHead = this.$cnt.find(h.tblDataHead);
             tHead.html('');
@@ -209,7 +217,6 @@
                     me.deleteRow($(this).data('rid'));
                 });
             }
-
             //var row = this.getRowByRowId('2');
             //row.css('background-color', 'red');
         };
@@ -235,8 +242,7 @@
 
         function createTblRow(idx, cols, codelists, row, editControls) {
             var toRet = '<tr>';
-            //toRet += '<td style="display:none;">' + idx + '</td>'
-            toRet += '<td>' + idx + '</td>'
+            toRet += '<td style="display:none;">' + idx + '</td>'
             for (var i = 0; i < row.length; i++) {
                 toRet += '<td>';
                 if (cols[i].dataType == 'code')
@@ -283,6 +289,7 @@
 
         //Validation results
         DataEditorJQX.prototype.showValidationResults = function (valRes) {
+
             /* this.resetValidationResults();
              if (!valRes)
                  return;
