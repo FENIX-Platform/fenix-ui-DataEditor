@@ -3,7 +3,7 @@
         'datetimepicker',
         'i18n!fx-DataEditor/multiLang/DataEditor/nls/ML_DataEdit',
         'fx-DataEditor/js/DataEditor/simpleEditors/rE/RowEditor_base',
-        'text!fx-DataEditor/templates/DataEditor/simpleEditors/RowEditorTime.html',
+        'text!fx-DataEditor/html/DataEditor/simpleEditors/RowEditorTime.html',
         'moment',
         'bootstrap'
 ],
@@ -57,10 +57,9 @@ function ($, datetimepicker, mlRes, rowEditorBase, RowEditorTimeHTML) {
         }
     };
     RowEditor_date.prototype.getValue = function () {
-        console.log('parent getValue');
         var dt = this.$datePicker.data('DateTimePicker').date();
         if (!dt)
-            return null;
+            return '';
         var d = "" + dt.date();
         var m = "" + (dt.month() + 1);
         var y = "" + dt.year();

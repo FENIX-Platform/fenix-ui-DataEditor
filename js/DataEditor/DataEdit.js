@@ -5,7 +5,7 @@
 'fx-DataEditor/js/DataEditor/simpleEditors/DataEditorJQX',
 'fx-DataEditor/js/DataEditor/simpleEditors/ValidationResultsViewer',
 'fx-DataEditor/js/DataEditor/helpers/Data_Validator',
-'text!fx-DataEditor/templates/DataEditor/DataEdit.htm',
+'text!fx-DataEditor/html/DataEditor/DataEdit.htm',
 'amplify'
 ],
 function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, DataEditHTML) {

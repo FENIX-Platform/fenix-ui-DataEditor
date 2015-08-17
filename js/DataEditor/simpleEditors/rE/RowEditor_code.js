@@ -103,7 +103,7 @@ function ($, mlRes, rowEditorBase) {
     RowEditor_code.prototype.getValue = function () {
         var toRet = this.$ddl.val();
         if (toRet == this.config.emptyEntryValue)
-            return null;
+            return '';
         return toRet;
     }
     /*RowEditor_code.prototype.getSelectedItem = function () {

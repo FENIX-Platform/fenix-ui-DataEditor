@@ -32,7 +32,7 @@ function ($, mlRes, rowEditorDate) {
     RowEditor_month.prototype.getValue = function () {
         var dt = this.$datePicker.data('DateTimePicker').date();
         if (!dt)
-            return null;
+            return '';
         var m = "" + (dt.month() + 1);
         var y = "" + dt.year();
         if (m.length == 1)

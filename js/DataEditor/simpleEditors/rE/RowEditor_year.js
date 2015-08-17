@@ -29,7 +29,7 @@ function ($, mlRes, rowEditorDate) {
     RowEditor_year.prototype.getValue = function () {
         var dt = this.$datePicker.data('DateTimePicker').date();
         if (!dt)
-            return null;
+            return '';
         return "" + dt.year();
     };
     RowEditor_year.prototype.validate = function () {

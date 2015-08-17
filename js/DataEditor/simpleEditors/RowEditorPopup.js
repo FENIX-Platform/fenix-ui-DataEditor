@@ -25,6 +25,8 @@ function ($, MLUtils, reFactory) {
 
         this.editors = [];
         this.uidInEdit = -1;
+
+        this.oldVal = null;
     };
 
     RowEditorPopup.prototype.render = function (container, config) {
@@ -104,6 +106,7 @@ function ($, MLUtils, reFactory) {
         for (var i = 0; i < this.cols.length; i++) {
             this.editors[i].reset();
         }
+        this.oldVal = null;
     }
 
     RowEditorPopup.prototype.updateValidationHelp = function () {
@@ -123,32 +126,16 @@ function ($, MLUtils, reFactory) {
     }
 
     RowEditorPopup.prototype.setRow = function (row) {
-        /*
         this.reset();
         if (!this.cols)
             throw new Error('cannot set row when columns are null');
+        this.oldVal = row;
         if (row.uid != 'undefined')
             this.uidInEdit = row.uid;
         else
             this.uidInEdit = -1;
         for (var i = 0; i < this.cols.length; i++)
             if (this.editors[i]) {
-                this.editors[i].setValue(row[this.cols[i].id]);
-            }
-            else
-                throw new Error('Editor cannot be null for dataType ' + this.cols[i].dataType);
-                */
-
-        this.reset();
-        if (!this.cols)
-            throw new Error('cannot set row when columns are null');
-        if (row.uid != 'undefined')
-            this.uidInEdit = row.uid;
-        else
-            this.uidInEdit = -1;
-        for (var i = 0; i < this.cols.length; i++)
-            if (this.editors[i]) {
-                //this.editors[i].setValue(row[this.cols[i].id]);
                 this.editors[i].setValue(row.data[i]);
             }
             else
@@ -159,11 +146,27 @@ function ($, MLUtils, reFactory) {
             throw new Error('cannot get row when columns are null');
         var toRet = { uid: this.uidInEdit, data: [] };
         for (var i = 0; i < this.cols.length; i++)
-            //toRet[this.cols[i].id] = this.editors[i].getValue();
             toRet.data[i] = this.editors[i].getValue();
         return toRet;
-    }
+    };
 
+    RowEditorPopup.prototype.changed = function () {
+        var newVal = this.getRow();
+
+        if (this.oldVal == null) {
+            for (var i = 0; i < this.cols.length; i++) {
+                if (newVal.data[i] != '')
+                    return true;
+            }
+        }
+        else {
+            for (var i = 0; i < this.cols.length; i++) {
+                if (newVal.data[i] != this.oldVal.data[i])
+                    return true;
+            }
+        }
+        return false;
+    };
     RowEditorPopup.prototype.destroy = function () {
         if (!this.cols)
             return;

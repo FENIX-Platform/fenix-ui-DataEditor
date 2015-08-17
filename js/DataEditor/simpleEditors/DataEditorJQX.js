@@ -1,7 +1,7 @@
 ﻿define([
         'jquery',
         'fx-DataEditor/js/DataEditor/simpleEditors/RowEditorPopup',
-        'text!fx-DataEditor/templates/DataEditor/simpleEditors/DataEditor.htm',
+        'text!fx-DataEditor/html/DataEditor/simpleEditors/DataEditor.htm',
         'i18n!fx-DataEditor/multiLang/DataEditor/nls/ML_DataEdit',
         'fx-DataEditor/js/DataEditor/helpers/MLUtils',
         'bootstrap',
@@ -69,6 +69,7 @@
             if (localStorage.getItem('locale'))
                 this.lang = localStorage.getItem('locale');
 
+            /*
             var me = this;
             this.$cnt.find(h.btnEditRowCanc).on('click', function () {
                 me.$editWindow.modal('hide');
@@ -78,6 +79,8 @@
                 me.rowEditor.reset();
                 me.$editWindow.off("keyup");
             });
+            */
+            this._bindEvents();
             this.$tBody = this.$cnt.find(h.tblDataBody);
 
             this._doML();
@@ -113,19 +116,37 @@
                     me.rowEditOk();
                 }
             });
-        }
+        };
 
-        DataEditorJQX.prototype.destroy = function () {
+        DataEditorJQX.prototype._bindEvents = function () {
+            var me = this;
+            this.$cnt.find(h.btnEditRowCanc).on('click', function () {
+                if (me.rowEditor.changed()) {
+                    if (!confirm(mlRes.unsavedData))
+                        return;
+                }
+                me.$editWindow.modal('hide');
+            });
+            this.$cnt.find(h.btnEditRowOk).on('click', function () { me.rowEditOk(); });
+            this.$editWindow.on('hidden.bs.modal', function (e) {
+                me.rowEditor.reset();
+                me.$editWindow.off("keyup");
+            });
+        };
+
+        DataEditorJQX.prototype._unbindEvents = function () {
             this.$cnt.find(h.btnEditRowCanc).off('click');
             this.$cnt.find(h.btnEditRowOk).off('click');
             this.$editWindow.off('hidden.bs.modal');
-
-            this.rowEditor.destroy();
-
             this.$tBody.find('.' + h.editButtonsClass).off('click');
             this.$tBody.find('.' + h.delButtonsClass).off('click');
+        };
+
+        DataEditorJQX.prototype.destroy = function () {
+            this._unbindEvents();
+            this.rowEditor.destroy();            
             this.$tBody.html('');
-        }
+        };
 
         DataEditorJQX.prototype.rowEditOk = function () {
             if (!this.rowEditor.isValid()) {
@@ -217,8 +238,6 @@
                     me.deleteRow($(this).data('rid'));
                 });
             }
-            //var row = this.getRowByRowId('2');
-            //row.css('background-color', 'red');
         };
         DataEditorJQX.prototype.deleteRow = function (index) {
             this.data.splice(index, 1);
@@ -405,8 +424,6 @@
         //End Codelists helpers
 
         DataEditorJQX.prototype._doML = function () {
-            this.$cnt.find('#btnEditRowCanc').html(mlRes.cancel);
-            this.$cnt.find('#btnEditRowOk').html(mlRes.ok);
         }
 
         return DataEditorJQX;

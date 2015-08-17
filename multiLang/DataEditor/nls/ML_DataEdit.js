@@ -1,10 +1,11 @@
 ﻿define({
     "root": {
-        "ok": "Ok",
-        "cancel": "Cancel",
+        //"ok": "Ok",
+        //"cancel": "Cancel",
         "confirmDelete": "Delete?",
-        "yearInterval": "Year must be a number ",
-        "monthInterval": "Month must be a number (1..12)",
+        "unsavedData": "Some changes are unsaved, cancel anyway?",
+        //"yearInterval": "Year must be a number ",
+        //"monthInterval": "Month must be a number (1..12)",
         "invalidNumber": "the number is not valid",
 
         "nullKey": "Key fields cannot be empty",

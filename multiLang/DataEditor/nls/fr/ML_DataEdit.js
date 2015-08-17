@@ -1,9 +1,10 @@
 ﻿define({
-    "ok": "OkFR",
-    "cancel": "CancelFR",
+    //"ok": "OkFR",
+    //"cancel": "CancelFR",
     "confirmDelete": "DeleteFR?",
-    "yearInterval": "Year must be a number FR",
-    "monthInterval": "Month must be a number (1..12) FR",
+    "unsavedData": "Some changes are unsaved, cancel anyway?",
+    //"yearInterval": "Year must be a number FR",
+    //"monthInterval": "Month must be a number (1..12) FR",
     "invalidNumber": "the number is not valid FR",
 
     "nullKey": "FR Key fields cannot be empty",

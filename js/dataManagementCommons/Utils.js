@@ -1,5 +1,4 @@
-﻿define(['jquery'
-],
+﻿define(['jquery'],
     function ($) {
         var defConfig = { fallbackLang: 'EN' };
 
