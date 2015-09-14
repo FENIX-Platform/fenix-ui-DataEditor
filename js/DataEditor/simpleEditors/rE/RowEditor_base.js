@@ -1,10 +1,9 @@
 ﻿define([
         'jquery',
-        'jqxall',
         'i18n!fx-DataEditor/multiLang/DataEditor/nls/ML_DataEdit',
         'bootstrap'
 ],
-function ($, jqx, mlRes) {
+function ($, mlRes) {
     var defConfig = {};
 
     var RowEditor_base = function (config) {
