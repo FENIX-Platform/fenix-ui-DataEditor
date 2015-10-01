@@ -106,6 +106,7 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
         this.uiEnabled(true);
     };
     DataEdit.prototype.getColumns = function () { return this.cols; };
+    DataEdit.prototype.getCodelists = function () { return this.codelists; };
 
     DataEdit.prototype.uiEnabled = function (enabled) {
         if (enabled) {
@@ -154,6 +155,9 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
             this.dataEditor.appendData(data);
         this.changed = true;
         this.updateValidation(this.dataEditor.getData());
+    };
+    DataEdit.prototype.removeAllData = function () {
+        this.dataEditor.removeAllData();
     };
     DataEdit.prototype.hasChanged = function () {
         return this.changed;

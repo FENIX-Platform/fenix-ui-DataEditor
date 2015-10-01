@@ -44,7 +44,8 @@ function ($, mlRes, rowEditorBase) {
         this.$txt.val(val);
     }
     RowEditor_number.prototype.getValue = function () {
-        return this.$txt.val().trim();
+        var toRet = this.$txt.val().trim();
+        return toRet;
     }
     RowEditor_number.prototype.isMandatory = function (m) {
         if (m == 'undefined')

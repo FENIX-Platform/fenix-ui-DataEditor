@@ -144,7 +144,7 @@
 
         DataEditorJQX.prototype.destroy = function () {
             this._unbindEvents();
-            this.rowEditor.destroy();            
+            this.rowEditor.destroy();
             this.$tBody.html('');
         };
 
@@ -168,6 +168,7 @@
                 evtArgs.allData = this.data;
                 amplify.publish(e.EVT_ROW_ADDED, evtArgs);
             }
+
             //DO NOT UPDATE ALL THE TABLE!!!
             this.updateTable();
             this.$editWindow.modal('hide');
@@ -203,6 +204,10 @@
             if (!data)
                 return;
             Array.prototype.push.apply(this.data, data);
+            this.updateTable();
+        };
+        DataEditorJQX.prototype.removeAllData = function () {
+            this.data = [];
             this.updateTable();
         };
         DataEditorJQX.prototype.updateTableHeader = function () {
@@ -264,10 +269,13 @@
             toRet += '<td style="display:none;">' + idx + '</td>'
             for (var i = 0; i < row.length; i++) {
                 toRet += '<td>';
-                if (cols[i].dataType == 'code')
+                if (row[i] === null)
+                    toRet += '';
+                else if (cols[i].dataType == 'code')
                     toRet += addLabelToData(cols[i], codelists, row[i], this.lang);
-                else
+                else {
                     toRet += row[i];
+                }
                 toRet += '</td>';
             }
             if (editControls) {
@@ -288,6 +296,8 @@
             //TODO Make it handle multiple Codelists
             var cListUID = getCodelistUid(col.domain);
             var lbl = getCodeLabel(codelists[cListUID].data, data);
+            if (lbl === null)
+                return '';
             return lbl;
         };
         var getCodeLabel = function (codes, code) {

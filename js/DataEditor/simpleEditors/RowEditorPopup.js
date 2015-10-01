@@ -145,8 +145,15 @@ function ($, MLUtils, reFactory) {
         if (!this.cols)
             throw new Error('cannot get row when columns are null');
         var toRet = { uid: this.uidInEdit, data: [] };
-        for (var i = 0; i < this.cols.length; i++)
-            toRet.data[i] = this.editors[i].getValue();
+        for (var i = 0; i < this.cols.length; i++) {
+            var val = this.editors[i].getValue();
+            if (!val)
+                toRet.data[i] = null;
+            else if (this.cols[i].dataType == 'number' || this.cols[i].dataType == 'percentage')
+                toRet.data[i] = parseFloat(val);
+            else
+                toRet.data[i] = val;
+        }
         return toRet;
     };
 
