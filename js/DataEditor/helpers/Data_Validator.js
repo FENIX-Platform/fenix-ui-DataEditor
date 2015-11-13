@@ -66,10 +66,12 @@
         }
 
         var sameDimVals = function (row1, row2, cols) {
+
             for (var d = 0; d < cols.length; d++) {
                 if (cols[d].key)
-                    if (row1[d] != row2[d])
+                    if (row1[d] != row2[d]) {
                         return false;
+                    }
             }
             return true;
         }
