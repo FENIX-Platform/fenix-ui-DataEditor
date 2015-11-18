@@ -31,7 +31,6 @@ function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, Da
         this.$valResView;
 
         this.cols;
-        //this.data;
         this.codelists;
 
         this.editEnabled = true;
