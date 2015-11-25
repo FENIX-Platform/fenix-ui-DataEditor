@@ -1,6 +1,5 @@
 ﻿define([
 'jquery',
-'jqxall',
 'i18n!fx-DataEditor/multiLang/DataEditor/nls/ML_DataEdit',
 'fx-DataEditor/js/DataEditor/simpleEditors/DataEditorJQX',
 'fx-DataEditor/js/DataEditor/simpleEditors/ValidationResultsViewer',
@@ -8,7 +7,7 @@
 'text!fx-DataEditor/html/DataEditor/DataEdit.htm',
 'amplify'
 ],
-function ($, jqx, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, DataEditHTML) {
+function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, DataEditHTML) {
 
     var widgetName = "DataEdit";
     var defConfig = {};

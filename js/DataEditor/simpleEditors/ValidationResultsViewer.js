@@ -1,9 +1,8 @@
 ﻿define([
 'jquery',
- 'jqxall',
  'i18n!fx-DataEditor/multiLang/DataEditor/nls/ML_DataEdit'
   ],
-function ($, jqx, mlRes) {
+function ($, mlRes) {
     var ValidationResultsViewer = function () {
         this.$valResGrid;
     };
