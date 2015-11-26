@@ -10,39 +10,49 @@ function ($, mlRes) {
     //Render - creation
     ValidationResultsViewer.prototype.render = function (container) {
         this.$valResGrid = container;
-        this.$valResGrid.jqxGrid({});
+        //this.$valResGrid.jqxGrid({});
     }
 
     ValidationResultsViewer.prototype.setValidationResults = function (valRes) {
-        if (!valRes) {
-            this.$valResGrid.jqxGrid({});
+        this.$valResGrid.html();
+        if (!valRes)
             return;
+        var toAdd = "";
+        
+        for (var i = 0; i < valRes.length; i++) {
+            toAdd += mlRes[valRes[i].error];
+            toAdd += "</br>";
         }
 
-        for (var i=0;i<valRes.length;i++)
-        {
-            valRes[i].mlError = mlRes[valRes[i].error];
-        }
+        this.$valResGrid.html(toAdd);
+        //if (!valRes) {
+        //    this.$valResGrid.jqxGrid({});
+        //    return;
+        //}
 
-        var DS = { localdata: valRes, datatype: "array", datafields: createDatafields };
-        var DA = new $.jqx.dataAdapter(DS);
-        this.$valResGrid.jqxGrid({ source: DA, columns: createTableColumns(), editable: false});
+        //for (var i=0;i<valRes.length;i++)
+        //{
+        //    valRes[i].mlError = mlRes[valRes[i].error];
+        //}
+
+        //var DS = { localdata: valRes, datatype: "array", datafields: createDatafields };
+        //var DA = new $.jqx.dataAdapter(DS);
+        //this.$valResGrid.jqxGrid({ source: DA, columns: createTableColumns(), editable: false});
     }
 
     var createDatafields = function () {
-        //var toRet = [{ name: 'error' }, { name: 'dataIndex' }, { name: 'colId'}];
-        var toRet = [{ name: 'mlError' }, { name: 'dataIndex' }, { name: 'colId' }];
-        return toRet;
+        //var toRet = [{ name: 'mlError' }, { name: 'dataIndex' }, { name: 'colId' }];
+        //return toRet;
     }
 
     var createTableColumns = function () {
 
-        var toRet = [
-        { text: 'Error', datafield: 'mlError', width: "50%" },
-        { text: 'Row', datafield: 'dataIndex', width: "25%" },
-        { text: 'Col', datafield: 'colId', width: "25%" }
-        ];
-        return toRet;
+        //var toRet = [
+        //{ text: 'Error', datafield: 'mlError', width: "50%" },
+        //{ text: 'Row', datafield: 'dataIndex', width: "25%" },
+        //{ text: 'Col', datafield: 'colId', width: "25%" }
+        //];
+        //return toRet;
     }
 
     return ValidationResultsViewer;
