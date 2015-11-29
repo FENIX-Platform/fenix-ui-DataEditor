@@ -213,7 +213,8 @@
         DataEditorJQX.prototype.updateTableHeader = function () {
             var tHead = this.$cnt.find(h.tblDataHead);
             tHead.html('');
-            tHead.append('<th style="display:none;"></th>');
+            //tHead.append('<th style="display:none;"></th>');
+            tHead.append('<th>#</th>');
             for (var i = 0; i < this.cols.length; i++) {
                 //MLUtils get multilanguage string
                 tHead.append(createTH(this.cols[i].title[this.lang]));
@@ -266,7 +267,8 @@
 
         function createTblRow(idx, cols, codelists, row, editControls) {
             var toRet = '<tr>';
-            toRet += '<td style="display:none;">' + idx + '</td>'
+            //toRet += '<td style="display:none;">' + idx + '</td>'
+            toRet += '<td>' + idx + '</td>'
             for (var i = 0; i < row.length; i++) {
                 toRet += '<td>';
                 if (row[i] === null)
