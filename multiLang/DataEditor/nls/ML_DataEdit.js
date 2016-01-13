@@ -9,7 +9,7 @@
         "invalidNumber": "the number is not valid",
 
         "nullKey": "Key fields cannot be empty",
-        "sameKeyVals": "Key fields cannot be duplicates",
+        "sameKeyVals": "Key fields cannot be duplicated",
         "unknownCode": "Unknown code",
         "invalidYear": "Year is not valid",
         "invalidMonth": "Month is not valid",

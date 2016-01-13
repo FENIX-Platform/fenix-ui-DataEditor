@@ -8,7 +8,7 @@
     "invalidNumber": "the number is not valid FR",
 
     "nullKey": "FR Key fields cannot be empty",
-    "sameKeyVals": "FR Key fields cannot be duplicates",
+    "sameKeyVals": "FR Key fields cannot be duplicated",
     "unknownCode": "FR Unknown code",
     "invalidYear": "FR Year is not valid",
     "invalidMonth": "FR Month is not valid",
