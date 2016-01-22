@@ -11,8 +11,7 @@ define(function () {
             "fx-DataEditor/html": "../html",
             "fx-DataEditor/multiLang": "../multiLang",
             "bootstrap": "https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min",
-            'jquery': '{FENIX_CDN}/js/jquery/2.1.1/jquery.min',
-            'jqxall': "http://fenixapps.fao.org/repository/js/jqwidgets/3.1/jqx-all"
+            'jquery': '{FENIX_CDN}/js/jquery/2.1.1/jquery.min'
         },
         shim: {
             "bootstrap": {
