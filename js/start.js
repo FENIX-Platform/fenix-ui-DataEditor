@@ -1,10 +1,3 @@
-/*
-config format:
-{
-
-}
-*/
-
 define([
     'jquery',
     'fx-DataEditor/js/DataEditor/DataEdit'
@@ -18,12 +11,16 @@ define([
         dataEdit.render($(containerID), cfg, callB);
     }
 
-    function setColumns(columns, cLists) {
-        dataEdit.setColumns(columns, cLists);
+    function setColumns(columns, cLists, callB) {
+        dataEdit.setColumns(columns, cLists, callB);
     }
+    function getColumns() { return dataEdit.getColumns(); }
+    function getCodelists() { return dataEdit.getCodelists(); }
 
     function getData() { return dataEdit.getData(); }
     function setData(data) { dataEdit.setData(data); }
+    function appendData(data) { dataEdit.appendData(data); }
+    function removeAllData() { dataEdit.removeAllData(); }
     function getColumnsWithDistincts() { return dataEdit.getColumnsWithDistincts(); }
 
     function isEditable(editable) {
@@ -41,8 +38,12 @@ define([
     return {
         init: init,
         setColumns: setColumns,
+        getColumns: getColumns,
+        getCodelists: getCodelists,
         getData: getData,
         setData: setData,
+        appendData: appendData,
+        removeAllData: removeAllData,
         getColumnsWithDistincts: getColumnsWithDistincts,
         isEditable: isEditable,
         destroy: destroy,
