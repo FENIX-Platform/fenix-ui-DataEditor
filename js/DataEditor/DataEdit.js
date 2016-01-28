@@ -142,18 +142,16 @@ function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, DataEdi
             return false;
     };
     DataEdit.prototype.setData = function (data) {
-        //this.data = data;
         if (this.cols)
             this.dataEditor.setData(data);
         this.changed = false;
     };
-    DataEdit.prototype.appendData = function (data) {
-        //this.data = data;
+    /*DataEdit.prototype.appendData = function (data) {
         if (this.cols)
             this.dataEditor.appendData(data);
         this.changed = true;
         this.updateValidation(this.dataEditor.getData());
-    };
+    };*/
     DataEdit.prototype.removeAllData = function () {
         this.dataEditor.removeAllData();
     };

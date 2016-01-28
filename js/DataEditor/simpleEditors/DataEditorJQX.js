@@ -192,20 +192,22 @@
         DataEditorJQX.prototype.setData = function (data) {
             if (!this.cols)
                 throw new Error("Cannot set data without table structure, use setColumns before setData");
-            this.data.length = 0;
             if (!data)
                 return;
             this.data = data;
             this.updateTable();
         };
-        DataEditorJQX.prototype.appendData = function (data) {
+
+        //TO REMOVE?!?!?!?
+        /*DataEditorJQX.prototype.appendData = function (data) {
             if (!this.cols)
                 throw new Error("Cannot append data without table structure, use setColumns before setData");
             if (!data)
                 return;
             Array.prototype.push.apply(this.data, data);
             this.updateTable();
-        };
+        };*/
+
         DataEditorJQX.prototype.removeAllData = function () {
             this.data = [];
             this.updateTable();

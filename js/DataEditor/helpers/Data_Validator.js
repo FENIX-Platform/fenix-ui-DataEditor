@@ -66,7 +66,6 @@
         }
 
         var sameDimVals = function (row1, row2, cols) {
-
             for (var d = 0; d < cols.length; d++) {
                 if (cols[d].key)
                     if (row1[d] != row2[d]) {
@@ -234,6 +233,67 @@
             if (toAdd)
                 for (var i = 0; i < toAdd.length; i++)
                     dest.push(toAdd[i]);
+        }
+
+
+        /*Data append validation*/
+        Data_Validator.prototype.dataAppendCheck = function (cols, dataOld, dataNew) {
+            if (!cols || !dataOld || !dataNew)
+                return null;
+
+            var toRet = [];
+            for (var o = 0; o < dataOld.length; o++) {
+                for (n = 0; n < dataNew.length; n++) {
+                    var dimValsCollision = sameDimVals(dataOld[o], dataNew[n], cols);
+                    if (dimValsCollision) {
+                        //if (!sameData) {//If the rows have the same data ignore
+                        toRet.push({ dataOldIndex: o, dataNewIndex: n });
+                        //}
+                    }
+                }
+            }
+            return toRet;
+        }
+        //checks if two rows have the same data fields (ignores the key columns)
+        //Enable that after removing the duplicated lines from the newData set
+        /*var sameData = function (cols, oldRow, newRow) {
+            for (var d = 0; d < cols.length; d++) {
+                if (!cols[d].key) {
+                    if (oldRow[d] != newRow[d])
+                        return false;
+                }
+            }
+            return true;
+        }*/
+
+        Data_Validator.prototype.dataMerge = function (cols, dataOld, dataNew, mode) {
+
+            var oldLen = dataOld.length; //To avoid the count to increase on push
+            for (var n = 0; n < dataNew.length; n++) {
+                var found = false;
+                for (var o = 0; o < oldLen; o++) {
+                    if (sameDimVals(dataOld[o], dataNew[n], cols)) {
+                        found = true;
+                        if (mode == 'keepOld') {
+                            //do nothing, skip the line
+                        }
+                        else if (mode == 'keepNew') {
+                            copyRow(dataNew[n], dataOld[o]);
+                        }
+                        break;
+                    }
+                }
+                if (!found) {//Not found, add it.
+                    dataOld.push(dataNew[n]);
+                }
+            }
+
+            return dataOld;
+        }
+
+        var copyRow = function (src, dst) {
+            for (var i = 0; i < src.length; i++)
+                dst[i] = src[i];
         }
 
         return Data_Validator;
