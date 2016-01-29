@@ -18,6 +18,7 @@ define([
     function getCodelists() { return dataEdit.getCodelists(); }
 
     function getData() { return dataEdit.getData(); }
+    function getDataWithoutValidation() { return dataEdit.getDataWithoutValidation(); }
     function setData(data) { dataEdit.setData(data); }
     function appendData(data) { dataEdit.appendData(data); }
     function removeAllData() { dataEdit.removeAllData(); }
@@ -41,6 +42,7 @@ define([
         getColumns: getColumns,
         getCodelists: getCodelists,
         getData: getData,
+        getDataWithoutValidation: getDataWithoutValidation,
         setData: setData,
         appendData: appendData,
         removeAllData: removeAllData,

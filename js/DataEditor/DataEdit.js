@@ -1,7 +1,7 @@
 ﻿define([
 'jquery',
 'i18n!fx-DataEditor/multiLang/DataEditor/nls/ML_DataEdit',
-'fx-DataEditor/js/DataEditor/simpleEditors/DataEditorJQX',
+'fx-DataEditor/js/DataEditor/simpleEditors/DataEditor',
 'fx-DataEditor/js/DataEditor/simpleEditors/ValidationResultsViewer',
 'fx-DataEditor/js/DataEditor/helpers/Data_Validator',
 'text!fx-DataEditor/html/DataEditor/DataEdit.htm',
@@ -140,6 +140,9 @@ function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, DataEdi
             return this.dataEditor.getData();
         else
             return false;
+    };
+    DataEdit.prototype.getDataWithoutValidation = function () {
+        return this.dataEditor.getData();
     };
     DataEdit.prototype.setData = function (data) {
         if (this.cols)

@@ -37,7 +37,7 @@
         var COLOR_ERROR = "error";
         var COLOR_DEFAULT = "default";
 
-        var DataEditorJQX = function (config) {
+        var DataEditor = function (config) {
             this.config = {};
             $.extend(true, this.config, defConfig, config);
 
@@ -56,7 +56,7 @@
         };
 
         //Render - creation
-        DataEditorJQX.prototype.render = function (container, config, callB) {
+        DataEditor.prototype.render = function (container, config, callB) {
             $.extend(true, this.config, config);
 
             this.$cnt = container;
@@ -87,7 +87,7 @@
             if (callB) callB();
         }
 
-        DataEditorJQX.prototype.setColumns = function (cols, codelists, callB) {
+        DataEditor.prototype.setColumns = function (cols, codelists, callB) {
             this.cols = cols;
             this.codelists = convertCodelists(codelists, this.lang);
             if (!cols) {
@@ -104,7 +104,7 @@
             return '<th>' + label + '</th>';
         };
 
-        DataEditorJQX.prototype._showEditWindow = function (row) {
+        DataEditor.prototype._showEditWindow = function (row) {
             this.$editWindow.modal('show');
             this.rowEditor.reset();
             if (row)
@@ -118,7 +118,7 @@
             });
         };
 
-        DataEditorJQX.prototype._bindEvents = function () {
+        DataEditor.prototype._bindEvents = function () {
             var me = this;
             this.$cnt.find(h.btnEditRowCanc).on('click', function () {
                 if (me.rowEditor.changed()) {
@@ -134,7 +134,7 @@
             });
         };
 
-        DataEditorJQX.prototype._unbindEvents = function () {
+        DataEditor.prototype._unbindEvents = function () {
             this.$cnt.find(h.btnEditRowCanc).off('click');
             this.$cnt.find(h.btnEditRowOk).off('click');
             this.$editWindow.off('hidden.bs.modal');
@@ -142,13 +142,13 @@
             this.$tBody.find('.' + h.delButtonsClass).off('click');
         };
 
-        DataEditorJQX.prototype.destroy = function () {
+        DataEditor.prototype.destroy = function () {
             this._unbindEvents();
             this.rowEditor.destroy();
             this.$tBody.html('');
         };
 
-        DataEditorJQX.prototype.rowEditOk = function () {
+        DataEditor.prototype.rowEditOk = function () {
             if (!this.rowEditor.isValid()) {
                 this.rowEditor.updateValidationHelp();
                 return;
@@ -174,11 +174,11 @@
             this.$editWindow.modal('hide');
         }
 
-        DataEditorJQX.prototype.newRow = function () {
+        DataEditor.prototype.newRow = function () {
             this._showEditWindow(null);
         }
 
-        DataEditorJQX.prototype.isEditable = function (editable) {
+        DataEditor.prototype.isEditable = function (editable) {
             this.editEnabled = editable;
             if (!this.cols)
                 return;
@@ -189,7 +189,7 @@
         }
 
         //DATA
-        DataEditorJQX.prototype.setData = function (data) {
+        DataEditor.prototype.setData = function (data) {
             if (!this.cols)
                 throw new Error("Cannot set data without table structure, use setColumns before setData");
             if (!data)
@@ -199,7 +199,7 @@
         };
 
         //TO REMOVE?!?!?!?
-        /*DataEditorJQX.prototype.appendData = function (data) {
+        /*DataEditor.prototype.appendData = function (data) {
             if (!this.cols)
                 throw new Error("Cannot append data without table structure, use setColumns before setData");
             if (!data)
@@ -208,11 +208,11 @@
             this.updateTable();
         };*/
 
-        DataEditorJQX.prototype.removeAllData = function () {
+        DataEditor.prototype.removeAllData = function () {
             this.data = [];
             this.updateTable();
         };
-        DataEditorJQX.prototype.updateTableHeader = function () {
+        DataEditor.prototype.updateTableHeader = function () {
             var tHead = this.$cnt.find(h.tblDataHead);
             tHead.html('');
             //tHead.append('<th style="display:none;"></th>');
@@ -225,7 +225,7 @@
                 tHead.append(this.config.thButtons);
             }
         };
-        DataEditorJQX.prototype.updateTable = function () {
+        DataEditor.prototype.updateTable = function () {
             this.$tBody.html('');
             if (!this.data)
                 return;
@@ -247,12 +247,12 @@
                 });
             }
         };
-        DataEditorJQX.prototype.deleteRow = function (index) {
+        DataEditor.prototype.deleteRow = function (index) {
             this.data.splice(index, 1);
             this.updateTable();
             amplify.publish(e.EVT_ROW_DELETED, this.data);
         };
-        DataEditorJQX.prototype.getRowByRowId = function (rowId) {
+        DataEditor.prototype.getRowByRowId = function (rowId) {
             //Test which one is faster
             /*return this.$tBody.find('tr td:first-child').filter(function () {
                 console.log($(this).html()==rowId);
@@ -314,14 +314,14 @@
             return null;
         };
 
-        DataEditorJQX.prototype.getData = function () {
+        DataEditor.prototype.getData = function () {
             return this.data;
         }
         //END Data
 
 
         //Validation results
-        DataEditorJQX.prototype.showValidationResults = function (valRes) {
+        DataEditor.prototype.showValidationResults = function (valRes) {
 
             /* this.resetValidationResults();
              if (!valRes)
@@ -346,27 +346,27 @@
              }*/
         }
 
-        DataEditorJQX.prototype.resetValidationResults = function () {
+        DataEditor.prototype.resetValidationResults = function () {
             /*var rowCount = this.$dataGrid.jqxGrid('getrows').length;
             for (var i = 0; i < rowCount; i++)
                 this.setRowColor(i, COLOR_DEFAULT);*/
         }
 
-        DataEditorJQX.prototype.setRowColor = function (rowIdx, color) {
+        DataEditor.prototype.setRowColor = function (rowIdx, color) {
             /*var cols = this.$dataGrid.jqxGrid('columns');
         
             for (var i = 0; i < cols.records.length; i++)
                 this.setCellColor(rowIdx, cols.records[i].datafield, color);*/
         }
 
-        DataEditorJQX.prototype.setCellColor = function (rowIdx, colId, color) {
+        DataEditor.prototype.setCellColor = function (rowIdx, colId, color) {
             /*var htmlRows = this.$dataGrid.find("div[role='row']");
             var htmlRow = htmlRows[rowIdx];
             var colIdx = this.$dataGrid.jqxGrid('getcolumnindex', colId);
             var tds = $(htmlRow).find("div[role='gridcell']");
             this.changeCellBackgroundColor(tds[colIdx], color);*/
         }
-        DataEditorJQX.prototype.setCellError = function (rowIdx, colId) {
+        DataEditor.prototype.setCellError = function (rowIdx, colId) {
             /*var colIndex = -1;
             for (var i = 0; i < this.cols.length; i++) {
                 if (colId == this.cols[i]) {
@@ -379,7 +379,7 @@
 
         };
 
-        DataEditorJQX.prototype.changeCellBackgroundColor = function (htmlCell, color) {
+        DataEditor.prototype.changeCellBackgroundColor = function (htmlCell, color) {
             /*if (color == COLOR_ERROR)
                 $(htmlCell).addClass("fx-red-cell");
             else if (color == COLOR_DEFAULT)
@@ -437,8 +437,8 @@
         }
         //End Codelists helpers
 
-        DataEditorJQX.prototype._doML = function () {
+        DataEditor.prototype._doML = function () {
         }
 
-        return DataEditorJQX;
+        return DataEditor;
     });

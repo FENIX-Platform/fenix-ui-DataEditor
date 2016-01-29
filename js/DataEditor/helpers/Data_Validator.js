@@ -280,7 +280,7 @@
                         else if (mode == 'keepNew') {
                             copyRow(dataNew[n], dataOld[o]);
                         }
-                        break;
+                        //break;
                     }
                 }
                 if (!found) {//Not found, add it.
