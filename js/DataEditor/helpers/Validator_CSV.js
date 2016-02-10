@@ -16,17 +16,17 @@
                 toRet.push({ type: Err.CSV_COLUMNS_NULL });
                 return toRet;
             }
-            if (dsdCols.length != csvCols.length) {
+            /*if (dsdCols.length != csvCols.length) {
                 toRet.push({ type: Err.WRONG_COLUMN_COUNT });
                 return toRet;
-            }
-            for (var i = 0; i < dsdCols.length; i++) {
+            }*/
+            /*for (var i = 0; i < dsdCols.length; i++) {
                 if (dsdCols[i].id != csvCols[i]) {
                     toRet.push({ type: Err.WRONG_COLUMN_ID, index: i });
                 }
-            }
+            }*/
 
-            for (i = 0; i < dsdCols.length; i++) {
+            /*for (i = 0; i < dsdCols.length; i++) {
                 if (dsdCols[i].dataType == 'code') {
                     var clId = dsdCols[i].domain.codes[0].idCodeList;
                     if (dsdCols[i].domain.codes[0].version)
@@ -36,7 +36,7 @@
                         toRet.push({ type: Err.UNKNOWN_CODES, columnId: csvCols[i], codes: unkCodes, codelistId: clId });
                     }
                 }
-            }
+            }*/
 
             var row = 0;
             for (i = 0; i < dsdCols.length; i++) {
@@ -45,6 +45,29 @@
                         if (csvData[row][i] == "") {
                             csvData[row][i] = null;
                         }
+                    }
+                }
+            }
+            return toRet;
+        };
+
+
+
+        Validator_CSV.prototype.validateCodes = function (dsdCols, codelists, csvCols, csvData) {
+            var toRet = [];
+            if (csvData == null || csvData.length == 0)
+                return toRet;
+            if (csvCols == null || csvCols.length == 0)
+                return toRet;
+
+            for (i = 0; i < dsdCols.length; i++) {
+                if (dsdCols[i].dataType == 'code') {
+                    var clId = dsdCols[i].domain.codes[0].idCodeList;
+                    if (dsdCols[i].domain.codes[0].version)
+                        clId += "|" + dsdCols[i].domain.codes[0].version;
+                    var unkCodes = this.checkCodes(dsdCols[i], codelists[clId], csvData, i);
+                    if (unkCodes.length > 0) {
+                        toRet.push({ type: Err.UNKNOWN_CODES, columnId: csvCols[i], codes: unkCodes, codelistId: clId });
                     }
                 }
             }
