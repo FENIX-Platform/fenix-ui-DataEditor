@@ -69,7 +69,7 @@ function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, DataEdi
     DataEdit.prototype.updateValidation = function (data) {
         this.changed = true;
         var val = new Data_Validator();
-        var valRes = val.validate(this.cols, data);
+        var valRes = val.validate(this.cols, this.codelists, data);
         this.updateValRes(valRes);
         this.dataEditor.showValidationResults(valRes);
     };
@@ -88,7 +88,7 @@ function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, DataEdi
 
     DataEdit.prototype.getValidationResults = function () {
         var val = new Data_Validator();
-        return val.validate(this.cols, this.dataEditor.getData());
+        return val.validate(this.cols, this.codelists, this.dataEditor.getData());
     };
 
     //Set columns and codelists
@@ -147,6 +147,7 @@ function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, DataEdi
     DataEdit.prototype.setData = function (data) {
         if (this.cols)
             this.dataEditor.setData(data);
+        this.updateValidation(data);
         this.changed = false;
     };
     /*DataEdit.prototype.appendData = function (data) {

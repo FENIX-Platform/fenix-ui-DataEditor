@@ -17,6 +17,20 @@ function ($) {
 
     CSV_To_Dataset.prototype.convert = function (csv) {
         this.stringsArr = toStringArray(csv, this.config);
+        _cleanEmptyCols(this.stringsArr);
+    };
+    //Removes empty columns left by Excel
+    function _cleanEmptyCols(data) {
+        for (var c = data[0].length - 1; c >= 0 ; c--) {
+            if (data[0][c].trim() == "") {
+                _removeEmptyCol(data, c);
+            }
+        }
+    };
+    function _removeEmptyCol(data, colIndex) {
+        for (var r = 0; r < data.length; r++) {
+            data[r].splice(colIndex, 1);
+        }
     };
     CSV_To_Dataset.prototype.getColumns = function () {
         return stringArrToCol(this.stringsArr);
@@ -30,19 +44,6 @@ function ($) {
         if (!data[0])
             throw new Error("Nothing to parse");
 
-        /*var toRet = [];
-        for (var i = 0; i < data[0].length; i++) {
-            var toAdd = {};
-            var colName = data[0][i].trim();
-            if (!colName)
-                throw new Error("Column name cannot be empty");
-            toAdd.id = colName;
-            toAdd.title = {};
-            toAdd.title[langCode] = colName;
-            toRet.push(toAdd);
-        }*/
-
-        //return toRet;
         return data[0];
     };
     function stringArrToData(data) {

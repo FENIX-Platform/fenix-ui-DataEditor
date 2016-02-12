@@ -16,10 +16,10 @@
                 toRet.push({ type: Err.CSV_COLUMNS_NULL });
                 return toRet;
             }
-            /*if (dsdCols.length != csvCols.length) {
+            if (dsdCols.length > csvCols.length) {
                 toRet.push({ type: Err.WRONG_COLUMN_COUNT });
                 return toRet;
-            }*/
+            }
             /*for (var i = 0; i < dsdCols.length; i++) {
                 if (dsdCols[i].id != csvCols[i]) {
                     toRet.push({ type: Err.WRONG_COLUMN_ID, index: i });
@@ -50,8 +50,6 @@
             }
             return toRet;
         };
-
-
 
         Validator_CSV.prototype.validateCodes = function (dsdCols, codelists, csvCols, csvData) {
             var toRet = [];

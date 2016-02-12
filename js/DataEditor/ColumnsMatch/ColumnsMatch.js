@@ -85,7 +85,7 @@
         ColumnsMatch.prototype.getCsvCols = function () {
             var newOrder = this._getColIndexes(this.csvCols);
             var toRet = [];
-            for (var i = 0; i < this.csvCols.length; i++) {
+            for (var i = 0; i < this.dsd.columns.length; i++) {
                 toRet[i] = this.csvCols[newOrder[i]];
             }
             return toRet;
@@ -95,7 +95,7 @@
             var toRet = [];
             for (var i = 0; i < this.csvData.length; i++) {
                 var row = [];
-                for (var j = 0; j < this.csvCols.length; j++) {
+                for (var j = 0; j < this.dsd.columns.length; j++) {
                     row[j] = this.csvData[i][newOrder[j]];
                 }
                 toRet[i] = row;

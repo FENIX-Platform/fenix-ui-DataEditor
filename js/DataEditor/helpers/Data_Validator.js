@@ -14,12 +14,12 @@
         function Data_Validator() {
         };
 
-        Data_Validator.prototype.validate = function (cols, data) {
+        Data_Validator.prototype.validate = function (cols, codelists, data) {
             var toRet = [];
 
             var emptyKeyVals = this.checkEmptyKeyVals(cols, data);
             var duplicateKeyVals = this.checkDuplicateKeyVals(cols, data);
-            var wrongDataTypes = this.checkWrongDataTypes(cols, data);
+            var wrongDataTypes = this.checkWrongDataTypes(cols, codelists, data);
             var valueFlags = this.checkValueFlags();
 
             if (emptyKeyVals && emptyKeyVals.length > 0)
@@ -75,12 +75,19 @@
             return true;
         }
 
-        Data_Validator.prototype.checkWrongDataTypes = function (cols, data) {
+        Data_Validator.prototype.checkWrongDataTypes = function (cols, codelists, data) {
             if (!cols || !data)
                 return null;
 
-            var colInfo = {};
-            for (var c = 0; c < cols.length; c++) {
+            var toRet = [];
+            for (var i = 0; i < data.length; i++) {
+                arrConcat(toRet, checkRowDataTypes(cols, codelists, data[i], i));
+            }
+            return toRet;
+
+            /*var colInfo = {};
+            for (var c = 0; c < cols.length; c++) 
+
                 if (cols[c].dataType)
                     colInfo[cols[c].id] = { dataType: cols[c].dataType, domain: cols[c].domain, codes: cols[c].codes };
             }
@@ -88,12 +95,63 @@
             for (var i = 0; i < data.length; i++) {
                 arrConcat(toRet, checkRowDataTypes(colInfo, data[i], i));
             }
+            return toRet;*/
+        }
+
+        var checkRowDataTypes = function (cols, codelists, dataRow, rowIdx) {
+            var toRet = [];
+            for (var d = 0; d < cols.length; d++) {
+                switch (cols[d].dataType) {
+                    case 'code':
+                        var cListUID = cols[d].domain.codes[0].idCodeList;
+                        if (cols[d].domain.codes[0].version)
+                            cListUID = cListUID + "|" + cols[d].domain.codes[0].version;
+                        if (!checkCode(dataRow[d], codelists[cListUID]))
+                            toRet.push({ error: MSG_UNKNOWN_CODE, dataIndex: rowIdx, colId: cols[d].id });
+                        break;
+                    case 'year':
+                        if (!checkYear(dataRow[d]))
+                            toRet.push({ error: MSG_INVALID_YEAR, dataIndex: rowIdx, colId: cols[d].id });
+                        else {
+                            if (cols[d].domain && cols[d].domain.period) {
+                                if (cols[d].domain.period.from)//Check from
+                                    if (dataRow[d] < cols[d].domain.period.from)
+                                        toRet.push({ error: MSG_INVALID_YEAR, dataIndex: rowIdx, colId: cols[d].id, yearLimitFrom: cols[d].domain.period.from, yearValue: dataRow[d] });
+                                if (cols[d].domain.period.to) //Check to
+                                    if (dataRow[d] > cols[d].domain.period.to)
+                                        toRet.push({ error: MSG_INVALID_YEAR, dataIndex: rowIdx, colId: cols[d].id, yearLimitTo: cols[d].domain.period.to, yearValue: dataRow[d] });
+                            }
+                        }
+                        break;
+                    case 'month':
+                        if (!checkMonth(dataRow[d]))
+                            toRet.push({ error: MSG_INVALID_MONTH, dataIndex: rowIdx, colId: cols[d].id });
+                        break;
+                    case 'date':
+                        if (!checkDate(dataRow[d]))
+                            toRet.push({ error: MSG_INVALID_DATE, dataIndex: rowIdx, colId: cols[d].id });
+                        break;
+                    case 'customCode':
+                        //TODO: Check custom code
+                        break;
+                    case 'number':
+                    case 'percentage':
+                        if (!checkNumber(dataRow[d]))
+                            toRet.push({ error: MSG_INVALID_NUMBER, dataIndex: rowIdx, colId: d });
+                        break;
+                    case 'bool':
+                        if (!checkBool(dataRow[d]))
+                            toRet.push({ error: MSG_INVALID_BOOL, dataIndex: rowIdx, colId: d });
+                        break;
+                }
+            }
             return toRet;
         }
 
-        var checkRowDataTypes = function (colInfo, data, rowIdx) {
+        /*var checkRowDataTypes = function (colInfo, dataRow, rowIdx) {
             var toRet = [];
-            for (var d in data) {
+            //for (var d in data) {
+            for (var d = 0; d < dataRow.length; d++) {
                 if (!colInfo[d])
                     continue;
 
@@ -139,15 +197,15 @@
                 }
             }
             return toRet;
-        }
+        }*/
 
-        var checkCode = function (code, codes) {
+        var checkCode = function (code, codelist) {
             if (!code)
                 return true;
-            if (!codes)
+            if (!codelist)
                 return true;
-            for (var i = 0; i < codes.length; i++)
-                if (code == codes[i].code)
+            for (var i = 0; i < codelist.data.length; i++)
+                if (code == codelist.data[i].code)
                     return true;
             return false;
         }
