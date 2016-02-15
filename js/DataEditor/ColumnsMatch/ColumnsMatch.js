@@ -156,12 +156,14 @@
         }
 
         ColumnsMatch.prototype._bindEvents = function () { }
+
         ColumnsMatch.prototype.bindCsvHeadEvents = function () {
             var tds = this.$trCsv.find('.csvHead');
             var me = this;
             for (var i = 0; i < tds.length; i++) {
                 $(tds[i]).on('drop', function (event) { me.drop(event); });
                 $(tds[i]).on('dragover', me.allowDrop);
+                $(tds[i]).find('span').on('dragover', me.allowDrop);
                 $(tds[i]).find('span').on('dragstart', me.drag);
             }
         }
