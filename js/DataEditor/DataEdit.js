@@ -83,13 +83,13 @@ function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, DataEdi
             this.$valResView.show();
             this.valResView.setValidationResults(valRes);
         }
-    };
-    //END Validation
+    };    
 
     DataEdit.prototype.getValidationResults = function () {
         var val = new Data_Validator();
         return val.validate(this.cols, this.codelists, this.dataEditor.getData());
     };
+    //END Validation
 
     //Set columns and codelists
     DataEdit.prototype.setColumns = function (columns, codelists, callB) {
@@ -223,9 +223,6 @@ function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, DataEdi
             return this.editEnabled;
     };
     DataEdit.prototype.destroy = function () {
-        /*
-        this.$dataEditor.off('valueChanged.DataEditor.fenix');
-        */
         amplify.unsubscribe(e.dataEditorValueChanged, this.updateValidation);
         amplify.unsubscribe(e.dataEditorRowAdded, this.updateValidation);
         amplify.unsubscribe(e.dataEditorRowDeleted, this.updateValidation);

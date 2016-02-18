@@ -198,16 +198,6 @@
             this.updateTable();
         };
 
-        //TO REMOVE?!?!?!?
-        /*DataEditor.prototype.appendData = function (data) {
-            if (!this.cols)
-                throw new Error("Cannot append data without table structure, use setColumns before setData");
-            if (!data)
-                return;
-            Array.prototype.push.apply(this.data, data);
-            this.updateTable();
-        };*/
-
         DataEditor.prototype.removeAllData = function () {
             this.data = [];
             this.updateTable();
