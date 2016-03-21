@@ -1,5 +1,7 @@
-﻿define(['jquery'],
-    function ($) {
+﻿define(['jquery',
+    'fx-DataEditor/js/DataEditor/helpers/CodelistUtils'
+],
+    function ($, clUtils) {
 
         var MSG_NULL_KEY = 'nullKey';
         var MSG_SAME_KEY_VALS = 'sameKeyVals';
@@ -200,14 +202,26 @@
         }*/
 
         var checkCode = function (code, codelist) {
+
+            var clU = new clUtils();
+            var code = clU.findCodeInCodelist(code, codelist);
+            if (code == null)
+                return false;
+            return true;
+
+            /*
             if (!code)
                 return true;
             if (!codelist)
                 return true;
+            if (isInCodelist(codelist, code))
+            {
+                return true;
+            }
             for (var i = 0; i < codelist.data.length; i++)
                 if (code == codelist.data[i].code)
                     return true;
-            return false;
+            return false;*/
         }
 
         var checkYear = function (year) {

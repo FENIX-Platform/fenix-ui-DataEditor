@@ -1,7 +1,8 @@
 ﻿define(['jquery',
     'fx-DataEditor/js/DataEditor/helpers/Validator_CSV_Errors',
+    'fx-DataEditor/js/DataEditor/helpers/CodelistUtils'
 ],
-    function ($, Err) {
+    function ($, Err, clUtils) {
 
         function Validator_CSV() { };
 
@@ -63,6 +64,7 @@
                     var clId = dsdCols[i].domain.codes[0].idCodeList;
                     if (dsdCols[i].domain.codes[0].version)
                         clId += "|" + dsdCols[i].domain.codes[0].version;
+
                     var unkCodes = this.checkCodes(dsdCols[i], codelists[clId], csvData, i);
                     if (unkCodes.length > 0) {
                         toRet.push({ type: Err.UNKNOWN_CODES, columnId: csvCols[i], codes: unkCodes, codelistId: clId });
@@ -98,19 +100,29 @@
         };
 
         function isInCodelist(cl, code) {
-            return isInNode(cl.data, code);
+            var clU = new clUtils();
+            var found = clU.findCodeInCodelist(code, cl);
+            if (found == null)
+                return false;
+            return true;
+            /*var isIn = isInNode(cl.data, code);
+            return isIn;*/
         };
-        function isInNode(arr, code) {
-            for (var i = 0; i < arr.length; i++)
-                if (arr[i].code == code)
+        
+        /*function isInNode(arr, code) {
+            for (var i = 0; i < arr.length; i++) {
+                if (arr[i].code == code) {
                     return true;
+                }
+            }
 
             var res = false;
             for (i = 0; i < arr.length; i++)
                 if (arr[i].children)
                     res = res || isInNode(arr[i].children, code);
+
             return res;
-        };
+        };*/
 
 
         return new Validator_CSV();
