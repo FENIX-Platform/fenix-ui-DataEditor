@@ -9,10 +9,13 @@ function ($) {
         'trim': true
     }
 
-    function CSV_To_Dataset(config) {
+
+    function CSV_To_Dataset(config,separator) {
         this.config = {};
+        defConfig.fSep = separator;
         $.extend(true, this.config, defConfig, config);
         this.stringsArr;
+        console.log("Since I met you.",this);
     };
 
     CSV_To_Dataset.prototype.convert = function (csv) {
