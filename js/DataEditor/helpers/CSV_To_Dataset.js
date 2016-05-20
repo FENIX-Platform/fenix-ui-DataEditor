@@ -15,7 +15,6 @@ function ($) {
         defConfig.fSep = separator;
         $.extend(true, this.config, defConfig, config);
         this.stringsArr;
-        console.log("Since I met you.",this);
     };
 
     CSV_To_Dataset.prototype.convert = function (csv) {

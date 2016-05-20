@@ -22,7 +22,7 @@
         var html = {
             rowDSD: '<td>%title%<br/>type: %type%</td>',
             //rowCSV: '<td id="csvHead" ondrop="this.drop(event)" ondragover="this.allowDrop(event)"><span id="%colId%" draggable="true" ondragstart="this.drag(event)">%colId%</span></td>'
-            rowCSV: '<td class="csvHead" draggable="true"><span id="%colId%" draggable="true">%colId%</span></td>'
+            rowCSV: '<td class="csvHead" draggable="true"><div id="%colId%" draggable="true">%colId%</div></td>'
         };
 
         var ColumnsMatch = function (config) {
@@ -125,7 +125,7 @@
             var $tdCsv = this.$trCsv.find('td');
             var toRet = [];
             for (var i = 0; i < $tdCsv.length; i++) {
-                var colId = $($tdCsv[i]).find('span')[0].id;
+                var colId = $($tdCsv[i]).find('div')[0].id;
                 toRet[i] = findIndex(colId, csvCols);
             }
             return toRet;
@@ -163,8 +163,8 @@
             for (var i = 0; i < tds.length; i++) {
                 $(tds[i]).on('drop', function (event) { me.drop(event); });
                 $(tds[i]).on('dragover', me.allowDrop);
-                $(tds[i]).find('span').on('dragover', me.allowDrop);
-                $(tds[i]).find('span').on('dragstart', me.drag);
+                $(tds[i]).find('div').on('dragover', me.allowDrop);
+                $(tds[i]).find('div').on('dragstart', me.drag);
             }
         }
         ColumnsMatch.prototype._doML = function () { }
@@ -178,18 +178,21 @@
         ColumnsMatch.prototype.drop = function (ev) {
             ev.preventDefault();
             var data = ev.originalEvent.dataTransfer.getData("text");
-            var $toMoveSrc = $('#' + data);
+            console.log($('#' + data));
+            console.log($(data));
+            console.log(data);
+            var $toMoveSrc = $('div#' + data);
             var $cntSrc = $toMoveSrc.parent();
 
             var $toMoveDest;
             var $cntDest;
-            if ($(ev.target).is('span')) {
+            if ($(ev.target).is('div')) {
                 $toMoveDest = $(ev.target);
                 $cntDest = $toMoveDest.parent();
             }
             else {
                 $cntDest = $(ev.target);
-                $toMoveDest = $cntDest.find('span');
+                $toMoveDest = $cntDest.find('div');
             }
 
             $toMoveDest.remove();
