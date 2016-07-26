@@ -22,7 +22,7 @@
         var html = {
             rowDSD: '<td>%title%<br/>type: %type%</td>',
             //rowCSV: '<td id="csvHead" ondrop="this.drop(event)" ondragover="this.allowDrop(event)"><span id="%colId%" draggable="true" ondragstart="this.drag(event)">%colId%</span></td>'
-            rowCSV: '<td class="csvHead" draggable="true"><div id="%colId%" draggable="true">%colId%</div></td>'
+            rowCSV: '<td class="csvHead" style="cursor:move;" draggable="true"><div id="%colId%" draggable="true">%colId%</div></td>'
         };
 
         var ColumnsMatch = function (config) {
@@ -178,9 +178,11 @@
         ColumnsMatch.prototype.drop = function (ev) {
             ev.preventDefault();
             var data = ev.originalEvent.dataTransfer.getData("text");
+            /*
             console.log($('#' + data));
             console.log($(data));
             console.log(data);
+            */
             var $toMoveSrc = $('div#' + data);
             var $cntSrc = $toMoveSrc.parent();
 
@@ -189,8 +191,7 @@
             if ($(ev.target).is('div')) {
                 $toMoveDest = $(ev.target);
                 $cntDest = $toMoveDest.parent();
-            }
-            else {
+            } else {
                 $cntDest = $(ev.target);
                 $toMoveDest = $cntDest.find('div');
             }
