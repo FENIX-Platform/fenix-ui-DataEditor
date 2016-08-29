@@ -1,22 +1,44 @@
 {
-    "name": "fenix-ui-DataEditor",
-    "version": "1.1.1",
-    "description": "FENIX Data Structure Definition Editor",
-    "main": "src/js/start.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/FENIX-Platform/fenix-ui-DataEditor.git"
-    },
-    "keywords": [
-        "FENIX"
-    ],
-    "author": "FENIX team (http://fenix.fao.org/)",
-    "license": "GPL-2.0",
-    "bugs": {
-        "url": "https://github.com/FENIX-Platform/fenix-ui-DataEditor/issues"
-    },
-    "homepage": "https://github.com/FENIX-Platform/fenix-ui-DataEditor"
+  "name": "fenix-ui-DataEditor",
+  "version": "1.1.1",
+  "description": "FENIX Data Structure Definition Editor",
+  "main": "src/js/start.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FENIX-Platform/fenix-ui-DataEditor.git"
+  },
+  "keywords": [
+    "FENIX"
+  ],
+  "author": "FENIX team (http://fenix.fao.org/)",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/FENIX-Platform/fenix-ui-DataEditor/issues"
+  },
+  "homepage": "https://github.com/FENIX-Platform/fenix-ui-DataEditor",
+  "devDependencies": {
+    "chai": "3.5.0",
+    "clean-webpack-plugin": "0.1.10",
+    "jshint": "2.9.3",
+    "jshint-loader": "0.8.3",
+    "karma": "1.2.0",
+    "karma-chai": "0.1.0",
+    "karma-chrome-launcher": "2.0.0",
+    "karma-coverage": "1.1.1",
+    "karma-firefox-launcher": "1.0.0",
+    "karma-mocha": "1.1.1",
+    "karma-webpack": "1.8.0",
+    "mocha": "3.0.2",
+    "webpack": "1.13.2",
+    "webpack-dev-server": "1.15.0"
+  },
+  "dependencies": {
+    "bootstrap": "3.3.7",
+    "eonasdan-bootstrap-datetimepicker": "4.17.42",
+    "jquery": "3.1.0",
+    "moment": "2.14.1"
+  }
 }

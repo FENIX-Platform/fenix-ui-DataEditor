@@ -1,4 +1,7 @@
-﻿define([
+﻿if (typeof define !== 'function') {
+    var define = require('amdefine')(module);
+}
+define([
         'jquery',
         'fx-DataEditor/js/DataEditor/simpleEditors/rE/RowEditor_bool',
         'fx-DataEditor/js/DataEditor/simpleEditors/rE/RowEditor_code',
