@@ -1,4 +1,7 @@
-﻿define([
+﻿if (typeof define !== 'function') {
+    var define = require('amdefine')(module);
+}
+define([
         'jquery',
         'text!fx-DataEditor/html/DataEditor/ColumnsMatch/ColumnsMatch.htm',
         'fx-DataEditor/js/DataEditor/helpers/MLUtils'

@@ -1,4 +1,7 @@
-﻿define([
+﻿if (typeof define !== 'function') {
+    var define = require('amdefine')(module);
+}
+define([
 'jquery',
 'i18n!fx-DataEditor/multiLang/DataEditor/nls/ML_DataEdit',
 'fx-DataEditor/js/DataEditor/simpleEditors/DataEditor',
