@@ -249,13 +249,13 @@
         var checkDate = function (date) {
             //ADD a true date format:
             //could be done by creating a date object and then check if it matches the orginal date
-            if (!month)
+            if (!date)
                 return true;
-            if (!$.isNumeric(month))
+            if (!$.isNumeric(date))
                 return false;
-            if (month.toString().length != 8)
+            if (date.toString().length != 8)
                 return false;
-            if (month.substring(4, 6) > 12 || month.substring(4, 6) < 1)
+            if (date.substring(4, 6) > 12 || date.substring(4, 6) < 1)
                 return false;
 
             return true;
