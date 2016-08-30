@@ -11,7 +11,7 @@ define(function () {
             "fx-DataEditor/config": "../src/config",
             "fx-DataEditor/js": "../src/js",
             "fx-DataEditor/html": "../src/html",
-            "fx-DataEditor/multiLang": "../src/multiLang",
+            "fx-DataEditor/nls": "../src/nls",
             "bootstrap": "https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min",
             'jquery': '{FENIX_CDN}/js/jquery/2.1.1/jquery.min',
             'eonasdan-bootstrap-datetimepicker': '{FENIX_CDN}/js/bootstrap-datetimepicker/4.14.30/src/js/bootstrap-datetimepicker',

@@ -3,7 +3,7 @@
 }
 define([
 'jquery',
-'i18n!fx-DataEditor/multiLang/DataEditor/nls/ML_DataEdit',
+'i18n!fx-DataEditor/nls/labels',
 'fx-DataEditor/js/DataEditor/simpleEditors/DataEditor',
 'fx-DataEditor/js/DataEditor/simpleEditors/ValidationResultsViewer',
 'fx-DataEditor/js/DataEditor/helpers/Data_Validator',

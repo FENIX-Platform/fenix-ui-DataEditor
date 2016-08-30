@@ -4,7 +4,7 @@
 define([
         'jquery',
         'eonasdan-bootstrap-datetimepicker',
-        'i18n!fx-DataEditor/multiLang/DataEditor/nls/ML_DataEdit',
+        'i18n!fx-DataEditor/nls/labels',
         'fx-DataEditor/js/DataEditor/simpleEditors/rE/RowEditor_base',
         'text!fx-DataEditor/html/DataEditor/simpleEditors/RowEditorTime.html',
         'moment',
