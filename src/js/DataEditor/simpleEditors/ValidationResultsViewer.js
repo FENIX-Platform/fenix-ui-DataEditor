@@ -3,7 +3,7 @@
 }
 define([
 'jquery',
- 'i18n!fx-DataEditor/multiLang/DataEditor/nls/ML_DataEdit'
+ 'i18n!fx-DataEditor/nls/labels'
 ],
 function ($, mlRes) {
 

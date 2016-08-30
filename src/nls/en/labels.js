@@ -6,7 +6,6 @@
         "unsavedData": "Some changes are unsaved, cancel anyway?",
         //"yearInterval": "Year must be a number ",
         //"monthInterval": "Month must be a number (1..12)",
-        "invalidNumber": "the number is not valid",
 
         "nullKey": "Key fields cannot be empty",
         "sameKeyVals": "Key fields cannot be duplicated",

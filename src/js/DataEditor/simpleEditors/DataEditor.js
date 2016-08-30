@@ -5,7 +5,7 @@ define([
         'jquery',
         'fx-DataEditor/js/DataEditor/simpleEditors/RowEditorPopup',
         'text!fx-DataEditor/html/DataEditor/simpleEditors/DataEditor.htm',
-        'i18n!fx-DataEditor/multiLang/DataEditor/nls/ML_DataEdit',
+        'i18n!fx-DataEditor/nls/labels',
         'fx-DataEditor/js/DataEditor/helpers/MLUtils',
         'bootstrap',
         'amplify'
