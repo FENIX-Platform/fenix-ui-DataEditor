@@ -1,16 +1,13 @@
-﻿if (typeof define !== 'function') {
-    var define = require('amdefine')(module);
-}
-define([
+﻿define([
 'jquery',
-'i18n!fx-DataEditor/nls/labels',
-'fx-DataEditor/js/DataEditor/simpleEditors/DataEditor',
-'fx-DataEditor/js/DataEditor/simpleEditors/ValidationResultsViewer',
-'fx-DataEditor/js/DataEditor/helpers/Data_Validator',
-'text!fx-DataEditor/html/DataEditor/DataEdit.htm',
-'amplify'
+'../nls/labels',
+'/simpleEditors/DataEditor',
+'/simpleEditors/ValidationResultsViewer',
+'/helpers/Data_Validator',
+'../html/DataEditor/DataEdit.htm',
+'amplify-pubsub'
 ],
-function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, DataEditHTML) {
+function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, DataEditHTML, amplify) {
 
     var widgetName = "DataEdit";
     var defConfig = {};

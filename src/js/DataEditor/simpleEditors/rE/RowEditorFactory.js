@@ -1,15 +1,12 @@
-﻿if (typeof define !== 'function') {
-    var define = require('amdefine')(module);
-}
-define([
+﻿define([
         'jquery',
-        'fx-DataEditor/js/DataEditor/simpleEditors/rE/RowEditor_bool',
-        'fx-DataEditor/js/DataEditor/simpleEditors/rE/RowEditor_code',
-        'fx-DataEditor/js/DataEditor/simpleEditors/rE/RowEditor_date',
-        'fx-DataEditor/js/DataEditor/simpleEditors/rE/RowEditor_month',
-        'fx-DataEditor/js/DataEditor/simpleEditors/rE/RowEditor_number',
-        'fx-DataEditor/js/DataEditor/simpleEditors/rE/RowEditor_string',
-        'fx-DataEditor/js/DataEditor/simpleEditors/rE/RowEditor_year'
+        './RowEditor_bool',
+        './RowEditor_code',
+        './RowEditor_date',
+        './RowEditor_month',
+        './RowEditor_number',
+        './RowEditor_string',
+        './RowEditor_year'
 ],
 function ($, reBool, reCode, reDate, reMonth, reNumber, reString, reYear) {
     var defConfig = {};

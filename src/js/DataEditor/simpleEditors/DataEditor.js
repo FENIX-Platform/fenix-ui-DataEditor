@@ -1,16 +1,13 @@
-﻿if (typeof define !== 'function') {
-    var define = require('amdefine')(module);
-}
-define([
+﻿define([
         'jquery',
-        'fx-DataEditor/js/DataEditor/simpleEditors/RowEditorPopup',
-        'text!fx-DataEditor/html/DataEditor/simpleEditors/DataEditor.htm',
-        'i18n!fx-DataEditor/nls/labels',
-        'fx-DataEditor/js/DataEditor/helpers/MLUtils',
-        'bootstrap',
-        'amplify'
+        'simpleEditors/RowEditorPopup',
+        'simpleEditors/DataEditor.htm',
+        '../../nls/labels',
+        '../helpers/MLUtils',
+        'amplify-pubsub',
+        'bootstrap'
 ],
-    function ($, RowEditorPopup, DataEditorHTML, mlRes, MLUtils) {
+    function ($, RowEditorPopup, DataEditorHTML, mlRes, MLUtils, amplify) {
         var widgetName = "DataEditor";
 
 

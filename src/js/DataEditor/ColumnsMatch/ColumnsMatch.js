@@ -1,10 +1,7 @@
-﻿if (typeof define !== 'function') {
-    var define = require('amdefine')(module);
-}
-define([
+﻿define([
         'jquery',
-        'text!fx-DataEditor/html/DataEditor/ColumnsMatch/ColumnsMatch.htm',
-        'fx-DataEditor/js/DataEditor/helpers/MLUtils'
+        '../../html/DataEditor/ColumnsMatch/ColumnsMatch.htm',
+        '../helpers/MLUtils'
 ],
     function ($, colsMatchHTML, MLUtils) {
         var widgetName = "ColumnsMatch";

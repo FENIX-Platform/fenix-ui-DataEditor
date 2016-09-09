@@ -1,10 +1,7 @@
-﻿if (typeof define !== 'function') {
-    var define = require('amdefine')(module);
-}
-define([
+﻿define([
         'jquery',
-        'i18n!fx-DataEditor/nls/labels',
-        'fx-DataEditor/js/DataEditor/simpleEditors/rE/RowEditor_date',
+        '../../../nls/labels',
+        './RowEditor_date',
         'bootstrap'
 ],
 function ($, mlRes, rowEditorDate) {

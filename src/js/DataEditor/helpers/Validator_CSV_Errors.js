@@ -1,7 +1,4 @@
-﻿if (typeof define !== 'function') {
-    var define = require('amdefine')(module);
-}
-define([],
+﻿define([],
     function () {
         'use strict';
         var e = {

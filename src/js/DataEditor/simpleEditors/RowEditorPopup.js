@@ -1,10 +1,7 @@
-﻿if (typeof define !== 'function') {
-    var define = require('amdefine')(module);
-}
-define([
+﻿define([
         'jquery',
-        'fx-DataEditor/js/DataEditor/helpers/MLUtils',
-        'fx-DataEditor/js/DataEditor/simpleEditors/rE/RowEditorFactory'
+        '../helpers/MLUtils',
+        '/rE/RowEditorFactory'
 ],
 function ($, MLUtils, reFactory) {
     var widgetName = "DataEditorPopup";

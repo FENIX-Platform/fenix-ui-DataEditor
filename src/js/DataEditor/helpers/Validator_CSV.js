@@ -1,9 +1,6 @@
-﻿if (typeof define !== 'function') {
-    var define = require('amdefine')(module);
-}
-define(['jquery',
-    'fx-DataEditor/js/DataEditor/helpers/Validator_CSV_Errors',
-    'fx-DataEditor/js/DataEditor/helpers/CodelistUtils'
+﻿define(['jquery',
+    './Validator_CSV_Errors',
+    './CodelistUtils'
 ],
     function ($, Err, clUtils) {
 

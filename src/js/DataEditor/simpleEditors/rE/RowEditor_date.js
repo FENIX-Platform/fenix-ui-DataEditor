@@ -1,12 +1,9 @@
-﻿if (typeof define !== 'function') {
-    var define = require('amdefine')(module);
-}
-define([
+﻿define([
         'jquery',
         'eonasdan-bootstrap-datetimepicker',
-        'i18n!fx-DataEditor/nls/labels',
-        'fx-DataEditor/js/DataEditor/simpleEditors/rE/RowEditor_base',
-        'text!fx-DataEditor/html/DataEditor/simpleEditors/RowEditorTime.html',
+        '../../../nls/labels',
+        './RowEditor_base',
+        '../../../html/DataEditor/simpleEditors/RowEditorTime.html',
         'moment',
         'bootstrap'
 ],
