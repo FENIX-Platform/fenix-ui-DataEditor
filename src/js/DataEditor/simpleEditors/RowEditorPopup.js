@@ -1,7 +1,7 @@
 ﻿define([
         'jquery',
         '../helpers/MLUtils',
-        '/rE/RowEditorFactory'
+        './rE/RowEditorFactory'
 ],
 function ($, MLUtils, reFactory) {
     var widgetName = "DataEditorPopup";

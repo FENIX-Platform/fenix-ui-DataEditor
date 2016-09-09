@@ -1,6 +1,6 @@
 define([
     'jquery',
-    '/DataEditor/DataEdit'
+    './DataEditor/DataEdit'
 ], function ($, DataEdit) {
     var cfg = {};
     var dataEdit;

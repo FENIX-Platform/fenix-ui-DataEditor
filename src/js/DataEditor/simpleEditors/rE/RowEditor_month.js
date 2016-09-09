@@ -1,9 +1,6 @@
-﻿if (typeof define !== 'function') {
-    var define = require('amdefine')(module);
-}
-define([
+﻿define([
         'jquery',
-        '../../../nls/labels',
+        '../../../../nls/labels',
         './RowEditor_date',
         'bootstrap'
 ],

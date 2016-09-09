@@ -2,9 +2,8 @@ var distFolderPath = "dist",
     demoFolderPath = "demo",
     devFolderPath = "dev",
     webpack = require('webpack'),
-    ExtractTextPlugin = require("extract-text-webpack-plugin"),
-    HtmlWebpackPlugin = require('html-webpack-plugin'),
     packageJson = require("./package.json"),
+    CleanWebpackPlugin = require('clean-webpack-plugin'),
     Path = require('path'),
     dependencies = Object.keys(packageJson.dependencies);
 
@@ -21,7 +20,8 @@ module.exports = {
     resolve: {
         root: Path.resolve(__dirname),
         alias: {
-            jquery: Path.join(__dirname, 'node_modules/jquery/dist/jquery') //neede by eonasdan-bootstrap-datetimepicker
+            handlebars: 'handlebars/dist/handlebars.min.js',
+            jquery: Path.join(__dirname, 'node_modules/jquery/dist/jquery.js') //needed by eonasdan-bootstrap-datetimepicker
         }
     },
 
@@ -29,21 +29,21 @@ module.exports = {
 
     module: {
         loaders: [
-            {test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader")},
-            {test: /bootstrap.+\.(jsx|js)$/, loader: 'imports?jQuery=jquery,$=jquery'}]
+            {test: /\.hbs$/, loader: "handlebars-loader"},
+            {test: /\.json$/, loader: "json-loader"},
+            {test: /\.(html|htm)$/, loader: "html-loader" },
+            {test: /bootstrap.+\.(jsx|js)$/, loader: 'imports?jQuery=jquery,$=jquery'}
+        ]
     },
 
     plugins: clearArray([
+        isDemo(undefined, new CleanWebpackPlugin([distFolderPath])),
         isProduction(new webpack.optimize.UglifyJsPlugin({
             compress: {warnings: false},
             output: {comments: false}
-        })),
-        new ExtractTextPlugin(packageJson.name + '.min.css'),
-        isDevelop(new HtmlWebpackPlugin({
-            inject: "body",
-            template: devFolderPath + "/index.template.html"
         }))
     ])
+
 };
 
 function getEntry() {
@@ -87,7 +87,8 @@ function getOutput() {
             break;
         case "develop" :
             output = {
-                path: Path.join(__dirname, devFolderPath),
+                path: Path.join(__dirname, devFolderPath, distFolderPath),
+                //publicPath: "/dev/",
                 filename: "index.js"
             };
             break;

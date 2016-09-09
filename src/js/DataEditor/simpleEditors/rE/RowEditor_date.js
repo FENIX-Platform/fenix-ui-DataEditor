@@ -1,9 +1,9 @@
 ﻿define([
         'jquery',
         'eonasdan-bootstrap-datetimepicker',
-        '../../../nls/labels',
+        '../../../../nls/labels',
         './RowEditor_base',
-        '../../../html/DataEditor/simpleEditors/RowEditorTime.html',
+        '../../../../html/DataEditor/simpleEditors/RowEditorTime.html',
         'moment',
         'bootstrap'
 ],

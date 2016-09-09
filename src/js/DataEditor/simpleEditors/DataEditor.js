@@ -1,8 +1,8 @@
 ﻿define([
         'jquery',
-        'simpleEditors/RowEditorPopup',
-        'simpleEditors/DataEditor.htm',
-        '../../nls/labels',
+        './RowEditorPopup',
+        '../../../html/DataEditor/simpleEditors/DataEditor.htm',
+        '../../../nls/labels',
         '../helpers/MLUtils',
         'amplify-pubsub',
         'bootstrap'

@@ -1,10 +1,10 @@
 ﻿define([
 'jquery',
-'../nls/labels',
-'/simpleEditors/DataEditor',
-'/simpleEditors/ValidationResultsViewer',
-'/helpers/Data_Validator',
-'../html/DataEditor/DataEdit.htm',
+'../../nls/labels',
+'./simpleEditors/DataEditor',
+'./simpleEditors/ValidationResultsViewer',
+'./helpers/Data_Validator',
+'../../html/DataEditor/DataEdit.htm',
 'amplify-pubsub'
 ],
 function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, DataEditHTML, amplify) {

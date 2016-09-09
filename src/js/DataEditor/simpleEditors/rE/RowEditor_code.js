@@ -1,6 +1,6 @@
 ﻿define([
         'jquery',
-        '../../../nls/labels',
+        '../../../../nls/labels',
         './RowEditor_base',
         'bootstrap'
 ],
