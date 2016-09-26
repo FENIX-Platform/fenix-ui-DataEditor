@@ -1,7 +1,7 @@
 ﻿define([
         'jquery',
         './RowEditorPopup',
-        '../../../html/DataEditor/simpleEditors/DataEditor.htm',
+        '../../../html/DataEditor/simpleEditors/DataEditor.html',
         '../../../nls/labels',
         '../helpers/MLUtils',
         'amplify-pubsub',

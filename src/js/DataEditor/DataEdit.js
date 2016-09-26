@@ -4,7 +4,7 @@
 './simpleEditors/DataEditor',
 './simpleEditors/ValidationResultsViewer',
 './helpers/Data_Validator',
-'../../html/DataEditor/DataEdit.htm',
+'../../html/DataEditor/DataEdit.html',
 'amplify-pubsub'
 ],
 function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, DataEditHTML, amplify) {
