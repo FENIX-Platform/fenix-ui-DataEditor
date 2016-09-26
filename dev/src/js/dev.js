@@ -35,11 +35,9 @@
             ["0105", 2000, '201502', '20150205', 777, "testString1", true],
             ["0201", 2000, '201503', '20150206', 777, "testString2", true]
         ];
+        DataEditor.isEditable(false);
         DataEditor.setColumns(testDSD, {'CountrySTAT_Indicators': Codelist}, callB);
         DataEditor.setData(testData);
-//        DataEditor.isEditable(true);
-
-        //Editor.loadMetaAndData("dan3", null, function (d) { Editor.setDSDAndData(d.metadata.dsd,d.data,null); })
 
 
         $('#btnGetData').click(function () {
@@ -48,21 +46,11 @@
 
             $('#DataOutput').html("<h3>Data</h3><code>"+data+"</code><h3>Columns</h3><code>"+JSON.stringify(cols)+"</code>")
         });
-/*
-        //ML
-        $('#btnEN').click(function () {
-            var locale = localStorage.getItem('locale');
-            if (!locale || locale != 'en')
-                localStorage.setItem('locale', 'en');
-            location.reload();
+
+        $('#btnToggleEdit').click(function() {
+            var value = DataEditor.isEditable();
+            DataEditor.isEditable(!value);
         });
-        $('#btnFR').click(function () {
-            var locale = localStorage.getItem('locale');
-            if (!locale || locale != 'fr')
-                localStorage.setItem('locale', 'fr');
-            location.reload();
-        });
-        //ML End
-*/
+
     }
 );

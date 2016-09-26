@@ -185,6 +185,7 @@
         }
 
         DataEditor.prototype.isEditable = function (editable) {
+            console.log("isEditable",editable)
             this.editEnabled = editable;
             if (!this.cols)
                 return;
