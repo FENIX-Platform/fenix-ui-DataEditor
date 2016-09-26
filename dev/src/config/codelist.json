@@ -1,0 +1,1092 @@
+{
+  "metadata" : {
+    "dsd" : {
+      "rid" : "68_165"
+    },
+    "title" : {
+      "EN" : "CountrySTAT Indicators"
+    },
+    "rid" : "12_849",
+    "uid" : "CountrySTAT_Indicators",
+    "meContent" : {
+      "resourceRepresentationType" : "codelist",
+      "seCoverage" : {
+        "coverageSectors" : {
+          "codes" : [ { } ]
+        }
+      },
+      "seCodeList" : {
+        "numberOfLevels" : 3,
+        "typeOfCodeList" : "tree",
+        "typeOfCodeListLabel" : {
+          "EN" : "Tree"
+        }
+      },
+      "keywords" : [ "indicators" ],
+      "resourceRepresentationTypeLabel" : {
+        "EN" : "Codelist"
+      }
+    },
+    "characterSet" : {
+      "codes" : [ {
+        "code" : "106",
+        "label" : {
+          "EN" : "UTF-8"
+        }
+      } ],
+      "idCodeList" : "IANAcharacterSet",
+      "extendedName" : {
+        "EN" : "Internet Assigned Numbers Authority codelist"
+      }
+    },
+    "metadataStandardName" : "FENIX metadata",
+    "metadataStandardVersion" : "1.0",
+    "metadataLanguage" : {
+      "version" : "1998",
+      "codes" : [ {
+        "code" : "eng",
+        "label" : {
+          "EN" : "English"
+        }
+      } ],
+      "idCodeList" : "ISO639-2",
+      "extendedName" : {
+        "EN" : "International Standard Organization - Language"
+      }
+    },
+    "contacts" : [ {
+      "organization" : {
+        "EN" : "FAO"
+      },
+      "role" : "distributor",
+      "contactInfo" : { },
+      "organizationUnit" : {
+        "EN" : "ESS"
+      },
+      "roleLabel" : {
+        "EN" : "Distributor"
+      }
+    } ],
+    "meAccessibility" : {
+      "seDataDissemination" : {
+        "seDistribution" : { }
+      },
+      "seConfidentiality" : {
+        "confidentialityStatus" : {
+          "version" : "1.0",
+          "codes" : [ {
+            "code" : "F",
+            "label" : {
+              "EN" : "Free"
+            }
+          } ],
+          "idCodeList" : "CL_CONF_STATUS",
+          "extendedName" : {
+            "EN" : "Confidentiality status (SDMX)"
+          }
+        }
+      }
+    },
+    "meMaintenance" : {
+      "seUpdate" : {
+        "updateDate" : 1466675732771
+      }
+    },
+    "language" : {
+      "version" : "1998",
+      "codes" : [ {
+        "code" : "eng",
+        "label" : {
+          "EN" : "English"
+        }
+      } ],
+      "idCodeList" : "ISO639-2",
+      "extendedName" : {
+        "EN" : "International Standard Organization - Language"
+      }
+    }
+  },
+  "data" : [ {
+    "level" : 1,
+    "leaf" : false,
+    "title" : {
+      "EN" : "Production"
+    },
+    "children" : [ {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Area sown"
+      },
+      "code" : "0105",
+      "rid" : "64_94765"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Seeds quantity"
+      },
+      "code" : "0106",
+      "rid" : "64_94766"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Yield"
+      },
+      "code" : "0103",
+      "rid" : "64_94767"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Area Harvested"
+      },
+      "code" : "0104",
+      "rid" : "64_94768"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Production quantity"
+      },
+      "code" : "0101",
+      "rid" : "64_94770"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Production value"
+      },
+      "code" : "0102",
+      "rid" : "64_94772"
+    } ],
+    "code" : "01",
+    "rid" : "64_94762"
+  }, {
+    "level" : 1,
+    "leaf" : false,
+    "title" : {
+      "EN" : "Food availability"
+    },
+    "children" : [ {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Protein quantity"
+      },
+      "code" : "0201",
+      "rid" : "64_94775"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Food supply quantity"
+      },
+      "code" : "0203",
+      "rid" : "64_106553"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Lipid quantity"
+      },
+      "code" : "0202",
+      "rid" : "64_94777"
+    } ],
+    "code" : "02",
+    "rid" : "64_94776"
+  }, {
+    "level" : 1,
+    "leaf" : false,
+    "title" : {
+      "EN" : "Trade"
+    },
+    "children" : [ {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Import quantity"
+      },
+      "code" : "0303",
+      "rid" : "64_94778"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Import value"
+      },
+      "code" : "0304",
+      "rid" : "64_94780"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Export quantity"
+      },
+      "code" : "0301",
+      "rid" : "64_94781"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Export value"
+      },
+      "code" : "0302",
+      "rid" : "64_94782"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Inventory of available products"
+      },
+      "code" : "0310",
+      "rid" : "64_149841"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Consumption rate"
+      },
+      "code" : "0311",
+      "rid" : "64_149860"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Re-import value"
+      },
+      "code" : "0309",
+      "rid" : "64_106809"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Re-export value"
+      },
+      "code" : "0307",
+      "rid" : "64_94783"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Re-import quantity"
+      },
+      "code" : "0308",
+      "rid" : "64_106810"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Consumption quantity"
+      },
+      "code" : "0305",
+      "rid" : "64_94785"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Re-export quantity"
+      },
+      "code" : "0306",
+      "rid" : "64_94786"
+    } ],
+    "code" : "03",
+    "rid" : "64_94779"
+  }, {
+    "level" : 1,
+    "leaf" : false,
+    "title" : {
+      "EN" : "Machinery"
+    },
+    "children" : [ {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Machines in service"
+      },
+      "code" : "0401",
+      "rid" : "64_94787"
+    } ],
+    "code" : "04",
+    "rid" : "64_94788"
+  }, {
+    "level" : 1,
+    "leaf" : false,
+    "title" : {
+      "EN" : "Population"
+    },
+    "children" : [ {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Population growth Rate"
+      },
+      "code" : "0504",
+      "rid" : "64_94792"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Population total density"
+      },
+      "code" : "0503",
+      "rid" : "64_94793"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Chronic malnutrition rate"
+      },
+      "code" : "0506",
+      "rid" : "64_149862"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Life expectancy"
+      },
+      "code" : "0505",
+      "rid" : "64_116294"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Economically active population"
+      },
+      "code" : "0502",
+      "rid" : "64_94800"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Population"
+      },
+      "code" : "0501",
+      "rid" : "64_94801"
+    } ],
+    "code" : "05",
+    "rid" : "64_94790"
+  }, {
+    "level" : 1,
+    "leaf" : false,
+    "title" : {
+      "EN" : "Prices"
+    },
+    "children" : [ {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Consumer price"
+      },
+      "code" : "0601",
+      "rid" : "64_94805"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Official rate"
+      },
+      "code" : "0604",
+      "rid" : "64_94807"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Wholesale price"
+      },
+      "code" : "0605",
+      "rid" : "64_106811"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Producer price"
+      },
+      "code" : "0602",
+      "rid" : "64_94809"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Commercial rate"
+      },
+      "code" : "0603",
+      "rid" : "64_94810"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Highest price"
+      },
+      "code" : "0608",
+      "rid" : "64_149842"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Annual average price"
+      },
+      "code" : "0606",
+      "rid" : "64_106812"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Lowest price"
+      },
+      "code" : "0607",
+      "rid" : "64_149843"
+    } ],
+    "code" : "06",
+    "rid" : "64_94804"
+  }, {
+    "level" : 1,
+    "leaf" : false,
+    "title" : {
+      "EN" : "Value added"
+    },
+    "children" : [ {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Current prices"
+      },
+      "code" : "0702",
+      "rid" : "64_94819"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Constant prices"
+      },
+      "code" : "0701",
+      "rid" : "64_94820"
+    } ],
+    "code" : "07",
+    "rid" : "64_94816"
+  }, {
+    "level" : 1,
+    "leaf" : false,
+    "title" : {
+      "EN" : "Land use"
+    },
+    "children" : [ {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Arable land"
+      },
+      "code" : "0803",
+      "rid" : "64_94821"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Permanent crops area"
+      },
+      "code" : "0812",
+      "rid" : "64_116295"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Agricultural area"
+      },
+      "code" : "0802",
+      "rid" : "64_94823"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Other wooded land"
+      },
+      "code" : "0811",
+      "rid" : "64_116296"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Temporary crops area"
+      },
+      "code" : "0814",
+      "rid" : "64_116297"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Administrative Area"
+      },
+      "code" : "0801",
+      "rid" : "64_94824"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Permanent meadows and pastures"
+      },
+      "code" : "0813",
+      "rid" : "64_116298"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Forest area"
+      },
+      "code" : "0807",
+      "rid" : "64_116299"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Temporary meadows and pastures"
+      },
+      "code" : "0815",
+      "rid" : "64_116300"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Fallow Land"
+      },
+      "code" : "0806",
+      "rid" : "64_94826"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Area equipped for irrigation"
+      },
+      "code" : "0805",
+      "rid" : "64_94827"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Arable land and permanent crops area"
+      },
+      "code" : "0804",
+      "rid" : "64_94828"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Other land?"
+      },
+      "code" : "0810",
+      "rid" : "64_116301"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Inland water"
+      },
+      "code" : "0808",
+      "rid" : "64_116302"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Land Area"
+      },
+      "code" : "0809",
+      "rid" : "64_116303"
+    } ],
+    "code" : "08",
+    "rid" : "64_94822"
+  }, {
+    "level" : 1,
+    "leaf" : false,
+    "title" : {
+      "EN" : "Employment"
+    },
+    "children" : [ {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Unemployment Rate"
+      },
+      "code" : "0901",
+      "rid" : "64_94832"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Labourforce Participation Rate"
+      },
+      "code" : "0902",
+      "rid" : "64_94833"
+    } ],
+    "code" : "09",
+    "rid" : "64_94831"
+  }, {
+    "level" : 1,
+    "leaf" : false,
+    "title" : {
+      "EN" : "Water"
+    },
+    "children" : [ {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Min temperature"
+      },
+      "code" : "1003",
+      "rid" : "64_106813"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Drinking-water supply rate"
+      },
+      "code" : "1004",
+      "rid" : "64_149844"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Average rainfall"
+      },
+      "code" : "1001",
+      "rid" : "64_106554"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Max temperature"
+      },
+      "code" : "1002",
+      "rid" : "64_106814"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Basic sanitation acces rate"
+      },
+      "code" : "1005",
+      "rid" : "64_149845"
+    } ],
+    "code" : "10",
+    "rid" : "64_106555"
+  }, {
+    "level" : 1,
+    "leaf" : false,
+    "title" : {
+      "EN" : "Livestock"
+    },
+    "children" : [ {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Total Output"
+      },
+      "code" : "1106",
+      "rid" : "64_116304"
+    }, {
+      "level" : 2,
+      "leaf" : false,
+      "title" : {
+        "EN" : "Animals-feeding"
+      },
+      "children" : [ {
+        "level" : 3,
+        "leaf" : true,
+        "title" : {
+          "EN" : "Mix feeding"
+        },
+        "code" : "110703",
+        "rid" : "64_149867"
+      }, {
+        "level" : 3,
+        "leaf" : true,
+        "title" : {
+          "EN" : "Field-feeding"
+        },
+        "code" : "110702",
+        "rid" : "64_149868"
+      }, {
+        "level" : 3,
+        "leaf" : true,
+        "title" : {
+          "EN" : "Stall-feeding"
+        },
+        "code" : "110701",
+        "rid" : "64_149869"
+      } ],
+      "code" : "1107",
+      "rid" : "64_149866"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Dead Animals"
+      },
+      "code" : "1104",
+      "rid" : "64_116306"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Total Input"
+      },
+      "code" : "1105",
+      "rid" : "64_116307"
+    }, {
+      "level" : 2,
+      "leaf" : false,
+      "title" : {
+        "EN" : "Live animals"
+      },
+      "children" : [ {
+        "level" : 3,
+        "leaf" : true,
+        "title" : {
+          "EN" : "Female Live Animals"
+        },
+        "code" : "110201",
+        "rid" : "64_149846"
+      }, {
+        "level" : 3,
+        "leaf" : true,
+        "title" : {
+          "EN" : "Male Live Animals"
+        },
+        "code" : "110203",
+        "rid" : "64_116309"
+      }, {
+        "level" : 3,
+        "leaf" : true,
+        "title" : {
+          "EN" : "Animals given as gift"
+        },
+        "code" : "110211",
+        "rid" : "64_116310"
+      }, {
+        "level" : 3,
+        "leaf" : true,
+        "title" : {
+          "EN" : "Lactating Animals"
+        },
+        "code" : "110202",
+        "rid" : "64_149847"
+      }, {
+        "level" : 3,
+        "leaf" : true,
+        "title" : {
+          "EN" : "Animals given for caretaking"
+        },
+        "code" : "110210",
+        "rid" : "64_116311"
+      }, {
+        "level" : 3,
+        "leaf" : true,
+        "title" : {
+          "EN" : "Bought Animals"
+        },
+        "code" : "110205",
+        "rid" : "64_116312"
+      }, {
+        "level" : 3,
+        "leaf" : true,
+        "title" : {
+          "EN" : "Born Animals"
+        },
+        "code" : "110204",
+        "rid" : "64_116313"
+      }, {
+        "level" : 3,
+        "leaf" : true,
+        "title" : {
+          "EN" : "Animals got for caretaking"
+        },
+        "code" : "110207",
+        "rid" : "64_116314"
+      }, {
+        "level" : 3,
+        "leaf" : true,
+        "title" : {
+          "EN" : "Animals got as gift"
+        },
+        "code" : "110206",
+        "rid" : "64_116315"
+      }, {
+        "level" : 3,
+        "leaf" : true,
+        "title" : {
+          "EN" : "Stolen Animals"
+        },
+        "code" : "110209",
+        "rid" : "64_116316"
+      }, {
+        "level" : 3,
+        "leaf" : true,
+        "title" : {
+          "EN" : "Sold Animals"
+        },
+        "code" : "110208",
+        "rid" : "64_116317"
+      } ],
+      "code" : "1102",
+      "rid" : "64_116308"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Laying hens"
+      },
+      "code" : "1103",
+      "rid" : "64_116318"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Slaughtered animals"
+      },
+      "code" : "1101",
+      "rid" : "64_116319"
+    } ],
+    "code" : "11",
+    "rid" : "64_116305"
+  }, {
+    "level" : 1,
+    "leaf" : false,
+    "title" : {
+      "EN" : "National account"
+    },
+    "children" : [ {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "GDP per capita"
+      },
+      "code" : "1203",
+      "rid" : "64_116322"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "GDP growth"
+      },
+      "code" : "1202",
+      "rid" : "64_116324"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "GPD"
+      },
+      "code" : "1201",
+      "rid" : "64_116325"
+    } ],
+    "code" : "12",
+    "rid" : "64_116323"
+  }, {
+    "level" : 1,
+    "leaf" : false,
+    "title" : {
+      "EN" : "Fishery"
+    },
+    "children" : [ {
+      "level" : 2,
+      "leaf" : false,
+      "title" : {
+        "EN" : "Aquaculture production"
+      },
+      "children" : [ {
+        "level" : 3,
+        "leaf" : true,
+        "title" : {
+          "EN" : "Marine/Brackish Aquaculture production"
+        },
+        "code" : "130103",
+        "rid" : "64_116332"
+      }, {
+        "level" : 3,
+        "leaf" : true,
+        "title" : {
+          "EN" : "Inland Aquaculture production"
+        },
+        "code" : "130101",
+        "rid" : "64_116333"
+      }, {
+        "level" : 3,
+        "leaf" : false,
+        "title" : {
+          "EN" : "Marine Aquaculture production"
+        },
+        "children" : [ {
+          "level" : 4,
+          "leaf" : true,
+          "title" : {
+            "EN" : "Industrial Marine Aquaculture production"
+          },
+          "code" : "13010201",
+          "rid" : "64_116978"
+        }, {
+          "level" : 4,
+          "leaf" : true,
+          "title" : {
+            "EN" : "Artisanal Marine Aquaculture production"
+          },
+          "code" : "13010202",
+          "rid" : "64_116979"
+        } ],
+        "code" : "130102",
+        "rid" : "64_116334"
+      } ],
+      "code" : "1301",
+      "rid" : "64_116326"
+    }, {
+      "level" : 2,
+      "leaf" : false,
+      "title" : {
+        "EN" : "Capture production"
+      },
+      "children" : [ {
+        "level" : 3,
+        "leaf" : false,
+        "title" : {
+          "EN" : "Marine Capture production"
+        },
+        "children" : [ {
+          "level" : 4,
+          "leaf" : true,
+          "title" : {
+            "EN" : "Artisanal Marine Capture production"
+          },
+          "code" : "13020202",
+          "rid" : "64_116976"
+        }, {
+          "level" : 4,
+          "leaf" : true,
+          "title" : {
+            "EN" : "Traditional Marine Capture production"
+          },
+          "code" : "13020203",
+          "rid" : "64_149848"
+        }, {
+          "level" : 4,
+          "leaf" : true,
+          "title" : {
+            "EN" : "Industrial Marine Capture production"
+          },
+          "code" : "13020201",
+          "rid" : "64_116977"
+        } ],
+        "code" : "130202",
+        "rid" : "64_116329"
+      }, {
+        "level" : 3,
+        "leaf" : true,
+        "title" : {
+          "EN" : "Marine/Brackish Capture production"
+        },
+        "code" : "130203",
+        "rid" : "64_116330"
+      }, {
+        "level" : 3,
+        "leaf" : true,
+        "title" : {
+          "EN" : "Inland Capture production"
+        },
+        "code" : "130201",
+        "rid" : "64_116331"
+      } ],
+      "code" : "1302",
+      "rid" : "64_116328"
+    } ],
+    "code" : "13",
+    "rid" : "64_116327"
+  }, {
+    "level" : 1,
+    "leaf" : false,
+    "title" : {
+      "EN" : "Forestry"
+    },
+    "children" : [ {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Deforestation rate"
+      },
+      "code" : "1405",
+      "rid" : "64_149849"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Reforested area"
+      },
+      "code" : "1401",
+      "rid" : "64_149851"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Seedlings planted"
+      },
+      "code" : "1402",
+      "rid" : "64_149852"
+    }, {
+      "level" : 2,
+      "leaf" : false,
+      "title" : {
+        "EN" : "Burned area"
+      },
+      "children" : [ {
+        "level" : 3,
+        "leaf" : true,
+        "title" : {
+          "EN" : "Burned meadows"
+        },
+        "code" : "140301",
+        "rid" : "64_149854"
+      }, {
+        "level" : 3,
+        "leaf" : true,
+        "title" : {
+          "EN" : "Non-authorized clearing"
+        },
+        "code" : "140305",
+        "rid" : "64_149855"
+      }, {
+        "level" : 3,
+        "leaf" : true,
+        "title" : {
+          "EN" : "Authorized clearing"
+        },
+        "code" : "140304",
+        "rid" : "64_149856"
+      }, {
+        "level" : 3,
+        "leaf" : true,
+        "title" : {
+          "EN" : "Burned reafforestation"
+        },
+        "code" : "140303",
+        "rid" : "64_149857"
+      }, {
+        "level" : 3,
+        "leaf" : true,
+        "title" : {
+          "EN" : "Burned natural forests"
+        },
+        "code" : "140302",
+        "rid" : "64_149858"
+      } ],
+      "code" : "1403",
+      "rid" : "64_149853"
+    }, {
+      "level" : 2,
+      "leaf" : true,
+      "title" : {
+        "EN" : "Deforested area"
+      },
+      "code" : "1404",
+      "rid" : "64_149859"
+    } ],
+    "code" : "14",
+    "rid" : "64_149850"
+  } ],
+  "size" : 120
+}

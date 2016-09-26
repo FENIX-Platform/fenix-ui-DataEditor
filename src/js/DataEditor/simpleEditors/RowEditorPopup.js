@@ -1,9 +1,10 @@
 ﻿define([
         'jquery',
-        '../helpers/MLUtils',
+        'loglevel',
+        '../../../nls/labels',
         './rE/RowEditorFactory'
 ],
-function ($, MLUtils, reFactory) {
+function ($, log, MLRes, reFactory) {
     var widgetName = "DataEditorPopup";
     var yMax = 3000;
     var yMin = 0;
@@ -23,6 +24,8 @@ function ($, MLUtils, reFactory) {
         if (localStorage.getItem('locale'))
             this.lang = localStorage.getItem('locale');
 
+        this.lang = this.lang.toLowerCase();
+
         this.editors = [];
         this.uidInEdit = -1;
 
@@ -32,6 +35,7 @@ function ($, MLUtils, reFactory) {
     RowEditorPopup.prototype.render = function (container, config) {
         $.extend(true, this.config, config);
         this.$window = container;
+
     }
     RowEditorPopup.prototype.setColumns = function (cols, codelists) {
         this.cols = cols;
@@ -50,7 +54,7 @@ function ($, MLUtils, reFactory) {
         var toAppend;
         for (var i = 0; i < this.cols.length; i++) {
             toAppend = '<tr>';
-            toAppend += '<td>' + MLUtils_getAvailableString(this.cols[i].title, this.lang) + '</td>';
+            toAppend += '<td>' + this.cols[i].title[this.lang.toUpperCase()] + '</td>';
             toAppend += '<td><div id="' + generateEditFiledId(this.cols[i].id) + '"></div></td>';
             toAppend += '</tr>';
             tBody.append(toAppend);
@@ -100,9 +104,9 @@ function ($, MLUtils, reFactory) {
         return 'trRowEdit_' + id;
     }
     RowEditorPopup.prototype.reset = function (row) {
+        log.info("RowEditorPopup - reset", this.editors, this.cols.length)
         this.uidInEdit = -1;
-        if (!this.cols)
-            return;
+        if (!this.cols) return;
         for (var i = 0; i < this.cols.length; i++) {
             this.editors[i].reset();
         }
@@ -126,6 +130,7 @@ function ($, MLUtils, reFactory) {
     }
 
     RowEditorPopup.prototype.setRow = function (row) {
+        log.info("setRow", row)
         this.reset();
         if (!this.cols)
             throw new Error('cannot set row when columns are null');

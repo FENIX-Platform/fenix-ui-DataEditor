@@ -1,5 +1,6 @@
 ﻿define([
         'jquery',
+        'loglevel',
         './RowEditorPopup',
         '../../../html/DataEditor/simpleEditors/DataEditor.html',
         '../../../nls/labels',
@@ -7,7 +8,7 @@
         'amplify-pubsub',
         'bootstrap'
 ],
-    function ($, RowEditorPopup, DataEditorHTML, mlRes, MLUtils, amplify) {
+    function ($, log, RowEditorPopup, DataEditorHTML, mlRes, MLUtils, amplify) {
         var widgetName = "DataEditor";
 
 
@@ -39,7 +40,7 @@
 
         var DataEditor = function (config) {
             this.config = {};
-            $.extend(true, this.config, defConfig, config);
+            $.extend(true, this.config, config, defConfig);
 
             this.rowEditor = new RowEditorPopup();
 
@@ -53,6 +54,7 @@
             this.editEnabled = true;
 
             this.lang = 'EN';
+            this.lang = this.lang.toLowerCase();
         };
 
         //Render - creation
@@ -85,6 +87,8 @@
 
             this._doML();
             if (callB) callB();
+
+            log.info("DataEditor rendered", this.config);
         }
 
         DataEditor.prototype.setColumns = function (cols, codelists, callB) {
@@ -105,6 +109,7 @@
         };
 
         DataEditor.prototype._showEditWindow = function (row) {
+            log.info("_showEditWindow", row);
             this.$editWindow.modal('show');
             this.rowEditor.reset();
             if (row)
@@ -119,10 +124,11 @@
         };
 
         DataEditor.prototype._bindEvents = function () {
+            log.info("Data Editor - _bindEvents");
             var me = this;
             this.$cnt.find(h.btnEditRowCanc).on('click', function () {
                 if (me.rowEditor.changed()) {
-                    if (!confirm(mlRes.unsavedData))
+                    if (!confirm(mlRes[me.lang]['unsavedData']))
                         return;
                 }
                 me.$editWindow.modal('hide');
@@ -203,17 +209,17 @@
             this.updateTable();
         };
         DataEditor.prototype.updateTableHeader = function () {
+
             var tHead = this.$cnt.find(h.tblDataHead);
             tHead.html('');
             //tHead.append('<th style="display:none;"></th>');
             tHead.append('<th>#</th>');
             for (var i = 0; i < this.cols.length; i++) {
                 //MLUtils get multilanguage string
-                tHead.append(createTH(this.cols[i].title[this.lang]));
+                tHead.append(createTH(this.cols[i].title[this.lang.toUpperCase()]));
             }
-            if (this.editEnabled) {
-                tHead.append(this.config.thButtons);
-            }
+            if (this.editEnabled) tHead.append(this.config.thButtons);
+
         };
         DataEditor.prototype.updateTable = function () {
             this.$tBody.html('');
@@ -230,7 +236,7 @@
                     me._showEditWindow({ uid: rowId, data: me.data[rowId] });
                 });
                 this.$tBody.find('.' + h.delButtonsClass).on('click', function () {
-                    var res = confirm(mlRes.confirmDelete);
+                    var res = confirm(mlRes[this.lang]['confirmDelete']);
                     if (!res)
                         return;
                     me.deleteRow($(this).data('rid'));
@@ -305,6 +311,7 @@
         };
 
         DataEditor.prototype.getData = function () {
+            log.info("getData ", this.data)
             return this.data;
         }
         //END Data
@@ -419,13 +426,29 @@
             }
         }
         function convertCode(code, lang) {
+
+            var MLUtils_getAvailableLang = function (ml, lang) {
+                if (!ml)
+                    return "";
+                if (!lang)
+                    lang = 'EN';
+                lang = lang.toUpperCase();
+                if (lang in ml)
+                    return lang;
+                if ('EN' in ml)
+                    return 'EN';
+                for (var langs in ml)
+                    return langs;
+            }
+
             return {
                 level: code.level,
-                title: MLUtils_getAvailableString(code.title, lang) + " [" + code.code + "]",
+                title: code.title[MLUtils_getAvailableLang(code.title,lang)] + " [" + code.code + "]",
                 code: code.code
             };
         }
         //End Codelists helpers
+
 
         DataEditor.prototype._doML = function () {
         }

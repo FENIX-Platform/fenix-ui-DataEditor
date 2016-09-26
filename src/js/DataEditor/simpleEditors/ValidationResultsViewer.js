@@ -12,6 +12,7 @@ function ($, mlRes) {
     //Render - creation
     ValidationResultsViewer.prototype.render = function (container) {
         this.$valResGrid = container;
+        console.log("ValidationResultsViewer redered");
     }
 
     ValidationResultsViewer.prototype.setValidationResults = function (valRes) {

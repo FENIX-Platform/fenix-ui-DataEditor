@@ -1,5 +1,9 @@
-﻿define({
-    "root": {
+﻿/*global define*/
+define(function () {
+
+    'use strict';
+
+    return  {
         //"ok": "Ok",
         //"cancel": "Cancel",
         "confirmDelete": "Delete?",
@@ -19,6 +23,5 @@
         "NAN": "Value is not a number",
         "OutOfRange": "Value is out of the allowed range",
         "Null": "Value cannot be blank"
-    },
-    "fr": true
+    }
 });

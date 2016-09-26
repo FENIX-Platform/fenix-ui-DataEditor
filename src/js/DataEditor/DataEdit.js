@@ -128,14 +128,14 @@ function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, DataEdi
                 var cListId = cols[i].domain.codes[0].idCodeList;
                 if (cols[i].domain.codes[0].version)
                     cListId = cListId + "|" + cols[i].domain.codes[0].version;
-
                 if (!(cListId in cLists))
-                    throw new Error("Codelist for the column " + cols[i].id + " missing");
+                    throw new Error("Codelist '"+cListId+"' for the column '"+cols[i].id+"' missing");
             }
     };
 
     DataEdit.prototype.getData = function () {
         var valRes = this.getValidationResults();
+
         if (valRes == null || valRes.length == 0)
             return this.dataEditor.getData();
         else
