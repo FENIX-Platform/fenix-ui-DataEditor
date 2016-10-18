@@ -1,7 +1,8 @@
 define([
     'jquery',
-    './DataEditor/DataEdit'
-], function ($, DataEdit) {
+    './DataEditor/DataEdit',
+    './DataEditor/helpers/CSV_To_Dataset'
+], function ($, DataEdit, Csv2Dataset) {
     var cfg = {};
     var dataEdit;
 
@@ -36,6 +37,10 @@ define([
     }
     function hasChanged() { return dataEdit.hasChanged(); }
 
+    function CSV_To_Dataset() {
+        return Csv2Dataset;
+    }
+
     return {
         init: init,
         setColumns: setColumns,
@@ -49,6 +54,7 @@ define([
         getColumnsWithDistincts: getColumnsWithDistincts,
         isEditable: isEditable,
         destroy: destroy,
-        hasChanged: hasChanged
+        hasChanged: hasChanged,
+        CSV_To_Dataset: CSV_To_Dataset
     }
 });
