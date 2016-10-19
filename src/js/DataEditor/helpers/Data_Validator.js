@@ -13,8 +13,7 @@
         var MSG_INVALID_BOOL = 'invalidBool';
 
         //Columns/headers validation
-        function Data_Validator() {
-        };
+        function Data_Validator() { };
 
         Data_Validator.prototype.validate = function (cols, codelists, data) {
             var toRet = [];

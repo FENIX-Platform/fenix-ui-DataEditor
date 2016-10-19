@@ -118,18 +118,18 @@ function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, DataEdi
     };
 
     var checkCodeColumnsAndCodelists = function (cols, cLists) {
-        if (!cols)
-            return;
+        //console.log("cLists",cLists);
+        if (!cols) return;
         for (var i = 0; i < cols.length; i++)
             if (cols[i].dataType == 'code') {
                 if (!cLists)
                     throw new Error("Codelist for the column " + cols[i].id + " missing");
                 //TODO: extend to multiple codelists
                 var cListId = cols[i].domain.codes[0].idCodeList;
-                /*
+
                 if (cols[i].domain.codes[0].version)
                     cListId = cListId + "|" + cols[i].domain.codes[0].version;
-                */
+
                 if (!(cListId in cLists))
                     throw new Error("Codelist '"+cListId+"' for the column '"+cols[i].id+"' missing");
             }

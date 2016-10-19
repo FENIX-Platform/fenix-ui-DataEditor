@@ -1,6 +1,6 @@
 ﻿define([
         'jquery',
-        '../../html/DataEditor/ColumnsMatch/ColumnsMatch.html',
+        '../../../html/DataEditor/ColumnsMatch/ColumnsMatch.html',
         '../helpers/MLUtils'
 ],
     function ($, colsMatchHTML, MLUtils) {

@@ -1,8 +1,12 @@
 define([
     'jquery',
     './DataEditor/DataEdit',
-    './DataEditor/helpers/CSV_To_Dataset'
-], function ($, DataEdit, Csv2Dataset) {
+    './DataEditor/helpers/CSV_To_Dataset',
+    './DataEditor/helpers/Validator_CSV',
+    './DataEditor/helpers/Data_Validator',
+    './DataEditor/ColumnsMatch/ColumnsMatch'
+
+], function ($, DataEdit, Csv2Dataset, ValidatorCSV, DataValidator, ColumnsMatch) {
     var cfg = {};
     var dataEdit;
 
@@ -37,8 +41,20 @@ define([
     }
     function hasChanged() { return dataEdit.hasChanged(); }
 
-    function CSV_To_Dataset() {
-        return Csv2Dataset;
+    function CSV_To_Dataset(a,b) {
+        return new Csv2Dataset(a,b);
+    }
+
+    function Validator_CSV() {
+        return ValidatorCSV;
+    }
+
+    function Columns_Match() {
+        return ColumnsMatch;
+    }
+
+    function Data_Validator() {
+        return new DataValidator();
     }
 
     return {
@@ -55,6 +71,9 @@ define([
         isEditable: isEditable,
         destroy: destroy,
         hasChanged: hasChanged,
-        CSV_To_Dataset: CSV_To_Dataset
+        CSV_To_Dataset: CSV_To_Dataset,
+        Validator_CSV: Validator_CSV,
+        Columns_Match: Columns_Match,
+        Data_Validator: Data_Validator
     }
 });

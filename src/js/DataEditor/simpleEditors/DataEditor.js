@@ -11,7 +11,6 @@
     function ($, log, RowEditorPopup, DataEditorHTML, mlRes, MLUtils, amplify) {
         var widgetName = "DataEditor";
 
-
         var defConfig = {
             thButtons: "<th>E</th><th>D</th>"
         };
@@ -265,10 +264,11 @@
         };
 
         function createTblRow(idx, cols, codelists, row, editControls) {
+
             var toRet = '<tr>';
             //toRet += '<td style="display:none;">' + idx + '</td>'
             toRet += '<td>' + idx + '</td>'
-            for (var i = 0; i < row.length; i++) {
+            for (var i = 0; i < cols.length; i++) { //was row.lenght
                 toRet += '<td>';
                 if (row[i] === null)
                     toRet += '';
@@ -289,16 +289,16 @@
         var getCodelistUid = function (domain) {
             //Make it handle multiple codelsits
             var cListUid = domain.codes[0].idCodeList;
-            if (domain.codes[0].version)
-                cListUid += "|" + domain.codes[0].version;
+            if (domain.codes[0].version) cListUid += "|" + domain.codes[0].version;
             return cListUid;
         };
-        function addLabelToData(col, codelists, data, lang) {
+        function addLabelToData(col, codelists, data) {
             //TODO Make it handle multiple Codelists
+        //    console.log("addLabelToData",col, codelists, data);
             var cListUID = getCodelistUid(col.domain);
+        //    console.log(cListUID);
             var lbl = getCodeLabel(codelists[cListUID].data, data);
-            if (lbl === null)
-                return '';
+            if (lbl === null) return '';
             return lbl;
         };
         var getCodeLabel = function (codes, code) {
@@ -449,7 +449,6 @@
             };
         }
         //End Codelists helpers
-
 
         DataEditor.prototype._doML = function () {
         }

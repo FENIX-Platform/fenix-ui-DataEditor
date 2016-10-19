@@ -1,5 +1,5 @@
-﻿define(['jquery'
-],
+﻿define(
+    ['jquery'],
 function ($) {
     this.defConfig = {
         'fSep': ',',
@@ -11,9 +11,15 @@ function ($) {
 
 
     function CSV_To_Dataset(config,separator) {
-        this.config = {};
-        defConfig.fSep = separator;
-        $.extend(true, this.config, defConfig, config);
+        this.config = {
+            'fSep': separator,
+            'rSep': '\r\n',
+            'quot': '"',
+            'head': false,
+            'trim': true
+        };
+        //defConfig.fSep = separator;
+        $.extend(true, this.config,/* defConfig,*/ config);
         this.stringsArr;
     };
 
