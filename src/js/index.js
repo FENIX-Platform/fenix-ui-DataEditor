@@ -50,7 +50,7 @@ define([
     }
 
     function Columns_Match() {
-        return ColumnsMatch;
+        return new ColumnsMatch();
     }
 
     function Data_Validator() {

@@ -20,6 +20,8 @@ function ($, mlRes) {
         if (!valRes)  return;
         var toAdd = "";
 
+        console.log(this.lang,mlRes);
+
         toAdd = '<table><tbody>';
 
         for (var i = 0; i < valRes.length; i++) {

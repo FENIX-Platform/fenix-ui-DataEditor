@@ -22,8 +22,6 @@ function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, DataEdi
         this.config = {};
         $.extend(true, this.config, defConfig, config);
 
-        console.log(amplify);
-
         this.$container;
 
         this.dataEditor;

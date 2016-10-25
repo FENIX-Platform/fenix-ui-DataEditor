@@ -1,9 +1,10 @@
 ﻿define([
         'jquery',
+        'loglevel',
         '../../../html/DataEditor/ColumnsMatch/ColumnsMatch.html',
         '../helpers/MLUtils'
 ],
-    function ($, colsMatchHTML, MLUtils) {
+    function ($, log, colsMatchHTML, MLUtils) {
         var widgetName = "ColumnsMatch";
 
         var defConfig = {
@@ -26,6 +27,7 @@
         };
 
         var ColumnsMatch = function (config) {
+            log.info("ColumnsMatch",config);
             this.config = {};
             $.extend(true, this.config, defConfig, config);
             this.$cnt;
@@ -43,6 +45,7 @@
 
         //Render - creation
         ColumnsMatch.prototype.render = function (container, config, callB) {
+            log.info("ColumnsMatch render",container, config, callB);
             $.extend(true, this.config, config);
 
             this.$cnt = container;
@@ -59,6 +62,7 @@
         }
 
         ColumnsMatch.prototype.setData = function (dsd, csvCols, csvData) {
+            log.info("ColumnsMatch setData",dsd, csvCols, csvData);
             this.dsd = dsd;
             this.csvCols = csvCols;
             this.csvData = csvData;
@@ -67,7 +71,7 @@
             this.$trCsv.html('');
             if (!cols) return;
             for (var i = 0; i < cols.length; i++) {
-                var title = MLUtils_getAvailableString(cols[i].title, this.lang);
+                var title = cols[i].title[this.lang];
                 var toSet = html.rowDSD.replace('%title%', title);
                 toSet = toSet.replace('%type%', cols[i].dataType);
 
@@ -83,6 +87,7 @@
             this._updateView(this.csvCols, this.csvData);
         }
         ColumnsMatch.prototype.getCsvCols = function () {
+            log.info("ColumnsMatch getCsvCols");
             var newOrder = this._getColIndexes(this.csvCols);
             var toRet = [];
             for (var i = 0; i < this.dsd.columns.length; i++) {
@@ -91,6 +96,7 @@
             return toRet;
         }
         ColumnsMatch.prototype.getCsvData = function () {
+            log.info("ColumnsMatch getCsvData");
             var newOrder = this._getColIndexes(this.csvCols);
             var toRet = [];
             for (var i = 0; i < this.csvData.length; i++) {
@@ -104,6 +110,7 @@
         }
 
         ColumnsMatch.prototype._updateView = function (csvCols, csvData) {
+            log.info("ColumnsMatch _updateView",csvCols, csvData);
             var maxRCount = this.config.maxRows;
             if (csvData.length < maxRCount) {
                 maxRCount = csvData.length
@@ -122,12 +129,14 @@
             this.$tblColMatch.append(toAdd);
         }
         ColumnsMatch.prototype._getColIndexes = function (csvCols) {
+            log.info("ColumnsMatch _getColIndexes",csvCols);
             var $tdCsv = this.$trCsv.find('td');
             var toRet = [];
             for (var i = 0; i < $tdCsv.length; i++) {
                 var colId = $($tdCsv[i]).find('div')[0].id;
                 toRet[i] = findIndex(colId, csvCols);
             }
+            log.info("ColumnsMatch _getColIndexes<",toRet);
             return toRet;
         }
         ColumnsMatch.prototype._removeDataRows = function () {

@@ -52,8 +52,7 @@
             this.$tBody;
             this.editEnabled = true;
 
-            this.lang = 'EN';
-            this.lang = this.lang.toLowerCase();
+            this.lang = 'en';
         };
 
         //Render - creation
