@@ -236,7 +236,7 @@
                     me._showEditWindow({ uid: rowId, data: me.data[rowId] });
                 });
                 this.$tBody.find('.' + h.delButtonsClass).on('click', function () {
-                    var res = confirm(mlRes[this.lang]['confirmDelete']);
+                    var res = confirm(mlRes[me.lang]['confirmDelete']);
                     if (!res)
                         return;
                     me.deleteRow($(this).data('rid'));

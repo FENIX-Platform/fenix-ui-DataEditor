@@ -104,7 +104,7 @@ function ($, log, MLRes, reFactory) {
         return 'trRowEdit_' + id;
     }
     RowEditorPopup.prototype.reset = function (row) {
-        log.info("RowEditorPopup - reset", this.editors, this.cols.length)
+        log.info("RowEditorPopup - reset", this.editors, this.cols.length, row)
         this.uidInEdit = -1;
         if (!this.cols) return;
         for (var i = 0; i < this.cols.length; i++) {

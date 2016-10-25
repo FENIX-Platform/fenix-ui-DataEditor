@@ -18,8 +18,11 @@ function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, DataEdi
     };
 
     var DataEdit = function (config) {
+        console.log('DataEdit');
         this.config = {};
         $.extend(true, this.config, defConfig, config);
+
+        console.log(amplify);
 
         this.$container;
 
@@ -38,6 +41,7 @@ function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, DataEdi
 
     //Render - creation
     DataEdit.prototype.render = function (container, config, callB) {
+        console.log('Render - creation');
         $.extend(true, this.config, config);
 
         this.$container = container;
@@ -48,7 +52,7 @@ function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, DataEdi
         this.dataEditor.render(this.$container.find('#divDataEdit'), this.config);
 
         this.$valResView = this.$container.find('#divValRes');
-        this.valResView = new ValidationResultsViewer();
+        this.valResView = new ValidationResultsViewer(this.config.lang);
         this.valResView.render(this.$valResView);
 
         this.doML();

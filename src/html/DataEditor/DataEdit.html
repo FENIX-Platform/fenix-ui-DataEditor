@@ -1,8 +1,36 @@
-﻿<div id="divValRes" style="display: none">
+﻿<div id="divValRes" style="display: none"></div>
+<div id="DataUploadColsMatch" style="display:none">
+    <div class="row">
+        <div class="col-xs-12">
+            <p id="DataMatchColumn">
+                Match the DSD columns with the CSV ones
+            </p>
+            <div id="divCsvMatcher">
+
+            </div>
+            <p>
+                <button id="btnCsvMatcherOk" type="button" class="btn">Ok</button>
+                <button id="btnCsvMatcherCancel" type="button" class="btn">Cancel</button>
+            </p>
+        </div>
+    </div>
+</div>
+<div id="DataUploadContainer" style="display:none">
+    <div class="row">
+        <div class="col-xs-12">
+            <p id="DataDuplicateFound" class="text-center">
+                Some duplicated values found, keep old data or replace with the new values just uploaded?
+            </p>
+            <p class="text-center">
+                <button id="btnDataMergeKeepNew" type="button" class="btn">Replace with new values</button>
+                <button id="btnDataMergeKeepOld" type="button" class="btn">Keep old values</button>
+                <button id="btnDataMergeCancel" type="button" class="btn">Cancel</button>
+            </p>
+        </div>
+    </div>
 </div>
 <div id="divDataEditor">
-    <div id="divDataEdit">
-    </div>
+    <div id="divDataEdit"> </div>
     <div id="divDataGridBtns">
         <button id="btnAddRow" type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></button>
     </div>

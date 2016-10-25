@@ -5,27 +5,26 @@
 function ($, mlRes) {
 
 
-    var ValidationResultsViewer = function () {
+    var ValidationResultsViewer = function (lang) {
+        this.lang = lang;
         this.$valResGrid;
     };
 
     //Render - creation
     ValidationResultsViewer.prototype.render = function (container) {
         this.$valResGrid = container;
-        console.log("ValidationResultsViewer redered");
     }
 
     ValidationResultsViewer.prototype.setValidationResults = function (valRes) {
         this.$valResGrid.html();
-        if (!valRes)
-            return;
+        if (!valRes)  return;
         var toAdd = "";
 
         toAdd = '<table><tbody>';
 
         for (var i = 0; i < valRes.length; i++) {
             toAdd += '<tr><td>';
-            toAdd += mlRes[valRes[i].error];
+            toAdd += mlRes[this.lang.toLowerCase()][valRes[i].error];
             if (valRes[i].dataIndex)
                 toAdd += " line: " + valRes[i].dataIndex;
             toAdd += '</tr></td>';
