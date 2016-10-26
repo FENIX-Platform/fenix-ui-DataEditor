@@ -4,10 +4,12 @@
 './simpleEditors/DataEditor',
 './simpleEditors/ValidationResultsViewer',
 './helpers/Data_Validator',
-'../../html/DataEditor/DataEdit.html',
+'../../nls/labels',
+'../../html/DataEditor/DataEdit.hbs',
 'amplify-pubsub'
+
 ],
-function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, DataEditHTML, amplify) {
+function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, MultiLang, DataEditHTML, amplify) {
 
     var widgetName = "DataEdit";
     var defConfig = {};
@@ -42,6 +44,8 @@ function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, DataEdi
         console.log('Render - creation');
         $.extend(true, this.config, config);
 
+        require('../../css/fenix-ui-DataEditor.css');
+
         this.$container = container;
         this.$container.html(DataEditHTML);
 
@@ -64,8 +68,13 @@ function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, DataEdi
 
         this.$dataEditor.find('#btnAddRow').on('click', function (args) { me.dataEditor.newRow(); });
 
-        if (callB)
-            callB();
+        this.$dataEditor.find('#DataDeleteAll').on('click', function () {
+            var res = confirm(MultiLang[me.config.lang.toLowerCase()]['confirmDelete']);
+            if (!res) return;
+            me.dataEditor.removeAllData();
+        });
+
+        if (callB) callB();
     }
     //Validation
     DataEdit.prototype.updateValidation = function (data) {

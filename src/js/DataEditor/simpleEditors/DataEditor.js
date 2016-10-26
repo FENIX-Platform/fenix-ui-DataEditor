@@ -2,7 +2,7 @@
         'jquery',
         'loglevel',
         './RowEditorPopup',
-        '../../../html/DataEditor/simpleEditors/DataEditor.html',
+        '../../../html/DataEditor/simpleEditors/DataEditor.hbs',
         '../../../nls/labels',
         '../helpers/MLUtils',
         'amplify-pubsub',

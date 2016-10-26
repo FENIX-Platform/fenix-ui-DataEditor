@@ -3,7 +3,7 @@
         'eonasdan-bootstrap-datetimepicker',
         '../../../../nls/labels',
         './RowEditor_base',
-        '../../../../html/DataEditor/simpleEditors/RowEditorTime.html',
+        '../../../../html/DataEditor/simpleEditors/RowEditorTime.hbs',
         'moment',
         'bootstrap'
 ],

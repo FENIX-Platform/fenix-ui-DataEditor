@@ -1,7 +1,7 @@
 ﻿define([
         'jquery',
         'loglevel',
-        '../../../html/DataEditor/ColumnsMatch/ColumnsMatch.html',
+        '../../../html/DataEditor/ColumnsMatch/ColumnsMatch.hbs',
         '../helpers/MLUtils'
 ],
     function ($, log, colsMatchHTML, MLUtils) {
