@@ -14,7 +14,44 @@
 @import 'base/fx-typography';
 @import 'base/fx-fixed-height';
 
+
+// Standard Fenix Theme
+
+$fx-secondary-color: desaturate( $fx-cool-blue, 50% );
+
+.fx-text-primary-color{
+  color: $fx-cool-blue;
+}
+
+.fx-background-color-primary-color{
+  background-color: $fx-cool-blue;
+}
+
+
+.fx-button-primary-color {
+  color: white;
+  border-color: darken($fx-cool-blue, 10%);
+  background-color: $fx-cool-blue;
+
+  &:hover {
+    color: white;
+    border-color: darken($fx-cool-blue, 10%);
+    background-color: darken($fx-cool-blue, 5%);
+  }
+
+  &:focus {
+    color: white;
+    border-color: darken($fx-cool-blue, 20%);
+    background-color: darken($fx-cool-blue, 15%);
+  }
+
+}
+
+/////
+
 // Creates a row for the "Upload" button in the data management
 #divDataGridBtns {
   margin-left: 57px;
 }
+
+
