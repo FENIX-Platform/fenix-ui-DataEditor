@@ -12,6 +12,10 @@
             lang: 'EN',
             D3SConnector: { getMetaAndDataUrl: "http://faostat3.fao.org:7799/v2/msd/resources" }
         };
+
+        require("bootstrap-loader");
+        require("../../../node_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css");
+
         var callB = null;
         DataEditor.init("#standard", config, callB);
         DataEditor.isEditable(false);

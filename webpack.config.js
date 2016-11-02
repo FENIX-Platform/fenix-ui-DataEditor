@@ -52,6 +52,10 @@ module.exports = {
         ]
     },
 
+    node: {
+        fs: "empty"
+    },
+
     plugins: clearArray([
         new webpack.ProvidePlugin({$: "jquery", jQuery: "jquery"}),
         isProduction(new CleanWebpackPlugin([distFolderPath]), undefined),
