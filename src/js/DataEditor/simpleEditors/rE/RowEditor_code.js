@@ -1,8 +1,8 @@
 ﻿define([
         'jquery',
         '../../../../nls/labels',
-        './RowEditor_base',
-        'bootstrap'
+        './RowEditor_base'
+
 ],
 function ($, mlRes, rowEditorBase) {
     var defConfig = {

@@ -4,8 +4,7 @@
         '../../../../nls/labels',
         './RowEditor_base',
         '../../../../html/DataEditor/simpleEditors/RowEditorTime.hbs',
-        'moment',
-        'bootstrap'
+        'moment'
 ],
 function ($, datetimepicker, mlRes, rowEditorBase, RowEditorTimeHTML) {
     var defConfig = { yMin: 0, yMax: 3000 };
