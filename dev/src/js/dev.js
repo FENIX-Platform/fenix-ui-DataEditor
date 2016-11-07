@@ -47,7 +47,9 @@
             DataEditor.isEditable(!value);
         });
 
-
+        $('#btnStatusLoading').click(function(){
+            DataEditor.setStatus('loading');
+        });
 
     }
 );

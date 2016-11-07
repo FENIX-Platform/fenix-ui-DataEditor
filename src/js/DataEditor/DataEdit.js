@@ -20,7 +20,7 @@ function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, MultiLa
     };
 
     var DataEdit = function (config) {
-        console.log('DataEdit');
+        //console.log('DataEdit');
         this.config = {};
         $.extend(true, this.config, defConfig, config);
 
@@ -41,7 +41,7 @@ function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, MultiLa
 
     //Render - creation
     DataEdit.prototype.render = function (container, config, callB) {
-        console.log('Render - creation');
+        //console.log('Render - creation');
         $.extend(true, this.config, config);
 
         require('../../css/fenix-ui-DataEditor.css');
@@ -56,6 +56,8 @@ function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, MultiLa
         this.$valResView = this.$container.find('#divValRes');
         this.valResView = new ValidationResultsViewer(this.config.lang);
         this.valResView.render(this.$valResView);
+
+        this.status = 'loading';
 
         this.doML();
 
@@ -94,7 +96,15 @@ function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, MultiLa
             this.$valResView.show();
             this.valResView.setValidationResults(valRes);
         }
-    };    
+    };
+
+    DataEdit.prototype.setStatus = function(status) {
+        this.status = status;
+    };
+
+    DataEdit.prototype.getStatus = function() {
+        return this.status;
+    };
 
     DataEdit.prototype.getValidationResults = function () {
         var val = new Data_Validator();

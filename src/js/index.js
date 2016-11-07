@@ -29,6 +29,15 @@ define([
     function removeAllData() { dataEdit.removeAllData(); }
     function getColumnsWithDistincts() { return dataEdit.getColumnsWithDistincts(); }
 
+    function setStatus(stat) {
+        dataEdit.setStatus(stat);
+    }
+
+    function getStatus() {
+        return dataEdit.getStatus();
+    }
+
+
     function isEditable(editable) {
         if (typeof (editable) != 'undefined')
             dataEdit.isEditable(editable);
@@ -74,6 +83,8 @@ define([
         CSV_To_Dataset: CSV_To_Dataset,
         Validator_CSV: Validator_CSV,
         Columns_Match: Columns_Match,
-        Data_Validator: Data_Validator
+        Data_Validator: Data_Validator,
+        setStatus: setStatus,
+        getStatus: getStatus
     }
 });
