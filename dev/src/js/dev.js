@@ -24,16 +24,17 @@
         DataEditor.init("#standard", config, callB);
         DataEditor.isEditable(false);
         DataEditor.setColumns(TestDSD, TestCL, function() {
-            DataEditor.setData(TestData);
+            DataEditor.setData(TestData, 10);
         });
 
+        /* Testing CSV Upload
         var ksad = new DataEditor.Columns_Match();
         ksad.render($('#divCsvMatcher'));
         var one = [{"dataType":"date","title":{"EN":"Nano"},"values":{},"subject":"time","key":true,"id":"DIMENSION0"},{"dataType":"number","title":{"EN":"value"},"subject":"value","key":false,"id":"VALUE0"}];
         var two = ["20161025","1"];
         var thr = [["20161025","2"],["20161025","3"],["20161025","4"],["20161025","1000"]];
         ksad.setData(one, two, thr);
-
+        */
 
         $('#btnGetData').click(function () {
             var data = DataEditor.getData();

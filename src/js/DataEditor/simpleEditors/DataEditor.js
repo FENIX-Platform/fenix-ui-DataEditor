@@ -51,6 +51,7 @@
             this.data = [];
             this.$tBody;
             this.editEnabled = true;
+            this.rowsLimit;
 
             this.lang = 'en';
         };
@@ -183,24 +184,22 @@
         }
 
         DataEditor.prototype.isEditable = function (editable) {
-            //console.log("isEditable",editable)
             this.editEnabled = editable;
-            if (!this.cols)
-                return;
-            if (typeof (editable) == 'undefined')
-                return this.editEnabled;
+            if (!this.cols)  return;
+            if (typeof (editable) == 'undefined') return this.editEnabled;
             this.updateTableHeader();
-            this.updateTable();
+            this.updateTable(this.rowsLimit);
         }
 
         //DATA
-        DataEditor.prototype.setData = function (data) {
+        DataEditor.prototype.setData = function (data, rows) {
             if (!this.cols)
                 throw new Error("Cannot set data without table structure, use setColumns before setData");
             if (!data)
                 return;
             this.data = data;
-            this.updateTable();
+            this.rowsLimit = rows;
+            this.updateTable(this.rowsLimit);
         };
 
         DataEditor.prototype.removeAllData = function () {
@@ -220,13 +219,16 @@
             if (this.editEnabled) tHead.append(this.config.thButtons);
 
         };
-        DataEditor.prototype.updateTable = function () {
+        DataEditor.prototype.updateTable = function (rows) {
+            var limit = rows || this.data.length ;
+            if (limit > this.data.length) limit = this.data.length;
             this.$tBody.html('');
-            if (!this.data)
-                return;
-            for (var i = 0; i < this.data.length; i++) {
+            if (!this.data) return;
+            for (var i = 0; i < limit; i++) {
                 this.$tBody.append(createTblRow(i, this.cols, this.codelists, this.data[i], this.editEnabled));
             }
+            if (rows < this.data.length) this.$tBody.append('<tr><td colspan="'+(this.cols.length+1)+'">...</td></tr>');
+
             //Attach all the events
             if (this.editEnabled) {
                 var me = this;
@@ -293,9 +295,9 @@
         };
         function addLabelToData(col, codelists, data) {
             //TODO Make it handle multiple Codelists
-        //    console.log("addLabelToData",col, codelists, data);
+            //    console.log("addLabelToData",col, codelists, data);
             var cListUID = getCodelistUid(col.domain);
-        //    console.log(cListUID);
+            //    console.log(cListUID);
             var lbl = getCodeLabel(codelists[cListUID].data, data);
             if (lbl === null) return '';
             return lbl;

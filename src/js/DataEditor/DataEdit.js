@@ -68,7 +68,7 @@ function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, MultiLa
         amplify.subscribe(e.dataEditorRowAdded, this, this.updateValidationOnChange);
         amplify.subscribe(e.dataEditorRowDeleted, this, this.updateValidationOnChange);
 
-        this.$dataEditor.find('#btnAddRow').on('click', function (args) { me.dataEditor.newRow(); });
+        //  this.$dataEditor.find('#btnAddRow').on('click', function (args) { me.dataEditor.newRow(); });
 
         this.$dataEditor.find('#DataDeleteAll').on('click', function () {
             var res = confirm(MultiLang[me.config.lang.toLowerCase()]['confirmDelete']);
@@ -167,9 +167,9 @@ function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, MultiLa
     DataEdit.prototype.getDataWithoutValidation = function () {
         return this.dataEditor.getData();
     };
-    DataEdit.prototype.setData = function (data) {
+    DataEdit.prototype.setData = function (data, rows) {
         if (this.cols)
-            this.dataEditor.setData(data);
+            this.dataEditor.setData(data, rows);
         this.updateValidation(data);
         this.changed = false;
     };

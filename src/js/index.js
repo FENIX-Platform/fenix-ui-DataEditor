@@ -24,7 +24,7 @@ define([
 
     function getData() { return dataEdit.getData(); }
     function getDataWithoutValidation() { return dataEdit.getDataWithoutValidation(); }
-    function setData(data) { dataEdit.setData(data); }
+    function setData(data, rows) { dataEdit.setData(data, rows); }
     function appendData(data) { dataEdit.appendData(data); }
     function removeAllData() { dataEdit.removeAllData(); }
     function getColumnsWithDistincts() { return dataEdit.getColumnsWithDistincts(); }
