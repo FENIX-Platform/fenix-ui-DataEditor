@@ -1,6 +1,6 @@
 {
   "name": "fenix-ui-DataEditor",
-  "version": "2.0.0-beta.39",
+  "version": "2.0.0-beta.40",
   "description": "FENIX Data Editor",
   "main": "dist/fenix-ui-DataEditor.min.js",
   "scripts": {
@@ -32,10 +32,10 @@
     "eonasdan-bootstrap-datetimepicker": "^4.17.42",
     "jquery": "^3.1.0",
     "loglevel": "^1.4.1",
-    "moment": "^2.14.1"
+    "moment": "^2.14.1",
+    "bootstrap": "^3.3.7"
   },
   "devDependencies": {
-    "bootstrap": "^3.3.7",
     "bootstrap-table": "^1.11.0",
     "chai": "^3.5.0",
     "clean-webpack-plugin": "^0.1.10",
