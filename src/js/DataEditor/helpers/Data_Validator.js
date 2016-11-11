@@ -1,7 +1,8 @@
 ﻿define(['jquery',
+    'loglevel',
     './CodelistUtils'
 ],
-    function ($, clUtils) {
+    function ($, log, clUtils) {
 
         var MSG_NULL_KEY = 'nullKey';
         var MSG_SAME_KEY_VALS = 'sameKeyVals';
@@ -77,8 +78,8 @@
         }
 
         Data_Validator.prototype.checkWrongDataTypes = function (cols, codelists, data) {
-            if (!cols || !data)
-                return null;
+            log.info('checkWrongDataTypes',cols, codelists, data);
+            if (!cols || !data) return null;
 
             var toRet = [];
             for (var i = 0; i < data.length; i++) {
@@ -100,14 +101,17 @@
         }
 
         var checkRowDataTypes = function (cols, codelists, dataRow, rowIdx) {
+            log.info('checkRowDataTypes', cols, codelists, dataRow, rowIdx);
             var toRet = [];
             for (var d = 0; d < cols.length; d++) {
+                log.info('checkRowDataTypes [for]', d, cols[d], dataRow[d], rowIdx);
                 switch (cols[d].dataType) {
                     case 'code':
                         var cListUID = cols[d].domain.codes[0].idCodeList;
+                        log.info('code >',cListUID);
                         if (cols[d].domain.codes[0].version)
                             cListUID = cListUID + "|" + cols[d].domain.codes[0].version;
-                        if (!checkCode(dataRow[d], codelists[cListUID]))
+                        if (!checkCode(dataRow[d], codelists[cListUID], cols[d]))
                             toRet.push({ error: MSG_UNKNOWN_CODE, dataIndex: rowIdx, colId: cols[d].id });
                         break;
                     case 'year':
@@ -200,12 +204,11 @@
             return toRet;
         }*/
 
-        var checkCode = function (code, codelist) {
-
+        var checkCode = function (code, codelist, object) {
+            log.info('checkCode', code, codelist, object);
             var clU = new clUtils();
-            var code = clU.findCodeInCodelist(code, codelist);
-            if (code == null)
-                return false;
+            var codex = clU.findCodeInCodelist(code, codelist, object);
+            if (codex == null && object.subject != 'flag') return false;
             return true;
 
             /*

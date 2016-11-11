@@ -100,10 +100,10 @@
         };
 
         function isInCodelist(cl, code) {
+            //console.log('isInCodelist', cl, code);
             var clU = new clUtils();
             var found = clU.findCodeInCodelist(code, cl);
-            if (found == null)
-                return false;
+            if (found == null) return false;
             return true;
             /*var isIn = isInNode(cl.data, code);
             return isIn;*/
