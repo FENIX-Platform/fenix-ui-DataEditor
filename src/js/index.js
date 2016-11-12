@@ -29,6 +29,8 @@ define([
     function removeAllData() { dataEdit.removeAllData(); }
     function getColumnsWithDistincts() { return dataEdit.getColumnsWithDistincts(); }
 
+    function csvLoaded(data, conf, separator) { return dataEdit.csvLoaded(data, conf, separator); }
+
     function setStatus(stat) {
         dataEdit.setStatus(stat);
     }
@@ -66,6 +68,10 @@ define([
         return new DataValidator();
     }
 
+    function on(channel, fn, context){
+        return dataEdit.on(channel, fn, context);
+    }
+
     return {
         init: init,
         setColumns: setColumns,
@@ -80,10 +86,16 @@ define([
         isEditable: isEditable,
         destroy: destroy,
         hasChanged: hasChanged,
+
         CSV_To_Dataset: CSV_To_Dataset,
         Validator_CSV: Validator_CSV,
         Columns_Match: Columns_Match,
         Data_Validator: Data_Validator,
+
+        on: on,
+
+        csvLoaded: csvLoaded,
+
         setStatus: setStatus,
         getStatus: getStatus
     }

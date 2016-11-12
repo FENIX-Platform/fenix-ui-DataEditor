@@ -4,12 +4,15 @@
 './simpleEditors/DataEditor',
 './simpleEditors/ValidationResultsViewer',
 './helpers/Data_Validator',
+'./helpers/CSV_To_Dataset',
+'./helpers/Validator_CSV',
+'./ColumnsMatch/ColumnsMatch',
 '../../nls/labels',
 '../../html/DataEditor/DataEdit.hbs',
 'amplify-pubsub'
 
 ],
-function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, MultiLang, DataEditHTML, amplify) {
+function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CSV_To_Dataset, Validator_CSV, Columns_Match, MultiLang, DataEditHTML, amplify) {
 
     var widgetName = "DataEdit";
     var defConfig = {};
@@ -18,6 +21,18 @@ function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, MultiLa
         dataEditorRowAdded: 'rowAdded.DataEditor.fenix',
         dataEditorRowDeleted: 'rowDeleted.DataEditor.fenix'
     };
+
+    var s = {
+        dataUploadColsMatch: "#DataUploadColsMatch",
+        dataEditorContainer: "#divDataEditor",
+        dataUploadContainer: "#DataUploadContainer",
+        divCsvMatcher: "#divCsvMatcher",
+        btnCsvMatcherOk: "#btnCsvMatcherOk",
+        btnCsvMatcherCancel: "#btnCsvMatcherCancel",
+        btnDataMergeKeepNew: "#btnDataMergeKeepNew",
+        btnDataMergeKeepOld: "#btnDataMergeKeepOld",
+        btnDataMergeCancel: "#btnDataMergeCancel"
+    }
 
     var DataEdit = function (config) {
         //console.log('DataEdit');
@@ -34,6 +49,8 @@ function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, MultiLa
 
         this.cols;
         this.codelists;
+
+        this.channels = {};
 
         this.editEnabled = true;
         this.changed = false;
@@ -57,11 +74,14 @@ function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, MultiLa
         this.valResView = new ValidationResultsViewer(this.config.lang);
         this.valResView.render(this.$valResView);
 
+        this.columnsMatch = new Columns_Match();
+
         this.status = 'loading';
 
         this.doML();
 
         var me = this;
+        var self = this;
 
         //Merge valueChanged, rowAdded and rowDeleted?
         amplify.subscribe(e.dataEditorValueChanged, this, this.updateValidationOnChange);
@@ -76,8 +96,49 @@ function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, MultiLa
             me.dataEditor.removeAllData();
         });
 
+        //Data Merge
+
+        $('#btnDataMergeKeepNew').on('click', function () {
+            self._CSVLoadedMergeData('keepNew');
+        });
+
+        $('#btnDataMergeKeepOld').on('click', function () {
+            self._CSVLoadedMergeData('keepOld');
+        });
+
+        $('#btnDataMergeCancel').on('click', function () {
+            self.tmpCsvData = null;
+            self.tmpCsvCols = null;
+            self._switchPanelVisibility($((s.dataEditorContainer)));
+        });
+
+
         if (callB) callB();
     }
+
+    DataEdit.prototype._trigger = function (channel) {
+
+        if (!this.channels[channel]) {
+            return false;
+        }
+        var args = Array.prototype.slice.call(arguments, 1);
+        for (var i = 0, l = this.channels[channel].length; i < l; i++) {
+            var subscription = this.channels[channel][i];
+            subscription.callback.apply(subscription.context, args);
+        }
+
+        return this;
+    };
+
+    DataEdit.prototype.on = function (channel, fn, context) {
+        var _context = context || this;
+        if (!this.channels[channel]) {
+            this.channels[channel] = [];
+        }
+        this.channels[channel].push({context: _context, callback: fn});
+        return this;
+    };
+
     //Validation
     DataEdit.prototype.updateValidation = function (data) {
         this.changed = true;
@@ -258,6 +319,145 @@ function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, MultiLa
         this.$dataEditor.find('#btnAddRow').html(mlRes['add']);
     };
     //END Multilang
+
+    DataEdit.prototype._switchPanelVisibility = function (toShow) {
+        $((s.dataUploadColsMatch)).hide();
+        $((s.dataEditorContainer)).hide();
+        $((s.dataUploadContainer)).hide();
+        toShow.show();
+    };
+
+    DataEdit.prototype._CSVLoadedMergeData = function (keepOldOrNew){
+        var dv = new Data_Validator();
+        var data = this.getDataWithoutValidation();
+
+        var validator = Validator_CSV;
+
+        var valRes = validator.validateCodes(this.getColumns(), this.getCodelists(), this.tmpCsvCols, this.tmpCsvData);
+
+        //console.log("uhm, variables", dv, data, validator, valRes);
+
+        if (valRes && valRes.length > 0) {
+            log.info("valRes got errors");
+            for (var n = 0; n < valRes.length; n++) {
+                console.log([valRes[n].type] + " - codelist: " + valRes[n].codelistId + " - codes: " + valRes[n].codes.join(','));
+                this._trigger("error:showerrormsg", [valRes[n].type] + " - codelist: " + valRes[n].codelistId + " - codes: " + valRes[n].codes.join(','));
+            }
+        }
+        //Validates the CSV contents
+        var wrongDatatypes = dv.checkWrongDataTypes(this.getColumns(), this.codelists, this.tmpCsvData);
+        //log.info("wrongDatatypes", wrongDatatypes);
+
+        if (wrongDatatypes && wrongDatatypes.length > 0) {
+            //log.info("wrongDatatypes got errors");
+            for (n = 0; n < wrongDatatypes.length; n++) {
+                console.log([wrongDatatypes[n].error] + " - Row: " + wrongDatatypes[n].dataIndex);
+                this._trigger("error:showerrormsg", [wrongDatatypes[n].error] + " - Row: " + wrongDatatypes[n].dataIndex);
+            }
+            //Don't merge, return.
+            //log.info("Don't merge, return.");
+            this._switchPanelVisibility($((s.dataEditorContainer)));
+            this.tmpCsvCols = null;
+            this.tmpCsvf = null;
+            return;
+        }
+        dv.dataMerge(this.getColumns(), data, this.tmpCsvData, keepOldOrNew);
+        this.setData(data);
+//            DataEditor.isEditable(false);
+        this._switchPanelVisibility($((s.dataEditorContainer)));
+        this._trigger("data:loaded");
+
+        this.tmpCsvCols = null;
+        this.tmpCsvData = null;
+
+    };
+
+
+    DataEdit.prototype._CSVLoadedCheckDuplicates = function() {
+        var data = this.getDataWithoutValidation();
+        var dv = new Data_Validator();
+        var keyDuplicates = dv.dataAppendCheck(this.getColumns(), data, this.tmpCsvData);
+
+        //this.tmpCsvData = csvData;
+        if (keyDuplicates && keyDuplicates.length > 0) {
+            this._switchPanelVisibility($((s.dataUploadContainer)));
+        } else {
+            this._CSVLoadedMergeData('keepNew');
+        }
+
+    };
+
+    DataEdit.prototype.csvLoaded = function (data, conf, separator) {
+        //console.log(' csvLoaded', data, conf, separator);
+
+        //console.log(data, conf, separator);
+
+
+        var self = this;
+        var conv = new CSV_To_Dataset(conf, separator);
+        conv.convert(data);
+
+        this.tmpCsvCols = conv.getColumns();
+        this.tmpCsvData = conv.getData();
+
+        var validator = Validator_CSV;
+
+        this.$csvMatcherOkButton = $('#btnCsvMatcherOk');
+        this.$csvMatcherCancelButton = $('#btnCsvMatcherCancel');
+
+        //console.log(this.$csvMatcherOkButton, this.$csvMatcherCancelButton);
+
+        this.columnsMatch.render($('div#divCsvMatcher'));
+
+        this.$csvMatcherOkButton.on("click", function () {
+            //console.log(' click ');
+            self.tmpCsvCols = self.columnsMatch.getCsvCols();
+            self.tmpCsvData = self.columnsMatch.getCsvData();
+            self._CSVLoadedCheckDuplicates();
+
+        });
+
+        this.$csvMatcherCancelButton.on("click", function () {
+            //console.log(' click 2')
+            $('div#btnCsvMatcherCancel').off("click");
+            $('div#btnCsvMatcherOk').off("click");
+            self.tmpCsvData = null;
+            self.tmpCsvCols = null;
+            self._switchPanelVisibility($((s.dataEditorContainer)));
+            //$(s.utility).show();
+        });
+
+
+        //Validates the CSV structure (null columns, less columns than the DSD...)
+        var valRes = validator.validate(this.getColumns(), this.getCodelists(), this.tmpCsvCols, this.tmpCsvData);
+
+        if (valRes && valRes.length > 0) {
+            for (var n = 0; n < valRes.length; n++) {
+                console.log(valRes[n].type);
+                this._trigger("error:showerrormsg", valRes[n].type);
+            }
+            return;
+        }
+
+        console.log(this);
+
+        this._switchPanelVisibility($((s.dataUploadColsMatch)));
+
+        this.columnsMatch.setData(this.cols, this.tmpCsvCols, this.tmpCsvData);
+
+        //Validates the CSV contents
+        var dv = new Data_Validator();
+        var wrongDatatypes = dv.checkWrongDataTypes(this.getColumns(), this.codelists, this.tmpCsvData);
+
+        if (wrongDatatypes && wrongDatatypes.length > 0) {
+            for (n = 0; n < wrongDatatypes.length; n++) {
+                console.log([wrongDatatypes[n].error] + " - Row: " + wrongDatatypes[n].dataIndex);
+                this._trigger("error:showerrormsg", [wrongDatatypes[n].error] + " - Row: " + wrongDatatypes[n].dataIndex);
+            }
+            return;
+        }
+
+    };
 
     return DataEdit;
 });

@@ -62,11 +62,12 @@
         }
 
         ColumnsMatch.prototype.setData = function (dsd, csvCols, csvData) {
-            log.info("ColumnsMatch setData",dsd, csvCols, csvData);
+            //log.info("ColumnsMatch setData",dsd, csvCols, csvData);
             this.dsd = dsd;
             this.csvCols = csvCols;
             this.csvData = csvData;
-            var cols = dsd.columns;
+            var cols = dsd;
+
             this.$trDsd.html('');
             this.$trCsv.html('');
             if (!cols) return;
@@ -87,10 +88,10 @@
             this._updateView(this.csvCols, this.csvData);
         }
         ColumnsMatch.prototype.getCsvCols = function () {
-            log.info("ColumnsMatch getCsvCols");
+            log.info("ColumnsMatch getCsvCols", this.csvCols);
             var newOrder = this._getColIndexes(this.csvCols);
             var toRet = [];
-            for (var i = 0; i < this.dsd.columns.length; i++) {
+            for (var i = 0; i < this.dsd.length; i++) {
                 toRet[i] = this.csvCols[newOrder[i]];
             }
             return toRet;
@@ -101,7 +102,7 @@
             var toRet = [];
             for (var i = 0; i < this.csvData.length; i++) {
                 var row = [];
-                for (var j = 0; j < this.dsd.columns.length; j++) {
+                for (var j = 0; j < this.dsd.length; j++) {
                     row[j] = this.csvData[i][newOrder[j]];
                 }
                 toRet[i] = row;
