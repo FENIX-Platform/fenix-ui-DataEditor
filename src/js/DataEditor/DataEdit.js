@@ -389,7 +389,7 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
     };
 
     DataEdit.prototype.csvLoaded = function (data, conf, separator) {
-        //console.log(' csvLoaded', data, conf, separator);
+        console.log(' csvLoaded', data, conf, separator);
 
         //console.log(data, conf, separator);
 
