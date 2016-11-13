@@ -27,6 +27,10 @@
             DataEditor.setData(TestData, 10);
         });
 
+        DataEditor.on("data:loaded", function(){
+            console.log(' data loaded ');
+        });
+
         /* Testing CSV Upload
         var ksad = new DataEditor.Columns_Match();
         ksad.render($('#divCsvMatcher'));

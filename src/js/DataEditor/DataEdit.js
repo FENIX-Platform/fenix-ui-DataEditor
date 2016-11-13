@@ -1,5 +1,6 @@
 ﻿define([
 'jquery',
+'loglevel',
 '../../nls/labels',
 './simpleEditors/DataEditor',
 './simpleEditors/ValidationResultsViewer',
@@ -12,7 +13,7 @@
 'amplify-pubsub'
 
 ],
-function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CSV_To_Dataset, Validator_CSV, Columns_Match, MultiLang, DataEditHTML, amplify) {
+function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CSV_To_Dataset, Validator_CSV, Columns_Match, MultiLang, DataEditHTML, amplify) {
 
     var widgetName = "DataEdit";
     var defConfig = {};
@@ -338,7 +339,7 @@ function ($, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CSV_To_
         //console.log("uhm, variables", dv, data, validator, valRes);
 
         if (valRes && valRes.length > 0) {
-            log.info("valRes got errors");
+            //log.info("valRes got errors");
             for (var n = 0; n < valRes.length; n++) {
                 console.log([valRes[n].type] + " - codelist: " + valRes[n].codelistId + " - codes: " + valRes[n].codes.join(','));
                 this._trigger("error:showerrormsg", [valRes[n].type] + " - codelist: " + valRes[n].codelistId + " - codes: " + valRes[n].codes.join(','));
