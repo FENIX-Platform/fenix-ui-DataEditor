@@ -20,7 +20,7 @@ function ($, mlRes) {
         if (!valRes)  return;
         var toAdd = "";
 
-        console.log(this.lang,mlRes);
+        //console.log(this.lang,mlRes);
 
         toAdd = '<table><tbody>';
 

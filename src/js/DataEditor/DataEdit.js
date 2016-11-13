@@ -89,7 +89,7 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
         amplify.subscribe(e.dataEditorRowAdded, this, this.updateValidationOnChange);
         amplify.subscribe(e.dataEditorRowDeleted, this, this.updateValidationOnChange);
 
-        //  this.$dataEditor.find('#btnAddRow').on('click', function (args) { me.dataEditor.newRow(); });
+        this.$dataEditor.find('#btnAddRow').on('click', function (args) { me.dataEditor.newRow(); });
 
         this.$dataEditor.find('#DataDeleteAll').on('click', function () {
             var res = confirm(MultiLang[me.config.lang.toLowerCase()]['confirmDelete']);
