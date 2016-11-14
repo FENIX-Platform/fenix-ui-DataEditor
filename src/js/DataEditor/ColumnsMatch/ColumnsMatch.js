@@ -111,7 +111,7 @@
         }
 
         ColumnsMatch.prototype._updateView = function (csvCols, csvData) {
-            log.info("ColumnsMatch _updateView",csvCols, csvData);
+            log.info("ColumnsMatch _updateView", csvCols, csvData);
             var maxRCount = this.config.maxRows;
             if (csvData.length < maxRCount) {
                 maxRCount = csvData.length
@@ -130,7 +130,7 @@
             this.$tblColMatch.append(toAdd);
         }
         ColumnsMatch.prototype._getColIndexes = function (csvCols) {
-            log.info("ColumnsMatch _getColIndexes",csvCols);
+            log.info("ColumnsMatch _getColIndexes", csvCols);
             var $tdCsv = this.$trCsv.find('td');
             var toRet = [];
             for (var i = 0; i < $tdCsv.length; i++) {
@@ -193,7 +193,7 @@
             console.log($(data));
             console.log(data);
             */
-            var $toMoveSrc = $('div#' + data);
+            var $toMoveSrc = $("div[id='" + data + "']");
             var $cntSrc = $toMoveSrc.parent();
 
             var $toMoveDest;

@@ -78,7 +78,7 @@
         }
 
         Data_Validator.prototype.checkWrongDataTypes = function (cols, codelists, data) {
-//            log.info('checkWrongDataTypes',cols, codelists, data);
+            log.info('checkWrongDataTypes',cols, codelists, data);
             if (!cols || !data) return null;
 
             var toRet = [];
@@ -101,18 +101,20 @@
         }
 
         var checkRowDataTypes = function (cols, codelists, dataRow, rowIdx) {
-//            log.info('checkRowDataTypes', cols, codelists, dataRow, rowIdx);
+            log.info('checkRowDataTypes', cols, codelists, dataRow, rowIdx);
             var toRet = [];
             for (var d = 0; d < cols.length; d++) {
-                //log.info('checkRowDataTypes [for]', d, cols[d], dataRow[d], rowIdx);
+                log.info('checkRowDataTypes [for]', d, cols[d], dataRow[d], rowIdx);
                 switch (cols[d].dataType) {
                     case 'code':
                         var cListUID = cols[d].domain.codes[0].idCodeList;
-                        //log.info('code >',cListUID);
                         if (cols[d].domain.codes[0].version)
                             cListUID = cListUID + "|" + cols[d].domain.codes[0].version;
-                        if (!checkCode(dataRow[d], codelists[cListUID], cols[d]))
-                            toRet.push({ error: MSG_UNKNOWN_CODE, dataIndex: rowIdx, colId: cols[d].id });
+                        log.info('code >',cListUID);
+                        log.info('rowIdx>',rowIdx);
+                        if (!checkCode(dataRow[d], codelists[cListUID], cols[d])) {
+                            toRet.push({ error: MSG_UNKNOWN_CODE, dataIndex: rowIdx, colId: cols[d].id, cListUID: cListUID });
+                        }
                         break;
                     case 'year':
                         if (!checkYear(dataRow[d]))

@@ -37,7 +37,9 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
 
     var DataEdit = function (config) {
         //console.log('DataEdit');
-        this.config = {};
+        this.config = {
+            lang : 'EN'
+        };
         $.extend(true, this.config, defConfig, config);
 
         this.$container;
@@ -452,7 +454,7 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
 
         if (wrongDatatypes && wrongDatatypes.length > 0) {
             for (n = 0; n < wrongDatatypes.length; n++) {
-                console.log([wrongDatatypes[n].error] + " - Row: " + wrongDatatypes[n].dataIndex);
+                console.log([wrongDatatypes[n].error] + " - Row: " + wrongDatatypes[n].dataIndex, wrongDatatypes[n].cListUID);
                 this._trigger("error:showerrormsg", [wrongDatatypes[n].error] + " - Row: " + wrongDatatypes[n].dataIndex);
             }
             return;
