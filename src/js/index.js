@@ -12,7 +12,7 @@ define([
 
     function init(containerID, config, callB) {
         cfg = config;
-        dataEdit = new DataEdit();
+        dataEdit = new DataEdit(config);
         dataEdit.render($(containerID), cfg, callB);
     }
 

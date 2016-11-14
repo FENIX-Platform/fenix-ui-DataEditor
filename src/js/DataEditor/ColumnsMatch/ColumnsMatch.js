@@ -2,12 +2,14 @@
         'jquery',
         'loglevel',
         '../../../html/DataEditor/ColumnsMatch/ColumnsMatch.hbs',
-        '../helpers/MLUtils'
+        '../helpers/MLUtils',
+        '../../../nls/labels'
 ],
-    function ($, log, colsMatchHTML, MLUtils) {
+    function ($, log, colsMatchHTML, MLUtils, labels) {
         var widgetName = "ColumnsMatch";
 
         var defConfig = {
+            lang: 'EN',
             maxRows: 5
         };
         var e = {
@@ -20,6 +22,7 @@
             trCSV: "#trCSV",
             tblColMatch: "#tblColMatch"
         };
+
         var html = {
             rowDSD: '<td>%title%<br/>type: %type%</td>',
             //rowCSV: '<td id="csvHead" ondrop="this.drop(event)" ondragover="this.allowDrop(event)"><span id="%colId%" draggable="true" ondragstart="this.drag(event)">%colId%</span></td>'
@@ -40,7 +43,7 @@
             this.csvCols;
             this.csvData;
 
-            this.lang = 'EN';
+            this.lang = this.config.lang.toLowerCase();
         };
 
         //Render - creation
@@ -177,7 +180,8 @@
                 $(tds[i]).find('div').on('dragstart', me.drag);
             }
         }
-        ColumnsMatch.prototype._doML = function () { }
+        ColumnsMatch.prototype._doML = function () {
+        }
 
         ColumnsMatch.prototype.drag = function (ev) {
             ev.originalEvent.dataTransfer.setData("text", ev.target.id);

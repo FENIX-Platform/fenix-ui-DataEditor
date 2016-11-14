@@ -16,7 +16,7 @@
 function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CSV_To_Dataset, Validator_CSV, Columns_Match, MultiLang, DataEditHTML, amplify) {
 
     var widgetName = "DataEdit";
-    var defConfig = {};
+    var defConfig = {  lang : 'EN' };
     var e = {
         dataEditorValueChanged: 'valueChanged.DataEditor.fenix',
         dataEditorRowAdded: 'rowAdded.DataEditor.fenix',
@@ -35,11 +35,20 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
         btnDataMergeCancel: "#btnDataMergeCancel"
     }
 
+
+    var p = {
+        DataMatchColumn : "#DataMatchColumn",
+        btnCsvMatcherOk : "#btnCsvMatcherOk",
+        btnCsvMatcherCancel : "#btnCsvMatcherCancel",
+        DataDuplicateFound : "#DataDuplicateFound",
+        btnDataMergeKeepNew : "#btnDataMergeKeepNew",
+        btnDataMergeKeepOld : "#btnDataMergeKeepOld",
+        btnDataMergeCancel : "#btnDataMergeCancel"
+    }
+
     var DataEdit = function (config) {
-        //console.log('DataEdit');
-        this.config = {
-            lang : 'EN'
-        };
+        console.log('DataEdit', config);
+        this.config = {};
         $.extend(true, this.config, defConfig, config);
 
         this.$container;
@@ -57,6 +66,8 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
 
         this.editEnabled = true;
         this.changed = false;
+
+        this.lang = this.config.lang.toLowerCase();
     };
 
     //Render - creation
@@ -70,14 +81,14 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
         this.$container.html(DataEditHTML);
 
         this.$dataEditor = this.$container.find('#divDataEditor');
-        this.dataEditor = new DataEditor();
+        this.dataEditor = new DataEditor(this.config);
         this.dataEditor.render(this.$container.find('#divDataEdit'), this.config);
 
         this.$valResView = this.$container.find('#divValRes');
         this.valResView = new ValidationResultsViewer(this.config.lang);
         this.valResView.render(this.$valResView);
 
-        this.columnsMatch = new Columns_Match();
+        this.columnsMatch = new Columns_Match(this.config);
 
         this.status = 'loading';
 
@@ -323,7 +334,17 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
 
     //MultiLang
     DataEdit.prototype.doML = function () {
-        this.$dataEditor.find('#btnAddRow').html(mlRes['add']);
+        console.log(this.$dataEditor);
+        this.$container.find('#btnAddRow').html(mlRes[this.lang]['add']);
+        this.$container.find(p.DataMatchColumn).html(mlRes[this.lang]['DataMatchColumn']);
+        this.$container.find(p.btnCsvMatcherOk).html(mlRes[this.lang]['ok']);
+        this.$container.find(p.btnCsvMatcherCancel).html(mlRes[this.lang]['cancel']);
+
+        this.$container.find(p.DataDuplicateFound).html(mlRes[this.lang]['DataDuplicateFound']);
+        this.$container.find(p.btnDataMergeKeepNew).html(mlRes[this.lang]['btnDataMergeKeepNew']);
+        this.$container.find(p.btnDataMergeKeepOld).html(mlRes[this.lang]['btnDataMergeKeepOld']);
+        this.$container.find(p.btnDataMergeCancel).html(mlRes[this.lang]['cancel']);
+
     };
     //END Multilang
 

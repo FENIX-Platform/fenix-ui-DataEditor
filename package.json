@@ -1,6 +1,6 @@
 {
   "name": "fenix-ui-DataEditor",
-  "version": "2.0.0-beta.57",
+  "version": "2.0.0-beta.58",
   "description": "FENIX Data Editor",
   "main": "dist/fenix-ui-DataEditor.min.js",
   "scripts": {

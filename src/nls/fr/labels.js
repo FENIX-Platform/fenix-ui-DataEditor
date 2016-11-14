@@ -5,8 +5,8 @@ define(function () {
 
     return {
 
-        //"ok": "Ok",
-        //"cancel": "Annuler",
+        "ok": "Ok",
+        "cancel": "Annuler",
         "confirmDelete": "Supprimer?",
         "unsavedData": "Certains changements n'ont pas été enregistrés, annuler quand même?",
         //"yearInterval": "L'année doit être numérique",
@@ -23,7 +23,12 @@ define(function () {
 
         "NAN": "La valeur n'est pas numérique",
         "OutOfRange": "La valeur est hors de la plage autorisée",
-        "Null": "La valeur ne peut pas être vide"
+        "Null": "La valeur ne peut pas être vide",
+
+        "DataMatchColumn" : "Faites correspondre les colonnes DSD avec les colonnes CSV",
+        "DataDuplicateFound" : "Certaines valeurs dupliquées trouvées, conserver les données anciennes ou remplacer par les nouvelles valeurs que vous venez de télécharger?",
+        "btnDataMergeKeepNew" : "Remplacer par une nouvelle valeur",
+        "btnDataMergeKeepOld" : "Conserver les anciennes valeurs"
 
     }
 });

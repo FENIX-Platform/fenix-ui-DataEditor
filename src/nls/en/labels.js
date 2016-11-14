@@ -3,9 +3,10 @@ define(function () {
 
     'use strict';
 
-    return  {
-        //"ok": "Ok",
-        //"cancel": "Cancel",
+    return {
+
+        "ok": "Ok",
+        "cancel": "Cancel",
         "confirmDelete": "Delete?",
         "unsavedData": "Some changes are unsaved, cancel anyway?",
         //"yearInterval": "Year must be a number ",
@@ -22,6 +23,11 @@ define(function () {
 
         "NAN": "Value is not a number",
         "OutOfRange": "Value is out of the allowed range",
-        "Null": "Value cannot be blank"
+        "Null": "Value cannot be blank",
+
+        "DataMatchColumn" : "Match the DSD columns with the CSV ones",
+        "DataDuplicateFound" : "Some duplicated values found, keep old data or replace with the new values just uploaded?",
+        "btnDataMergeKeepNew" : "Replace with new value",
+        "btnDataMergeKeepOld" : "Keep old values"
     }
 });
