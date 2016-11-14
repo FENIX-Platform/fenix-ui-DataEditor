@@ -5,7 +5,7 @@
         };
 
         CodelistUtils.prototype.findCodeInCodelist = function (code, codelist) {
-            log.info('findCodeInCodelist', code, codelist);
+           // log.info('findCodeInCodelist', code, codelist);
             var found = isInNode(codelist.data, code);
             return found;
         }

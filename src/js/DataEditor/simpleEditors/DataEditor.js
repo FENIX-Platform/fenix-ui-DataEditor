@@ -314,6 +314,7 @@
 
         DataEditor.prototype.getData = function () {
             log.info("getData ", this.data)
+
             return this.data;
         }
         //END Data

@@ -56,16 +56,64 @@
                 return null;
 
             var toRet = [];
+            var keys = [];
 
-            for (var r1 = 0; r1 < data.length - 1; r1++)
+            console.log("**********************************************************");
+
+            console.log(cols);
+            console.log(data);
+
+
+            $.each(data, function(index, row){
+                keys.push(_getConcatenatedKey(row,cols));
+            });
+            var duplicates = findDuplicates(keys);
+
+
+            console.log(keys);
+            console.log(duplicates);
+
+            duplicates = duplicates.filter(function(item, pos) {
+                return duplicates.indexOf(item) == pos;
+            });
+
+            $.each(duplicates, function(index,object){
+                toRet.push({ error: MSG_SAME_KEY_VALS, dataIndex: getAllIndexes(keys, object) });
+                //log.info(data[keys.indexOf(object)]);
+            });
+/*
                 for (var r2 = r1 + 1; r2 < data.length; r2++)
                     if (sameDimVals(data[r1], data[r2], cols)) {
                         toRet.push({ error: MSG_SAME_KEY_VALS, dataIndex: r1 });
                         toRet.push({ error: MSG_SAME_KEY_VALS, dataIndex: r2 });
                     }
-
+*/
             return toRet;
         }
+
+        var getAllIndexes = function(arr, val) {
+            var indexes = [], i = -1;
+            while ((i = arr.indexOf(val, i+1)) != -1){
+                indexes.push(i);
+            }
+            return indexes;
+        }
+
+        var findDuplicates = function (arr) {
+            var sorted_arr = arr.slice().sort(); // You can define the comparing function here.
+            // JS by default uses a crappy string compare.
+            // (we use slice to clone the array so the
+            // original array won't be modified)
+            var results = [];
+            for (var i = 0; i < arr.length - 1; i++) {
+                if (sorted_arr[i + 1] == sorted_arr[i]) {
+                    results.push(sorted_arr[i]);
+                }
+            }
+
+            return results;
+
+        };
 
         var sameDimVals = function (row1, row2, cols) {
             for (var d = 0; d < cols.length; d++) {
@@ -77,8 +125,22 @@
             return true;
         }
 
+        var _getConcatenatedKey = function(row, cols) {
+            var keys = "";
+
+            $.each(cols, function(index, column){
+              //  console.log(column);
+                if (column.key === true) {
+                    //console.log(index,column,row);
+                    keys += "-"+(String(row[index]));
+                    //console.log(row[index], keys);
+                }
+            });
+            return keys;
+        };
+
         Data_Validator.prototype.checkWrongDataTypes = function (cols, codelists, data) {
-            log.info('checkWrongDataTypes',cols, codelists, data);
+            //log.info('checkWrongDataTypes',cols, codelists, data);
             if (!cols || !data) return null;
 
             var toRet = [];
@@ -101,17 +163,17 @@
         }
 
         var checkRowDataTypes = function (cols, codelists, dataRow, rowIdx) {
-            log.info('checkRowDataTypes', cols, codelists, dataRow, rowIdx);
+            //log.info('checkRowDataTypes', cols, codelists, dataRow, rowIdx);
             var toRet = [];
             for (var d = 0; d < cols.length; d++) {
-                log.info('checkRowDataTypes [for]', d, cols[d], dataRow[d], rowIdx);
+                //log.info('checkRowDataTypes [for]', d, cols[d], dataRow[d], rowIdx);
                 switch (cols[d].dataType) {
                     case 'code':
                         var cListUID = cols[d].domain.codes[0].idCodeList;
                         if (cols[d].domain.codes[0].version)
                             cListUID = cListUID + "|" + cols[d].domain.codes[0].version;
-                        log.info('code >',cListUID);
-                        log.info('rowIdx>',rowIdx);
+                        //log.info('code >',cListUID);
+                        //log.info('rowIdx>',rowIdx);
                         if (!checkCode(dataRow[d], codelists[cListUID], cols[d])) {
                             toRet.push({ error: MSG_UNKNOWN_CODE, dataIndex: rowIdx, colId: cols[d].id, cListUID: cListUID });
                         }
@@ -207,7 +269,7 @@
         }*/
 
         var checkCode = function (code, codelist, object) {
-            log.info('checkCode', code, codelist, object);
+            //log.info('checkCode', code, codelist, object);
             var clU = new clUtils();
             var codex = clU.findCodeInCodelist(code, codelist, object);
             if (codex == null && object.subject != 'flag') return false;

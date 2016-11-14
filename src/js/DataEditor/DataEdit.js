@@ -150,7 +150,9 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
         this.updateValRes(valRes);
         this.dataEditor.showValidationResults(valRes);
     };
-    DataEdit.prototype.updateValidationOnChange = function (evt) { this.updateValidation(evt.allData); };
+    DataEdit.prototype.updateValidationOnChange = function (evt) {
+        this.updateValidation(evt);
+    };
     DataEdit.prototype.updateValRes = function (valRes) {
         if (!valRes)
             this.$valResView.hide();
@@ -221,10 +223,12 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
     };
 
     DataEdit.prototype.getData = function () {
+        var data = this.dataEditor.getData();
+        this.updateValidation(data);
         var valRes = this.getValidationResults();
 
         if (valRes == null || valRes.length == 0)
-            return this.dataEditor.getData();
+            return data;
         else
             return false;
     };
