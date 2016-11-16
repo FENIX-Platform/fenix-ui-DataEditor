@@ -47,7 +47,7 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
     }
 
     var DataEdit = function (config) {
-        console.log('DataEdit', config);
+        log.info('DataEdit', config);
         this.config = {};
         $.extend(true, this.config, defConfig, config);
 
@@ -72,7 +72,7 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
 
     //Render - creation
     DataEdit.prototype.render = function (container, config, callB) {
-        //console.log('Render - creation');
+        //log.info('Render - creation');
         $.extend(true, this.config, config);
 
         require('../../css/fenix-ui-DataEditor.css');
@@ -216,7 +216,7 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
     };
 
     var checkCodeColumnsAndCodelists = function (cols, cLists) {
-        //console.log("cLists",cLists);
+        //log.info("cLists",cLists);
         if (!cols) return;
         for (var i = 0; i < cols.length; i++)
             if (cols[i].dataType == 'code') {
@@ -334,7 +334,7 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
 
     //MultiLang
     DataEdit.prototype.doML = function () {
-        console.log(this.$dataEditor);
+        log.info(this.$dataEditor);
         this.$container.find('#btnAddRow').html(mlRes[this.lang]['add']);
         this.$container.find(p.DataMatchColumn).html(mlRes[this.lang]['DataMatchColumn']);
         this.$container.find(p.btnCsvMatcherOk).html(mlRes[this.lang]['ok']);
@@ -363,14 +363,15 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
 
         var valRes = validator.validateCodes(this.getColumns(), this.getCodelists(), this.tmpCsvCols, this.tmpCsvData);
 
-        //console.log("uhm, variables", dv, data, validator, valRes);
+        //log.info("uhm, variables", dv, data, validator, valRes);
 
         if (valRes && valRes.length > 0) {
             //log.info("valRes got errors");
             for (var n = 0; n < valRes.length; n++) {
-                console.log([valRes[n].type] + " - codelist: " + valRes[n].codelistId + " - codes: " + valRes[n].codes.join(','));
+                log.info([valRes[n].type] + " - codelist: " + valRes[n].codelistId + " - codes: " + valRes[n].codes.join(','));
                 this._trigger("error:showerrormsg", [valRes[n].type] + " - codelist: " + valRes[n].codelistId + " - codes: " + valRes[n].codes.join(','));
             }
+            this._trigger("data:restoreupload");
         }
         //Validates the CSV contents
         var wrongDatatypes = dv.checkWrongDataTypes(this.getColumns(), this.codelists, this.tmpCsvData);
@@ -379,12 +380,13 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
         if (wrongDatatypes && wrongDatatypes.length > 0) {
             //log.info("wrongDatatypes got errors");
             for (n = 0; n < wrongDatatypes.length; n++) {
-                console.log([wrongDatatypes[n].error] + " - Row: " + wrongDatatypes[n].dataIndex);
+                log.info([wrongDatatypes[n].error] + " - Row: " + wrongDatatypes[n].dataIndex);
                 this._trigger("error:showerrormsg", [wrongDatatypes[n].error] + " - Row: " + wrongDatatypes[n].dataIndex);
             }
             //Don't merge, return.
             //log.info("Don't merge, return.");
             this._switchPanelVisibility($((s.dataEditorContainer)));
+            this._trigger("data:restoreupload");
             this.tmpCsvCols = null;
             this.tmpCsvf = null;
             return;
@@ -416,9 +418,9 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
     };
 
     DataEdit.prototype.csvLoaded = function (data, conf, separator) {
-        console.log(' csvLoaded', data, conf, separator);
+        log.info(' csvLoaded', data, conf, separator);
 
-        //console.log(data, conf, separator);
+        //log.info(data, conf, separator);
 
 
         var self = this;
@@ -433,12 +435,12 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
         this.$csvMatcherOkButton = $('#btnCsvMatcherOk');
         this.$csvMatcherCancelButton = $('#btnCsvMatcherCancel');
 
-        //console.log(this.$csvMatcherOkButton, this.$csvMatcherCancelButton);
+        //log.info(this.$csvMatcherOkButton, this.$csvMatcherCancelButton);
 
         this.columnsMatch.render($('div#divCsvMatcher'));
 
         this.$csvMatcherOkButton.on("click", function () {
-            //console.log(' click ');
+            //log.info(' click ');
             self.tmpCsvCols = self.columnsMatch.getCsvCols();
             self.tmpCsvData = self.columnsMatch.getCsvData();
             self._CSVLoadedCheckDuplicates();
@@ -446,13 +448,13 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
         });
 
         this.$csvMatcherCancelButton.on("click", function () {
-            //console.log(' click 2')
+            //log.info(' click 2')
             $('div#btnCsvMatcherCancel').off("click");
             $('div#btnCsvMatcherOk').off("click");
             self.tmpCsvData = null;
             self.tmpCsvCols = null;
             self._switchPanelVisibility($((s.dataEditorContainer)));
-            //$(s.utility).show();
+            self._trigger("data:restoreupload");
         });
 
 
@@ -461,13 +463,14 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
 
         if (valRes && valRes.length > 0) {
             for (var n = 0; n < valRes.length; n++) {
-                console.log(valRes[n].type);
+                log.info(valRes[n].type);
                 this._trigger("error:showerrormsg", valRes[n].type);
             }
+            this._trigger("data:restoreupload");
             return;
         }
 
-        console.log(this);
+        log.info(this);
 
         this._switchPanelVisibility($((s.dataUploadColsMatch)));
 
@@ -479,9 +482,10 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
 
         if (wrongDatatypes && wrongDatatypes.length > 0) {
             for (n = 0; n < wrongDatatypes.length; n++) {
-                console.log([wrongDatatypes[n].error] + " - Row: " + wrongDatatypes[n].dataIndex, wrongDatatypes[n].cListUID);
+                log.info([wrongDatatypes[n].error] + " - Row: " + wrongDatatypes[n].dataIndex, wrongDatatypes[n].cListUID);
                 this._trigger("error:showerrormsg", [wrongDatatypes[n].error] + " - Row: " + wrongDatatypes[n].dataIndex);
             }
+            this._trigger("data:restoreupload");
             return;
         }
 

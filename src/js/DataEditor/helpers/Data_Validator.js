@@ -58,10 +58,10 @@
             var toRet = [];
             var keys = [];
 
-            console.log("**********************************************************");
+            log.info("**********************************************************");
 
-            console.log(cols);
-            console.log(data);
+            log.info(cols);
+            log.info(data);
 
 
             $.each(data, function(index, row){
@@ -70,8 +70,8 @@
             var duplicates = findDuplicates(keys);
 
 
-            console.log(keys);
-            console.log(duplicates);
+            log.info(keys);
+            log.info(duplicates);
 
             duplicates = duplicates.filter(function(item, pos) {
                 return duplicates.indexOf(item) == pos;
@@ -129,11 +129,11 @@
             var keys = "";
 
             $.each(cols, function(index, column){
-              //  console.log(column);
+              //  log.info(column);
                 if (column.key === true) {
-                    //console.log(index,column,row);
+                    //log.info(index,column,row);
                     keys += "-"+(String(row[index]));
-                    //console.log(row[index], keys);
+                    //log.info(row[index], keys);
                 }
             });
             return keys;
