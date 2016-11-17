@@ -9,6 +9,11 @@
         Validator_CSV.prototype.validate = function (dsdCols, codelists, csvCols, csvData) {
             var toRet = [];
 
+            if (!existHeader(dsdCols, codelists, csvCols)){
+                toRet.push({ type: Err.MISSING_DSD_HEADER });
+                return toRet;
+            }
+
             if (!dsdCols) {
                 toRet.push({ type: Err.DSD_COLUMNS_NULL });
                 return toRet;
@@ -21,6 +26,7 @@
                 toRet.push({ type: Err.WRONG_COLUMN_COUNT });
                 return toRet;
             }
+
             /*for (var i = 0; i < dsdCols.length; i++) {
                 if (dsdCols[i].id != csvCols[i]) {
                     toRet.push({ type: Err.WRONG_COLUMN_ID, index: i });
@@ -73,6 +79,26 @@
             }
             return toRet;
         };
+
+        function existHeader(dsdCols, codelists, csvCols) {
+            var value = true;
+            $.each(csvCols, function(index,object){
+                if ((object.length > 0)&&(typeof (object) === 'string')) {
+                    switch(dsdCols[index].dataType) {
+                        case 'code':
+                            $.each(codelists, function(i,o){
+                                $.each(o.data, function (idx, obj){
+                                    if (object == obj.code) value = false;
+                                });
+                            });
+                            break;
+                    }
+                } else {
+                    value = false;
+                }
+            });
+            return value;
+        }
 
         function nullOnEmpty(dataType) {
             if (dataType == 'code')

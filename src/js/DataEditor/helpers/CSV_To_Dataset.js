@@ -46,12 +46,12 @@ function ($) {
     CSV_To_Dataset.prototype.getData = function () {
         return stringArrToData(this.stringsArr);
     };
+
     function stringArrToCol(data) {
         if (!data)
             throw new Error("Nothing to parse");
         if (!data[0])
             throw new Error("Nothing to parse");
-
         return data[0];
     };
     function stringArrToData(data) {

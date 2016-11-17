@@ -66,10 +66,12 @@
 
             this.$editWindow = this.$cnt.find(h.divRowEditorPopup);
             this.rowEditor.render(this.$editWindow);
+            this.lang = this.config.lang.toLowerCase();
 
+            /*
             if (localStorage.getItem('locale'))
                 this.lang = localStorage.getItem('locale');
-
+            */
             /*
             var me = this;
             this.$cnt.find(h.btnEditRowCanc).on('click', function () {
@@ -205,6 +207,7 @@
         DataEditor.prototype.removeAllData = function () {
             this.data = [];
             this.updateTable();
+            amplify.publish(e.EVT_ROW_DELETED, this.data);
         };
         DataEditor.prototype.updateTableHeader = function () {
 

@@ -72,11 +72,11 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
 
     //Render - creation
     DataEdit.prototype.render = function (container, config, callB) {
-        //log.info('Render - creation');
         $.extend(true, this.config, config);
 
         require('../../css/fenix-ui-DataEditor.css');
 
+        log.info('Render - creation', this.config);
         this.$container = container;
         this.$container.html(DataEditHTML);
 
@@ -91,7 +91,6 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
         this.columnsMatch = new Columns_Match(this.config);
 
         this.status = 'loading';
-
         this.doML();
 
         var me = this;
@@ -176,11 +175,18 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
     };
 
     DataEdit.prototype.setStatus = function(status) {
+        log.warn('StatusSet', status);
         this.status = status;
+        this._updateStatus();
     };
 
     DataEdit.prototype.getStatus = function() {
         return this.status;
+    };
+
+    DataEdit.prototype._updateStatus = function() {
+        $.each(this.$container.find("[data-status]"), function(index,object){ $(object).hide(); });
+        this.$container.find('[data-status='+this.status+']').show();
     };
 
     DataEdit.prototype.getValidationResults = function () {
@@ -368,9 +374,12 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
         if (valRes && valRes.length > 0) {
             //log.info("valRes got errors");
             for (var n = 0; n < valRes.length; n++) {
-                log.info([valRes[n].type] + " - codelist: " + valRes[n].codelistId + " - codes: " + valRes[n].codes.join(','));
-                this._trigger("error:showerrormsg", [valRes[n].type] + " - codelist: " + valRes[n].codelistId + " - codes: " + valRes[n].codes.join(','));
+                log.info("valRes: " + [valRes[n].type] + " - codelist: " + valRes[n].codelistId + " - codes: " + valRes[n].codes.join(','));
+                this.updateValRes(valRes);
+                //this._trigger("error:showerrormsg", [valRes[n].type] + " - codelist: " + valRes[n].codelistId + " - codes: " + valRes[n].codes.join(','));
             }
+            this._trigger("error:showerrormsg", mlRes[this.lang][valRes[0].type]);
+            log.info(mlRes[this.lang][valRes[0].type]);
             this._trigger("data:restoreupload");
         }
         //Validates the CSV contents
@@ -380,9 +389,12 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
         if (wrongDatatypes && wrongDatatypes.length > 0) {
             //log.info("wrongDatatypes got errors");
             for (n = 0; n < wrongDatatypes.length; n++) {
-                log.info([wrongDatatypes[n].error] + " - Row: " + wrongDatatypes[n].dataIndex);
-                this._trigger("error:showerrormsg", [wrongDatatypes[n].error] + " - Row: " + wrongDatatypes[n].dataIndex);
+                log.info("wrongDatatypes: " + [wrongDatatypes[n].error] + " - Row: " + wrongDatatypes[n].dataIndex);
+                this.updateValRes(wrongDatatypes);
+                //this._trigger("error:showerrormsg", [wrongDatatypes[n].error] + " - Row: " + wrongDatatypes[n].dataIndex);
             }
+            this._trigger("error:showerrormsg", mlRes[this.lang][wrongDatatypes[0].error]);
+            log.info(mlRes[this.lang][wrongDatatypes[0].error]);
             //Don't merge, return.
             //log.info("Don't merge, return.");
             this._switchPanelVisibility($((s.dataEditorContainer)));
@@ -402,12 +414,11 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
 
     };
 
-
     DataEdit.prototype._CSVLoadedCheckDuplicates = function() {
         var data = this.getDataWithoutValidation();
         var dv = new Data_Validator();
         var keyDuplicates = dv.dataAppendCheck(this.getColumns(), data, this.tmpCsvData);
-
+        this.setStatus('loaded');
         //this.tmpCsvData = csvData;
         if (keyDuplicates && keyDuplicates.length > 0) {
             this._switchPanelVisibility($((s.dataUploadContainer)));
@@ -418,13 +429,11 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
     };
 
     DataEdit.prototype.csvLoaded = function (data, conf, separator) {
-        log.info(' csvLoaded', data, conf, separator);
-
-        //log.info(data, conf, separator);
-
+        log.info('csvLoaded', data, conf, separator);
 
         var self = this;
         var conv = new CSV_To_Dataset(conf, separator);
+
         conv.convert(data);
 
         this.tmpCsvCols = conv.getColumns();
@@ -443,6 +452,7 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
             //log.info(' click ');
             self.tmpCsvCols = self.columnsMatch.getCsvCols();
             self.tmpCsvData = self.columnsMatch.getCsvData();
+            self.setStatus('loading');
             self._CSVLoadedCheckDuplicates();
 
         });
@@ -451,6 +461,7 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
             //log.info(' click 2')
             $('div#btnCsvMatcherCancel').off("click");
             $('div#btnCsvMatcherOk').off("click");
+            self.$valResView.hide();
             self.tmpCsvData = null;
             self.tmpCsvCols = null;
             self._switchPanelVisibility($((s.dataEditorContainer)));
@@ -464,8 +475,11 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
         if (valRes && valRes.length > 0) {
             for (var n = 0; n < valRes.length; n++) {
                 log.info(valRes[n].type);
-                this._trigger("error:showerrormsg", valRes[n].type);
+                this.updateValRes(valRes);
+                //this._trigger("error:showerrormsg", valRes[n].type);
             }
+            this._trigger("error:showerrormsg", mlRes[this.lang][valRes[0].type]);
+            log.info(mlRes[this.lang][valRes[0].type]);
             this._trigger("data:restoreupload");
             return;
         }
@@ -482,10 +496,14 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
 
         if (wrongDatatypes && wrongDatatypes.length > 0) {
             for (n = 0; n < wrongDatatypes.length; n++) {
-                log.info([wrongDatatypes[n].error] + " - Row: " + wrongDatatypes[n].dataIndex, wrongDatatypes[n].cListUID);
-                this._trigger("error:showerrormsg", [wrongDatatypes[n].error] + " - Row: " + wrongDatatypes[n].dataIndex);
+                this.updateValRes(wrongDatatypes);
+                log.info("wrongDatatypes>" + [wrongDatatypes[n].error] + " - Row: " + wrongDatatypes[n].dataIndex, wrongDatatypes[n].cListUID);
+                //this._trigger("error:showerrormsg", [wrongDatatypes[n].error] + " - Row: " + wrongDatatypes[n].dataIndex);
             }
-            this._trigger("data:restoreupload");
+            if (this.tmpCsvData.length == wrongDatatypes.length) this._trigger("error:showerrormsg", mlRes[this.lang]['CodeListError']);
+            log.info(mlRes[this.lang][wrongDatatypes[0].error]);
+            this._trigger("error:showerrormsg", mlRes[this.lang][wrongDatatypes[0].error]);
+            //this._trigger("data:restoreupload");
             return;
         }
 

@@ -1,39 +1,46 @@
-﻿<div id="DataLoading" style="display:none" class="loading loading-48"></div>
-<div id="divValRes" style="display:none"></div>
-<div id="DataUploadColsMatch" style="display:none">
-    <div class="row">
-        <div class="col-xs-12">
-            <p id="DataMatchColumn">
-                Match the DSD columns with the CSV ones
-            </p>
-            <div id="divCsvMatcher">
+﻿<div data-status="loading" id="DataLoading" class="text-center">
+    <span class="loading loading-48"></span>
+</div>
+<div data-status="loaded" id="DataLoaded" style="display:none">
+    <div id="divValRes" style="display:none"></div>
+    <div id="DataUploadColsMatch" style="display:none">
+        <div class="row">
+            <div class="col-xs-12">
+                <p id="DataMatchColumn">
+                    Match the DSD columns with the CSV ones
+                </p>
+                <div id="divCsvMatcher">
 
+                </div>
+                <p>
+                    <button id="btnCsvMatcherOk" type="button" class="btn btn-primary">Ok</button>
+                    <button id="btnCsvMatcherCancel" type="button" class="btn btn-default">Cancel</button>
+                </p>
             </div>
-            <p>
-                <button id="btnCsvMatcherOk" type="button" class="btn btn-primary">Ok</button>
-                <button id="btnCsvMatcherCancel" type="button" class="btn btn-default">Cancel</button>
-            </p>
         </div>
     </div>
-</div>
-<div id="DataUploadContainer" style="display:none">
-    <div class="row">
-        <div class="col-xs-12">
-            <p id="DataDuplicateFound" class="text-center">
-                Some duplicated values found, keep old data or replace with the new values just uploaded?
-            </p>
-            <p class="text-center">
-                <button id="btnDataMergeKeepNew" type="button" class="btn btn-default">Replace with new values</button>
-                <button id="btnDataMergeKeepOld" type="button" class="btn btn-default">Keep old values</button>
-                <button id="btnDataMergeCancel" type="button" class="btn btn-default">Cancel</button>
-            </p>
+    <div id="DataUploadContainer" style="display:none">
+        <div class="row">
+            <div class="col-xs-12">
+                <p id="DataDuplicateFound" class="text-center">
+                    Some duplicated values found, keep old data or replace with the new values just uploaded?
+                </p>
+                <p class="text-center">
+                    <button id="btnDataMergeKeepNew" type="button" class="btn btn-default">Replace with new values</button>
+                    <button id="btnDataMergeKeepOld" type="button" class="btn btn-default">Keep old values</button>
+                    <button id="btnDataMergeCancel" type="button" class="btn btn-default">Cancel</button>
+                </p>
+            </div>
         </div>
     </div>
-</div>
-<div id="divDataEditor">
-    <div id="divDataGridBtns">
-        <button id="DataDeleteAll" type="button" class="btn btn-floating fx-background-color-primary-color"><span class="icojam_delete"></span></button>
-        <button id="btnAddRow" type="button" class="btn btn-floating fx-background-color-primary-color"><span class="icojam_add"></span></button>
+    <div id="divDataEditor">
+        <div id="divDataGridBtns">
+            <button id="DataDeleteAll" type="button" class="btn btn-floating fx-background-color-primary-color"><span class="icojam_delete"></span></button>
+            <button id="btnAddRow" type="button" class="btn btn-floating fx-background-color-primary-color"><span class="icojam_add"></span></button>
+        </div>
+        <div id="divDataEdit"> </div>
     </div>
-    <div id="divDataEdit"> </div>
+
 </div>
+
+

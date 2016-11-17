@@ -5503,6 +5503,12 @@ input[type="radio"]:disabled + label {
 
   .col-lg-bottom {
     vertical-align: bottom; } }
+.csvHead {
+  background-color: #EDEEEF; }
+
+#trDSD {
+  background-color: #EEF7FA; }
+
 .fx-text-primary-color {
   color: #0076ff; }
 

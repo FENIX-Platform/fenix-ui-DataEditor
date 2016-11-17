@@ -26,9 +26,10 @@ function ($, mlRes) {
 
         for (var i = 0; i < valRes.length; i++) {
             toAdd += '<tr><td>';
-            toAdd += mlRes[this.lang.toLowerCase()][valRes[i].error];
-            if (valRes[i].dataIndex)
-                toAdd += " line: " + valRes[i].dataIndex;
+            if (valRes[i].dataIndex) {
+                toAdd += mlRes[this.lang.toLowerCase()][valRes[i].error];
+                toAdd += ", "+mlRes[this.lang.toLowerCase()]['line']+": " + valRes[i].dataIndex;
+            }
             toAdd += '</tr></td>';
             //toAdd += "</br>";
         }

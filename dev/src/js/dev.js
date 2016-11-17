@@ -35,11 +35,13 @@
             console.log(' data loaded ');
         });
 
-        /* Testing CSV Upload
-        var ksad = new DataEditor.Columns_Match();
-        ksad.render($('#divCsvMatcher'));
-        ksad
-        */
+        $('#btnLoaded').click(function(){
+            if (DataEditor.getStatus() === 'loading' ) {
+                DataEditor.setStatus('loaded');
+            } else {
+                DataEditor.setStatus('loading');
+            }
+        });
 
         $('#btnGetData').click(function () {
             var data = DataEditor.getData();

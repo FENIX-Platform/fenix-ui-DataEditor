@@ -12,6 +12,13 @@ define(function () {
         //"yearInterval": "L'année doit être numérique",
         //"monthInterval": "Le mois doit être numérique (1..12)",
 
+        nullDSDCols: 'Les colonnes DSD ne sont pas définies.',
+        nullCsvCols: 'Les colonnes CSV ne sont pas définies.',
+        wrongColumnCount: 'Compte de colonne erronée',
+        missingDSDHeader: 'L\'en-tête DSD est manquant',
+        unknownCodes: 'Codes inconnus',
+
+
         "nullKey": "Les champs clés ne peuvent pas être vides",
         "sameKeyVals": "Les champs clés ne peuvent pas être dupliqués",
         "unknownCode": "Code inconnu",
@@ -24,6 +31,8 @@ define(function () {
         "NAN": "La valeur n'est pas numérique",
         "OutOfRange": "La valeur est hors de la plage autorisée",
         "Null": "La valeur ne peut pas être vide",
+        "line": "ligne",
+        "CodeListError": "Toutes les lignes ont une mauvaise liste de codes. Veuillez vérifier le DSD pour le bon type de liste de codes.",
 
         "DataMatchColumn" : "Faites correspondre les colonnes DSD avec les colonnes CSV",
         "DataDuplicateFound" : "Certaines valeurs dupliquées trouvées, conserver les données anciennes ou remplacer par les nouvelles valeurs que vous venez de télécharger?",
