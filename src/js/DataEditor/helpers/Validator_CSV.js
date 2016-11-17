@@ -84,7 +84,8 @@
             var value = true;
             $.each(csvCols, function(index,object){
                 if ((object.length > 0)&&(typeof (object) === 'string')) {
-                    switch(dsdCols[index].dataType) {
+                    if (dsdCols.length > index)
+                        switch(dsdCols[index].dataType) {
                         case 'code':
                             $.each(codelists, function(i,o){
                                 $.each(o.data, function (idx, obj){

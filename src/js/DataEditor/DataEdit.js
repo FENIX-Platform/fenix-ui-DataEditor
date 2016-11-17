@@ -449,7 +449,6 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
         this.columnsMatch.render($('div#divCsvMatcher'));
 
         this.$csvMatcherOkButton.on("click", function () {
-            //log.info(' click ');
             self.tmpCsvCols = self.columnsMatch.getCsvCols();
             self.tmpCsvData = self.columnsMatch.getCsvData();
             self.setStatus('loading');
@@ -458,7 +457,6 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
         });
 
         this.$csvMatcherCancelButton.on("click", function () {
-            //log.info(' click 2')
             $('div#btnCsvMatcherCancel').off("click");
             $('div#btnCsvMatcherOk').off("click");
             self.$valResView.hide();
@@ -496,7 +494,7 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
 
         if (wrongDatatypes && wrongDatatypes.length > 0) {
             for (n = 0; n < wrongDatatypes.length; n++) {
-                this.updateValRes(wrongDatatypes);
+                //this.updateValRes(wrongDatatypes);
                 log.info("wrongDatatypes>" + [wrongDatatypes[n].error] + " - Row: " + wrongDatatypes[n].dataIndex, wrongDatatypes[n].cListUID);
                 //this._trigger("error:showerrormsg", [wrongDatatypes[n].error] + " - Row: " + wrongDatatypes[n].dataIndex);
             }
