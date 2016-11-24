@@ -32,6 +32,8 @@ define(function () {
         "OutOfRange": "La valeur est hors de la plage autorisée",
         "Null": "La valeur ne peut pas être vide",
         "line": "ligne",
+        "codelist" : "liste de codes",
+        "column" : "colonne",
         "CodeListError": "Toutes les lignes ont une mauvaise liste de codes. Veuillez vérifier le DSD pour le bon type de liste de codes.",
 
         "DataMatchColumn" : "Faites correspondre les colonnes DSD avec les colonnes CSV",

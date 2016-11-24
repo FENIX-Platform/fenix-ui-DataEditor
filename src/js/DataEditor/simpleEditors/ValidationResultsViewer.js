@@ -29,6 +29,11 @@ function ($, mlRes) {
             if (valRes[i].dataIndex) {
                 toAdd += mlRes[this.lang.toLowerCase()][valRes[i].error];
                 toAdd += ", "+mlRes[this.lang.toLowerCase()]['line']+": " + valRes[i].dataIndex;
+                if (valRes[i].cListUID) toAdd += "; "+mlRes[this.lang.toLowerCase()]['codelist']+": " + valRes[i].cListUID;
+                if (valRes[i].colId) {
+                    var column = valRes[i].colId[this.lang.toUpperCase()] || valRes[i].colId[Object.keys(valRes[i].colId)[0]];
+                    toAdd += "; "+mlRes[this.lang.toLowerCase()]['column']+": " + column;
+                }
             }
             toAdd += '</tr></td>';
             //toAdd += "</br>";

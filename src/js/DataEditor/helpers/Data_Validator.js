@@ -147,6 +147,7 @@
             for (var i = 0; i < data.length; i++) {
                 arrConcat(toRet, checkRowDataTypes(cols, codelists, data[i], i));
             }
+
             return toRet;
 
             /*var colInfo = {};
@@ -175,7 +176,7 @@
                         //log.info('code >',cListUID);
                         //log.info('rowIdx>',rowIdx);
                         if (!checkCode(dataRow[d], codelists[cListUID], cols[d])) {
-                            toRet.push({ error: MSG_UNKNOWN_CODE, dataIndex: rowIdx, colId: cols[d].id, cListUID: cListUID });
+                            toRet.push({ error: MSG_UNKNOWN_CODE, dataIndex: rowIdx, colId: cols[d].title, cListUID: cListUID });
                         }
                         break;
                     case 'year':

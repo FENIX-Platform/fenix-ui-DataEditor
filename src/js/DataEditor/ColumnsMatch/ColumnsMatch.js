@@ -75,7 +75,7 @@
             this.$trCsv.html('');
             if (!cols) return;
             for (var i = 0; i < cols.length; i++) {
-                var title = cols[i].title[this.lang.toUpperCase()];
+                var title = cols[i].title[this.lang.toUpperCase()] || cols[i].title[Object.keys(cols[i].title)[0]];
                 var toSet = html.rowDSD.replace('%title%', title);
                 toSet = toSet.replace('%type%', cols[i].dataType);
 

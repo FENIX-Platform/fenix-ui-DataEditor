@@ -158,6 +158,7 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
         var val = new Data_Validator();
         var valRes = val.validate(this.cols, this.codelists, data);
         this.updateValRes(valRes);
+        console.log('valReese', valRes)
         this.dataEditor.showValidationResults(valRes);
     };
     DataEdit.prototype.updateValidationOnChange = function (evt) {
@@ -429,7 +430,7 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
     };
 
     DataEdit.prototype.csvLoaded = function (data, conf, separator) {
-        log.info('csvLoaded', data, conf, separator);
+        log.info('csvLoaded', data);
 
         var self = this;
         var conv = new CSV_To_Dataset(conf, separator);
@@ -495,7 +496,8 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
         if (wrongDatatypes && wrongDatatypes.length > 0) {
             for (n = 0; n < wrongDatatypes.length; n++) {
                 //this.updateValRes(wrongDatatypes);
-                log.info("wrongDatatypes>" + [wrongDatatypes[n].error] + " - Row: " + wrongDatatypes[n].dataIndex, wrongDatatypes[n].cListUID);
+                var title = wrongDatatypes[n].colId[this.lang.toLowerCase()] || wrongDatatypes[n].colId[Object.keys(wrongDatatypes[n].colId)[0]]
+                log.info("wrongDatatypes>" + [wrongDatatypes[n].error] + " - Row: " + wrongDatatypes[n].dataIndex+1, wrongDatatypes[n].cListUID, title);
                 //this._trigger("error:showerrormsg", [wrongDatatypes[n].error] + " - Row: " + wrongDatatypes[n].dataIndex);
             }
             if (this.tmpCsvData.length == wrongDatatypes.length) this._trigger("error:showerrormsg", mlRes[this.lang]['CodeListError']);

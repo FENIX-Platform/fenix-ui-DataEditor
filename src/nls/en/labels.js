@@ -32,6 +32,8 @@ define(function () {
         "OutOfRange": "Value is out of the allowed range",
         "Null": "Value cannot be blank",
         "line": "line",
+        "codelist" : "codelist",
+        "column" : "column",
         "CodeListError": "All lines have wrong codelist. Please check the DSD for the right kind of codelist.",
 
         "DataMatchColumn" : "Match the DSD columns with the CSV ones",
