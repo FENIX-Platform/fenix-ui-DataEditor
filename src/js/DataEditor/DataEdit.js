@@ -499,7 +499,7 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
             for (n = 0; n < wrongDatatypes.length; n++) {
                 //this.updateValRes(wrongDatatypes);
                 var title = wrongDatatypes[n].colId[this.lang.toLowerCase()] || wrongDatatypes[n].colId[Object.keys(wrongDatatypes[n].colId)[0]]
-                log.info("wrongDatatypes>" + [wrongDatatypes[n].error] + " - Row: " + wrongDatatypes[n].dataIndex+1, wrongDatatypes[n].cListUID, title);
+                log.info("wrongDatatypes>" + [wrongDatatypes[n].error] + " - Row: " + wrongDatatypes[n].dataIndex, wrongDatatypes[n].cListUID, title);
                 //this._trigger("error:showerrormsg", [wrongDatatypes[n].error] + " - Row: " + wrongDatatypes[n].dataIndex);
             }
             if (this.tmpCsvData.length == wrongDatatypes.length) this._trigger("error:showerrormsg", mlRes[this.lang]['CodeListError']);
