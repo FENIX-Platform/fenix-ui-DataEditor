@@ -158,7 +158,6 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
         var val = new Data_Validator();
         var valRes = val.validate(this.cols, this.codelists, data);
         this.updateValRes(valRes);
-        console.log('valReese', valRes)
         this.dataEditor.showValidationResults(valRes);
     };
     DataEdit.prototype.updateValidationOnChange = function (evt) {
@@ -444,6 +443,9 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
 
         this.$csvMatcherOkButton = $('#btnCsvMatcherOk');
         this.$csvMatcherCancelButton = $('#btnCsvMatcherCancel');
+
+        this.$csvMatcherOkButton.off();
+        this.$csvMatcherCancelButton.off();
 
         //log.info(this.$csvMatcherOkButton, this.$csvMatcherCancelButton);
 
