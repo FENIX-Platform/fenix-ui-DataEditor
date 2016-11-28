@@ -222,13 +222,16 @@
             if (this.editEnabled) tHead.append(this.config.thButtons);
 
         };
+
+
+
         DataEditor.prototype.updateTable = function (rows) {
             var limit = rows || this.data.length ;
             if (limit > this.data.length) limit = this.data.length;
             this.$tBody.html('');
             if (!this.data) return;
             for (var i = 0; i < limit; i++) {
-                this.$tBody.append(createTblRow(i, this.cols, this.codelists, this.data[i], this.editEnabled));
+                this.$tBody.append(createTblRow(i+1, this.cols, this.codelists, this.data[i], this.editEnabled));
             }
             if (rows < this.data.length) this.$tBody.append('<tr><td colspan="'+(this.cols.length+1)+'">...</td></tr>');
 
