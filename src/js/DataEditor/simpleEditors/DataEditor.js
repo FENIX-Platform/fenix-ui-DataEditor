@@ -231,7 +231,7 @@
             this.$tBody.html('');
             if (!this.data) return;
             for (var i = 0; i < limit; i++) {
-                this.$tBody.append(createTblRow(i+1, this.cols, this.codelists, this.data[i], this.editEnabled));
+                this.$tBody.append(createTblRow(i, this.cols, this.codelists, this.data[i], this.editEnabled));
             }
             if (rows < this.data.length) this.$tBody.append('<tr><td colspan="'+(this.cols.length+1)+'">...</td></tr>');
 
@@ -274,7 +274,7 @@
 
             var toRet = '<tr>';
             //toRet += '<td style="display:none;">' + idx + '</td>'
-            toRet += '<td>' + idx + '</td>'
+            toRet += '<td>' + (idx+1) + '</td>'
             for (var i = 0; i < cols.length; i++) { //was row.lenght
                 toRet += '<td>';
                 if (row[i] === null)
