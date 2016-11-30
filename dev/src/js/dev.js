@@ -14,7 +14,7 @@
         };
 
         console.clear();
-        log.setLevel('trace')
+        log.setLevel('silent')
 
 
         //Bootstrap
@@ -28,7 +28,7 @@
         DataEditor.init("#standard", config, callB);
         DataEditor.isEditable(false);
         DataEditor.setColumns(TestDSD, TestCL, function() {
-            DataEditor.setData(TestData, 500000);
+            DataEditor.setData(TestData, 50);
         });
 
         DataEditor.on("data:loaded", function(){
@@ -66,6 +66,8 @@
 
             // colonne maggiori ma corretto
             var csv = 'Année,Indicateur (code),Residence (code),Value,Flag,um (code),xxx\r\n2003,0501,7001,1294,,0107\r\n2003,0501,7002,1896,,0107,\r\n2003,0501,7002,1896,,0107,\r\n2004,0501,7002,1968,,0107,\r\n2004,0501,7001,1323,,0107,\r\n2004,0501,7001,1323,,0107,\r\n2004,0501,7001,1323,,0107,';
+
+            console.log(JSON.stringify(csv));
 
             //var csv = 'Année,Indicateur (code),Residence (code),Value,Flag,um (code)\r\n2003,0501,7001,1294,,0107\r\n2003,0501,7002,1896,,0107\r\n2003,0501,7002,1896,,0107\r\n2004,0501,7002,1968,,0107\r\n2004,0501,7001,1323,,0107\r\n2004,0501,7001,1323,,0107\r\n2004,0501,7001,1323,,0107';
             DataEditor.csvLoaded(csv,{},',')

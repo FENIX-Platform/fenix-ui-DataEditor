@@ -17,7 +17,7 @@ define(function () {
         wrongColumnCount: 'Wrong Column Count',
         missingDSDHeader: 'DSD Header is missing',
         unknownCodes: 'Unknow codes',
-
+        csvDuplicate : 'CSV rows duplicated',
 
         "nullKey": "Key fields cannot be empty",
         "sameKeyVals": "Key fields cannot be duplicated",

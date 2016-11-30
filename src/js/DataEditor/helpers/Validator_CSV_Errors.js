@@ -7,8 +7,9 @@
             CSV_COLUMNS_NULL: 'nullCsvCols',
             WRONG_COLUMN_COUNT: 'wrongColumnCount',
             MISSING_DSD_HEADER: 'missingDSDHeader',
-            //WRONG_COLUMN_ID: 'wrongColumnId',
-            UNKNOWN_CODES:'unknownCodes'
+            WRONG_COLUMN_ID: 'wrongColumnId',
+            UNKNOWN_CODES:'unknownCodes',
+            CSV_DUPLICATE: 'csvDuplicate'
         };
         return e;
     })

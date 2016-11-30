@@ -17,6 +17,7 @@ define(function () {
         wrongColumnCount: 'Compte de colonne erronée',
         missingDSDHeader: 'L\'en-tête DSD est manquant',
         unknownCodes: 'Codes inconnus',
+        csvDuplicate : 'Lignes CSV dupliquées',
 
 
         "nullKey": "Les champs clés ne peuvent pas être vides",

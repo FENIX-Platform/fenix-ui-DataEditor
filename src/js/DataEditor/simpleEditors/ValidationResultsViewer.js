@@ -29,9 +29,13 @@ function ($, mlRes) {
             if (valRes[i].dataIndex) {
                 toAdd += mlRes[this.lang.toLowerCase()][valRes[i].error];
                 var lines = "";
-                console.log(valRes[i].dataIndex);
                 if (Array.isArray(valRes[i].dataIndex)) {
-                    $.each(valRes[i].dataIndex, function(index,obj){ lines += obj+1 + " "; });
+                    $.each(valRes[i].dataIndex, function(index,obj){
+                        $("#tblDataBody tr:nth-child("+(obj+1)+")")
+                            .css('background-color','rgba(255,0,0,0.1)')
+                            .css('color','red');
+                        lines += obj+1 + " ";
+                    });
                 } else {
                     lines = valRes[i].dataIndex;
                 }

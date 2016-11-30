@@ -5528,7 +5528,7 @@ input[type="radio"]:disabled + label {
     border-color: #004799;
     background-color: #0053b3; }
 
-#divDataGridBtns {
-  margin-left: 57px; }
+#divValRes {
+  color: red; }
 
 /*# sourceMappingURL=fenix-ui-DataEditor.css.map */

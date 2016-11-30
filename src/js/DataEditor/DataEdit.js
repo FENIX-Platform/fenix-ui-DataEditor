@@ -368,6 +368,19 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
         var validator = Validator_CSV;
 
         var valRes = validator.validateCodes(this.getColumns(), this.getCodelists(), this.tmpCsvCols, this.tmpCsvData);
+        var valCSV = validator.validate(this.getColumns(), this.getCodelists(), this.tmpCsvCols, this.tmpCsvData);
+
+        if (valCSV && valCSV.length > 0) {
+            //log.info("valRes got errors");
+            for (var n = 0; n < valCSV.length; n++) {
+                log.info("valRes: " + [valCSV[n].type] + " - codelist: " + valCSV[n].codelistId + " - codes: " + valCSV[n].codes.join(','));
+                this.updateValRes(valCSV);
+                //this._trigger("error:showerrormsg", [valRes[n].type] + " - codelist: " + valRes[n].codelistId + " - codes: " + valRes[n].codes.join(','));
+            }
+            this._trigger("error:showerrormsg", mlRes[this.lang][valCSV[0].type]);
+            log.info(mlRes[this.lang][valCSV[0].type]);
+            this._trigger("data:restoreupload");
+        }
 
         //log.info("uhm, variables", dv, data, validator, valRes);
 

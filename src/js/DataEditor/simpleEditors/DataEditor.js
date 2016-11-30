@@ -2,13 +2,14 @@
         'jquery',
         'loglevel',
         './RowEditorPopup',
+        '../../../html/DataEditor/simpleEditors/DataEditorModal.hbs',
         '../../../html/DataEditor/simpleEditors/DataEditor.hbs',
         '../../../nls/labels',
         '../helpers/MLUtils',
         'amplify-pubsub',
         'bootstrap'
 ],
-    function ($, log, RowEditorPopup, DataEditorHTML, mlRes, MLUtils, amplify) {
+    function ($, log, RowEditorPopup, DataEditorModal, DataEditorHTML, mlRes, MLUtils, amplify) {
         var widgetName = "DataEditor";
 
         var defConfig = {
@@ -46,6 +47,7 @@
             this.$cnt;
             this.$editWindow;
             this.$dataGrid;
+            this.$dataModal;
             this.cols;
             this.codelists;
             this.data = [];
@@ -54,6 +56,7 @@
             this.rowsLimit;
 
             this.lang = 'en';
+
         };
 
         //Render - creation
@@ -63,8 +66,8 @@
             this.$cnt = container;
             this.$cnt.html(DataEditorHTML);
             this.$dataGrid = this.$cnt.find(h.divDataGrid);
-
-            this.$editWindow = this.$cnt.find(h.divRowEditorPopup);
+            this.$dataModal = $('body').append(DataEditorModal);
+            this.$editWindow = $('body').find(h.divRowEditorPopup);
             this.rowEditor.render(this.$editWindow);
             this.lang = this.config.lang.toLowerCase();
 
@@ -127,14 +130,14 @@
         DataEditor.prototype._bindEvents = function () {
             log.info("Data Editor - _bindEvents");
             var me = this;
-            this.$cnt.find(h.btnEditRowCanc).on('click', function () {
+            this.$editWindow.find(h.btnEditRowCanc).on('click', function () {
                 if (me.rowEditor.changed()) {
                     if (!confirm(mlRes[me.lang]['unsavedData']))
                         return;
                 }
                 me.$editWindow.modal('hide');
             });
-            this.$cnt.find(h.btnEditRowOk).on('click', function () { me.rowEditOk(); });
+            this.$editWindow.find(h.btnEditRowOk).on('click', function () { me.rowEditOk(); });
             this.$editWindow.on('hidden.bs.modal', function (e) {
                 me.rowEditor.reset();
                 me.$editWindow.off("keyup");
@@ -142,8 +145,8 @@
         };
 
         DataEditor.prototype._unbindEvents = function () {
-            this.$cnt.find(h.btnEditRowCanc).off('click');
-            this.$cnt.find(h.btnEditRowOk).off('click');
+            this.$editWindow.find(h.btnEditRowCanc).off('click');
+            this.$editWindow.find(h.btnEditRowOk).off('click');
             this.$editWindow.off('hidden.bs.modal');
             this.$tBody.find('.' + h.editButtonsClass).off('click');
             this.$tBody.find('.' + h.delButtonsClass).off('click');
@@ -153,6 +156,7 @@
             this._unbindEvents();
             this.rowEditor.destroy();
             this.$tBody.html('');
+            $('body').remove(this.$dataModal);
         };
 
         DataEditor.prototype.rowEditOk = function () {
@@ -233,7 +237,7 @@
             for (var i = 0; i < limit; i++) {
                 this.$tBody.append(createTblRow(i, this.cols, this.codelists, this.data[i], this.editEnabled));
             }
-            if (rows < this.data.length) this.$tBody.append('<tr><td colspan="'+(this.cols.length+1)+'">...</td></tr>');
+            if (rows < this.data.length) this.$tBody.append('<tr><td colspan="'+(this.cols.length+3)+'">...</td></tr>');
 
             //Attach all the events
             if (this.editEnabled) {
@@ -287,8 +291,8 @@
                 toRet += '</td>';
             }
             if (editControls) {
-                toRet += '<td>' + html.btnEdit.replace('%idx%', idx) + '</td>';
-                toRet += '<td>' + html.btnDel.replace('%idx%', idx) + '</td>';
+                toRet += '<td align="center">' + html.btnEdit.replace('%idx%', idx) + '</td>';
+                toRet += '<td align="center">' + html.btnDel.replace('%idx%', idx) + '</td>';
             }
             toRet += '</tr>';
             return toRet;
@@ -320,7 +324,6 @@
 
         DataEditor.prototype.getData = function () {
             log.info("getData ", this.data)
-
             return this.data;
         }
         //END Data
