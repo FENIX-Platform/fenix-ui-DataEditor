@@ -31,8 +31,8 @@
             delButtonsClass: 'bD'
         };
         var html = {
-            btnEdit: '<button type="button" class="btn btn-default bE" data-rid=%idx%><span class="glyphicon glyphicon-pencil"></span></button>',
-            btnDel: '<button type="button" class="btn btn-default bD"data-rid=%idx%><span class="glyphicon glyphicon-trash"></span></button>'
+            btnEdit: '<button title="%tit%" type="button" class="btn btn-default bE" data-rid=%idx%><span class="glyphicon glyphicon-pencil"></span></button>',
+            btnDel: '<button title="%tit%" type="button" class="btn btn-default bD"data-rid=%idx%><span class="glyphicon glyphicon-trash"></span></button>'
         };
 
         var COLOR_ERROR = "error";
@@ -65,11 +65,17 @@
 
             this.$cnt = container;
             this.$cnt.html(DataEditorHTML);
+
+            this.lang = this.config.lang.toLowerCase();
+
             this.$dataGrid = this.$cnt.find(h.divDataGrid);
-            this.$dataModal = $('body').append(DataEditorModal);
+            if (!$('body').find(h.divRowEditorPopup).length) $('body').append(DataEditorModal({
+                btnDelete: mlRes[this.lang]['cancel'],
+                btnOk: mlRes[this.lang]['ok']
+            }));
             this.$editWindow = $('body').find(h.divRowEditorPopup);
             this.rowEditor.render(this.$editWindow);
-            this.lang = this.config.lang.toLowerCase();
+
 
             /*
             if (localStorage.getItem('locale'))
@@ -156,7 +162,7 @@
             this._unbindEvents();
             this.rowEditor.destroy();
             this.$tBody.html('');
-            $('body').remove(this.$dataModal);
+            this.$editWindow.remove();
         };
 
         DataEditor.prototype.rowEditOk = function () {
@@ -235,7 +241,7 @@
             this.$tBody.html('');
             if (!this.data) return;
             for (var i = 0; i < limit; i++) {
-                this.$tBody.append(createTblRow(i, this.cols, this.codelists, this.data[i], this.editEnabled));
+                this.$tBody.append(createTblRow(i, this.cols, this.codelists, this.data[i], this.editEnabled, this.lang));
             }
             if (rows < this.data.length) this.$tBody.append('<tr><td colspan="'+(this.cols.length+3)+'">...</td></tr>');
 
@@ -274,7 +280,7 @@
             return null;
         };
 
-        function createTblRow(idx, cols, codelists, row, editControls) {
+        function createTblRow(idx, cols, codelists, row, editControls, lang) {
 
             var toRet = '<tr>';
             //toRet += '<td style="display:none;">' + idx + '</td>'
@@ -284,15 +290,18 @@
                 if (row[i] === null)
                     toRet += '';
                 else if (cols[i].dataType == 'code')
-                    toRet += addLabelToData(cols[i], codelists, row[i], this.lang);
+                    toRet += addLabelToData(cols[i], codelists, row[i], lang);
                 else {
                     toRet += row[i];
                 }
                 toRet += '</td>';
             }
+
             if (editControls) {
-                toRet += '<td align="center">' + html.btnEdit.replace('%idx%', idx) + '</td>';
-                toRet += '<td align="center">' + html.btnDel.replace('%idx%', idx) + '</td>';
+                var ed = mlRes[lang]['edit'];
+                var del = mlRes[lang]['delete'];
+                toRet += '<td align="center">' + html.btnEdit.replace('%idx%', idx).replace('%tit%', ed) + '</td>';
+                toRet += '<td align="center">' + html.btnDel.replace('%idx%', idx).replace('%tit%', del) + '</td>';
             }
             toRet += '</tr>';
             return toRet;
@@ -461,7 +470,10 @@
         }
         //End Codelists helpers
 
+
+
         DataEditor.prototype._doML = function () {
+
         }
 
         return DataEditor;

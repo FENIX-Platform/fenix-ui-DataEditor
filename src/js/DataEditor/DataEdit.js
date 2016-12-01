@@ -78,7 +78,10 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
 
         log.info('Render - creation', this.config);
         this.$container = container;
-        this.$container.html(DataEditHTML);
+        this.$container.html(DataEditHTML({
+            btnClear: mlRes[this.lang]['btnClear'],
+            btnAdd: mlRes[this.lang]['btnAdd']
+        }));
 
         this.$dataEditor = this.$container.find('#divDataEditor');
         this.dataEditor = new DataEditor(this.config);

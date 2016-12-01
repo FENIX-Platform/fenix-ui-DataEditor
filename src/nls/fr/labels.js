@@ -7,10 +7,15 @@ define(function () {
 
         "ok": "Ok",
         "cancel": "Annuler",
+        "edit": "Modifier",
+        "delete": "Supprimer",
         "confirmDelete": "Supprimer?",
         "unsavedData": "Certains changements n'ont pas été enregistrés, annuler quand même?",
         //"yearInterval": "L'année doit être numérique",
         //"monthInterval": "Le mois doit être numérique (1..12)",
+        "btnClear": "Effacer les données",
+        "btnAdd": "Ajouter des données",
+
 
         nullDSDCols: 'Les colonnes DSD ne sont pas définies.',
         nullCsvCols: 'Les colonnes CSV ne sont pas définies.',

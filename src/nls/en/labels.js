@@ -7,10 +7,14 @@ define(function () {
 
         "ok": "Ok",
         "cancel": "Cancel",
+        "edit": "Edit",
+        "delete": "Delete",
         "confirmDelete": "Delete?",
         "unsavedData": "Some changes are unsaved, cancel anyway?",
         //"yearInterval": "Year must be a number ",
         //"monthInterval": "Month must be a number (1..12)",
+        "btnClear" : "Clear Data",
+        "btnAdd" : "Add Data",
 
         nullDSDCols: 'DSD columns are not setted.',
         nullCsvCols: 'CSV columns are not setted.',

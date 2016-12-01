@@ -31,9 +31,10 @@ function ($, mlRes) {
                 var lines = "";
                 if (Array.isArray(valRes[i].dataIndex)) {
                     $.each(valRes[i].dataIndex, function(index,obj){
-                        $("#tblDataBody tr:nth-child("+(obj+1)+")")
-                            .css('background-color','rgba(255,0,0,0.1)')
-                            .css('color','red');
+                        if (valRes[i].error != 'csvDuplicate')
+                            $("#tblDataBody tr:nth-child("+(obj+1)+")")
+                                .css('background-color','rgba(255,0,0,0.1)')
+                                .css('color','red');
                         lines += obj+1 + " ";
                     });
                 } else {
