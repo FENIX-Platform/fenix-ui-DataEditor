@@ -382,6 +382,7 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
             }
             this._trigger("error:showerrormsg", mlRes[this.lang][valCSV[0].type]);
             log.info(mlRes[this.lang][valCSV[0].type]);
+            console.log(mlRes[this.lang][valCSV[0].type]);
             this._trigger("data:restoreupload");
         }
 
@@ -493,10 +494,10 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
             for (var n = 0; n < valRes.length; n++) {
                 log.info(valRes[n].type);
                 this.updateValRes(valRes);
-                //this._trigger("error:showerrormsg", valRes[n].type);
+                //this._trigger("error:showerrormsg", valRes[n]);
             }
-            this._trigger("error:showerrormsg", mlRes[this.lang][valRes[0].type]);
-            log.info(mlRes[this.lang][valRes[0].type]);
+            this._trigger("error:showerrormsg", mlRes[this.lang][valRes[0].error]);
+            log.info(mlRes[this.lang][valRes[0].error]);
             this._trigger("data:restoreupload");
             return;
         }
