@@ -382,7 +382,7 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
             }
             this._trigger("error:showerrormsg", mlRes[this.lang][valCSV[0].type]);
             log.info(mlRes[this.lang][valCSV[0].type]);
-            console.log(mlRes[this.lang][valCSV[0].type]);
+            //console.log(mlRes[this.lang][valCSV[0].type]);
             this._trigger("data:restoreupload");
         }
 

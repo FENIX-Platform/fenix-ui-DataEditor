@@ -1,17 +1,13 @@
 {
   "name": "fenix-ui-DataEditor",
-  "version": "2.0.0-beta.74",
+  "version": "2.0.0-beta.76",
   "description": "FENIX Data Editor",
   "main": "dist/fenix-ui-DataEditor.min.js",
   "scripts": {
-    "test": "NODE_ENV=test karma start ./karma.config.js",
-    "build": "NODE_ENV=production webpack --display-error-details",
-    "build:demo": "NODE_ENV=demo webpack --display-error-details",
-    "dev": "NODE_ENV=develop webpack-dev-server --display-error-details --progress --color --content-base dev  --inline --hot",
-    "w-test": "SET NODE_ENV=test&& karma start ./karma.config.js",
-    "w-build": "SET NODE_ENV=production&& webpack --display-error-details",
-    "w-build:demo": "SET NODE_ENV=demo&& webpack --display-error-details",
-    "w-dev": "SET NODE_ENV=develop&& webpack-dev-server --display-error-details --progress --color --content-base dev  --inline --hot"
+    "test": "cross-env NODE_ENV=test karma start ./karma.config.js",
+    "build": "cross-env NODE_ENV=production webpack --display-error-details",
+    "build:demo": "cross-env NODE_ENV=demo webpack --display-error-details",
+    "dev": "cross-env NODE_ENV=develop webpack-dev-server --display-error-details --progress --color --content-base dev  --inline --hot"
   },
   "repository": {
     "type": "git",
@@ -39,6 +35,7 @@
     "bootstrap-table": "^1.11.0",
     "chai": "^3.5.0",
     "clean-webpack-plugin": "^0.1.10",
+    "cross-env": "^3.1.3",
     "css-loader": "^0.25.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",

@@ -7,22 +7,22 @@ define(function () {
 
         "ok": "Ok",
         "cancel": "Annuler",
-        "edit": "Modifier",
-        "delete": "Supprimer",
-        "confirmDelete": "Supprimer?",
-        "unsavedData": "Certains changements n'ont pas été enregistrés, annuler quand même?",
+        "edit": "Modifier la ligne",
+        "delete": "Supprimer la ligne",
+        "confirmDelete": "Voulez-vous supprimer la ligne?",
+        "unsavedData": "Certains changements n'ont pas été enregistrés, voulez-vous annuler quand même?",
         //"yearInterval": "L'année doit être numérique",
         //"monthInterval": "Le mois doit être numérique (1..12)",
-        "btnClear": "Effacer les données",
-        "btnAdd": "Ajouter des données",
+        "btnClear": "Effacer toutes les données",
+        "btnAdd": "Ajouter une ligne",
 
 
-        nullDSDCols: 'Les colonnes DSD ne sont pas définies.',
-        nullCsvCols: 'Les colonnes CSV ne sont pas définies.',
-        wrongColumnCount: 'Compte de colonne erronée',
-        missingDSDHeader: 'L\'en-tête DSD est manquant',
+        nullDSDCols: 'Les colonnes dans le DSD ne sont pas définies.',
+        nullCsvCols: 'Les colonnes dans le CSV ne sont pas définies.',
+        wrongColumnCount: 'Décompte de colonne incorrect',
+        missingDSDHeader: 'L\'en-tête du DSD est manquant',
         unknownCodes: 'Codes inconnus',
-        csvDuplicate : 'Lignes CSV dupliquées',
+        csvDuplicate : 'Certaines lignes du CSV sont dupliquées',
 
 
         "nullKey": "Les champs clés ne peuvent pas être vides",
@@ -32,20 +32,20 @@ define(function () {
         "invalidMonth": "Le mois n'est pas valable",
         "invalidDate": "La date n'est pas valable",
         "invalidNumber": "Le nombre n'est pas valable",
-        "invalidBool": "Booléen n'est pas valable",
+        "invalidBool": "Le booléen n'est pas valable",
 
         "NAN": "La valeur n'est pas numérique",
-        "OutOfRange": "La valeur est hors de la plage autorisée",
+        "OutOfRange": "La valeur est hors de l'intervalle autorisé",
         "Null": "La valeur ne peut pas être vide",
         "line": "ligne",
-        "codelist" : "liste de codes",
+        "codelist" : "codeliste",
         "column" : "colonne",
-        "CodeListError": "Toutes les lignes ont une mauvaise liste de codes. Veuillez vérifier le DSD pour le bon type de liste de codes.",
+        "CodeListError": "Toutes les lignes contiennent un code erroné. Veuillez vérifier que les codelistes dans le DSD soient correctes",
 
-        "DataMatchColumn" : "Faites correspondre les colonnes DSD avec les colonnes CSV",
-        "DataDuplicateFound" : "Certaines valeurs dupliquées trouvées, conserver les données anciennes ou remplacer par les nouvelles valeurs que vous venez de télécharger?",
-        "btnDataMergeKeepNew" : "Remplacer par une nouvelle valeur",
-        "btnDataMergeKeepOld" : "Conserver les anciennes valeurs"
+        "DataMatchColumn" : "Veuillez faire correspondre les colonnes du DSD avec celles du CSV",
+        "DataDuplicateFound" : "Des valeurs dupliquées ont été trouvées, voulez-vous conserver les données anciennes ou les remplacer par les nouvelles valeurs que vous venez de télécharger?",
+        "btnDataMergeKeepNew" : "Remplacer par les valeurs nouvelles",
+        "btnDataMergeKeepOld" : "Conserver les valeurs anciennes"
 
     }
 });
