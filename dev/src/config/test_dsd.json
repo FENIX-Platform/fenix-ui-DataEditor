@@ -1,1 +1,100 @@
-[{"dataType":"code","key":false,"id":"TopicCode","title":{"EN":"Topic"},"values":{"codes":[{"version":"2.0","codes":[{"code":"0103","label":{"EN":"Health"}}],"idCodeList":"UNECA_ClassificationOfActivities","extendedName":{"EN":"UNECA Classification of Activities -Domains, topics and indicators"}}]},"domain":{"codes":[{"version":"2.0","idCodeList":"UNECA_ClassificationOfActivities","extendedName":{"EN":"UNECA Classification of Activities -Domains, topics and indicators"}}]}},{"dataType":"code","key":true,"id":"IndicatorCode","title":{"EN":"Indicator"},"values":{"codes":[{"version":"2.0","codes":[{"code":"010301","label":{"EN":"Percentage of children under-five and underweight"}},{"code":"010302","label":{"EN":"Prevalence of undernourishment"}},{"code":"010303","label":{"EN":"Under five mortality rate (both sexes) per 1,000"}},{"code":"010304","label":{"EN":"Infant mortality rate (both sexes) per 1,000"}},{"code":"010307","label":{"EN":"Percentage of children provided the vaccines (BCG)"}},{"code":"010308","label":{"EN":"Percentage of children provided the vaccines (DPT3)"}},{"code":"010309","label":{"EN":"Percentage of children provided the vaccines (Polio)"}},{"code":"010310","label":{"EN":"Percentage of children provided the vaccines (Measles)"}},{"code":"010311","label":{"EN":"Percentage of mothers provided at least one antenatal care"}},{"code":"010312","label":{"EN":"Percentage of deliveries attended by skilled health personnel"}},{"code":"010313","label":{"EN":"Number of doctors per 10,000 population"}},{"code":"010314","label":{"EN":"Number of nurses and Midwives per 10,000 population"}},{"code":"010315","label":{"EN":"Hospital beds - Total (per 10 000 population)"}},{"code":"010316","label":{"EN":"Births registered (per 1 000)"}},{"code":"010317","label":{"EN":"Deaths registered (per 1 000)"}}],"idCodeList":"UNECA_ClassificationOfActivities","extendedName":{"EN":"UNECA Classification of Activities -Domains, topics and indicators"}}]},"domain":{"codes":[{"version":"2.0","idCodeList":"UNECA_ClassificationOfActivities","extendedName":{"EN":"UNECA Classification of Activities -Domains, topics and indicators"}}]},"subject":"item"},{"dataType":"code","key":true,"id":"CountryCode","title":{"EN":"Country"},"values":{"codes":[{"codes":[{"code":"AGO","label":{"FR":"Angola","EN":"Angola"}},{"code":"BDI","label":{"FR":"Burundi","EN":"Burundi"}},{"code":"BEN","label":{"FR":"Bénin","EN":"Benin"}},{"code":"BFA","label":{"FR":"Burkina Faso","EN":"Burkina Faso"}},{"code":"BWA","label":{"FR":"Botswana","EN":"Botswana"}},{"code":"CAF","label":{"FR":"République Centrafricaine","EN":"Central African Republic"}},{"code":"CIV","label":{"FR":"Côte d'Ivoire","EN":"Cote d'Ivoire"}},{"code":"CMR","label":{"FR":"Cameroun","EN":"Cameroon"}},{"code":"COD","label":{"FR":"République Démocratique du Congo","EN":"Democratic Republic of the Congo"}},{"code":"COG","label":{"FR":"Congo","EN":"Congo"}},{"code":"COM","label":{"FR":"Comores","EN":"Comoros"}},{"code":"CPV","label":{"FR":"Cap-Vert","EN":"Cabo Verde"}},{"code":"DJI","label":{"FR":"Djibouti","EN":"Djibouti"}},{"code":"DZA","label":{"FR":"Algérie","EN":"Algeria"}},{"code":"EGY","label":{"FR":"Egypte","EN":"Egypt"}},{"code":"ERI","label":{"FR":"Erythrée","EN":"Eritrea"}},{"code":"ETH","label":{"FR":"Ethiopie","EN":"Ethiopia"}},{"code":"GAB","label":{"FR":"Gabon","EN":"Gabon"}},{"code":"GHA","label":{"FR":"Ghana","EN":"Ghana"}},{"code":"GIN","label":{"FR":"Guinée","EN":"Guinea"}},{"code":"GMB","label":{"FR":"Gambie","EN":"Gambia"}},{"code":"GNB","label":{"FR":"Guinée-Bissau","EN":"Guinea-Bissau"}},{"code":"GNQ","label":{"FR":"Guinée équatoriale","EN":"Equatorial Guinea"}},{"code":"KEN","label":{"FR":"Kenya","EN":"Kenya"}},{"code":"LBR","label":{"FR":"Libéria","EN":"Liberia"}},{"code":"LBY","label":{"FR":"Libye","EN":"Libya"}},{"code":"LSO","label":{"FR":"Lesotho","EN":"Lesotho"}},{"code":"MAR","label":{"FR":"Maroc","EN":"Morocco"}},{"code":"MDG","label":{"FR":"Madagascar","EN":"Madagascar"}},{"code":"MLI","label":{"FR":"Mali","EN":"Mali"}},{"code":"MOZ","label":{"FR":"Mozambique","EN":"Mozambique"}},{"code":"MRT","label":{"FR":"Mauritanie","EN":"Mauritania"}},{"code":"MUS","label":{"FR":"Maurice","EN":"Mauritius"}},{"code":"MWI","label":{"FR":"Malawi","EN":"Malawi"}},{"code":"NAM","label":{"FR":"Namibie","EN":"Namibia"}},{"code":"NER","label":{"FR":"Niger","EN":"Niger"}},{"code":"NGA","label":{"FR":"Nigéria","EN":"Nigeria"}},{"code":"RWA","label":{"FR":"Rwanda","EN":"Rwanda"}},{"code":"SDN","label":{"FR":"Soudan","EN":"Sudan"}},{"code":"SEN","label":{"FR":"Sénégal","EN":"Senegal"}},{"code":"SLE","label":{"FR":"Sierra Leone","EN":"Sierra Leone"}},{"code":"SOM","label":{"FR":"Somalie","EN":"Somalia"}},{"code":"SSD","label":{"FR":"Soudan du Sud","EN":"South Sudan"}},{"code":"STP","label":{"FR":"Sao Tomé-et-Principe","EN":"Sao Tome and Principe"}},{"code":"SWZ","label":{"FR":"Swaziland","EN":"Swaziland"}},{"code":"SYC","label":{"FR":"Seychelles","EN":"Seychelles"}},{"code":"TCD","label":{"FR":"Tchad","EN":"Chad"}},{"code":"TGO","label":{"FR":"Togo","EN":"Togo"}},{"code":"TUN","label":{"FR":"Tunisie","EN":"Tunisia"}},{"code":"TZA","label":{"FR":"Tanzanie, République Unie de","EN":"United Republic of Tanzania"}},{"code":"UGA","label":{"FR":"Ouganda","EN":"Uganda"}},{"code":"ZAF","label":{"FR":"Afrique du Sud","EN":"South Africa"}},{"code":"ZMB","label":{"FR":"Zambie","EN":"Zambia"}},{"code":"ZWE","label":{"FR":"Zimbabwe","EN":"Zimbabwe"}}],"idCodeList":"UNECA_ISO3","extendedName":{"EN":"UNECA Country Codes"}}]},"domain":{"codes":[{"idCodeList":"UNECA_ISO3","extendedName":{"EN":"UNECA Country Codes"}}]},"subject":"geo"},{"dataType":"year","key":true,"id":"Year","title":{"EN":"Year"},"values":{"timeList":[2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013]},"subject":"time"},{"dataType":"number","key":false,"id":"Value","title":{"EN":"Value"},"subject":"value"},{"dataType":"code","key":false,"id":"Unit","title":{"EN":"Unit of measurement"},"values":{"codes":[{"codes":[{"code":"NA","label":{"EN":"NA"}},{"code":"perc"}],"idCodeList":"UNECA_UnitMeasure","extendedName":{"EN":"UNECA - Unit of measure"}}]},"domain":{"codes":[{"idCodeList":"UNECA_UnitMeasure","extendedName":{"EN":"UNECA - Unit of measure"}}]},"subject":"um"},{"dataType":"text","key":false,"id":"TopicCode_EN","title":{"EN":"Topic"},"virtual":false,"transposed":false},{"dataType":"text","key":false,"id":"IndicatorCode_EN","title":{"EN":"Indicator"},"virtual":false,"transposed":false},{"dataType":"text","key":false,"id":"CountryCode_EN","title":{"EN":"Country"},"virtual":false,"transposed":false},{"dataType":"text","key":false,"id":"Unit_EN","title":{"EN":"Unit of measurement"},"virtual":false,"transposed":false}]
+[
+  {
+    "dataType": "year",
+    "title": {
+      "EN": "Year"
+    },
+    "subject": "time",
+    "key": true,
+    "id": "TIME"
+  },
+  {
+    "dataType": "code",
+    "title": {
+      "EN": "Commodity"
+    },
+    "domain": {
+      "codes": [
+        {
+          "version": "full",
+          "idCodeList": "HS"
+        }
+      ]
+    },
+    "subject": "item",
+    "key": true,
+    "id": "ITEM"
+  },
+  {
+    "dataType": "number",
+    "title": {
+      "EN": "Value"
+    },
+    "subject": "value",
+    "id": "VALUE"
+  },
+  {
+    "dataType": "code",
+    "title": {
+      "EN": "Flag"
+    },
+    "domain": {
+      "codes": [
+        {
+          "version": "1.0",
+          "idCodeList": "Flag"
+        }
+      ]
+    },
+    "subject": "flag",
+    "id": "FLAG"
+  },
+  {
+    "dataType": "code",
+    "title": {
+      "EN": "Area"
+    },
+    "domain": {
+      "codes": [
+        {
+          "version": "2014",
+          "idCodeList": "GAUL"
+        }
+      ]
+    },
+    "subject": "geo",
+    "key": true,
+    "id": "GEO"
+  },
+  {
+    "dataType": "code",
+    "title": {
+      "EN": "Unit"
+    },
+    "domain": {
+      "codes": [
+        {
+          "idCodeList": "CountrySTAT_UM"
+        }
+      ]
+    },
+    "subject": "um",
+    "id": "UM"
+  },
+  {
+    "dataType": "code",
+    "title": {
+      "EN": "Indicator"
+    },
+    "domain": {
+      "codes": [
+        {
+          "idCodeList": "CountrySTAT_Indicators"
+        }
+      ]
+    },
+    "subject": "indicator",
+    "key": true,
+    "id": "INDICATOR"
+  }
+]

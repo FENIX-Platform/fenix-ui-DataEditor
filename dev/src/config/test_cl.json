@@ -1,1 +1,1541 @@
-{"UNECA_ClassificationOfActivities|2.0":{"metadata":{"dsd":{"rid":"68_111"},"version":"2.0","title":{"EN":"UNECA Classification of Activities -Domains, topics and indicators"},"rid":"12_1047","uid":"UNECA_ClassificationOfActivities"},"data":[{"level":1,"leaf":false,"title":{"EN":"Economics statistics"},"children":[{"level":2,"leaf":false,"title":{"EN":"Labour"},"children":[{"level":3,"leaf":true,"title":{"EN":"Unemployment rate"},"code":"010402","rid":"64_114488"},{"level":3,"leaf":true,"title":{"EN":"Percentage (by gender) of Economically Active population"},"code":"010404","rid":"64_116289"},{"level":3,"leaf":true,"title":{"EN":"Economically Active Population"},"code":"010401","rid":"64_114487"},{"level":3,"leaf":true,"title":{"EN":"Percentage (by economic sector) of Economically Active Population "},"code":"010403","rid":"64_114489"}],"code":"0104","rid":"64_114486"},{"level":2,"leaf":false,"title":{"EN":"Health"},"children":[{"level":3,"leaf":true,"title":{"EN":"Percentage of children provided the vaccines (DPT3)"},"code":"010308","rid":"64_114531"},{"level":3,"leaf":true,"title":{"EN":"Percentage of children provided the vaccines (Polio)"},"code":"010309","rid":"64_114532"},{"level":3,"leaf":true,"title":{"EN":"Deaths registered (per 1 000)"},"code":"010317","rid":"64_114533"},{"level":3,"leaf":true,"title":{"EN":"Infant mortality rate (both sexes) per 1,000"},"code":"010304","rid":"64_114534"},{"level":3,"leaf":true,"title":{"EN":"Neo-natal mortality rate per 1,000"},"code":"010305","rid":"64_114535"},{"level":3,"leaf":true,"title":{"EN":"Hospital beds - Total (per 10 000 population)"},"code":"010315","rid":"64_114536"},{"level":3,"leaf":true,"title":{"EN":"Maternal mortality ratio per 1,000"},"code":"010306","rid":"64_114537"},{"level":3,"leaf":true,"title":{"EN":"Births registered (per 1 000)"},"code":"010316","rid":"64_114538"},{"level":3,"leaf":true,"title":{"EN":"Percentage of children provided the vaccines (BCG)"},"code":"010307","rid":"64_114539"},{"level":3,"leaf":true,"title":{"EN":"Number of doctors per 10,000 population"},"code":"010313","rid":"64_114540"},{"level":3,"leaf":true,"title":{"EN":"Number of nurses and Midwives per 10,000 population"},"code":"010314","rid":"64_114541"},{"level":3,"leaf":true,"title":{"EN":"Percentage of children under-five and underweight"},"code":"010301","rid":"64_114542"},{"level":3,"leaf":true,"title":{"EN":"Prevalence of undernourishment"},"code":"010302","rid":"64_114543"},{"level":3,"leaf":true,"title":{"EN":"Percentage of mothers provided at least one antenatal care"},"code":"010311","rid":"64_114544"},{"level":3,"leaf":true,"title":{"EN":"Under five mortality rate (both sexes) per 1,000"},"code":"010303","rid":"64_114545"},{"level":3,"leaf":true,"title":{"EN":"Percentage of deliveries attended by skilled health personnel"},"code":"010312","rid":"64_114546"},{"level":3,"leaf":true,"title":{"EN":"Percentage of children provided the vaccines (Measles)"},"code":"010310","rid":"64_114547"}],"code":"0103","rid":"64_114484"},{"level":2,"leaf":false,"title":{"EN":"Population"},"children":[{"level":3,"leaf":true,"title":{"EN":"Population below $1.25 (PPP) per day"},"code":"010113","rid":"64_114491"},{"level":3,"leaf":true,"title":{"EN":"Crude birth rate per 1,000 population"},"code":"010104","rid":"64_114492"},{"level":3,"leaf":true,"title":{"EN":"Population below $2 (PPP) per day"},"code":"010114","rid":"64_114493"},{"level":3,"leaf":true,"title":{"EN":"Crude death rate per 1,000 population"},"code":"010105","rid":"64_114494"},{"level":3,"leaf":true,"title":{"EN":"Population below national poverty line"},"code":"010115","rid":"64_114495"},{"level":3,"leaf":true,"title":{"EN":"Urbanization rate (per cent)"},"code":"010102","rid":"64_114496"},{"level":3,"leaf":true,"title":{"EN":"Share of poorest quintile in national consumption"},"code":"010116","rid":"64_114497"},{"level":3,"leaf":true,"title":{"EN":"Average annual growth rate"},"code":"010103","rid":"64_114498"},{"level":3,"leaf":true,"title":{"EN":"Mid-year Population"},"code":"010101","rid":"64_114499"},{"level":3,"leaf":true,"title":{"EN":"Net migration rate"},"code":"010110","rid":"64_114500"},{"level":3,"leaf":true,"title":{"EN":"Proportion of population living in slums"},"code":"010111","rid":"64_114501"},{"level":3,"leaf":true,"title":{"EN":"Population below $1 (PPP) per day"},"code":"010112","rid":"64_114502"},{"level":3,"leaf":true,"title":{"EN":"Life expectancy (years)"},"code":"010108","rid":"64_114503"},{"level":3,"leaf":true,"title":{"EN":"Dependency ratio"},"code":"010109","rid":"64_114504"},{"level":3,"leaf":true,"title":{"EN":"Total fertility"},"code":"010106","rid":"64_114505"},{"level":3,"leaf":true,"title":{"EN":"Net reproduction rate"},"code":"010107","rid":"64_114506"},{"level":3,"leaf":true,"title":{"EN":"Dependency ratio old"},"code":"01010902","rid":"64_114507"},{"level":3,"leaf":true,"title":{"EN":"Dependency ratio young"},"code":"01010901","rid":"64_114508"}],"code":"0101","rid":"64_114490"},{"level":2,"leaf":false,"title":{"EN":"Education"},"children":[{"level":3,"leaf":true,"title":{"EN":"Adult literacy rate"},"code":"01020601","rid":"64_114510"},{"level":3,"leaf":true,"title":{"EN":"Youth literacy rate (15-24)"},"code":"01020602","rid":"64_114511"},{"level":3,"leaf":true,"title":{"EN":"Capital expenditure on education as % of Government expenditures"},"code":"010217","rid":"64_114512"},{"level":3,"leaf":true,"title":{"EN":"Teaching staff at secondary school"},"code":"010208","rid":"64_114513"},{"level":3,"leaf":true,"title":{"EN":"Public expenditure on education as % of GDP"},"code":"010216","rid":"64_114514"},{"level":3,"leaf":true,"title":{"EN":"Teaching staff at primary school"},"code":"010207","rid":"64_114515"},{"level":3,"leaf":true,"title":{"EN":"Literacy rate"},"code":"010206","rid":"64_114516"},{"level":3,"leaf":true,"title":{"EN":"Public expenditure on education as % of Government expenditures"},"code":"010218","rid":"64_114517"},{"level":3,"leaf":true,"title":{"EN":"Net enrolment rate "},"code":"010205","rid":"64_114518"},{"level":3,"leaf":true,"title":{"EN":"Teaching staff at tertiary school"},"code":"010209","rid":"64_114519"},{"level":3,"leaf":true,"title":{"EN":"Ratio of girls to boys in primary school"},"code":"010211","rid":"64_114520"},{"level":3,"leaf":true,"title":{"EN":"Pupil teacher ratio"},"code":"010210","rid":"64_114521"},{"level":3,"leaf":true,"title":{"EN":"Ratio of girls to boys in tertiary level"},"code":"010213","rid":"64_114522"},{"level":3,"leaf":true,"title":{"EN":"Gross enrolment rate"},"code":"010204","rid":"64_114523"},{"level":3,"leaf":true,"title":{"EN":"Ratio of girls to boys in secondary school"},"code":"010212","rid":"64_114524"},{"level":3,"leaf":true,"title":{"EN":"Enrolment in tertiary education"},"code":"010203","rid":"64_114525"},{"level":3,"leaf":true,"title":{"EN":"Proportion of pupils starting grade 1 who reach last grade of primary"},"code":"010215","rid":"64_114526"},{"level":3,"leaf":true,"title":{"EN":"Enrolment in secondary education"},"code":"010202","rid":"64_114527"},{"level":3,"leaf":true,"title":{"EN":"Ratio of Literate women to men youth"},"code":"01021401","rid":"64_114528"},{"level":3,"leaf":true,"title":{"EN":"Ratio of Literate women to men "},"code":"010214","rid":"64_114529"},{"level":3,"leaf":true,"title":{"EN":"Enrolment in primary education"},"code":"010201","rid":"64_114530"}],"code":"0102","rid":"64_114509"}],"code":"01","rid":"64_114485"},{"level":1,"leaf":false,"title":{"EN":"Economics statistics"},"children":[{"level":2,"leaf":false,"title":{"EN":"Energy"},"children":[{"level":3,"leaf":true,"title":{"EN":"Electricity gross production, public and self-producer"},"code":"02040204","rid":"64_114585"},{"level":3,"leaf":true,"title":{"EN":"Unemployment rate"},"code":"010402","rid":"64_114488"},{"level":3,"leaf":true,"title":{"EN":"Percentage (by gender) of Economically Active population"},"code":"010404","rid":"64_116289"},{"level":3,"leaf":true,"title":{"EN":"Production of electricity, other"},"code":"02040201","rid":"64_114586"},{"level":3,"leaf":true,"title":{"EN":"Production of electricity, public"},"code":"02040203","rid":"64_114587"},{"level":3,"leaf":true,"title":{"EN":"Production of electricity, self"},"code":"02040202","rid":"64_114588"},{"level":3,"leaf":true,"title":{"EN":"Electricity installed capacity, net - Total"},"code":"020401","rid":"64_114589"},{"level":3,"leaf":true,"title":{"EN":"Production of electricity, total"},"code":"020402","rid":"64_114590"},{"level":3,"leaf":true,"title":{"EN":"Electricity installed capacity, net - public"},"code":"02040102","rid":"64_114591"},{"level":3,"leaf":true,"title":{"EN":"Imports of electricity, total"},"code":"020403","rid":"64_114592"},{"level":3,"leaf":true,"title":{"EN":"Electricity installed capacity, net - self"},"code":"02040101","rid":"64_114593"},{"level":3,"leaf":true,"title":{"EN":"Exports of electricity, total"},"code":"020404","rid":"64_114594"},{"level":3,"leaf":true,"title":{"EN":"Final consumption of electricity, total"},"code":"020405","rid":"64_114595"},{"level":3,"leaf":true,"title":{"EN":"Electricity production index"},"code":"020406","rid":"64_114596"}],"code":"0204","rid":"64_114584"},{"level":2,"leaf":false,"title":{"EN":"International trade"},"children":[{"level":3,"leaf":true,"title":{"EN":"Re-export value"},"code":"020606","rid":"64_116283"},{"level":3,"leaf":true,"title":{"EN":"Re-export quantity"},"code":"020605","rid":"64_116284"},{"level":3,"leaf":true,"title":{"EN":"Export value"},"code":"020604","rid":"64_116285"},{"level":3,"leaf":true,"title":{"EN":"Export quantity"},"code":"020603","rid":"64_116286"},{"level":3,"leaf":true,"title":{"EN":"Import value"},"code":"020602","rid":"64_116287"},{"level":3,"leaf":true,"title":{"EN":"Import quantity"},"code":"020601","rid":"64_116288"}],"code":"0206","rid":"64_116282"},{"level":2,"leaf":false,"title":{"EN":"Official Development Assistance"},"children":[{"level":3,"leaf":true,"title":{"EN":"Net Total Official Development assistance"},"code":"021001","rid":"64_114719"},{"level":3,"leaf":true,"title":{"EN":"Official Development assistance"},"code":"02100101","rid":"64_114720"}],"code":"0210","rid":"64_114548"},{"level":2,"leaf":false,"title":{"EN":"Agriculture"},"children":[{"level":3,"leaf":true,"title":{"EN":"Crop production"},"code":"020101","rid":"64_114551"},{"level":3,"leaf":true,"title":{"EN":"Area Harvested"},"code":"02010101","rid":"64_114552"},{"level":3,"leaf":true,"title":{"EN":"Production quantity"},"code":"02010103","rid":"64_114553"},{"level":3,"leaf":true,"title":{"EN":"Yield"},"code":"02010102","rid":"64_114554"},{"level":3,"leaf":true,"title":{"EN":"Seed"},"code":"02010104","rid":"64_114555"}],"code":"0201","rid":"64_114550"},{"level":2,"leaf":false,"title":{"EN":"Public Finance"},"children":[{"level":3,"leaf":true,"title":{"EN":"Current expenditure"},"code":"02120301","rid":"64_114557"},{"level":3,"leaf":true,"title":{"EN":"Wages and salaries"},"code":"0212030101","rid":"64_114558"},{"level":3,"leaf":true,"title":{"EN":"Total expenditures and net lending"},"code":"021203","rid":"64_114559"},{"level":3,"leaf":true,"title":{"EN":"Fiscal balance"},"code":"021204","rid":"64_114560"},{"level":3,"leaf":true,"title":{"EN":"Non tax revenue"},"code":"02120102","rid":"64_114561"},{"level":3,"leaf":true,"title":{"EN":"Tax revenue"},"code":"02120101","rid":"64_114562"},{"level":3,"leaf":true,"title":{"EN":"Total revenues and grants"},"code":"021201","rid":"64_114563"},{"level":3,"leaf":true,"title":{"EN":"Total grants"},"code":"021202","rid":"64_114564"},{"level":3,"leaf":true,"title":{"EN":"Net lending"},"code":"02120303","rid":"64_114565"},{"level":3,"leaf":true,"title":{"EN":"Capital expenditure"},"code":"02120302","rid":"64_114566"}],"code":"0212","rid":"64_114556"},{"level":2,"leaf":false,"title":{"EN":"Prices"},"children":[{"level":3,"leaf":true,"title":{"EN":"Inflation, consumer prices"},"code":"021101","rid":"64_114568"},{"level":3,"leaf":true,"title":{"EN":"Inflation by kind of commodity"},"code":"021102","rid":"64_114569"},{"level":3,"leaf":true,"title":{"EN":"Inflation, GDP deflator (annual %)"},"code":"02110115","rid":"64_114570"},{"level":3,"leaf":true,"title":{"EN":"Inflation, consumer prices (annual %)"},"code":"02110114","rid":"64_114571"}],"code":"0211","rid":"64_114567"},{"level":2,"leaf":false,"title":{"EN":"Globalisation"},"children":[{"level":3,"leaf":true,"title":{"EN":"Origin of FDI Inflows"},"code":"020502","rid":"64_114573"},{"level":3,"leaf":true,"title":{"EN":"Net Foreign Direct Investment Inflows"},"code":"020501","rid":"64_114574"}],"code":"0205","rid":"64_114572"},{"level":2,"leaf":false,"title":{"EN":"Tourism"},"children":[{"level":3,"leaf":true,"title":{"EN":"Rooms in hotels and similar establishments"},"code":"021301","rid":"64_114576"},{"level":3,"leaf":true,"title":{"EN":"Tourism contribution to GDP"},"code":"021303","rid":"64_114577"},{"level":3,"leaf":true,"title":{"EN":"Overnight stays in tourist accommodation"},"code":"021302","rid":"64_114578"},{"level":3,"leaf":true,"title":{"EN":"International tourism, receipts (% of total exports)"},"code":"021308","rid":"64_114579"},{"level":3,"leaf":true,"title":{"EN":"International tourism, number of arrivals"},"code":"021305","rid":"64_114580"},{"level":3,"leaf":true,"title":{"EN":"Tourism conribution to employment"},"code":"021304","rid":"64_114581"},{"level":3,"leaf":true,"title":{"EN":"International tourism, receipts"},"code":"021307","rid":"64_114582"},{"level":3,"leaf":true,"title":{"EN":"International tourism, number of departures"},"code":"021306","rid":"64_114583"}],"code":"0213","rid":"64_114575"},{"level":2,"leaf":false,"title":{"EN":"Debt"},"children":[{"level":3,"leaf":true,"title":{"EN":"Total government domestic debt"},"code":"020308","rid":"64_114598"},{"level":3,"leaf":true,"title":{"EN":"Present value of external debt"},"code":"020307","rid":"64_114599"},{"level":3,"leaf":true,"title":{"EN":"Total external debt service"},"code":"020306","rid":"64_114600"},{"level":3,"leaf":true,"title":{"EN":"Total external debt"},"code":"020305","rid":"64_114601"},{"level":3,"leaf":true,"title":{"EN":"Total external debt, public"},"code":"02030502","rid":"64_114602"},{"level":3,"leaf":true,"title":{"EN":"Total external debt, private"},"code":"02030501","rid":"64_114603"}],"code":"0203","rid":"64_114597"},{"level":2,"leaf":false,"title":{"EN":"Balance of Payments"},"children":[{"level":3,"leaf":true,"title":{"EN":"Workers' remittances, debit"},"code":"020203010202","rid":"64_114605"},{"level":3,"leaf":true,"title":{"EN":"Compensation of employees, Credit"},"code":"0202020101","rid":"64_114606"},{"level":3,"leaf":true,"title":{"EN":"Compensation of employees, Debit"},"code":"0202020102","rid":"64_114607"},{"level":3,"leaf":true,"title":{"EN":"Workers' remittances, credit"},"code":"020203010201","rid":"64_114608"},{"level":3,"leaf":true,"title":{"EN":"Current account balance (BoP)"},"code":"020204","rid":"64_114609"},{"level":3,"leaf":true,"title":{"EN":"Capital and financial account balance (BoP)"},"code":"020205","rid":"64_114610"},{"level":3,"leaf":true,"title":{"EN":"Net errors and omissions in BoP"},"code":"020206","rid":"64_114611"},{"level":3,"leaf":true,"title":{"EN":"Overall balance of payements"},"code":"020207","rid":"64_114612"},{"level":3,"leaf":true,"title":{"EN":"Imports of services (BoP)"},"code":"0202010202","rid":"64_114613"},{"level":3,"leaf":true,"title":{"EN":"Exports of services (BoP)"},"code":"0202010201","rid":"64_114614"},{"level":3,"leaf":true,"title":{"EN":"Capital account balance (BoP)"},"code":"02020501","rid":"64_114615"},{"level":3,"leaf":true,"title":{"EN":"Financial account balance (BoP)"},"code":"02020502","rid":"64_114616"},{"level":3,"leaf":true,"title":{"EN":"Trade balance of goods and services"},"code":"020201","rid":"64_114617"},{"level":3,"leaf":true,"title":{"EN":"Primary income balance"},"code":"020202","rid":"64_114618"},{"level":3,"leaf":true,"title":{"EN":"Secondary income balance"},"code":"020203","rid":"64_114619"},{"level":3,"leaf":true,"title":{"EN":"Income and reserve assets"},"code":"02020207","rid":"64_114620"},{"level":3,"leaf":true,"title":{"EN":"Other investment (BoP)"},"code":"02020206","rid":"64_114621"},{"level":3,"leaf":true,"title":{"EN":"Net current transfers"},"code":"02020301","rid":"64_114622"},{"level":3,"leaf":true,"title":{"EN":"Net Investment Income"},"code":"02020203","rid":"64_114623"},{"level":3,"leaf":true,"title":{"EN":"Balance on services (BoP)"},"code":"02020102","rid":"64_114624"},{"level":3,"leaf":true,"title":{"EN":"Portfolio investment"},"code":"02020205","rid":"64_114625"},{"level":3,"leaf":true,"title":{"EN":"Exports of goods (BoP)"},"code":"0202010101","rid":"64_114626"},{"level":3,"leaf":true,"title":{"EN":"Balance on goods (BoP)"},"code":"02020101","rid":"64_114627"},{"level":3,"leaf":true,"title":{"EN":"Direct investment"},"code":"02020204","rid":"64_114628"},{"level":3,"leaf":true,"title":{"EN":"Imports of goods (BoP)"},"code":"0202010102","rid":"64_114629"},{"level":3,"leaf":true,"title":{"EN":"Net compensation of employees"},"code":"02020201","rid":"64_114630"},{"level":3,"leaf":true,"title":{"EN":"Other BoP transfers (excluding net official transfert and workers' remittances)"},"code":"0202030103","rid":"64_114631"},{"level":3,"leaf":true,"title":{"EN":"Net workers' remittances"},"code":"0202030102","rid":"64_114632"},{"level":3,"leaf":true,"title":{"EN":"Net official transfers"},"code":"0202030101","rid":"64_114633"}],"code":"0202","rid":"64_114604"},{"level":2,"leaf":false,"title":{"EN":"Monetary Statistics"},"children":[{"level":3,"leaf":true,"title":{"EN":"Quasi-money"},"code":"020903","rid":"64_114635"},{"level":3,"leaf":true,"title":{"EN":"Net foreign assets"},"code":"020904","rid":"64_114636"},{"level":3,"leaf":true,"title":{"EN":"Money supply (M1)"},"code":"020901","rid":"64_114637"},{"level":3,"leaf":true,"title":{"EN":"Money supply (M2)"},"code":"020902","rid":"64_114638"},{"level":3,"leaf":true,"title":{"EN":"End-of-period exchange rate"},"code":"020908","rid":"64_114639"},{"level":3,"leaf":true,"title":{"EN":"Period average exchange rate"},"code":"020907","rid":"64_114640"},{"level":3,"leaf":true,"title":{"EN":"International reserves"},"code":"020906","rid":"64_114641"},{"level":3,"leaf":true,"title":{"EN":"Quasi-money of which Demand Deposit"},"code":"02090301","rid":"64_114642"},{"level":3,"leaf":true,"title":{"EN":"Domestic credit"},"code":"020905","rid":"64_114643"},{"level":3,"leaf":true,"title":{"EN":"Domestic credit of which Claims on government sector, net"},"code":"02090502","rid":"64_114644"},{"level":3,"leaf":true,"title":{"EN":"Domestic credit of which claims on private sector"},"code":"02090501","rid":"64_114645"}],"code":"0209","rid":"64_114634"},{"level":2,"leaf":false,"title":{"EN":"Mining"},"children":[{"level":3,"leaf":true,"title":{"EN":"Consumption of oil in industry"},"code":"02080109","rid":"64_114647"},{"level":3,"leaf":true,"title":{"EN":"Final consumption of coking coal"},"code":"02080106","rid":"64_114648"},{"level":3,"leaf":true,"title":{"EN":"Mining production"},"code":"020801","rid":"64_114649"},{"level":3,"leaf":true,"title":{"EN":"Refinery output of oil products"},"code":"02080105","rid":"64_114650"},{"level":3,"leaf":true,"title":{"EN":"Net imports of natural gas"},"code":"02080117","rid":"64_114651"},{"level":3,"leaf":true,"title":{"EN":"Final consumption of natural gas"},"code":"02080108","rid":"64_114652"},{"level":3,"leaf":true,"title":{"EN":"Net imports of oil product"},"code":"02080116","rid":"64_114653"},{"level":3,"leaf":true,"title":{"EN":"Final consumption of oil"},"code":"02080107","rid":"64_114654"},{"level":3,"leaf":true,"title":{"EN":"Net imports of coking coal"},"code":"02080114","rid":"64_114655"},{"level":3,"leaf":true,"title":{"EN":"Production of coking coal"},"code":"02080101","rid":"64_114656"},{"level":3,"leaf":true,"title":{"EN":"Net imports of crude oil,  liquefied natural gas, Etc."},"code":"02080115","rid":"64_114657"},{"level":3,"leaf":true,"title":{"EN":"Production of charcoal"},"code":"02080102","rid":"64_114658"},{"level":3,"leaf":true,"title":{"EN":"Consumption of coking coal in industry"},"code":"02080112","rid":"64_114659"},{"level":3,"leaf":true,"title":{"EN":"Production of crude oil,  liquefied natural gas and additives"},"code":"02080103","rid":"64_114660"},{"level":3,"leaf":true,"title":{"EN":"Consumption of oil in transport"},"code":"02080113","rid":"64_114661"},{"level":3,"leaf":true,"title":{"EN":"Production of natural gas"},"code":"02080104","rid":"64_114662"},{"level":3,"leaf":true,"title":{"EN":"Consumption of natural gas in industry"},"code":"02080110","rid":"64_114663"},{"level":3,"leaf":true,"title":{"EN":"Consumption of electricity in industry"},"code":"02080111","rid":"64_114664"}],"code":"0208","rid":"64_114646"},{"level":2,"leaf":false,"title":{"EN":"National Account"},"children":[{"level":3,"leaf":true,"title":{"EN":"Imports of goods, current prices"},"code":"0207020301","rid":"64_114666"},{"level":3,"leaf":true,"title":{"EN":"National account, constant prices"},"code":"020701","rid":"64_114667"},{"level":3,"leaf":true,"title":{"EN":"National account, current prices"},"code":"020702","rid":"64_114668"},{"level":3,"leaf":true,"title":{"EN":"Individual consumption expenditure, constant prices"},"code":"020701010301","rid":"64_114669"},{"level":3,"leaf":true,"title":{"EN":"GDP growth (annual %)"},"code":"020705","rid":"64_114670"},{"level":3,"leaf":true,"title":{"EN":"Exports of services, current prices"},"code":"0207020202","rid":"64_114671"},{"level":3,"leaf":true,"title":{"EN":"GDP per capita (constant 2005 US$)"},"code":"020706","rid":"64_114672"},{"level":3,"leaf":true,"title":{"EN":"Exports of goods, current prices"},"code":"0207020201","rid":"64_114673"},{"level":3,"leaf":true,"title":{"EN":"Value added by industries, current prices"},"code":"020703","rid":"64_114674"},{"level":3,"leaf":true,"title":{"EN":"Value added by industries, constant prices"},"code":"020704","rid":"64_114675"},{"level":3,"leaf":true,"title":{"EN":"Collective consumption expenditure, current prices"},"code":"020702010302","rid":"64_114676"},{"level":3,"leaf":true,"title":{"EN":"GROSS DOMESTIC PRODUCT (current prices)"},"code":"020707","rid":"64_114677"},{"level":3,"leaf":true,"title":{"EN":"Individual consumption expenditure, current prices"},"code":"020702010301","rid":"64_114678"},{"level":3,"leaf":true,"title":{"EN":"Collective consumption expenditure, constant prices"},"code":"020701010302","rid":"64_114679"},{"level":3,"leaf":true,"title":{"EN":"Imports of services, current prices"},"code":"0207020302","rid":"64_114680"},{"level":3,"leaf":true,"title":{"EN":"Financial intermediation services indirectly measured (FISIM), constant prices"},"code":"02070414","rid":"64_114681"},{"level":3,"leaf":true,"title":{"EN":"Net taxes on products, constant prices"},"code":"02070415","rid":"64_114682"},{"level":3,"leaf":true,"title":{"EN":"General government final consumption expenditure, current prices"},"code":"0207020103","rid":"64_114683"},{"level":3,"leaf":true,"title":{"EN":"Nonprofit institutions serving households (NPISHs) final consumption expenditure, current prices"},"code":"0207020102","rid":"64_114684"},{"level":3,"leaf":true,"title":{"EN":"Household final consumption expenditure, currrent prices"},"code":"0207020101","rid":"64_114685"},{"level":3,"leaf":true,"title":{"EN":"Gross value added at basic prices, constant prices"},"code":"02070413","rid":"64_114686"},{"level":3,"leaf":true,"title":{"EN":"General government final consumption expenditure, constant prices"},"code":"0207010103","rid":"64_114687"},{"level":3,"leaf":true,"title":{"EN":"Household final consumption expenditure, contant prices"},"code":"0207010101","rid":"64_114688"},{"level":3,"leaf":true,"title":{"EN":"Nonprofit institutions serving households (NPISHs) final consumption expenditure, constant prices"},"code":"0207010102","rid":"64_114689"},{"level":3,"leaf":true,"title":{"EN":"Gross value added at basic prices, current prices"},"code":"02070313","rid":"64_114690"},{"level":3,"leaf":true,"title":{"EN":"Financial intermediation services indirectly measured (FISIM), current prices"},"code":"02070314","rid":"64_114691"},{"level":3,"leaf":true,"title":{"EN":"Taxes on products, constant prices"},"code":"0207041501","rid":"64_114692"},{"level":3,"leaf":true,"title":{"EN":"Subsidies on products, constant prices"},"code":"0207041502","rid":"64_114693"},{"level":3,"leaf":true,"title":{"EN":"Net taxes on products, current prices"},"code":"02070315","rid":"64_114694"},{"level":3,"leaf":true,"title":{"EN":"Gross capital formation, contant prices"},"code":"02070106","rid":"64_114695"},{"level":3,"leaf":true,"title":{"EN":"Exports of goods, constant prices"},"code":"0207010201","rid":"64_114696"},{"level":3,"leaf":true,"title":{"EN":"Exports of goods and services at current prices"},"code":"02070202","rid":"64_114697"},{"level":3,"leaf":true,"title":{"EN":"Final consumption expenditure, current prices"},"code":"02070201","rid":"64_114698"},{"level":3,"leaf":true,"title":{"EN":"Gross fixed capital formation, contant prices"},"code":"02070107","rid":"64_114699"},{"level":3,"leaf":true,"title":{"EN":"Changes in inventories, contant prices"},"code":"02070108","rid":"64_114700"},{"level":3,"leaf":true,"title":{"EN":"Statistical discrepancy on gross domestic product, current prices"},"code":"02070204","rid":"64_114701"},{"level":3,"leaf":true,"title":{"EN":"Acquisitions less disposals of valuables, contant prices"},"code":"02070109","rid":"64_114702"},{"level":3,"leaf":true,"title":{"EN":"Exports of services, constant prices"},"code":"0207010202","rid":"64_114703"},{"level":3,"leaf":true,"title":{"EN":"Import of goods and services"},"code":"02070203","rid":"64_114704"},{"level":3,"leaf":true,"title":{"EN":"Imports of services, constant prices"},"code":"0207010302","rid":"64_114705"},{"level":3,"leaf":true,"title":{"EN":"Imports of goods, constant prices"},"code":"0207010301","rid":"64_114706"},{"level":3,"leaf":true,"title":{"EN":"Acquisitions less disposals of valuables, current prices"},"code":"02070209","rid":"64_114707"},{"level":3,"leaf":true,"title":{"EN":"Final consumption expenditure, contant prices"},"code":"02070101","rid":"64_114708"},{"level":3,"leaf":true,"title":{"EN":"Import of goods and services, constant prices"},"code":"02070103","rid":"64_114709"},{"level":3,"leaf":true,"title":{"EN":"Gross domestic product, current prices"},"code":"02070205","rid":"64_114710"},{"level":3,"leaf":true,"title":{"EN":"Taxes on products, current prices"},"code":"0207031501","rid":"64_114711"},{"level":3,"leaf":true,"title":{"EN":"Exports of goods and services, constant prices"},"code":"02070102","rid":"64_114712"},{"level":3,"leaf":true,"title":{"EN":"Gross capital formation, current prices"},"code":"02070206","rid":"64_114713"},{"level":3,"leaf":true,"title":{"EN":"Gross domestic product, constant prices"},"code":"02070105","rid":"64_114714"},{"level":3,"leaf":true,"title":{"EN":"Gross fixed capital formation, current prices"},"code":"02070207","rid":"64_114715"},{"level":3,"leaf":true,"title":{"EN":"Statistical discrepancy on gross domestic product, constant prices"},"code":"02070104","rid":"64_114716"},{"level":3,"leaf":true,"title":{"EN":"Changes in inventories, current prices"},"code":"02070208","rid":"64_114717"},{"level":3,"leaf":true,"title":{"EN":"Subsidies on products, current prices"},"code":"0207031502","rid":"64_114718"}],"code":"0207","rid":"64_114665"}],"code":"02","rid":"64_114549"},{"level":1,"leaf":false,"title":{"EN":"Environment and multi-Domain statistics"},"children":[{"level":2,"leaf":false,"title":{"EN":"Poverty"},"children":[{"level":3,"leaf":true,"title":{"EN":"Population below $2 (PPP) per day"},"code":"010114","rid":"64_114493"},{"level":3,"leaf":true,"title":{"EN":"GNI Per Capita (US$)"},"code":"030301","rid":"64_129581"},{"level":3,"leaf":true,"title":{"EN":"Share of Income Held by Poorest 10%"},"code":"030305","rid":"64_129582"},{"level":3,"leaf":true,"title":{"EN":"Share of Income Held by Richest 10%"},"code":"030304","rid":"64_129583"},{"level":3,"leaf":true,"title":{"EN":"Human Poverty Index (HPI-1) Value (%)"},"code":"030302","rid":"64_129584"},{"level":3,"leaf":true,"title":{"EN":"Gini�s index"},"code":"030306","rid":"64_129585"}],"code":"0303","rid":"64_129586"},{"level":2,"leaf":false,"title":{"EN":"Poverty"},"children":[{"level":3,"leaf":true,"title":{"EN":"Population below $2 (PPP) per day"},"code":"010114","rid":"64_114493"},{"level":3,"leaf":true,"title":{"EN":"GNI Per Capita (US$)"},"code":"030301","rid":"64_129581"},{"level":3,"leaf":true,"title":{"EN":"Share of Income Held by Poorest 10%"},"code":"030305","rid":"64_129582"},{"level":3,"leaf":true,"title":{"EN":"Share of Income Held by Richest 10%"},"code":"030304","rid":"64_129583"},{"level":3,"leaf":true,"title":{"EN":"Human Poverty Index (HPI-1) Value (%)"},"code":"030302","rid":"64_129584"},{"level":3,"leaf":true,"title":{"EN":"Gini�s index"},"code":"030306","rid":"64_129585"}],"code":"0301","rid":"64_129580"}],"code":"03","rid":"64_114721"}],"size":253},"UNECA_ISO3":{"metadata":{"dsd":{"rid":"68_141"},"title":{"EN":"UNECA Country Codes"},"rid":"12_1184","uid":"UNECA_ISO3"},"data":[{"level":1,"leaf":false,"description":{"FR":"Union du Maghreb Arabe","EN":"Arab Maghreb Union"},"title":{"FR":"UMA","EN":"AMU"},"children":[{"level":2,"leaf":true,"description":{"FR":"Libye","EN":"Libya"},"title":{"FR":"Libye","EN":"Libya"},"code":"LBY","rid":"64_129608"},{"level":2,"leaf":true,"description":{"FR":"Algérie","EN":"Algeria"},"title":{"FR":"Algérie","EN":"Algeria"},"code":"DZA","rid":"64_129609"},{"level":2,"leaf":true,"description":{"FR":"Maroc","EN":"Morocco"},"title":{"FR":"Maroc","EN":"Morocco"},"code":"MAR","rid":"64_129656"},{"level":2,"leaf":true,"description":{"FR":"Tunisie","EN":"Tunisia"},"title":{"FR":"Tunisie","EN":"Tunisia"},"code":"TUN","rid":"64_129650"},{"level":2,"leaf":true,"description":{"FR":"Mauritanie","EN":"Mauritania"},"title":{"FR":"Mauritanie","EN":"Mauritania"},"code":"MRT","rid":"64_129644"}],"code":"AMU","rid":"64_129610"},{"level":1,"leaf":false,"description":{"FR":"B5","EN":"B5"},"title":{"FR":"B5","EN":"B5"},"children":[{"level":2,"leaf":true,"description":{"FR":"Afrique du Sud","EN":"South Africa"},"title":{"FR":"Afrique du Sud","EN":"South Africa"},"code":"ZAF","rid":"64_129606"},{"level":2,"leaf":true,"description":{"FR":"Algérie","EN":"Algeria"},"title":{"FR":"Algérie","EN":"Algeria"},"code":"DZA","rid":"64_129609"},{"level":2,"leaf":true,"description":{"FR":"Nigéria","EN":"Nigeria"},"title":{"FR":"Nigéria","EN":"Nigeria"},"code":"NGA","rid":"64_129649"},{"level":2,"leaf":true,"description":{"FR":"Maroc","EN":"Morocco"},"title":{"FR":"Maroc","EN":"Morocco"},"code":"MAR","rid":"64_129656"},{"level":2,"leaf":true,"description":{"FR":"Egypte","EN":"Egypt"},"title":{"FR":"Egypte","EN":"Egypt"},"code":"EGY","rid":"64_129651"}],"code":"B5","rid":"64_129611"},{"level":1,"leaf":false,"description":{"FR":"COMMUNAUTÉ DES ETATS SAHÉLO-SAHARIENS","EN":"The Community of Sahel-Saharan States"},"title":{"FR":"CEN-SAD","EN":"CEN-SAD"},"children":[{"level":2,"leaf":true,"description":{"FR":"Kenya","EN":"Kenya"},"title":{"FR":"Kenya","EN":"Kenya"},"code":"KEN","rid":"64_129590"},{"level":2,"leaf":true,"description":{"FR":"Guinée-Bissau","EN":"Guinea-Bissau"},"title":{"FR":"Guinée-Bissau","EN":"Guinea-Bissau"},"code":"GNB","rid":"64_129596"},{"level":2,"leaf":true,"description":{"FR":"Libye","EN":"Libya"},"title":{"FR":"Libye","EN":"Libya"},"code":"LBY","rid":"64_129608"},{"level":2,"leaf":true,"description":{"FR":"Guinée","EN":"Guinea"},"title":{"FR":"Guinée","EN":"Guinea"},"code":"GIN","rid":"64_129598"},{"level":2,"leaf":true,"description":{"FR":"Togo","EN":"Togo"},"title":{"FR":"Togo","EN":"Togo"},"code":"TGO","rid":"64_129617"},{"level":2,"leaf":true,"description":{"FR":"Côte d'Ivoire","EN":"Cote d'Ivoire"},"title":{"FR":"Côte d'Ivoire","EN":"Cote d'Ivoire"},"code":"CIV","rid":"64_129646"},{"level":2,"leaf":true,"description":{"FR":"Mali","EN":"Mali"},"title":{"FR":"Mali","EN":"Mali"},"code":"MLI","rid":"64_129625"},{"level":2,"leaf":true,"description":{"FR":"République Centrafricaine","EN":"Central African Republic"},"title":{"FR":"République Centrafricaine","EN":"Central African Republic"},"code":"CAF","rid":"64_129601"},{"level":2,"leaf":true,"description":{"FR":"Erythrée","EN":"Eritrea"},"title":{"FR":"Erythrée","EN":"Eritrea"},"code":"ERI","rid":"64_129652"},{"level":2,"leaf":true,"description":{"FR":"Niger","EN":"Niger"},"title":{"FR":"Niger","EN":"Niger"},"code":"NER","rid":"64_129628"},{"level":2,"leaf":true,"description":{"FR":"Gambie","EN":"Gambia"},"title":{"FR":"Gambie","EN":"Gambia"},"code":"GMB","rid":"64_129653"},{"level":2,"leaf":true,"description":{"FR":"Soudan","EN":"Sudan"},"title":{"FR":"Soudan","EN":"Sudan"},"code":"SDN","rid":"64_129623"},{"level":2,"leaf":true,"description":{"FR":"Sénégal","EN":"Senegal"},"title":{"FR":"Sénégal","EN":"Senegal"},"code":"SEN","rid":"64_129654"},{"level":2,"leaf":true,"description":{"FR":"Sierra Leone","EN":"Sierra Leone"},"title":{"FR":"Sierra Leone","EN":"Sierra Leone"},"code":"SLE","rid":"64_129638"},{"level":2,"leaf":true,"description":{"FR":"Burkina Faso","EN":"Burkina Faso"},"title":{"FR":"Burkina Faso","EN":"Burkina Faso"},"code":"BFA","rid":"64_129635"},{"level":2,"leaf":true,"description":{"FR":"Djibouti","EN":"Djibouti"},"title":{"FR":"Djibouti","EN":"Djibouti"},"code":"DJI","rid":"64_129655"},{"level":2,"leaf":true,"description":{"FR":"Maroc","EN":"Morocco"},"title":{"FR":"Maroc","EN":"Morocco"},"code":"MAR","rid":"64_129656"},{"level":2,"leaf":true,"description":{"FR":"Comores","EN":"Comoros"},"title":{"FR":"Comores","EN":"Comoros"},"code":"COM","rid":"64_129657"},{"level":2,"leaf":true,"description":{"FR":"Tunisie","EN":"Tunisia"},"title":{"FR":"Tunisie","EN":"Tunisia"},"code":"TUN","rid":"64_129650"},{"level":2,"leaf":true,"description":{"FR":"Egypte","EN":"Egypt"},"title":{"FR":"Egypte","EN":"Egypt"},"code":"EGY","rid":"64_129651"},{"level":2,"leaf":true,"description":{"FR":"Ghana","EN":"Ghana"},"title":{"FR":"Ghana","EN":"Ghana"},"code":"GHA","rid":"64_129640"},{"level":2,"leaf":true,"description":{"FR":"Somalie","EN":"Somalia"},"title":{"FR":"Somalie","EN":"Somalia"},"code":"SOM","rid":"64_129658"},{"level":2,"leaf":true,"description":{"FR":"Nigéria","EN":"Nigeria"},"title":{"FR":"Nigéria","EN":"Nigeria"},"code":"NGA","rid":"64_129649"},{"level":2,"leaf":true,"description":{"FR":"Bénin","EN":"Benin"},"title":{"FR":"Bénin","EN":"Benin"},"code":"BEN","rid":"64_129659"},{"level":2,"leaf":true,"description":{"FR":"Tchad","EN":"Chad"},"title":{"FR":"Tchad","EN":"Chad"},"code":"TCD","rid":"64_129636"},{"level":2,"leaf":true,"description":{"FR":"Libéria","EN":"Liberia"},"title":{"FR":"Libéria","EN":"Liberia"},"code":"LBR","rid":"64_129660"},{"level":2,"leaf":true,"description":{"FR":"Sao Tomé-et-Principe","EN":"Sao Tome and Principe"},"title":{"FR":"Sao Tomé-et-Principe","EN":"Sao Tome and Principe"},"code":"STP","rid":"64_129661"},{"level":2,"leaf":true,"description":{"FR":"Mauritanie","EN":"Mauritania"},"title":{"FR":"Mauritanie","EN":"Mauritania"},"code":"MRT","rid":"64_129644"}],"code":"CENSAD","rid":"64_129622"},{"level":1,"leaf":false,"description":{"FR":"MARCHÉ COMMUN DE L'AFRIQUE ORIENTALE ET AUSTRALE","EN":"Common Market for Eastern and Southern Africa"},"title":{"FR":"COMESA","EN":"COMESA"},"children":[{"level":2,"leaf":true,"description":{"FR":"Swaziland","EN":"Swaziland"},"title":{"FR":"Swaziland","EN":"Swaziland"},"code":"SWZ","rid":"64_129588"},{"level":2,"leaf":true,"description":{"FR":"Kenya","EN":"Kenya"},"title":{"FR":"Kenya","EN":"Kenya"},"code":"KEN","rid":"64_129590"},{"level":2,"leaf":true,"description":{"FR":"Libye","EN":"Libya"},"title":{"FR":"Libye","EN":"Libya"},"code":"LBY","rid":"64_129608"},{"level":2,"leaf":true,"description":{"FR":"Seychelles","EN":"Seychelles"},"title":{"FR":"Seychelles","EN":"Seychelles"},"code":"SYC","rid":"64_129604"},{"level":2,"leaf":true,"description":{"FR":"Erythrée","EN":"Eritrea"},"title":{"FR":"Erythrée","EN":"Eritrea"},"code":"ERI","rid":"64_129652"},{"level":2,"leaf":true,"description":{"FR":"Ethiopie","EN":"Ethiopia"},"title":{"FR":"Ethiopie","EN":"Ethiopia"},"code":"ETH","rid":"64_129630"},{"level":2,"leaf":true,"description":{"FR":"Malawi","EN":"Malawi"},"title":{"FR":"Malawi","EN":"Malawi"},"code":"MWI","rid":"64_129631"},{"level":2,"leaf":true,"description":{"FR":"Soudan","EN":"Sudan"},"title":{"FR":"Soudan","EN":"Sudan"},"code":"SDN","rid":"64_129623"},{"level":2,"leaf":true,"description":{"FR":"Madagascar","EN":"Madagascar"},"title":{"FR":"Madagascar","EN":"Madagascar"},"code":"MDG","rid":"64_129612"},{"level":2,"leaf":true,"description":{"FR":"Ouganda","EN":"Uganda"},"title":{"FR":"Ouganda","EN":"Uganda"},"code":"UGA","rid":"64_129634"},{"level":2,"leaf":true,"description":{"FR":"Djibouti","EN":"Djibouti"},"title":{"FR":"Djibouti","EN":"Djibouti"},"code":"DJI","rid":"64_129655"},{"level":2,"leaf":true,"description":{"FR":"Comores","EN":"Comoros"},"title":{"FR":"Comores","EN":"Comoros"},"code":"COM","rid":"64_129657"},{"level":2,"leaf":true,"description":{"FR":"Egypte","EN":"Egypt"},"title":{"FR":"Egypte","EN":"Egypt"},"code":"EGY","rid":"64_129651"},{"level":2,"leaf":true,"description":{"FR":"Zimbabwe","EN":"Zimbabwe"},"title":{"FR":"Zimbabwe","EN":"Zimbabwe"},"code":"ZWE","rid":"64_129639"},{"level":2,"leaf":true,"description":{"FR":"Angola","EN":"Angola"},"title":{"FR":"Angola","EN":"Angola"},"code":"AGO","rid":"64_129619"},{"level":2,"leaf":true,"description":{"FR":"Burundi","EN":"Burundi"},"title":{"FR":"Burundi","EN":"Burundi"},"code":"BDI","rid":"64_129627"},{"level":2,"leaf":true,"description":{"FR":"Maurice","EN":"Mauritius"},"title":{"FR":"Maurice","EN":"Mauritius"},"code":"MUS","rid":"64_129663"},{"level":2,"leaf":true,"description":{"FR":"République Démocratique du Congo","EN":"Democratic Republic of the Congo"},"title":{"FR":"République Démocratique du Congo","EN":"Democratic Republic of the Congo"},"code":"COD","rid":"64_129643"},{"level":2,"leaf":true,"description":{"FR":"Rwanda","EN":"Rwanda"},"title":{"FR":"Rwanda","EN":"Rwanda"},"code":"RWA","rid":"64_129632"},{"level":2,"leaf":true,"description":{"FR":"Zambie","EN":"Zambia"},"title":{"FR":"Zambie","EN":"Zambia"},"code":"ZMB","rid":"64_129633"}],"code":"COMESA","rid":"64_129591"},{"level":1,"leaf":false,"description":{"FR":"COMMUNAUTÉ EST-AFRICAINE","EN":"East African Community"},"title":{"FR":"EAC","EN":"EAC"},"children":[{"level":2,"leaf":true,"description":{"FR":"Kenya","EN":"Kenya"},"title":{"FR":"Kenya","EN":"Kenya"},"code":"KEN","rid":"64_129590"},{"level":2,"leaf":true,"description":{"FR":"Burundi","EN":"Burundi"},"title":{"FR":"Burundi","EN":"Burundi"},"code":"BDI","rid":"64_129627"},{"level":2,"leaf":true,"description":{"FR":"Tanzanie, République Unie de","EN":"United Republic of Tanzania"},"title":{"FR":"Tanzanie, République Unie de","EN":"United Republic of Tanzania"},"code":"TZA","rid":"64_129602"},{"level":2,"leaf":true,"description":{"FR":"Rwanda","EN":"Rwanda"},"title":{"FR":"Rwanda","EN":"Rwanda"},"code":"RWA","rid":"64_129632"},{"level":2,"leaf":true,"description":{"FR":"Ouganda","EN":"Uganda"},"title":{"FR":"Ouganda","EN":"Uganda"},"code":"UGA","rid":"64_129634"},{"level":2,"leaf":true,"description":{"FR":"Soudan du Sud","EN":"South Sudan"},"title":{"FR":"Soudan du Sud","EN":"South Sudan"},"code":"SSD","rid":"64_129664"}],"code":"EAC","rid":"64_129592"},{"level":1,"leaf":false,"description":{"FR":"COMMUNAUTÉ ECONOMIQUE DES ÉTATS DE L’AFRIQUE CENTRALE","EN":"Economic Community of Central African States"},"title":{"FR":"CEEAC","EN":"ECCAS"},"children":[{"level":2,"leaf":true,"description":{"FR":"Cameroun","EN":"Cameroon"},"title":{"FR":"Cameroun","EN":"Cameroon"},"code":"CMR","rid":"64_129593"},{"level":2,"leaf":true,"description":{"FR":"Angola","EN":"Angola"},"title":{"FR":"Angola","EN":"Angola"},"code":"AGO","rid":"64_129619"},{"level":2,"leaf":true,"description":{"FR":"Burundi","EN":"Burundi"},"title":{"FR":"Burundi","EN":"Burundi"},"code":"BDI","rid":"64_129627"},{"level":2,"leaf":true,"description":{"FR":"République Centrafricaine","EN":"Central African Republic"},"title":{"FR":"République Centrafricaine","EN":"Central African Republic"},"code":"CAF","rid":"64_129601"},{"level":2,"leaf":true,"description":{"FR":"Congo","EN":"Congo"},"title":{"FR":"Congo","EN":"Congo"},"code":"COG","rid":"64_129647"},{"level":2,"leaf":true,"description":{"FR":"Guinée équatoriale","EN":"Equatorial Guinea"},"title":{"FR":"Guinée équatoriale","EN":"Equatorial Guinea"},"code":"GNQ","rid":"64_129621"},{"level":2,"leaf":true,"description":{"FR":"République Démocratique du Congo","EN":"Democratic Republic of the Congo"},"title":{"FR":"République Démocratique du Congo","EN":"Democratic Republic of the Congo"},"code":"COD","rid":"64_129643"},{"level":2,"leaf":true,"description":{"FR":"Gabon","EN":"Gabon"},"title":{"FR":"Gabon","EN":"Gabon"},"code":"GAB","rid":"64_129648"},{"level":2,"leaf":true,"description":{"FR":"Rwanda","EN":"Rwanda"},"title":{"FR":"Rwanda","EN":"Rwanda"},"code":"RWA","rid":"64_129632"},{"level":2,"leaf":true,"description":{"FR":"Tchad","EN":"Chad"},"title":{"FR":"Tchad","EN":"Chad"},"code":"TCD","rid":"64_129636"},{"level":2,"leaf":true,"description":{"FR":"Sao Tomé-et-Principe","EN":"Sao Tome and Principe"},"title":{"FR":"Sao Tomé-et-Principe","EN":"Sao Tome and Principe"},"code":"STP","rid":"64_129661"}],"code":"ECCAS","rid":"64_129595"},{"level":1,"leaf":false,"description":{"FR":"COMMUNAUTÉ ECONOMIQUE DES ETATS DE L’AFRIQUE DE L’OUEST","EN":"Economic Community of West African States"},"title":{"FR":"CEDEAO","EN":"ECOWAS"},"children":[{"level":2,"leaf":true,"description":{"FR":"Guinée-Bissau","EN":"Guinea-Bissau"},"title":{"FR":"Guinée-Bissau","EN":"Guinea-Bissau"},"code":"GNB","rid":"64_129596"},{"level":2,"leaf":true,"description":{"FR":"Guinée","EN":"Guinea"},"title":{"FR":"Guinée","EN":"Guinea"},"code":"GIN","rid":"64_129598"},{"level":2,"leaf":true,"description":{"FR":"Togo","EN":"Togo"},"title":{"FR":"Togo","EN":"Togo"},"code":"TGO","rid":"64_129617"},{"level":2,"leaf":true,"description":{"FR":"Côte d'Ivoire","EN":"Cote d'Ivoire"},"title":{"FR":"Côte d'Ivoire","EN":"Cote d'Ivoire"},"code":"CIV","rid":"64_129646"},{"level":2,"leaf":true,"description":{"FR":"Mali","EN":"Mali"},"title":{"FR":"Mali","EN":"Mali"},"code":"MLI","rid":"64_129625"},{"level":2,"leaf":true,"description":{"FR":"Gambie","EN":"Gambia"},"title":{"FR":"Gambie","EN":"Gambia"},"code":"GMB","rid":"64_129653"},{"level":2,"leaf":true,"description":{"FR":"Niger","EN":"Niger"},"title":{"FR":"Niger","EN":"Niger"},"code":"NER","rid":"64_129628"},{"level":2,"leaf":true,"description":{"FR":"Sénégal","EN":"Senegal"},"title":{"FR":"Sénégal","EN":"Senegal"},"code":"SEN","rid":"64_129654"},{"level":2,"leaf":true,"description":{"FR":"Sierra Leone","EN":"Sierra Leone"},"title":{"FR":"Sierra Leone","EN":"Sierra Leone"},"code":"SLE","rid":"64_129638"},{"level":2,"leaf":true,"description":{"FR":"Burkina Faso","EN":"Burkina Faso"},"title":{"FR":"Burkina Faso","EN":"Burkina Faso"},"code":"BFA","rid":"64_129635"},{"level":2,"leaf":true,"description":{"FR":"Cap-Vert","EN":"Cabo Verde"},"title":{"FR":"Cap-Vert","EN":"Cabo Verde"},"code":"CPV","rid":"64_129662"},{"level":2,"leaf":true,"description":{"FR":"Ghana","EN":"Ghana"},"title":{"FR":"Ghana","EN":"Ghana"},"code":"GHA","rid":"64_129640"},{"level":2,"leaf":true,"description":{"FR":"Nigéria","EN":"Nigeria"},"title":{"FR":"Nigéria","EN":"Nigeria"},"code":"NGA","rid":"64_129649"},{"level":2,"leaf":true,"description":{"FR":"Bénin","EN":"Benin"},"title":{"FR":"Bénin","EN":"Benin"},"code":"BEN","rid":"64_129659"},{"level":2,"leaf":true,"description":{"FR":"Libéria","EN":"Liberia"},"title":{"FR":"Libéria","EN":"Liberia"},"code":"LBR","rid":"64_129660"}],"code":"ECOWAS","rid":"64_129599"},{"level":1,"leaf":false,"description":{"FR":"AUTORITÉ INTERGOUVERNEMENTALE POUR LE DÉVELOPPEMENT","EN":"Intergovernmental Authority on Development"},"title":{"FR":"IGAD","EN":"IGAD"},"children":[{"level":2,"leaf":true,"description":{"FR":"Kenya","EN":"Kenya"},"title":{"FR":"Kenya","EN":"Kenya"},"code":"KEN","rid":"64_129590"},{"level":2,"leaf":true,"description":{"FR":"Somalie","EN":"Somalia"},"title":{"FR":"Somalie","EN":"Somalia"},"code":"SOM","rid":"64_129658"},{"level":2,"leaf":true,"description":{"FR":"Erythrée","EN":"Eritrea"},"title":{"FR":"Erythrée","EN":"Eritrea"},"code":"ERI","rid":"64_129652"},{"level":2,"leaf":true,"description":{"FR":"Ethiopie","EN":"Ethiopia"},"title":{"FR":"Ethiopie","EN":"Ethiopia"},"code":"ETH","rid":"64_129630"},{"level":2,"leaf":true,"description":{"FR":"Soudan","EN":"Sudan"},"title":{"FR":"Soudan","EN":"Sudan"},"code":"SDN","rid":"64_129623"},{"level":2,"leaf":true,"description":{"FR":"Ouganda","EN":"Uganda"},"title":{"FR":"Ouganda","EN":"Uganda"},"code":"UGA","rid":"64_129634"},{"level":2,"leaf":true,"description":{"FR":"Djibouti","EN":"Djibouti"},"title":{"FR":"Djibouti","EN":"Djibouti"},"code":"DJI","rid":"64_129655"},{"level":2,"leaf":true,"description":{"FR":"Soudan du Sud","EN":"South Sudan"},"title":{"FR":"Soudan du Sud","EN":"South Sudan"},"code":"SSD","rid":"64_129664"}],"code":"IGAD","rid":"64_129613"},{"level":1,"leaf":false,"description":{"EN":"Island economies"},"title":{"FR":"ISE","EN":"ISE"},"children":[{"level":2,"leaf":true,"description":{"FR":"Seychelles","EN":"Seychelles"},"title":{"FR":"Seychelles","EN":"Seychelles"},"code":"SYC","rid":"64_129604"},{"level":2,"leaf":true,"description":{"FR":"Maurice","EN":"Mauritius"},"title":{"FR":"Maurice","EN":"Mauritius"},"code":"MUS","rid":"64_129663"},{"level":2,"leaf":true,"description":{"FR":"Madagascar","EN":"Madagascar"},"title":{"FR":"Madagascar","EN":"Madagascar"},"code":"MDG","rid":"64_129612"},{"level":2,"leaf":true,"description":{"FR":"Cap-Vert","EN":"Cabo Verde"},"title":{"FR":"Cap-Vert","EN":"Cabo Verde"},"code":"CPV","rid":"64_129662"},{"level":2,"leaf":true,"description":{"FR":"Comores","EN":"Comoros"},"title":{"FR":"Comores","EN":"Comoros"},"code":"COM","rid":"64_129657"},{"level":2,"leaf":true,"description":{"FR":"Sao Tomé-et-Principe","EN":"Sao Tome and Principe"},"title":{"FR":"Sao Tomé-et-Principe","EN":"Sao Tome and Principe"},"code":"STP","rid":"64_129661"}],"code":"ISE","rid":"64_129605"},{"level":1,"leaf":false,"description":{"EN":"Least developed countires"},"title":{"FR":"LDC","EN":"LDC"},"children":[{"level":2,"leaf":true,"description":{"FR":"Guinée-Bissau","EN":"Guinea-Bissau"},"title":{"FR":"Guinée-Bissau","EN":"Guinea-Bissau"},"code":"GNB","rid":"64_129596"},{"level":2,"leaf":true,"description":{"FR":"République Centrafricaine","EN":"Central African Republic"},"title":{"FR":"République Centrafricaine","EN":"Central African Republic"},"code":"CAF","rid":"64_129601"},{"level":2,"leaf":true,"description":{"FR":"Tanzanie, République Unie de","EN":"United Republic of Tanzania"},"title":{"FR":"Tanzanie, République Unie de","EN":"United Republic of Tanzania"},"code":"TZA","rid":"64_129602"},{"level":2,"leaf":true,"description":{"FR":"Soudan","EN":"Sudan"},"title":{"FR":"Soudan","EN":"Sudan"},"code":"SDN","rid":"64_129623"},{"level":2,"leaf":true,"description":{"FR":"Madagascar","EN":"Madagascar"},"title":{"FR":"Madagascar","EN":"Madagascar"},"code":"MDG","rid":"64_129612"},{"level":2,"leaf":true,"description":{"FR":"Ouganda","EN":"Uganda"},"title":{"FR":"Ouganda","EN":"Uganda"},"code":"UGA","rid":"64_129634"},{"level":2,"leaf":true,"description":{"FR":"Sierra Leone","EN":"Sierra Leone"},"title":{"FR":"Sierra Leone","EN":"Sierra Leone"},"code":"SLE","rid":"64_129638"},{"level":2,"leaf":true,"description":{"FR":"Djibouti","EN":"Djibouti"},"title":{"FR":"Djibouti","EN":"Djibouti"},"code":"DJI","rid":"64_129655"},{"level":2,"leaf":true,"description":{"FR":"Cap-Vert","EN":"Cabo Verde"},"title":{"FR":"Cap-Vert","EN":"Cabo Verde"},"code":"CPV","rid":"64_129662"},{"level":2,"leaf":true,"description":{"FR":"Lesotho","EN":"Lesotho"},"title":{"FR":"Lesotho","EN":"Lesotho"},"code":"LSO","rid":"64_129637"},{"level":2,"leaf":true,"description":{"FR":"Angola","EN":"Angola"},"title":{"FR":"Angola","EN":"Angola"},"code":"AGO","rid":"64_129619"},{"level":2,"leaf":true,"description":{"FR":"Mozambique","EN":"Mozambique"},"title":{"FR":"Mozambique","EN":"Mozambique"},"code":"MOZ","rid":"64_129642"},{"level":2,"leaf":true,"description":{"FR":"Burundi","EN":"Burundi"},"title":{"FR":"Burundi","EN":"Burundi"},"code":"BDI","rid":"64_129627"},{"level":2,"leaf":true,"description":{"FR":"République Démocratique du Congo","EN":"Democratic Republic of the Congo"},"title":{"FR":"République Démocratique du Congo","EN":"Democratic Republic of the Congo"},"code":"COD","rid":"64_129643"},{"level":2,"leaf":true,"description":{"FR":"Rwanda","EN":"Rwanda"},"title":{"FR":"Rwanda","EN":"Rwanda"},"code":"RWA","rid":"64_129632"},{"level":2,"leaf":true,"description":{"FR":"Tchad","EN":"Chad"},"title":{"FR":"Tchad","EN":"Chad"},"code":"TCD","rid":"64_129636"},{"level":2,"leaf":true,"description":{"FR":"Libéria","EN":"Liberia"},"title":{"FR":"Libéria","EN":"Liberia"},"code":"LBR","rid":"64_129660"},{"level":2,"leaf":true,"description":{"FR":"Guinée","EN":"Guinea"},"title":{"FR":"Guinée","EN":"Guinea"},"code":"GIN","rid":"64_129598"},{"level":2,"leaf":true,"description":{"FR":"Togo","EN":"Togo"},"title":{"FR":"Togo","EN":"Togo"},"code":"TGO","rid":"64_129617"},{"level":2,"leaf":true,"description":{"FR":"Erythrée","EN":"Eritrea"},"title":{"FR":"Erythrée","EN":"Eritrea"},"code":"ERI","rid":"64_129652"},{"level":2,"leaf":true,"description":{"FR":"Mali","EN":"Mali"},"title":{"FR":"Mali","EN":"Mali"},"code":"MLI","rid":"64_129625"},{"level":2,"leaf":true,"description":{"FR":"Ethiopie","EN":"Ethiopia"},"title":{"FR":"Ethiopie","EN":"Ethiopia"},"code":"ETH","rid":"64_129630"},{"level":2,"leaf":true,"description":{"FR":"Gambie","EN":"Gambia"},"title":{"FR":"Gambie","EN":"Gambia"},"code":"GMB","rid":"64_129653"},{"level":2,"leaf":true,"description":{"FR":"Niger","EN":"Niger"},"title":{"FR":"Niger","EN":"Niger"},"code":"NER","rid":"64_129628"},{"level":2,"leaf":true,"description":{"FR":"Malawi","EN":"Malawi"},"title":{"FR":"Malawi","EN":"Malawi"},"code":"MWI","rid":"64_129631"},{"level":2,"leaf":true,"description":{"FR":"Sénégal","EN":"Senegal"},"title":{"FR":"Sénégal","EN":"Senegal"},"code":"SEN","rid":"64_129654"},{"level":2,"leaf":true,"description":{"FR":"Burkina Faso","EN":"Burkina Faso"},"title":{"FR":"Burkina Faso","EN":"Burkina Faso"},"code":"BFA","rid":"64_129635"},{"level":2,"leaf":true,"description":{"FR":"Soudan du Sud","EN":"South Sudan"},"title":{"FR":"Soudan du Sud","EN":"South Sudan"},"code":"SSD","rid":"64_129664"},{"level":2,"leaf":true,"description":{"FR":"Comores","EN":"Comoros"},"title":{"FR":"Comores","EN":"Comoros"},"code":"COM","rid":"64_129657"},{"level":2,"leaf":true,"description":{"FR":"Somalie","EN":"Somalia"},"title":{"FR":"Somalie","EN":"Somalia"},"code":"SOM","rid":"64_129658"},{"level":2,"leaf":true,"description":{"FR":"Guinée équatoriale","EN":"Equatorial Guinea"},"title":{"FR":"Guinée équatoriale","EN":"Equatorial Guinea"},"code":"GNQ","rid":"64_129621"},{"level":2,"leaf":true,"description":{"FR":"Zambie","EN":"Zambia"},"title":{"FR":"Zambie","EN":"Zambia"},"code":"ZMB","rid":"64_129633"},{"level":2,"leaf":true,"description":{"FR":"Bénin","EN":"Benin"},"title":{"FR":"Bénin","EN":"Benin"},"code":"BEN","rid":"64_129659"},{"level":2,"leaf":true,"description":{"FR":"Sao Tomé-et-Principe","EN":"Sao Tome and Principe"},"title":{"FR":"Sao Tomé-et-Principe","EN":"Sao Tome and Principe"},"code":"STP","rid":"64_129661"},{"level":2,"leaf":true,"description":{"FR":"Mauritanie","EN":"Mauritania"},"title":{"FR":"Mauritanie","EN":"Mauritania"},"code":"MRT","rid":"64_129644"}],"code":"LDC","rid":"64_129600"},{"level":1,"leaf":false,"description":{"EN":"Land-locked countries"},"title":{"FR":"LLC","EN":"LLC"},"children":[{"level":2,"leaf":true,"description":{"FR":"Swaziland","EN":"Swaziland"},"title":{"FR":"Swaziland","EN":"Swaziland"},"code":"SWZ","rid":"64_129588"},{"level":2,"leaf":true,"description":{"FR":"République Centrafricaine","EN":"Central African Republic"},"title":{"FR":"République Centrafricaine","EN":"Central African Republic"},"code":"CAF","rid":"64_129601"},{"level":2,"leaf":true,"description":{"FR":"Mali","EN":"Mali"},"title":{"FR":"Mali","EN":"Mali"},"code":"MLI","rid":"64_129625"},{"level":2,"leaf":true,"description":{"FR":"Ethiopie","EN":"Ethiopia"},"title":{"FR":"Ethiopie","EN":"Ethiopia"},"code":"ETH","rid":"64_129630"},{"level":2,"leaf":true,"description":{"FR":"Niger","EN":"Niger"},"title":{"FR":"Niger","EN":"Niger"},"code":"NER","rid":"64_129628"},{"level":2,"leaf":true,"description":{"FR":"Malawi","EN":"Malawi"},"title":{"FR":"Malawi","EN":"Malawi"},"code":"MWI","rid":"64_129631"},{"level":2,"leaf":true,"description":{"FR":"Ouganda","EN":"Uganda"},"title":{"FR":"Ouganda","EN":"Uganda"},"code":"UGA","rid":"64_129634"},{"level":2,"leaf":true,"description":{"FR":"Burkina Faso","EN":"Burkina Faso"},"title":{"FR":"Burkina Faso","EN":"Burkina Faso"},"code":"BFA","rid":"64_129635"},{"level":2,"leaf":true,"description":{"FR":"Lesotho","EN":"Lesotho"},"title":{"FR":"Lesotho","EN":"Lesotho"},"code":"LSO","rid":"64_129637"},{"level":2,"leaf":true,"description":{"FR":"Zimbabwe","EN":"Zimbabwe"},"title":{"FR":"Zimbabwe","EN":"Zimbabwe"},"code":"ZWE","rid":"64_129639"},{"level":2,"leaf":true,"description":{"FR":"Botswana","EN":"Botswana"},"title":{"FR":"Botswana","EN":"Botswana"},"code":"BWA","rid":"64_129641"},{"level":2,"leaf":true,"description":{"FR":"Burundi","EN":"Burundi"},"title":{"FR":"Burundi","EN":"Burundi"},"code":"BDI","rid":"64_129627"},{"level":2,"leaf":true,"description":{"FR":"Rwanda","EN":"Rwanda"},"title":{"FR":"Rwanda","EN":"Rwanda"},"code":"RWA","rid":"64_129632"},{"level":2,"leaf":true,"description":{"FR":"Zambie","EN":"Zambia"},"title":{"FR":"Zambie","EN":"Zambia"},"code":"ZMB","rid":"64_129633"},{"level":2,"leaf":true,"description":{"FR":"Tchad","EN":"Chad"},"title":{"FR":"Tchad","EN":"Chad"},"code":"TCD","rid":"64_129636"}],"code":"LLC","rid":"64_129624"},{"level":1,"leaf":false,"description":{"EN":"Land-locked LDCs"},"title":{"FR":"LLLDC","EN":"LLLDC"},"children":[{"level":2,"leaf":true,"description":{"FR":"République Centrafricaine","EN":"Central African Republic"},"title":{"FR":"République Centrafricaine","EN":"Central African Republic"},"code":"CAF","rid":"64_129601"},{"level":2,"leaf":true,"description":{"FR":"Mali","EN":"Mali"},"title":{"FR":"Mali","EN":"Mali"},"code":"MLI","rid":"64_129625"},{"level":2,"leaf":true,"description":{"FR":"Ethiopie","EN":"Ethiopia"},"title":{"FR":"Ethiopie","EN":"Ethiopia"},"code":"ETH","rid":"64_129630"},{"level":2,"leaf":true,"description":{"FR":"Niger","EN":"Niger"},"title":{"FR":"Niger","EN":"Niger"},"code":"NER","rid":"64_129628"},{"level":2,"leaf":true,"description":{"FR":"Malawi","EN":"Malawi"},"title":{"FR":"Malawi","EN":"Malawi"},"code":"MWI","rid":"64_129631"},{"level":2,"leaf":true,"description":{"FR":"Burkina Faso","EN":"Burkina Faso"},"title":{"FR":"Burkina Faso","EN":"Burkina Faso"},"code":"BFA","rid":"64_129635"},{"level":2,"leaf":true,"description":{"FR":"Ouganda","EN":"Uganda"},"title":{"FR":"Ouganda","EN":"Uganda"},"code":"UGA","rid":"64_129634"},{"level":2,"leaf":true,"description":{"FR":"Soudan du Sud","EN":"South Sudan"},"title":{"FR":"Soudan du Sud","EN":"South Sudan"},"code":"SSD","rid":"64_129664"},{"level":2,"leaf":true,"description":{"FR":"Lesotho","EN":"Lesotho"},"title":{"FR":"Lesotho","EN":"Lesotho"},"code":"LSO","rid":"64_129637"},{"level":2,"leaf":true,"description":{"FR":"Burundi","EN":"Burundi"},"title":{"FR":"Burundi","EN":"Burundi"},"code":"BDI","rid":"64_129627"},{"level":2,"leaf":true,"description":{"FR":"Rwanda","EN":"Rwanda"},"title":{"FR":"Rwanda","EN":"Rwanda"},"code":"RWA","rid":"64_129632"},{"level":2,"leaf":true,"description":{"FR":"Zambie","EN":"Zambia"},"title":{"FR":"Zambie","EN":"Zambia"},"code":"ZMB","rid":"64_129633"},{"level":2,"leaf":true,"description":{"FR":"Tchad","EN":"Chad"},"title":{"FR":"Tchad","EN":"Chad"},"code":"TCD","rid":"64_129636"}],"code":"LLLDC","rid":"64_129629"},{"level":1,"leaf":false,"description":{"EN":"Mineral-rich countries"},"title":{"FR":"MRC","EN":"MRC"},"children":[{"level":2,"leaf":true,"description":{"FR":"Guinée","EN":"Guinea"},"title":{"FR":"Guinée","EN":"Guinea"},"code":"GIN","rid":"64_129598"},{"level":2,"leaf":true,"description":{"FR":"République Centrafricaine","EN":"Central African Republic"},"title":{"FR":"République Centrafricaine","EN":"Central African Republic"},"code":"CAF","rid":"64_129601"},{"level":2,"leaf":true,"description":{"FR":"Mali","EN":"Mali"},"title":{"FR":"Mali","EN":"Mali"},"code":"MLI","rid":"64_129625"},{"level":2,"leaf":true,"description":{"FR":"Tanzanie, République Unie de","EN":"United Republic of Tanzania"},"title":{"FR":"Tanzanie, République Unie de","EN":"United Republic of Tanzania"},"code":"TZA","rid":"64_129602"},{"level":2,"leaf":true,"description":{"FR":"Niger","EN":"Niger"},"title":{"FR":"Niger","EN":"Niger"},"code":"NER","rid":"64_129628"},{"level":2,"leaf":true,"description":{"FR":"Afrique du Sud","EN":"South Africa"},"title":{"FR":"Afrique du Sud","EN":"South Africa"},"code":"ZAF","rid":"64_129606"},{"level":2,"leaf":true,"description":{"FR":"Sierra Leone","EN":"Sierra Leone"},"title":{"FR":"Sierra Leone","EN":"Sierra Leone"},"code":"SLE","rid":"64_129638"},{"level":2,"leaf":true,"description":{"FR":"Zimbabwe","EN":"Zimbabwe"},"title":{"FR":"Zimbabwe","EN":"Zimbabwe"},"code":"ZWE","rid":"64_129639"},{"level":2,"leaf":true,"description":{"FR":"Ghana","EN":"Ghana"},"title":{"FR":"Ghana","EN":"Ghana"},"code":"GHA","rid":"64_129640"},{"level":2,"leaf":true,"description":{"FR":"Botswana","EN":"Botswana"},"title":{"FR":"Botswana","EN":"Botswana"},"code":"BWA","rid":"64_129641"},{"level":2,"leaf":true,"description":{"FR":"Mozambique","EN":"Mozambique"},"title":{"FR":"Mozambique","EN":"Mozambique"},"code":"MOZ","rid":"64_129642"},{"level":2,"leaf":true,"description":{"FR":"République Démocratique du Congo","EN":"Democratic Republic of the Congo"},"title":{"FR":"République Démocratique du Congo","EN":"Democratic Republic of the Congo"},"code":"COD","rid":"64_129643"},{"level":2,"leaf":true,"description":{"FR":"Rwanda","EN":"Rwanda"},"title":{"FR":"Rwanda","EN":"Rwanda"},"code":"RWA","rid":"64_129632"},{"level":2,"leaf":true,"description":{"FR":"Zambie","EN":"Zambia"},"title":{"FR":"Zambie","EN":"Zambia"},"code":"ZMB","rid":"64_129633"},{"level":2,"leaf":true,"description":{"FR":"Mauritanie","EN":"Mauritania"},"title":{"FR":"Mauritanie","EN":"Mauritania"},"code":"MRT","rid":"64_129644"},{"level":2,"leaf":true,"description":{"FR":"Namibie","EN":"Namibia"},"title":{"FR":"Namibie","EN":"Namibia"},"code":"NAM","rid":"64_129645"}],"code":"MRC","rid":"64_129626"},{"level":1,"leaf":false,"description":{"EN":"Non-Oil LDCs"},"title":{"FR":"NOLDC","EN":"NOLDC"},"children":[{"level":2,"leaf":true,"description":{"FR":"Guinée-Bissau","EN":"Guinea-Bissau"},"title":{"FR":"Guinée-Bissau","EN":"Guinea-Bissau"},"code":"GNB","rid":"64_129596"},{"level":2,"leaf":true,"description":{"FR":"République Centrafricaine","EN":"Central African Republic"},"title":{"FR":"République Centrafricaine","EN":"Central African Republic"},"code":"CAF","rid":"64_129601"},{"level":2,"leaf":true,"description":{"FR":"Tanzanie, République Unie de","EN":"United Republic of Tanzania"},"title":{"FR":"Tanzanie, République Unie de","EN":"United Republic of Tanzania"},"code":"TZA","rid":"64_129602"},{"level":2,"leaf":true,"description":{"FR":"Madagascar","EN":"Madagascar"},"title":{"FR":"Madagascar","EN":"Madagascar"},"code":"MDG","rid":"64_129612"},{"level":2,"leaf":true,"description":{"FR":"Ouganda","EN":"Uganda"},"title":{"FR":"Ouganda","EN":"Uganda"},"code":"UGA","rid":"64_129634"},{"level":2,"leaf":true,"description":{"FR":"Sierra Leone","EN":"Sierra Leone"},"title":{"FR":"Sierra Leone","EN":"Sierra Leone"},"code":"SLE","rid":"64_129638"},{"level":2,"leaf":true,"description":{"FR":"Djibouti","EN":"Djibouti"},"title":{"FR":"Djibouti","EN":"Djibouti"},"code":"DJI","rid":"64_129655"},{"level":2,"leaf":true,"description":{"FR":"Cap-Vert","EN":"Cabo Verde"},"title":{"FR":"Cap-Vert","EN":"Cabo Verde"},"code":"CPV","rid":"64_129662"},{"level":2,"leaf":true,"description":{"FR":"Lesotho","EN":"Lesotho"},"title":{"FR":"Lesotho","EN":"Lesotho"},"code":"LSO","rid":"64_129637"},{"level":2,"leaf":true,"description":{"FR":"Mozambique","EN":"Mozambique"},"title":{"FR":"Mozambique","EN":"Mozambique"},"code":"MOZ","rid":"64_129642"},{"level":2,"leaf":true,"description":{"FR":"Burundi","EN":"Burundi"},"title":{"FR":"Burundi","EN":"Burundi"},"code":"BDI","rid":"64_129627"},{"level":2,"leaf":true,"description":{"FR":"République Démocratique du Congo","EN":"Democratic Republic of the Congo"},"title":{"FR":"République Démocratique du Congo","EN":"Democratic Republic of the Congo"},"code":"COD","rid":"64_129643"},{"level":2,"leaf":true,"description":{"FR":"Rwanda","EN":"Rwanda"},"title":{"FR":"Rwanda","EN":"Rwanda"},"code":"RWA","rid":"64_129632"},{"level":2,"leaf":true,"description":{"FR":"Libéria","EN":"Liberia"},"title":{"FR":"Libéria","EN":"Liberia"},"code":"LBR","rid":"64_129660"},{"level":2,"leaf":true,"description":{"FR":"Guinée","EN":"Guinea"},"title":{"FR":"Guinée","EN":"Guinea"},"code":"GIN","rid":"64_129598"},{"level":2,"leaf":true,"description":{"FR":"Togo","EN":"Togo"},"title":{"FR":"Togo","EN":"Togo"},"code":"TGO","rid":"64_129617"},{"level":2,"leaf":true,"description":{"FR":"Erythrée","EN":"Eritrea"},"title":{"FR":"Erythrée","EN":"Eritrea"},"code":"ERI","rid":"64_129652"},{"level":2,"leaf":true,"description":{"FR":"Mali","EN":"Mali"},"title":{"FR":"Mali","EN":"Mali"},"code":"MLI","rid":"64_129625"},{"level":2,"leaf":true,"description":{"FR":"Gambie","EN":"Gambia"},"title":{"FR":"Gambie","EN":"Gambia"},"code":"GMB","rid":"64_129653"},{"level":2,"leaf":true,"description":{"FR":"Ethiopie","EN":"Ethiopia"},"title":{"FR":"Ethiopie","EN":"Ethiopia"},"code":"ETH","rid":"64_129630"},{"level":2,"leaf":true,"description":{"FR":"Niger","EN":"Niger"},"title":{"FR":"Niger","EN":"Niger"},"code":"NER","rid":"64_129628"},{"level":2,"leaf":true,"description":{"FR":"Malawi","EN":"Malawi"},"title":{"FR":"Malawi","EN":"Malawi"},"code":"MWI","rid":"64_129631"},{"level":2,"leaf":true,"description":{"FR":"Sénégal","EN":"Senegal"},"title":{"FR":"Sénégal","EN":"Senegal"},"code":"SEN","rid":"64_129654"},{"level":2,"leaf":true,"description":{"FR":"Burkina Faso","EN":"Burkina Faso"},"title":{"FR":"Burkina Faso","EN":"Burkina Faso"},"code":"BFA","rid":"64_129635"},{"level":2,"leaf":true,"description":{"FR":"Comores","EN":"Comoros"},"title":{"FR":"Comores","EN":"Comoros"},"code":"COM","rid":"64_129657"},{"level":2,"leaf":true,"description":{"FR":"Somalie","EN":"Somalia"},"title":{"FR":"Somalie","EN":"Somalia"},"code":"SOM","rid":"64_129658"},{"level":2,"leaf":true,"description":{"FR":"Zambie","EN":"Zambia"},"title":{"FR":"Zambie","EN":"Zambia"},"code":"ZMB","rid":"64_129633"},{"level":2,"leaf":true,"description":{"FR":"Bénin","EN":"Benin"},"title":{"FR":"Bénin","EN":"Benin"},"code":"BEN","rid":"64_129659"},{"level":2,"leaf":true,"description":{"FR":"Mauritanie","EN":"Mauritania"},"title":{"FR":"Mauritanie","EN":"Mauritania"},"code":"MRT","rid":"64_129644"},{"level":2,"leaf":true,"description":{"FR":"Sao Tomé-et-Principe","EN":"Sao Tome and Principe"},"title":{"FR":"Sao Tomé-et-Principe","EN":"Sao Tome and Principe"},"code":"STP","rid":"64_129661"}],"code":"NOLDC","rid":"64_129614"},{"level":1,"leaf":false,"description":{"EN":"Non-Oil Producing"},"title":{"FR":"NOPC","EN":"NOPC"},"children":[{"level":2,"leaf":true,"description":{"FR":"Swaziland","EN":"Swaziland"},"title":{"FR":"Swaziland","EN":"Swaziland"},"code":"SWZ","rid":"64_129588"},{"level":2,"leaf":true,"description":{"FR":"Guinée-Bissau","EN":"Guinea-Bissau"},"title":{"FR":"Guinée-Bissau","EN":"Guinea-Bissau"},"code":"GNB","rid":"64_129596"},{"level":2,"leaf":true,"description":{"FR":"Kenya","EN":"Kenya"},"title":{"FR":"Kenya","EN":"Kenya"},"code":"KEN","rid":"64_129590"},{"level":2,"leaf":true,"description":{"FR":"République Centrafricaine","EN":"Central African Republic"},"title":{"FR":"République Centrafricaine","EN":"Central African Republic"},"code":"CAF","rid":"64_129601"},{"level":2,"leaf":true,"description":{"FR":"Tanzanie, République Unie de","EN":"United Republic of Tanzania"},"title":{"FR":"Tanzanie, République Unie de","EN":"United Republic of Tanzania"},"code":"TZA","rid":"64_129602"},{"level":2,"leaf":true,"description":{"FR":"Afrique du Sud","EN":"South Africa"},"title":{"FR":"Afrique du Sud","EN":"South Africa"},"code":"ZAF","rid":"64_129606"},{"level":2,"leaf":true,"description":{"FR":"Madagascar","EN":"Madagascar"},"title":{"FR":"Madagascar","EN":"Madagascar"},"code":"MDG","rid":"64_129612"},{"level":2,"leaf":true,"description":{"FR":"Ouganda","EN":"Uganda"},"title":{"FR":"Ouganda","EN":"Uganda"},"code":"UGA","rid":"64_129634"},{"level":2,"leaf":true,"description":{"FR":"Sierra Leone","EN":"Sierra Leone"},"title":{"FR":"Sierra Leone","EN":"Sierra Leone"},"code":"SLE","rid":"64_129638"},{"level":2,"leaf":true,"description":{"FR":"Djibouti","EN":"Djibouti"},"title":{"FR":"Djibouti","EN":"Djibouti"},"code":"DJI","rid":"64_129655"},{"level":2,"leaf":true,"description":{"FR":"Cap-Vert","EN":"Cabo Verde"},"title":{"FR":"Cap-Vert","EN":"Cabo Verde"},"code":"CPV","rid":"64_129662"},{"level":2,"leaf":true,"description":{"FR":"Lesotho","EN":"Lesotho"},"title":{"FR":"Lesotho","EN":"Lesotho"},"code":"LSO","rid":"64_129637"},{"level":2,"leaf":true,"description":{"FR":"Zimbabwe","EN":"Zimbabwe"},"title":{"FR":"Zimbabwe","EN":"Zimbabwe"},"code":"ZWE","rid":"64_129639"},{"level":2,"leaf":true,"description":{"FR":"Ghana","EN":"Ghana"},"title":{"FR":"Ghana","EN":"Ghana"},"code":"GHA","rid":"64_129640"},{"level":2,"leaf":true,"description":{"FR":"Mozambique","EN":"Mozambique"},"title":{"FR":"Mozambique","EN":"Mozambique"},"code":"MOZ","rid":"64_129642"},{"level":2,"leaf":true,"description":{"FR":"Burundi","EN":"Burundi"},"title":{"FR":"Burundi","EN":"Burundi"},"code":"BDI","rid":"64_129627"},{"level":2,"leaf":true,"description":{"FR":"Maurice","EN":"Mauritius"},"title":{"FR":"Maurice","EN":"Mauritius"},"code":"MUS","rid":"64_129663"},{"level":2,"leaf":true,"description":{"FR":"République Démocratique du Congo","EN":"Democratic Republic of the Congo"},"title":{"FR":"République Démocratique du Congo","EN":"Democratic Republic of the Congo"},"code":"COD","rid":"64_129643"},{"level":2,"leaf":true,"description":{"FR":"Rwanda","EN":"Rwanda"},"title":{"FR":"Rwanda","EN":"Rwanda"},"code":"RWA","rid":"64_129632"},{"level":2,"leaf":true,"description":{"FR":"Libéria","EN":"Liberia"},"title":{"FR":"Libéria","EN":"Liberia"},"code":"LBR","rid":"64_129660"},{"level":2,"leaf":true,"description":{"FR":"Guinée","EN":"Guinea"},"title":{"FR":"Guinée","EN":"Guinea"},"code":"GIN","rid":"64_129598"},{"level":2,"leaf":true,"description":{"FR":"Togo","EN":"Togo"},"title":{"FR":"Togo","EN":"Togo"},"code":"TGO","rid":"64_129617"},{"level":2,"leaf":true,"description":{"FR":"Seychelles","EN":"Seychelles"},"title":{"FR":"Seychelles","EN":"Seychelles"},"code":"SYC","rid":"64_129604"},{"level":2,"leaf":true,"description":{"FR":"Erythrée","EN":"Eritrea"},"title":{"FR":"Erythrée","EN":"Eritrea"},"code":"ERI","rid":"64_129652"},{"level":2,"leaf":true,"description":{"FR":"Mali","EN":"Mali"},"title":{"FR":"Mali","EN":"Mali"},"code":"MLI","rid":"64_129625"},{"level":2,"leaf":true,"description":{"FR":"Niger","EN":"Niger"},"title":{"FR":"Niger","EN":"Niger"},"code":"NER","rid":"64_129628"},{"level":2,"leaf":true,"description":{"FR":"Gambie","EN":"Gambia"},"title":{"FR":"Gambie","EN":"Gambia"},"code":"GMB","rid":"64_129653"},{"level":2,"leaf":true,"description":{"FR":"Ethiopie","EN":"Ethiopia"},"title":{"FR":"Ethiopie","EN":"Ethiopia"},"code":"ETH","rid":"64_129630"},{"level":2,"leaf":true,"description":{"FR":"Malawi","EN":"Malawi"},"title":{"FR":"Malawi","EN":"Malawi"},"code":"MWI","rid":"64_129631"},{"level":2,"leaf":true,"description":{"FR":"Sénégal","EN":"Senegal"},"title":{"FR":"Sénégal","EN":"Senegal"},"code":"SEN","rid":"64_129654"},{"level":2,"leaf":true,"description":{"FR":"Burkina Faso","EN":"Burkina Faso"},"title":{"FR":"Burkina Faso","EN":"Burkina Faso"},"code":"BFA","rid":"64_129635"},{"level":2,"leaf":true,"description":{"FR":"Comores","EN":"Comoros"},"title":{"FR":"Comores","EN":"Comoros"},"code":"COM","rid":"64_129657"},{"level":2,"leaf":true,"description":{"FR":"Maroc","EN":"Morocco"},"title":{"FR":"Maroc","EN":"Morocco"},"code":"MAR","rid":"64_129656"},{"level":2,"leaf":true,"description":{"FR":"Botswana","EN":"Botswana"},"title":{"FR":"Botswana","EN":"Botswana"},"code":"BWA","rid":"64_129641"},{"level":2,"leaf":true,"description":{"FR":"Somalie","EN":"Somalia"},"title":{"FR":"Somalie","EN":"Somalia"},"code":"SOM","rid":"64_129658"},{"level":2,"leaf":true,"description":{"FR":"Zambie","EN":"Zambia"},"title":{"FR":"Zambie","EN":"Zambia"},"code":"ZMB","rid":"64_129633"},{"level":2,"leaf":true,"description":{"FR":"Bénin","EN":"Benin"},"title":{"FR":"Bénin","EN":"Benin"},"code":"BEN","rid":"64_129659"},{"level":2,"leaf":true,"description":{"FR":"Sao Tomé-et-Principe","EN":"Sao Tome and Principe"},"title":{"FR":"Sao Tomé-et-Principe","EN":"Sao Tome and Principe"},"code":"STP","rid":"64_129661"},{"level":2,"leaf":true,"description":{"FR":"Mauritanie","EN":"Mauritania"},"title":{"FR":"Mauritanie","EN":"Mauritania"},"code":"MRT","rid":"64_129644"},{"level":2,"leaf":true,"description":{"FR":"Namibie","EN":"Namibia"},"title":{"FR":"Namibie","EN":"Namibia"},"code":"NAM","rid":"64_129645"}],"code":"NOPC","rid":"64_129616"},{"level":1,"leaf":false,"description":{"EN":"Oil LDCs"},"title":{"FR":"OLDC","EN":"OLDC"},"children":[{"level":2,"leaf":true,"description":{"FR":"Angola","EN":"Angola"},"title":{"FR":"Angola","EN":"Angola"},"code":"AGO","rid":"64_129619"},{"level":2,"leaf":true,"description":{"FR":"Guinée équatoriale","EN":"Equatorial Guinea"},"title":{"FR":"Guinée équatoriale","EN":"Equatorial Guinea"},"code":"GNQ","rid":"64_129621"},{"level":2,"leaf":true,"description":{"FR":"Soudan","EN":"Sudan"},"title":{"FR":"Soudan","EN":"Sudan"},"code":"SDN","rid":"64_129623"},{"level":2,"leaf":true,"description":{"FR":"Soudan du Sud","EN":"South Sudan"},"title":{"FR":"Soudan du Sud","EN":"South Sudan"},"code":"SSD","rid":"64_129664"},{"level":2,"leaf":true,"description":{"FR":"Tchad","EN":"Chad"},"title":{"FR":"Tchad","EN":"Chad"},"code":"TCD","rid":"64_129636"}],"code":"OLDC","rid":"64_129620"},{"level":1,"leaf":false,"description":{"EN":"Oil producing economies"},"title":{"FR":"OPC","EN":"OPC"},"children":[{"level":2,"leaf":true,"description":{"FR":"Cameroun","EN":"Cameroon"},"title":{"FR":"Cameroun","EN":"Cameroon"},"code":"CMR","rid":"64_129593"},{"level":2,"leaf":true,"description":{"FR":"Libye","EN":"Libya"},"title":{"FR":"Libye","EN":"Libya"},"code":"LBY","rid":"64_129608"},{"level":2,"leaf":true,"description":{"FR":"Côte d'Ivoire","EN":"Cote d'Ivoire"},"title":{"FR":"Côte d'Ivoire","EN":"Cote d'Ivoire"},"code":"CIV","rid":"64_129646"},{"level":2,"leaf":true,"description":{"FR":"Algérie","EN":"Algeria"},"title":{"FR":"Algérie","EN":"Algeria"},"code":"DZA","rid":"64_129609"},{"level":2,"leaf":true,"description":{"FR":"Soudan","EN":"Sudan"},"title":{"FR":"Soudan","EN":"Sudan"},"code":"SDN","rid":"64_129623"},{"level":2,"leaf":true,"description":{"FR":"Soudan du Sud","EN":"South Sudan"},"title":{"FR":"Soudan du Sud","EN":"South Sudan"},"code":"SSD","rid":"64_129664"},{"level":2,"leaf":true,"description":{"FR":"Tunisie","EN":"Tunisia"},"title":{"FR":"Tunisie","EN":"Tunisia"},"code":"TUN","rid":"64_129650"},{"level":2,"leaf":true,"description":{"FR":"Egypte","EN":"Egypt"},"title":{"FR":"Egypte","EN":"Egypt"},"code":"EGY","rid":"64_129651"},{"level":2,"leaf":true,"description":{"FR":"Angola","EN":"Angola"},"title":{"FR":"Angola","EN":"Angola"},"code":"AGO","rid":"64_129619"},{"level":2,"leaf":true,"description":{"FR":"Congo","EN":"Congo"},"title":{"FR":"Congo","EN":"Congo"},"code":"COG","rid":"64_129647"},{"level":2,"leaf":true,"description":{"FR":"Guinée équatoriale","EN":"Equatorial Guinea"},"title":{"FR":"Guinée équatoriale","EN":"Equatorial Guinea"},"code":"GNQ","rid":"64_129621"},{"level":2,"leaf":true,"description":{"FR":"Gabon","EN":"Gabon"},"title":{"FR":"Gabon","EN":"Gabon"},"code":"GAB","rid":"64_129648"},{"level":2,"leaf":true,"description":{"FR":"Nigéria","EN":"Nigeria"},"title":{"FR":"Nigéria","EN":"Nigeria"},"code":"NGA","rid":"64_129649"},{"level":2,"leaf":true,"description":{"FR":"Tchad","EN":"Chad"},"title":{"FR":"Tchad","EN":"Chad"},"code":"TCD","rid":"64_129636"}],"code":"OPC","rid":"64_129618"},{"level":1,"leaf":false,"description":{"FR":"COMMUNAUTÉ DE DÉVELOPPEMENT D'AFRIQUE AUSTRALE","EN":"Southern African Development Community"},"title":{"FR":"SADC","EN":"SADC"},"children":[{"level":2,"leaf":true,"description":{"FR":"Swaziland","EN":"Swaziland"},"title":{"FR":"Swaziland","EN":"Swaziland"},"code":"SWZ","rid":"64_129588"},{"level":2,"leaf":true,"description":{"FR":"Tanzanie, République Unie de","EN":"United Republic of Tanzania"},"title":{"FR":"Tanzanie, République Unie de","EN":"United Republic of Tanzania"},"code":"TZA","rid":"64_129602"},{"level":2,"leaf":true,"description":{"FR":"Malawi","EN":"Malawi"},"title":{"FR":"Malawi","EN":"Malawi"},"code":"MWI","rid":"64_129631"},{"level":2,"leaf":true,"description":{"FR":"Afrique du Sud","EN":"South Africa"},"title":{"FR":"Afrique du Sud","EN":"South Africa"},"code":"ZAF","rid":"64_129606"},{"level":2,"leaf":true,"description":{"FR":"Madagascar","EN":"Madagascar"},"title":{"FR":"Madagascar","EN":"Madagascar"},"code":"MDG","rid":"64_129612"},{"level":2,"leaf":true,"description":{"FR":"Lesotho","EN":"Lesotho"},"title":{"FR":"Lesotho","EN":"Lesotho"},"code":"LSO","rid":"64_129637"},{"level":2,"leaf":true,"description":{"FR":"Zimbabwe","EN":"Zimbabwe"},"title":{"FR":"Zimbabwe","EN":"Zimbabwe"},"code":"ZWE","rid":"64_129639"},{"level":2,"leaf":true,"description":{"FR":"Botswana","EN":"Botswana"},"title":{"FR":"Botswana","EN":"Botswana"},"code":"BWA","rid":"64_129641"},{"level":2,"leaf":true,"description":{"FR":"Angola","EN":"Angola"},"title":{"FR":"Angola","EN":"Angola"},"code":"AGO","rid":"64_129619"},{"level":2,"leaf":true,"description":{"FR":"Mozambique","EN":"Mozambique"},"title":{"FR":"Mozambique","EN":"Mozambique"},"code":"MOZ","rid":"64_129642"},{"level":2,"leaf":true,"description":{"FR":"Maurice","EN":"Mauritius"},"title":{"FR":"Maurice","EN":"Mauritius"},"code":"MUS","rid":"64_129663"},{"level":2,"leaf":true,"description":{"FR":"République Démocratique du Congo","EN":"Democratic Republic of the Congo"},"title":{"FR":"République Démocratique du Congo","EN":"Democratic Republic of the Congo"},"code":"COD","rid":"64_129643"},{"level":2,"leaf":true,"description":{"FR":"Zambie","EN":"Zambia"},"title":{"FR":"Zambie","EN":"Zambia"},"code":"ZMB","rid":"64_129633"},{"level":2,"leaf":true,"description":{"FR":"Namibie","EN":"Namibia"},"title":{"FR":"Namibie","EN":"Namibia"},"code":"NAM","rid":"64_129645"}],"code":"SADC","rid":"64_129603"},{"level":1,"leaf":false,"description":{"EN":"Sub-Saharan Africa"},"title":{"FR":"SAF","EN":"SAF"},"children":[{"level":2,"leaf":true,"description":{"FR":"Swaziland","EN":"Swaziland"},"title":{"FR":"Swaziland","EN":"Swaziland"},"code":"SWZ","rid":"64_129588"},{"level":2,"leaf":true,"description":{"FR":"Guinée-Bissau","EN":"Guinea-Bissau"},"title":{"FR":"Guinée-Bissau","EN":"Guinea-Bissau"},"code":"GNB","rid":"64_129596"},{"level":2,"leaf":true,"description":{"FR":"Kenya","EN":"Kenya"},"title":{"FR":"Kenya","EN":"Kenya"},"code":"KEN","rid":"64_129590"},{"level":2,"leaf":true,"description":{"FR":"République Centrafricaine","EN":"Central African Republic"},"title":{"FR":"République Centrafricaine","EN":"Central African Republic"},"code":"CAF","rid":"64_129601"},{"level":2,"leaf":true,"description":{"FR":"Tanzanie, République Unie de","EN":"United Republic of Tanzania"},"title":{"FR":"Tanzanie, République Unie de","EN":"United Republic of Tanzania"},"code":"TZA","rid":"64_129602"},{"level":2,"leaf":true,"description":{"FR":"Afrique du Sud","EN":"South Africa"},"title":{"FR":"Afrique du Sud","EN":"South Africa"},"code":"ZAF","rid":"64_129606"},{"level":2,"leaf":true,"description":{"FR":"Madagascar","EN":"Madagascar"},"title":{"FR":"Madagascar","EN":"Madagascar"},"code":"MDG","rid":"64_129612"},{"level":2,"leaf":true,"description":{"FR":"Ouganda","EN":"Uganda"},"title":{"FR":"Ouganda","EN":"Uganda"},"code":"UGA","rid":"64_129634"},{"level":2,"leaf":true,"description":{"FR":"Sierra Leone","EN":"Sierra Leone"},"title":{"FR":"Sierra Leone","EN":"Sierra Leone"},"code":"SLE","rid":"64_129638"},{"level":2,"leaf":true,"description":{"FR":"Cap-Vert","EN":"Cabo Verde"},"title":{"FR":"Cap-Vert","EN":"Cabo Verde"},"code":"CPV","rid":"64_129662"},{"level":2,"leaf":true,"description":{"FR":"Djibouti","EN":"Djibouti"},"title":{"FR":"Djibouti","EN":"Djibouti"},"code":"DJI","rid":"64_129655"},{"level":2,"leaf":true,"description":{"FR":"Lesotho","EN":"Lesotho"},"title":{"FR":"Lesotho","EN":"Lesotho"},"code":"LSO","rid":"64_129637"},{"level":2,"leaf":true,"description":{"FR":"Zimbabwe","EN":"Zimbabwe"},"title":{"FR":"Zimbabwe","EN":"Zimbabwe"},"code":"ZWE","rid":"64_129639"},{"level":2,"leaf":true,"description":{"FR":"Ghana","EN":"Ghana"},"title":{"FR":"Ghana","EN":"Ghana"},"code":"GHA","rid":"64_129640"},{"level":2,"leaf":true,"description":{"FR":"Mozambique","EN":"Mozambique"},"title":{"FR":"Mozambique","EN":"Mozambique"},"code":"MOZ","rid":"64_129642"},{"level":2,"leaf":true,"description":{"FR":"Angola","EN":"Angola"},"title":{"FR":"Angola","EN":"Angola"},"code":"AGO","rid":"64_129619"},{"level":2,"leaf":true,"description":{"FR":"Burundi","EN":"Burundi"},"title":{"FR":"Burundi","EN":"Burundi"},"code":"BDI","rid":"64_129627"},{"level":2,"leaf":true,"description":{"FR":"Maurice","EN":"Mauritius"},"title":{"FR":"Maurice","EN":"Mauritius"},"code":"MUS","rid":"64_129663"},{"level":2,"leaf":true,"description":{"FR":"Congo","EN":"Congo"},"title":{"FR":"Congo","EN":"Congo"},"code":"COG","rid":"64_129647"},{"level":2,"leaf":true,"description":{"FR":"République Démocratique du Congo","EN":"Democratic Republic of the Congo"},"title":{"FR":"République Démocratique du Congo","EN":"Democratic Republic of the Congo"},"code":"COD","rid":"64_129643"},{"level":2,"leaf":true,"description":{"FR":"Rwanda","EN":"Rwanda"},"title":{"FR":"Rwanda","EN":"Rwanda"},"code":"RWA","rid":"64_129632"},{"level":2,"leaf":true,"description":{"FR":"Tchad","EN":"Chad"},"title":{"FR":"Tchad","EN":"Chad"},"code":"TCD","rid":"64_129636"},{"level":2,"leaf":true,"description":{"FR":"Libéria","EN":"Liberia"},"title":{"FR":"Libéria","EN":"Liberia"},"code":"LBR","rid":"64_129660"},{"level":2,"leaf":true,"description":{"FR":"Cameroun","EN":"Cameroon"},"title":{"FR":"Cameroun","EN":"Cameroon"},"code":"CMR","rid":"64_129593"},{"level":2,"leaf":true,"description":{"FR":"Guinée","EN":"Guinea"},"title":{"FR":"Guinée","EN":"Guinea"},"code":"GIN","rid":"64_129598"},{"level":2,"leaf":true,"description":{"FR":"Togo","EN":"Togo"},"title":{"FR":"Togo","EN":"Togo"},"code":"TGO","rid":"64_129617"},{"level":2,"leaf":true,"description":{"FR":"Côte d'Ivoire","EN":"Cote d'Ivoire"},"title":{"FR":"Côte d'Ivoire","EN":"Cote d'Ivoire"},"code":"CIV","rid":"64_129646"},{"level":2,"leaf":true,"description":{"FR":"Seychelles","EN":"Seychelles"},"title":{"FR":"Seychelles","EN":"Seychelles"},"code":"SYC","rid":"64_129604"},{"level":2,"leaf":true,"description":{"FR":"Mali","EN":"Mali"},"title":{"FR":"Mali","EN":"Mali"},"code":"MLI","rid":"64_129625"},{"level":2,"leaf":true,"description":{"FR":"Erythrée","EN":"Eritrea"},"title":{"FR":"Erythrée","EN":"Eritrea"},"code":"ERI","rid":"64_129652"},{"level":2,"leaf":true,"description":{"FR":"Niger","EN":"Niger"},"title":{"FR":"Niger","EN":"Niger"},"code":"NER","rid":"64_129628"},{"level":2,"leaf":true,"description":{"FR":"Ethiopie","EN":"Ethiopia"},"title":{"FR":"Ethiopie","EN":"Ethiopia"},"code":"ETH","rid":"64_129630"},{"level":2,"leaf":true,"description":{"FR":"Gambie","EN":"Gambia"},"title":{"FR":"Gambie","EN":"Gambia"},"code":"GMB","rid":"64_129653"},{"level":2,"leaf":true,"description":{"FR":"Malawi","EN":"Malawi"},"title":{"FR":"Malawi","EN":"Malawi"},"code":"MWI","rid":"64_129631"},{"level":2,"leaf":true,"description":{"FR":"Sénégal","EN":"Senegal"},"title":{"FR":"Sénégal","EN":"Senegal"},"code":"SEN","rid":"64_129654"},{"level":2,"leaf":true,"description":{"FR":"Burkina Faso","EN":"Burkina Faso"},"title":{"FR":"Burkina Faso","EN":"Burkina Faso"},"code":"BFA","rid":"64_129635"},{"level":2,"leaf":true,"description":{"FR":"Soudan du Sud","EN":"South Sudan"},"title":{"FR":"Soudan du Sud","EN":"South Sudan"},"code":"SSD","rid":"64_129664"},{"level":2,"leaf":true,"description":{"FR":"Comores","EN":"Comoros"},"title":{"FR":"Comores","EN":"Comoros"},"code":"COM","rid":"64_129657"},{"level":2,"leaf":true,"description":{"FR":"Botswana","EN":"Botswana"},"title":{"FR":"Botswana","EN":"Botswana"},"code":"BWA","rid":"64_129641"},{"level":2,"leaf":true,"description":{"FR":"Somalie","EN":"Somalia"},"title":{"FR":"Somalie","EN":"Somalia"},"code":"SOM","rid":"64_129658"},{"level":2,"leaf":true,"description":{"FR":"Guinée équatoriale","EN":"Equatorial Guinea"},"title":{"FR":"Guinée équatoriale","EN":"Equatorial Guinea"},"code":"GNQ","rid":"64_129621"},{"level":2,"leaf":true,"description":{"FR":"Gabon","EN":"Gabon"},"title":{"FR":"Gabon","EN":"Gabon"},"code":"GAB","rid":"64_129648"},{"level":2,"leaf":true,"description":{"FR":"Nigéria","EN":"Nigeria"},"title":{"FR":"Nigéria","EN":"Nigeria"},"code":"NGA","rid":"64_129649"},{"level":2,"leaf":true,"description":{"FR":"Zambie","EN":"Zambia"},"title":{"FR":"Zambie","EN":"Zambia"},"code":"ZMB","rid":"64_129633"},{"level":2,"leaf":true,"description":{"FR":"Bénin","EN":"Benin"},"title":{"FR":"Bénin","EN":"Benin"},"code":"BEN","rid":"64_129659"},{"level":2,"leaf":true,"description":{"FR":"Sao Tomé-et-Principe","EN":"Sao Tome and Principe"},"title":{"FR":"Sao Tomé-et-Principe","EN":"Sao Tome and Principe"},"code":"STP","rid":"64_129661"},{"level":2,"leaf":true,"description":{"FR":"Namibie","EN":"Namibia"},"title":{"FR":"Namibie","EN":"Namibia"},"code":"NAM","rid":"64_129645"}],"code":"SAF","rid":"64_129615"},{"level":1,"leaf":false,"description":{"FR":"Afrique Centrale","EN":"Central Africa"},"title":{"FR":"SROCA","EN":"SROCA"},"children":[{"level":2,"leaf":true,"description":{"FR":"Cameroun","EN":"Cameroon"},"title":{"FR":"Cameroun","EN":"Cameroon"},"code":"CMR","rid":"64_129593"},{"level":2,"leaf":true,"description":{"FR":"République Centrafricaine","EN":"Central African Republic"},"title":{"FR":"République Centrafricaine","EN":"Central African Republic"},"code":"CAF","rid":"64_129601"},{"level":2,"leaf":true,"description":{"FR":"Congo","EN":"Congo"},"title":{"FR":"Congo","EN":"Congo"},"code":"COG","rid":"64_129647"},{"level":2,"leaf":true,"description":{"FR":"Guinée équatoriale","EN":"Equatorial Guinea"},"title":{"FR":"Guinée équatoriale","EN":"Equatorial Guinea"},"code":"GNQ","rid":"64_129621"},{"level":2,"leaf":true,"description":{"FR":"Gabon","EN":"Gabon"},"title":{"FR":"Gabon","EN":"Gabon"},"code":"GAB","rid":"64_129648"},{"level":2,"leaf":true,"description":{"FR":"Tchad","EN":"Chad"},"title":{"FR":"Tchad","EN":"Chad"},"code":"TCD","rid":"64_129636"},{"level":2,"leaf":true,"description":{"FR":"Sao Tomé-et-Principe","EN":"Sao Tome and Principe"},"title":{"FR":"Sao Tomé-et-Principe","EN":"Sao Tome and Principe"},"code":"STP","rid":"64_129661"}],"code":"SROCA","rid":"64_129594"},{"level":1,"leaf":false,"description":{"FR":"Afrique de l'Est","EN":"Eastern Africa"},"title":{"FR":"SROEA","EN":"SROEA"},"children":[{"level":2,"leaf":true,"description":{"FR":"Kenya","EN":"Kenya"},"title":{"FR":"Kenya","EN":"Kenya"},"code":"KEN","rid":"64_129590"},{"level":2,"leaf":true,"description":{"FR":"Erythrée","EN":"Eritrea"},"title":{"FR":"Erythrée","EN":"Eritrea"},"code":"ERI","rid":"64_129652"},{"level":2,"leaf":true,"description":{"FR":"Seychelles","EN":"Seychelles"},"title":{"FR":"Seychelles","EN":"Seychelles"},"code":"SYC","rid":"64_129604"},{"level":2,"leaf":true,"description":{"FR":"Tanzanie, République Unie de","EN":"United Republic of Tanzania"},"title":{"FR":"Tanzanie, République Unie de","EN":"United Republic of Tanzania"},"code":"TZA","rid":"64_129602"},{"level":2,"leaf":true,"description":{"FR":"Ethiopie","EN":"Ethiopia"},"title":{"FR":"Ethiopie","EN":"Ethiopia"},"code":"ETH","rid":"64_129630"},{"level":2,"leaf":true,"description":{"FR":"Madagascar","EN":"Madagascar"},"title":{"FR":"Madagascar","EN":"Madagascar"},"code":"MDG","rid":"64_129612"},{"level":2,"leaf":true,"description":{"FR":"Ouganda","EN":"Uganda"},"title":{"FR":"Ouganda","EN":"Uganda"},"code":"UGA","rid":"64_129634"},{"level":2,"leaf":true,"description":{"FR":"Djibouti","EN":"Djibouti"},"title":{"FR":"Djibouti","EN":"Djibouti"},"code":"DJI","rid":"64_129655"},{"level":2,"leaf":true,"description":{"FR":"Comores","EN":"Comoros"},"title":{"FR":"Comores","EN":"Comoros"},"code":"COM","rid":"64_129657"},{"level":2,"leaf":true,"description":{"FR":"Soudan du Sud","EN":"South Sudan"},"title":{"FR":"Soudan du Sud","EN":"South Sudan"},"code":"SSD","rid":"64_129664"},{"level":2,"leaf":true,"description":{"FR":"Somalie","EN":"Somalia"},"title":{"FR":"Somalie","EN":"Somalia"},"code":"SOM","rid":"64_129658"},{"level":2,"leaf":true,"description":{"FR":"Burundi","EN":"Burundi"},"title":{"FR":"Burundi","EN":"Burundi"},"code":"BDI","rid":"64_129627"},{"level":2,"leaf":true,"description":{"FR":"République Démocratique du Congo","EN":"Democratic Republic of the Congo"},"title":{"FR":"République Démocratique du Congo","EN":"Democratic Republic of the Congo"},"code":"COD","rid":"64_129643"},{"level":2,"leaf":true,"description":{"FR":"Rwanda","EN":"Rwanda"},"title":{"FR":"Rwanda","EN":"Rwanda"},"code":"RWA","rid":"64_129632"}],"code":"SROEA","rid":"64_129587"},{"level":1,"leaf":false,"description":{"FR":"Afrique du Nord","EN":"North Africa"},"title":{"FR":"SRONA","EN":"SRONA"},"children":[{"level":2,"leaf":true,"description":{"FR":"Libye","EN":"Libya"},"title":{"FR":"Libye","EN":"Libya"},"code":"LBY","rid":"64_129608"},{"level":2,"leaf":true,"description":{"FR":"Algérie","EN":"Algeria"},"title":{"FR":"Algérie","EN":"Algeria"},"code":"DZA","rid":"64_129609"},{"level":2,"leaf":true,"description":{"FR":"Soudan","EN":"Sudan"},"title":{"FR":"Soudan","EN":"Sudan"},"code":"SDN","rid":"64_129623"},{"level":2,"leaf":true,"description":{"FR":"Maroc","EN":"Morocco"},"title":{"FR":"Maroc","EN":"Morocco"},"code":"MAR","rid":"64_129656"},{"level":2,"leaf":true,"description":{"FR":"Tunisie","EN":"Tunisia"},"title":{"FR":"Tunisie","EN":"Tunisia"},"code":"TUN","rid":"64_129650"},{"level":2,"leaf":true,"description":{"FR":"Mauritanie","EN":"Mauritania"},"title":{"FR":"Mauritanie","EN":"Mauritania"},"code":"MRT","rid":"64_129644"},{"level":2,"leaf":true,"description":{"FR":"Egypte","EN":"Egypt"},"title":{"FR":"Egypte","EN":"Egypt"},"code":"EGY","rid":"64_129651"}],"code":"SRONA","rid":"64_129607"},{"level":1,"leaf":false,"description":{"FR":"Afrique Australe","EN":"Southern Africa"},"title":{"FR":"SROSA","EN":"SROSA"},"children":[{"level":2,"leaf":true,"description":{"FR":"Swaziland","EN":"Swaziland"},"title":{"FR":"Swaziland","EN":"Swaziland"},"code":"SWZ","rid":"64_129588"},{"level":2,"leaf":true,"description":{"FR":"Botswana","EN":"Botswana"},"title":{"FR":"Botswana","EN":"Botswana"},"code":"BWA","rid":"64_129641"},{"level":2,"leaf":true,"description":{"FR":"Mozambique","EN":"Mozambique"},"title":{"FR":"Mozambique","EN":"Mozambique"},"code":"MOZ","rid":"64_129642"},{"level":2,"leaf":true,"description":{"FR":"Angola","EN":"Angola"},"title":{"FR":"Angola","EN":"Angola"},"code":"AGO","rid":"64_129619"},{"level":2,"leaf":true,"description":{"FR":"Maurice","EN":"Mauritius"},"title":{"FR":"Maurice","EN":"Mauritius"},"code":"MUS","rid":"64_129663"},{"level":2,"leaf":true,"description":{"FR":"Malawi","EN":"Malawi"},"title":{"FR":"Malawi","EN":"Malawi"},"code":"MWI","rid":"64_129631"},{"level":2,"leaf":true,"description":{"FR":"Afrique du Sud","EN":"South Africa"},"title":{"FR":"Afrique du Sud","EN":"South Africa"},"code":"ZAF","rid":"64_129606"},{"level":2,"leaf":true,"description":{"FR":"Zambie","EN":"Zambia"},"title":{"FR":"Zambie","EN":"Zambia"},"code":"ZMB","rid":"64_129633"},{"level":2,"leaf":true,"description":{"FR":"Lesotho","EN":"Lesotho"},"title":{"FR":"Lesotho","EN":"Lesotho"},"code":"LSO","rid":"64_129637"},{"level":2,"leaf":true,"description":{"FR":"Zimbabwe","EN":"Zimbabwe"},"title":{"FR":"Zimbabwe","EN":"Zimbabwe"},"code":"ZWE","rid":"64_129639"},{"level":2,"leaf":true,"description":{"FR":"Namibie","EN":"Namibia"},"title":{"FR":"Namibie","EN":"Namibia"},"code":"NAM","rid":"64_129645"}],"code":"SROSA","rid":"64_129589"},{"level":1,"leaf":false,"description":{"FR":"Afrique de l'Ouest","EN":"West Africa"},"title":{"FR":"SROWA","EN":"SROWA"},"children":[{"level":2,"leaf":true,"description":{"FR":"Guinée-Bissau","EN":"Guinea-Bissau"},"title":{"FR":"Guinée-Bissau","EN":"Guinea-Bissau"},"code":"GNB","rid":"64_129596"},{"level":2,"leaf":true,"description":{"FR":"Guinée","EN":"Guinea"},"title":{"FR":"Guinée","EN":"Guinea"},"code":"GIN","rid":"64_129598"},{"level":2,"leaf":true,"description":{"FR":"Togo","EN":"Togo"},"title":{"FR":"Togo","EN":"Togo"},"code":"TGO","rid":"64_129617"},{"level":2,"leaf":true,"description":{"FR":"Côte d'Ivoire","EN":"Cote d'Ivoire"},"title":{"FR":"Côte d'Ivoire","EN":"Cote d'Ivoire"},"code":"CIV","rid":"64_129646"},{"level":2,"leaf":true,"description":{"FR":"Mali","EN":"Mali"},"title":{"FR":"Mali","EN":"Mali"},"code":"MLI","rid":"64_129625"},{"level":2,"leaf":true,"description":{"FR":"Gambie","EN":"Gambia"},"title":{"FR":"Gambie","EN":"Gambia"},"code":"GMB","rid":"64_129653"},{"level":2,"leaf":true,"description":{"FR":"Niger","EN":"Niger"},"title":{"FR":"Niger","EN":"Niger"},"code":"NER","rid":"64_129628"},{"level":2,"leaf":true,"description":{"FR":"Sénégal","EN":"Senegal"},"title":{"FR":"Sénégal","EN":"Senegal"},"code":"SEN","rid":"64_129654"},{"level":2,"leaf":true,"description":{"FR":"Sierra Leone","EN":"Sierra Leone"},"title":{"FR":"Sierra Leone","EN":"Sierra Leone"},"code":"SLE","rid":"64_129638"},{"level":2,"leaf":true,"description":{"FR":"Burkina Faso","EN":"Burkina Faso"},"title":{"FR":"Burkina Faso","EN":"Burkina Faso"},"code":"BFA","rid":"64_129635"},{"level":2,"leaf":true,"description":{"FR":"Cap-Vert","EN":"Cabo Verde"},"title":{"FR":"Cap-Vert","EN":"Cabo Verde"},"code":"CPV","rid":"64_129662"},{"level":2,"leaf":true,"description":{"FR":"Ghana","EN":"Ghana"},"title":{"FR":"Ghana","EN":"Ghana"},"code":"GHA","rid":"64_129640"},{"level":2,"leaf":true,"description":{"FR":"Nigéria","EN":"Nigeria"},"title":{"FR":"Nigéria","EN":"Nigeria"},"code":"NGA","rid":"64_129649"},{"level":2,"leaf":true,"description":{"FR":"Bénin","EN":"Benin"},"title":{"FR":"Bénin","EN":"Benin"},"code":"BEN","rid":"64_129659"},{"level":2,"leaf":true,"description":{"FR":"Libéria","EN":"Liberia"},"title":{"FR":"Libéria","EN":"Liberia"},"code":"LBR","rid":"64_129660"}],"code":"SROWA","rid":"64_129597"}],"size":78},"UNECA_UnitMeasure":{"metadata":{"dsd":{"rid":"68_114"},"title":{"EN":"UNECA - Unit of measure"},"rid":"12_212","uid":"UNECA_UnitMeasure"},"data":[{"level":1,"leaf":true,"title":{"EN":"Barrels"},"code":"BAR","rid":"64_114732"},{"level":1,"leaf":true,"title":{"FR":"LITRES","EN":"LITRES"},"code":"CLO","rid":"64_92270"},{"level":1,"leaf":true,"title":{"FR":"HECTOLITRES","EN":"HECTOLITRES"},"code":"CLQ","rid":"64_92271"},{"level":1,"leaf":true,"title":{"FR":"KILOLITRES","EN":"KILOLITRES"},"code":"CLR","rid":"64_92272"},{"level":1,"leaf":true,"title":{"FR":"HUNDRED HECTOLITRES","EN":"HUNDRED HECTOLITRES"},"code":"CLS","rid":"64_92273"},{"level":1,"leaf":true,"title":{"FR":"000' HECTOLITRES","EN":"THOUSAND HECTOLITRES"},"code":"CLT","rid":"64_92274"},{"level":1,"leaf":true,"title":{"FR":"000' KILOLITRES","EN":"THOUSAND KILOLITRES"},"code":"CLU","rid":"64_92275"},{"level":1,"leaf":true,"title":{"FR":"METRES CUBES","EN":"CUBIC METRES"},"code":"CSO","rid":"64_92276"},{"level":1,"leaf":true,"title":{"FR":"000' METRES CUBES","EN":"THOUSAND CUBIC METRES"},"code":"CSR","rid":"64_92277"},{"level":1,"leaf":true,"title":{"FR":"MILLIONS METRES CUBES","EN":"MILLION CUBIC METRES"},"code":"CSU","rid":"64_92278"},{"level":1,"leaf":true,"title":{"FR":"GROSS TONS","EN":"GROSS TONS"},"code":"CTO","rid":"64_92279"},{"level":1,"leaf":true,"title":{"FR":"000' GRT","EN":"000' GRT"},"code":"CTR","rid":"64_92280"},{"level":1,"leaf":true,"title":{"FR":"MILLIONS GRT","EN":"MILLION GRT"},"code":"CTU","rid":"64_92281"},{"level":1,"leaf":true,"title":{"FR":"PROOF GALLONS","EN":"PROOF GALLONS"},"code":"CWO","rid":"64_92282"},{"level":1,"leaf":true,"title":{"FR":"THOUSAND PROOF GALLONS","EN":"THOUSAND PROOF GALLONS"},"code":"CWR","rid":"64_92283"},{"level":1,"leaf":true,"title":{"FR":"KILOWATTS","EN":"KILOWATTS"},"code":"ESO","rid":"64_92284"},{"level":1,"leaf":true,"title":{"FR":"000' KILOWATTS","EN":"THOUSAND KILOWATTS"},"code":"ESR","rid":"64_92285"},{"level":1,"leaf":true,"title":{"FR":"MILLIONS KW","EN":"MILLION KILOWATTS"},"code":"ESU","rid":"64_92286"},{"level":1,"leaf":true,"title":{"FR":"KVA","EN":"KVA"},"code":"EVO","rid":"64_92287"},{"level":1,"leaf":true,"title":{"FR":"000' KVA","EN":"THOUSAND KVA"},"code":"EVR","rid":"64_92288"},{"level":1,"leaf":true,"title":{"FR":"MILLIONS KVA","EN":"MILLION KVA"},"code":"EVU","rid":"64_92289"},{"level":1,"leaf":true,"title":{"EN":"Cubic Feet"},"code":"FEE3","rid":"64_114731"},{"level":1,"leaf":true,"title":{"EN":"Ha"},"code":"HEC","rid":"64_148527"},{"level":1,"leaf":true,"title":{"EN":"Hg/Ha"},"code":"HGH","rid":"64_148528"},{"level":1,"leaf":true,"title":{"EN":"HORSEPOWER"},"code":"HHO","rid":"64_92290"},{"level":1,"leaf":true,"title":{"FR":"000' CV","EN":"THOUSAND HORSEPOWER"},"code":"HHR","rid":"64_92291"},{"level":1,"leaf":true,"title":{"FR":"MILLIONS CV","EN":"MILLION HORSEPOWER"},"code":"HHU","rid":"64_92292"},{"level":1,"leaf":true,"title":{"FR":"TERAJOULES","EN":"TERAJOULES"},"code":"HS0","rid":"64_92293"},{"level":1,"leaf":true,"title":{"EN":"KILOWATTHOUR"},"code":"HWO","rid":"64_92294"},{"level":1,"leaf":true,"title":{"FR":"000' KWH","EN":"THOUSAND KILOWATTHOUR"},"code":"HWR","rid":"64_92295"},{"level":1,"leaf":true,"title":{"FR":"MILLIONS KWH","EN":"MILLION KWH"},"code":"HWU","rid":"64_92296"},{"level":1,"leaf":true,"title":{"EN":"kilowatt hours (millions) "},"code":"KWHM","rid":"64_114729"},{"level":1,"leaf":true,"title":{"FR":"METRES","EN":"METRES"},"code":"LSO","rid":"64_92297"},{"level":1,"leaf":true,"title":{"FR":"000' METRES","EN":"THOUSAND METRES"},"code":"LSR","rid":"64_92298"},{"level":1,"leaf":true,"title":{"FR":"MILLIONS METRES","EN":"MILLION METRES"},"code":"LSU","rid":"64_92299"},{"level":1,"leaf":true,"title":{"EN":"NA"},"code":"NA","rid":"64_114734"},{"level":1,"leaf":true,"title":{"FR":"PAIRES","EN":"PAIRS"},"code":"NPO","rid":"64_92300"},{"level":1,"leaf":true,"title":{"FR":"000' PAIRES","EN":"THOUSAND PAIRS"},"code":"NPR","rid":"64_92301"},{"level":1,"leaf":true,"title":{"FR":"MILLIONS PAIRES","EN":"MILLION PAIRS"},"code":"NPU","rid":"64_92302"},{"level":1,"leaf":true,"title":{"FR":"NOMBRE","EN":"UNITS"},"code":"NSO","rid":"64_92303"},{"level":1,"leaf":true,"title":{"FR":"MILLIERS","EN":"THOUSAND UNITS"},"code":"NSR","rid":"64_92304"},{"level":1,"leaf":true,"title":{"FR":"MILLIONS","EN":"MILLION UNITS"},"code":"NSU","rid":"64_92305"},{"level":1,"leaf":true,"title":{"FR":"NOMBRE DE BROCHES","EN":"NUMBER OF SPINDLES"},"code":"NTO","rid":"64_92306"},{"level":1,"leaf":true,"title":{"FR":"%","EN":"%"},"code":"Perc","rid":"64_92320"},{"level":1,"leaf":true,"title":{"FR":"MT. CARRES","EN":"SQUARE METRES"},"code":"SSO","rid":"64_92307"},{"level":1,"leaf":true,"title":{"FR":"000' MT. CARRES","EN":"THOUSAND SQUARE METRES"},"code":"SSR","rid":"64_92308"},{"level":1,"leaf":true,"title":{"FR":"MILLIONS METRES CARRES","EN":"MILLION SQUARE METRES"},"code":"SSU","rid":"64_92309"},{"level":1,"leaf":true,"title":{"EN":"Tons"},"code":"TON","rid":"64_114730"},{"level":1,"leaf":true,"title":{"FR":"TONNES VAPEUR/HR","EN":"TONS OF STEAM PER HOUR"},"code":"USO","rid":"64_92310"},{"level":1,"leaf":true,"title":{"FR":"CARATS","EN":"CARATS"},"code":"WKO","rid":"64_92311"},{"level":1,"leaf":true,"title":{"FR":"000' CARATS","EN":"THOUSAND CARATS"},"code":"WKR","rid":"64_92312"},{"level":1,"leaf":true,"title":{"FR":"GRAMMES","EN":"GRAMMES"},"code":"WSI","rid":"64_92313"},{"level":1,"leaf":true,"title":{"FR":"KILOGRAMMES","EN":"KILOGRAMS"},"code":"WSL","rid":"64_92314"},{"level":1,"leaf":true,"title":{"FR":"TONNES","EN":"METRIC TONS"},"code":"WSO","rid":"64_92315"},{"level":1,"leaf":true,"title":{"FR":"000' TONNES","EN":"THOUSAND METRIC TONS"},"code":"WSR","rid":"64_92316"},{"level":1,"leaf":true,"title":{"FR":"MILLION TONNES","EN":"MILLION METRIC TONS"},"code":"WSU","rid":"64_92317"},{"level":1,"leaf":true,"title":{"FR":"DWT","EN":"DWT"},"code":"XXO","rid":"64_92318"},{"level":1,"leaf":true,"title":{"FR":"000' DWT","EN":"000' DWT"},"code":"XXR","rid":"64_92319"},{"level":1,"leaf":true,"title":{"EN":"Year"},"code":"YRS","rid":"64_114733"}],"size":59}}
+{
+  "CountrySTAT_Indicators": {
+    "metadata" : {
+      "title" : {
+        "EN" : "CountrySTAT Indicators"
+      },
+      "dsd" : {
+        "rid" : "68_300"
+      },
+      "rid" : "12_849",
+      "uid" : "CountrySTAT_Indicators"
+    },
+    "data" : [ {
+      "level" : 1,
+      "leaf" : false,
+      "title" : {
+        "FR" : "Production",
+        "EN" : "Production"
+      },
+      "children" : [ {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Superficie ensemencée",
+          "EN" : "Area sown"
+        },
+        "code" : "0105",
+        "rid" : "64_94765"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Quantité des semences",
+          "EN" : "Seeds quantity"
+        },
+        "code" : "0106",
+        "rid" : "64_94766"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Rendement",
+          "EN" : "Yield"
+        },
+        "code" : "0103",
+        "rid" : "64_94767"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Superficie récoltée",
+          "EN" : "Area Harvested"
+        },
+        "code" : "0104",
+        "rid" : "64_94768"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Quantité produite",
+          "EN" : "Production quantity"
+        },
+        "code" : "0101",
+        "rid" : "64_94770"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Valeur de la production",
+          "EN" : "Production value"
+        },
+        "code" : "0102",
+        "rid" : "64_94772"
+      } ],
+      "code" : "01",
+      "rid" : "64_94762"
+    }, {
+      "level" : 1,
+      "leaf" : false,
+      "title" : {
+        "FR" : "Disponibilité alimentaire",
+        "EN" : "Food availability"
+      },
+      "children" : [ {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Disponibilité de protéines en quantité",
+          "EN" : "Protein quantity"
+        },
+        "code" : "0201",
+        "rid" : "64_94775"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Disponibilité alimentaire en quantité",
+          "EN" : "Food supply quantity"
+        },
+        "code" : "0203",
+        "rid" : "64_106553"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Disponibilité de lipides en quantité",
+          "EN" : "Lipid quantity"
+        },
+        "code" : "0202",
+        "rid" : "64_94777"
+      } ],
+      "code" : "02",
+      "rid" : "64_94776"
+    }, {
+      "level" : 1,
+      "leaf" : false,
+      "title" : {
+        "FR" : "Commerce",
+        "EN" : "Trade"
+      },
+      "children" : [ {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Quantités des importations",
+          "EN" : "Import quantity"
+        },
+        "code" : "0303",
+        "rid" : "64_94778"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Valeur des importations",
+          "EN" : "Import value"
+        },
+        "code" : "0304",
+        "rid" : "64_94780"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Quantités des exportations",
+          "EN" : "Export quantity"
+        },
+        "code" : "0301",
+        "rid" : "64_94781"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Valeur des exportations",
+          "EN" : "Export value"
+        },
+        "code" : "0302",
+        "rid" : "64_94782"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Quantité des stocks des produits disponibles",
+          "EN" : "Inventory of available products"
+        },
+        "code" : "0310",
+        "rid" : "64_149841"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Taux de consommation",
+          "EN" : "Consumption rate"
+        },
+        "code" : "0311",
+        "rid" : "64_149860"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Valeur des réimportations",
+          "EN" : "Re-import value"
+        },
+        "code" : "0309",
+        "rid" : "64_106809"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Valeur des réexportations",
+          "EN" : "Re-export value"
+        },
+        "code" : "0307",
+        "rid" : "64_94783"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Quantités des réimportations",
+          "EN" : "Re-import quantity"
+        },
+        "code" : "0308",
+        "rid" : "64_106810"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Quantité de consommation",
+          "EN" : "Consumption quantity"
+        },
+        "code" : "0305",
+        "rid" : "64_94785"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Quantités des réexportations",
+          "EN" : "Re-export quantity"
+        },
+        "code" : "0306",
+        "rid" : "64_94786"
+      } ],
+      "code" : "03",
+      "rid" : "64_94779"
+    }, {
+      "level" : 1,
+      "leaf" : false,
+      "title" : {
+        "FR" : "Machines",
+        "EN" : "Machinery"
+      },
+      "children" : [ {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Machines en service",
+          "EN" : "Machines in service"
+        },
+        "code" : "0401",
+        "rid" : "64_94787"
+      } ],
+      "code" : "04",
+      "rid" : "64_94788"
+    }, {
+      "level" : 1,
+      "leaf" : false,
+      "title" : {
+        "FR" : "Population",
+        "EN" : "Population"
+      },
+      "children" : [ {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Ménages",
+          "EN" : "Households"
+        },
+        "code" : "0507",
+        "rid" : "64_158743"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Taux de croissance de la population",
+          "EN" : "Population growth rate"
+        },
+        "code" : "0504",
+        "rid" : "64_94792"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Densité totale de la population",
+          "EN" : "Population total density"
+        },
+        "code" : "0503",
+        "rid" : "64_94793"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Taux de malnutrition chronique",
+          "EN" : "Chronic malnutrition rate"
+        },
+        "code" : "0506",
+        "rid" : "64_149862"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Espérance de vie",
+          "EN" : "Life expectancy"
+        },
+        "code" : "0505",
+        "rid" : "64_116294"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Population économiquement active",
+          "EN" : "Economically active population"
+        },
+        "code" : "0502",
+        "rid" : "64_94800"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Population",
+          "EN" : "Population"
+        },
+        "code" : "0501",
+        "rid" : "64_94801"
+      } ],
+      "code" : "05",
+      "rid" : "64_94790"
+    }, {
+      "level" : 1,
+      "leaf" : false,
+      "title" : {
+        "FR" : "Prix",
+        "EN" : "Prices"
+      },
+      "children" : [ {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Prix à la consommation",
+          "EN" : "Consumer price"
+        },
+        "code" : "0601",
+        "rid" : "64_94805"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Taux officiel",
+          "EN" : "Official rate"
+        },
+        "code" : "0604",
+        "rid" : "64_94807"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Prix de gros",
+          "EN" : "Wholesale price"
+        },
+        "code" : "0605",
+        "rid" : "64_106811"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Prix au producteur",
+          "EN" : "Producer price"
+        },
+        "code" : "0602",
+        "rid" : "64_94809"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Taux commercial",
+          "EN" : "Commercial rate"
+        },
+        "code" : "0603",
+        "rid" : "64_94810"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Prix maximum",
+          "EN" : "Highest price"
+        },
+        "code" : "0608",
+        "rid" : "64_149842"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Prix annuel moyen",
+          "EN" : "Annual average price"
+        },
+        "code" : "0606",
+        "rid" : "64_106812"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Prix minimum",
+          "EN" : "Lowest price"
+        },
+        "code" : "0607",
+        "rid" : "64_149843"
+      } ],
+      "code" : "06",
+      "rid" : "64_94804"
+    }, {
+      "level" : 1,
+      "leaf" : false,
+      "title" : {
+        "FR" : "Valeur ajoutée",
+        "EN" : "Value added"
+      },
+      "children" : [ {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Prix courants",
+          "EN" : "Current prices"
+        },
+        "code" : "0702",
+        "rid" : "64_94819"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Prix constants",
+          "EN" : "Constant prices"
+        },
+        "code" : "0701",
+        "rid" : "64_94820"
+      } ],
+      "code" : "07",
+      "rid" : "64_94816"
+    }, {
+      "level" : 1,
+      "leaf" : false,
+      "title" : {
+        "FR" : "Terres",
+        "EN" : "Land use"
+      },
+      "children" : [ {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Terres arables",
+          "EN" : "Arable land"
+        },
+        "code" : "0803",
+        "rid" : "64_94821"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Superficie des cultures permanentes",
+          "EN" : "Permanent crops area"
+        },
+        "code" : "0812",
+        "rid" : "64_116295"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Superficie agricole",
+          "EN" : "Agricultural area"
+        },
+        "code" : "0802",
+        "rid" : "64_94823"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Autres terres boisées",
+          "EN" : "Other wooded land"
+        },
+        "code" : "0811",
+        "rid" : "64_116296"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Superficie des cultures temporaires",
+          "EN" : "Temporary crops area"
+        },
+        "code" : "0814",
+        "rid" : "64_116297"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Superficie administrative",
+          "EN" : "Administrative Area"
+        },
+        "code" : "0801",
+        "rid" : "64_94824"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Prairies et pâturages permanents",
+          "EN" : "Permanent meadows and pastures"
+        },
+        "code" : "0813",
+        "rid" : "64_116298"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Superficie forestière",
+          "EN" : "Forest area"
+        },
+        "code" : "0807",
+        "rid" : "64_116299"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Prairies et pâturages temporaires",
+          "EN" : "Temporary meadows and pastures"
+        },
+        "code" : "0815",
+        "rid" : "64_116300"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Terres en jachère",
+          "EN" : "Fallow Land"
+        },
+        "code" : "0806",
+        "rid" : "64_94826"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Superficie équipée pour l'irrigation",
+          "EN" : "Area equipped for irrigation"
+        },
+        "code" : "0805",
+        "rid" : "64_94827"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Terres arables et superficie des cultures permanentes",
+          "EN" : "Arable land and permanent crops area"
+        },
+        "code" : "0804",
+        "rid" : "64_94828"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Autres terres",
+          "EN" : "Other land"
+        },
+        "code" : "0810",
+        "rid" : "64_116301"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Eaux intérieures",
+          "EN" : "Inland water"
+        },
+        "code" : "0808",
+        "rid" : "64_116302"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Extension des terres",
+          "EN" : "Land Area"
+        },
+        "code" : "0809",
+        "rid" : "64_116303"
+      } ],
+      "code" : "08",
+      "rid" : "64_94822"
+    }, {
+      "level" : 1,
+      "leaf" : false,
+      "title" : {
+        "FR" : "Emploi",
+        "EN" : "Employment"
+      },
+      "children" : [ {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Taux de chômage",
+          "EN" : "Unemployment Rate"
+        },
+        "code" : "0901",
+        "rid" : "64_94832"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Taux de participation à la population active",
+          "EN" : "Labour force Participation Rate"
+        },
+        "code" : "0902",
+        "rid" : "64_94833"
+      } ],
+      "code" : "09",
+      "rid" : "64_94831"
+    }, {
+      "level" : 1,
+      "leaf" : false,
+      "title" : {
+        "FR" : "Eau",
+        "EN" : "Water"
+      },
+      "children" : [ {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Température minimale",
+          "EN" : "Min temperature"
+        },
+        "code" : "1003",
+        "rid" : "64_106813"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Taux de desserte en Eau Potable",
+          "EN" : "Drinking-water supply rate"
+        },
+        "code" : "1004",
+        "rid" : "64_149844"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Hauteur moyenne de précipitations",
+          "EN" : "Average rainfall"
+        },
+        "code" : "1001",
+        "rid" : "64_106554"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Température maximale",
+          "EN" : "Max temperature"
+        },
+        "code" : "1002",
+        "rid" : "64_106814"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Taux d'accès en Assainissement de base",
+          "EN" : "Basic sanitation access rate"
+        },
+        "code" : "1005",
+        "rid" : "64_149845"
+      } ],
+      "code" : "10",
+      "rid" : "64_106555"
+    }, {
+      "level" : 1,
+      "leaf" : false,
+      "title" : {
+        "FR" : "Elevage",
+        "EN" : "Livestock"
+      },
+      "children" : [ {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Sortie totale",
+          "EN" : "Total Output"
+        },
+        "code" : "1106",
+        "rid" : "64_116304"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Animaux morts",
+          "EN" : "Dead Animals"
+        },
+        "code" : "1104",
+        "rid" : "64_116306"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Entrée totale",
+          "EN" : "Total Input"
+        },
+        "code" : "1105",
+        "rid" : "64_116307"
+      }, {
+        "level" : 2,
+        "leaf" : false,
+        "title" : {
+          "FR" : "Animaux vivants",
+          "EN" : "Live animals"
+        },
+        "children" : [ {
+          "level" : 3,
+          "leaf" : true,
+          "title" : {
+            "FR" : "Animaux vivants femelles",
+            "EN" : "Female Live Animals"
+          },
+          "code" : "110201",
+          "rid" : "64_149846"
+        }, {
+          "level" : 3,
+          "leaf" : true,
+          "title" : {
+            "FR" : "âge de réforme",
+            "EN" : "Age at disposal"
+          },
+          "code" : "110212",
+          "rid" : "64_150228"
+        }, {
+          "level" : 3,
+          "leaf" : true,
+          "title" : {
+            "FR" : "Animaux vivants mâles",
+            "EN" : "Male Live Animals"
+          },
+          "code" : "110203",
+          "rid" : "64_116309"
+        }, {
+          "level" : 3,
+          "leaf" : true,
+          "title" : {
+            "FR" : "Animaux donnés en cadeau",
+            "EN" : "Animals given as gift"
+          },
+          "code" : "110211",
+          "rid" : "64_116310"
+        }, {
+          "level" : 3,
+          "leaf" : true,
+          "title" : {
+            "FR" : "Animaux en lactation",
+            "EN" : "Lactating Animals"
+          },
+          "code" : "110202",
+          "rid" : "64_149847"
+        }, {
+          "level" : 3,
+          "leaf" : true,
+          "title" : {
+            "FR" : "Animaux donnés en gardiennage",
+            "EN" : "Animals given for caretaking"
+          },
+          "code" : "110210",
+          "rid" : "64_116311"
+        }, {
+          "level" : 3,
+          "leaf" : true,
+          "title" : {
+            "FR" : "Animaux achetés",
+            "EN" : "Bought Animals"
+          },
+          "code" : "110205",
+          "rid" : "64_116312"
+        }, {
+          "level" : 3,
+          "leaf" : true,
+          "title" : {
+            "FR" : "Animaux nés",
+            "EN" : "Born Animals"
+          },
+          "code" : "110204",
+          "rid" : "64_116313"
+        }, {
+          "level" : 3,
+          "leaf" : true,
+          "title" : {
+            "FR" : "Animaux reçus en gardiennage",
+            "EN" : "Animals got for caretaking"
+          },
+          "code" : "110207",
+          "rid" : "64_116314"
+        }, {
+          "level" : 3,
+          "leaf" : true,
+          "title" : {
+            "FR" : "Animaux reçus en cadeau",
+            "EN" : "Animals got as gift"
+          },
+          "code" : "110206",
+          "rid" : "64_116315"
+        }, {
+          "level" : 3,
+          "leaf" : true,
+          "title" : {
+            "FR" : "Animaux volés",
+            "EN" : "Stolen Animals"
+          },
+          "code" : "110209",
+          "rid" : "64_116316"
+        }, {
+          "level" : 3,
+          "leaf" : true,
+          "title" : {
+            "FR" : "Animaux vendus",
+            "EN" : "Sold Animals"
+          },
+          "code" : "110208",
+          "rid" : "64_116317"
+        } ],
+        "code" : "1102",
+        "rid" : "64_116308"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Pondeuses",
+          "EN" : "Laying hens"
+        },
+        "code" : "1103",
+        "rid" : "64_116318"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Animaux abattus",
+          "EN" : "Slaughtered animals"
+        },
+        "code" : "1101",
+        "rid" : "64_116319"
+      } ],
+      "code" : "11",
+      "rid" : "64_116305"
+    }, {
+      "level" : 1,
+      "leaf" : false,
+      "title" : {
+        "FR" : "Comptes nationaux",
+        "EN" : "National account"
+      },
+      "children" : [ {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "PIB par habitant",
+          "EN" : "GDP per capita"
+        },
+        "code" : "1203",
+        "rid" : "64_116322"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Croissance du PIB",
+          "EN" : "GDP growth"
+        },
+        "code" : "1202",
+        "rid" : "64_116324"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "PIB",
+          "EN" : "GPD"
+        },
+        "code" : "1201",
+        "rid" : "64_116325"
+      } ],
+      "code" : "12",
+      "rid" : "64_116323"
+    }, {
+      "level" : 1,
+      "leaf" : false,
+      "title" : {
+        "FR" : "Pêches",
+        "EN" : "Fishery"
+      },
+      "children" : [ {
+        "level" : 2,
+        "leaf" : false,
+        "title" : {
+          "FR" : "Production aquacole",
+          "EN" : "Aquaculture production"
+        },
+        "children" : [ {
+          "level" : 3,
+          "leaf" : true,
+          "title" : {
+            "FR" : "Production aquacole en eaux saumâtres",
+            "EN" : "Marine/Brackish Aquaculture production"
+          },
+          "code" : "130103",
+          "rid" : "64_116332"
+        }, {
+          "level" : 3,
+          "leaf" : true,
+          "title" : {
+            "FR" : "Production aquacole en eaux intérieures",
+            "EN" : "Inland Aquaculture production"
+          },
+          "code" : "130101",
+          "rid" : "64_116333"
+        }, {
+          "level" : 3,
+          "leaf" : false,
+          "title" : {
+            "FR" : "Production aquacole en eaux marines",
+            "EN" : "Marine Aquaculture production"
+          },
+          "children" : [ {
+            "level" : 4,
+            "leaf" : true,
+            "title" : {
+              "FR" : "Production aquacole industrielle en eaux marines",
+              "EN" : "Industrial Marine Aquaculture production"
+            },
+            "code" : "13010201",
+            "rid" : "64_116978"
+          }, {
+            "level" : 4,
+            "leaf" : true,
+            "title" : {
+              "FR" : "Production aquacole artisanale en eaux marines",
+              "EN" : "Artisanal Marine Aquaculture production"
+            },
+            "code" : "13010202",
+            "rid" : "64_116979"
+          } ],
+          "code" : "130102",
+          "rid" : "64_116334"
+        } ],
+        "code" : "1301",
+        "rid" : "64_116326"
+      }, {
+        "level" : 2,
+        "leaf" : false,
+        "title" : {
+          "FR" : "Production des captures",
+          "EN" : "Capture production"
+        },
+        "children" : [ {
+          "level" : 3,
+          "leaf" : false,
+          "title" : {
+            "FR" : "Production des captures en eaux marines",
+            "EN" : "Marine Capture production"
+          },
+          "children" : [ {
+            "level" : 4,
+            "leaf" : true,
+            "title" : {
+              "FR" : "Production artisanale des captures en eaux marines",
+              "EN" : "Artisanal Marine Capture production"
+            },
+            "code" : "13020202",
+            "rid" : "64_116976"
+          }, {
+            "level" : 4,
+            "leaf" : true,
+            "title" : {
+              "FR" : "Production traditionnelle des captures en eaux marines",
+              "EN" : "Traditional Marine Capture production"
+            },
+            "code" : "13020203",
+            "rid" : "64_149848"
+          }, {
+            "level" : 4,
+            "leaf" : true,
+            "title" : {
+              "FR" : "Production industrielle des captures en eaux marines",
+              "EN" : "Industrial Marine Capture production"
+            },
+            "code" : "13020201",
+            "rid" : "64_116977"
+          } ],
+          "code" : "130202",
+          "rid" : "64_116329"
+        }, {
+          "level" : 3,
+          "leaf" : true,
+          "title" : {
+            "FR" : "Production des captures en eaux saumâtres",
+            "EN" : "Marine/Brackish Capture production"
+          },
+          "code" : "130203",
+          "rid" : "64_116330"
+        }, {
+          "level" : 3,
+          "leaf" : true,
+          "title" : {
+            "FR" : "Production des captures en eaux intérieures",
+            "EN" : "Inland Capture production"
+          },
+          "code" : "130201",
+          "rid" : "64_116331"
+        } ],
+        "code" : "1302",
+        "rid" : "64_116328"
+      } ],
+      "code" : "13",
+      "rid" : "64_116327"
+    }, {
+      "level" : 1,
+      "leaf" : false,
+      "title" : {
+        "FR" : "Forêts",
+        "EN" : "Forestry"
+      },
+      "children" : [ {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Taux de déforestation",
+          "EN" : "Deforestation rate"
+        },
+        "code" : "1405",
+        "rid" : "64_149849"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Superficie reboisée",
+          "EN" : "Reforested area"
+        },
+        "code" : "1401",
+        "rid" : "64_149851"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Plants mises en terre",
+          "EN" : "Seedlings planted"
+        },
+        "code" : "1402",
+        "rid" : "64_149852"
+      }, {
+        "level" : 2,
+        "leaf" : false,
+        "title" : {
+          "FR" : "Superficie brûlée",
+          "EN" : "Burned area"
+        },
+        "children" : [ {
+          "level" : 3,
+          "leaf" : true,
+          "title" : {
+            "FR" : "Prairies  brûlées",
+            "EN" : "Burned meadows"
+          },
+          "code" : "140301",
+          "rid" : "64_149854"
+        }, {
+          "level" : 3,
+          "leaf" : true,
+          "title" : {
+            "FR" : "Défrichements Non Autorisés",
+            "EN" : "Non-authorized clearing"
+          },
+          "code" : "140305",
+          "rid" : "64_149855"
+        }, {
+          "level" : 3,
+          "leaf" : true,
+          "title" : {
+            "FR" : "Défrichements Autorisés",
+            "EN" : "Authorized clearing"
+          },
+          "code" : "140304",
+          "rid" : "64_149856"
+        }, {
+          "level" : 3,
+          "leaf" : true,
+          "title" : {
+            "FR" : "Reboisement brûlé",
+            "EN" : "Burned reafforestation"
+          },
+          "code" : "140303",
+          "rid" : "64_149857"
+        }, {
+          "level" : 3,
+          "leaf" : true,
+          "title" : {
+            "FR" : "Forêts naturelles brûlées",
+            "EN" : "Burned natural forests"
+          },
+          "code" : "140302",
+          "rid" : "64_149858"
+        } ],
+        "code" : "1403",
+        "rid" : "64_149853"
+      }, {
+        "level" : 2,
+        "leaf" : true,
+        "title" : {
+          "FR" : "Superficie déforéstée",
+          "EN" : "Deforested area"
+        },
+        "code" : "1404",
+        "rid" : "64_149859"
+      } ],
+      "code" : "14",
+      "rid" : "64_149850"
+    } ],
+    "size" : 118
+  },
+  "CountrySTAT_UM" : {
+    "metadata": {
+      "title": {
+        "EN": "Units of measurement"
+      },
+      "dsd": {
+        "rid": "68_299"
+      },
+      "rid": "12_854",
+      "uid": "CountrySTAT_UM"
+    },
+    "data": [
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "tête",
+          "EN": "head"
+        },
+        "code": "0101",
+        "rid": "64_94903"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "Ha",
+          "EN": "Ha"
+        },
+        "code": "0102",
+        "rid": "64_94904"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "Tonnes",
+          "EN": "ton"
+        },
+        "code": "0103",
+        "rid": "64_94905"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "US$",
+          "EN": "US$"
+        },
+        "code": "0104",
+        "rid": "64_94906"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "Monnaie locale",
+          "EN": "local currency"
+        },
+        "code": "0105",
+        "rid": "64_94907"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "Indice",
+          "EN": "index"
+        },
+        "code": "0106",
+        "rid": "64_94908"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "Miliers",
+          "EN": "thousands"
+        },
+        "code": "0107",
+        "rid": "64_94909"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "Unité",
+          "EN": "units"
+        },
+        "code": "0108",
+        "rid": "64_94910"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "Mètre cube",
+          "EN": "cubic meter"
+        },
+        "code": "0109",
+        "rid": "64_94911"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "Kg/personne/an",
+          "EN": "kg/capita/yr"
+        },
+        "code": "0110",
+        "rid": "64_94912"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "Kcal/personne/jour",
+          "EN": "Kcal/capita/day"
+        },
+        "code": "0111",
+        "rid": "64_94913"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "g/personne/jour",
+          "EN": "g/capita/day"
+        },
+        "code": "0112",
+        "rid": "64_94914"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "1000 US$",
+          "EN": "1000 US$"
+        },
+        "code": "0113",
+        "rid": "64_94915"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "Litre",
+          "EN": "Liter"
+        },
+        "code": "0114",
+        "rid": "64_94916"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "Mètre cube/seconde",
+          "EN": "Cubic meter/second"
+        },
+        "code": "0115",
+        "rid": "64_94917"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "Centimetre",
+          "EN": "Centimeter"
+        },
+        "code": "0116",
+        "rid": "64_94918"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "Monnaie locale par tonne",
+          "EN": "Local currency by ton"
+        },
+        "code": "0117",
+        "rid": "64_94919"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "Degré celsius",
+          "EN": "Degree Celsius"
+        },
+        "code": "0118",
+        "rid": "64_94920"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "Pourcentage",
+          "EN": "Percentage"
+        },
+        "code": "0119",
+        "rid": "64_94921"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "Tonne métrique ou mètre cube",
+          "EN": "MT or Cubic meter"
+        },
+        "code": "0120",
+        "rid": "64_94922"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "Monnaie locale/hectare",
+          "EN": "Local currency/hectar"
+        },
+        "code": "0121",
+        "rid": "64_94923"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "Monnaie locale/mètre cube",
+          "EN": "Local currency/1 cubic meter"
+        },
+        "code": "0122",
+        "rid": "64_94924"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "Kg/Ha",
+          "EN": "Kg/Ha"
+        },
+        "code": "0123",
+        "rid": "64_94925"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "Monnaie locale/Kg",
+          "EN": "Local currency/Kg"
+        },
+        "code": "0124",
+        "rid": "64_94926"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "1000 Ha",
+          "EN": "1000 Ha"
+        },
+        "code": "0125",
+        "rid": "64_94927"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "mm",
+          "EN": "mm"
+        },
+        "code": "0126",
+        "rid": "64_94928"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "Mètre carré",
+          "EN": "Square meter"
+        },
+        "code": "0127",
+        "rid": "64_94929"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "Famille",
+          "EN": "Household"
+        },
+        "code": "0128",
+        "rid": "64_106815"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "Tonne/Ha",
+          "EN": "Ton/Ha"
+        },
+        "code": "0129",
+        "rid": "64_106816"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "Kilomètres carrés",
+          "EN": "Km2"
+        },
+        "code": "0130",
+        "rid": "64_106817"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "Années",
+          "EN": "Years"
+        },
+        "code": "0131",
+        "rid": "64_116335"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "Monnaie locale/dollar",
+          "EN": "Local currency/dollar"
+        },
+        "code": "0132",
+        "rid": "64_116336"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "1000 Monnaie locale",
+          "EN": "1000 Local currency"
+        },
+        "code": "0133",
+        "rid": "64_116974"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "Kg",
+          "EN": "Kg"
+        },
+        "code": "0134",
+        "rid": "64_116975"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "Monnaie locale/litre",
+          "EN": "Local currency/Litre"
+        },
+        "code": "0135",
+        "rid": "64_149861"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "Jours",
+          "EN": "Days"
+        },
+        "code": "0136",
+        "rid": "64_149863"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "Litre par traite par tête",
+          "EN": "Liter/milking/head"
+        },
+        "code": "0137",
+        "rid": "64_149864"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "Mois",
+          "EN": "Months"
+        },
+        "code": "0138",
+        "rid": "64_149865"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "Millions de monnaie locale",
+          "EN": "Millions of local currency"
+        },
+        "code": "0139",
+        "rid": "64_158742"
+      }
+    ],
+    "size": 39
+  },
+  "Flag" : {
+    "metadata": {
+      "title": {
+        "EN": "Flag"
+      },
+      "dsd": {
+        "rid": "68_243"
+      },
+      "rid": "12_1512",
+      "uid": "Flag"
+    },
+    "data": [
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "calculé(e)",
+          "EN": "calculated"
+        },
+        "code": "c",
+        "rid": "64_150193"
+      },
+      {
+        "level": 1,
+        "leaf": true,
+        "title": {
+          "FR": "estimé(e)",
+          "EN": "estimated"
+        },
+        "code": "e",
+        "rid": "64_150194"
+      }
+    ],
+    "size": 2
+  },
+  "HS|full" : "",
+  "GAUL|2014" : ""
+
+}

@@ -23,6 +23,12 @@ define(function () {
         unknownCodes: 'Unknow codes',
         csvDuplicate : 'Some CSV rows are duplicated',
 
+        // errthrown
+        columnError : 'At least one column must be defined',
+        missingCodelist: 'Missing codelist for the column ',
+        missingCodelistSpecificStart: 'Missing codelist ',
+        missingCodelistSpecificEnd: ' for the column ',
+
         "nullKey": "Key fields cannot be empty",
         "sameKeyVals": "Key fields cannot be duplicated",
         "unknownCode": "Unknown code",

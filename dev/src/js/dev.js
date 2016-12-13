@@ -2,11 +2,10 @@
     'jquery',
     'loglevel',
     '../../../src/js/index',
-    '../config/test_cl.json',
+    '../config/test_cl',
     '../config/test_data.json',
     '../config/test_dsd.json'
-], function ($, log, DataEditor, TestCL, TestData, TestDSD)
-    {
+], function ($, log, DataEditor, TestCL, TestData, TestDSD) {
         //var config = {};
         var config = {
             lang: 'FR',
@@ -14,21 +13,17 @@
         };
 
         console.clear();
-        log.setLevel('silent')
-
+        log.setLevel('silent');
 
         //Bootstrap
         require('bootstrap/dist/css/bootstrap.css');
-
         require("../../../node_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css");
-
-
 
         var callB = null;
         DataEditor.init("#standard", config, callB);
         DataEditor.isEditable(false);
         DataEditor.setColumns(TestDSD, TestCL, function() {
-            DataEditor.setData(TestData, 50);
+            DataEditor.setData(TestData);
         });
 
         DataEditor.on("data:loaded", function(){

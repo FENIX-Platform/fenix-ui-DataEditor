@@ -202,11 +202,13 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
     DataEdit.prototype.setColumns = function (columns, codelists, callB) {
         this.cols = columns;
         this.codelists = codelists;
-        if (!this.cols || this.cols.length == 0)
-            throw new Error("At least one column must be defined");
+        if (!this.cols || this.cols.length == 0) {
+            this._trigger("error:showerrormsg", mlRes[this.lang]['columnError']);
+            throw new Error(mlRes[this.lang]['columnError']);
+        }
 
         this.uiEnabled(false);
-        checkCodeColumnsAndCodelists(this.cols, this.codelists);
+        this.checkCodeColumnsAndCodelists(this.cols, this.codelists);
         this.dataEditor.setColumns(this.cols, this.codelists, callB);
         this.uiEnabled(true);
     };
@@ -224,21 +226,28 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
         }
     };
 
-    var checkCodeColumnsAndCodelists = function (cols, cLists) {
-        //log.info("cLists",cLists);
+    DataEdit.prototype.checkCodeColumnsAndCodelists = function (cols, cLists) {
+        log.info("cLists", cLists);
+
+        var self = this;
+
         if (!cols) return;
         for (var i = 0; i < cols.length; i++)
             if (cols[i].dataType == 'code') {
-                if (!cLists)
-                    throw new Error("Codelist for the column " + cols[i].id + " missing");
+                if (!cLists) {
+                    var err = mlRes[self.lang]['missingCodelist'];
+                    self._trigger("error:showerrormsg", err + cols[i].id);
+                    throw new Error(err + cols[i].id);
+                }
                 //TODO: extend to multiple codelists
                 var cListId = cols[i].domain.codes[0].idCodeList;
-
-                if (cols[i].domain.codes[0].version)
-                    cListId = cListId + "|" + cols[i].domain.codes[0].version;
-
-                if (!(cListId in cLists))
-                    throw new Error("Codelist '"+cListId+"' for the column '"+cols[i].id+"' missing");
+                if (cols[i].domain.codes[0].version) cListId = cListId + "|" + cols[i].domain.codes[0].version;
+                if (!(cListId in cLists)){
+                    var err1 = mlRes[self.lang]['missingCodelistSpecificStart'];
+                    var err2 = mlRes[self.lang]['missingCodelistSpecificEnd'];
+                    self._trigger("error:showerrormsg", err1 + cListId + err2 + cols[i].id );
+                    throw new Error(err1 + cListId + err2 + cols[i].id );
+                }
             }
     };
 

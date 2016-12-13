@@ -24,6 +24,12 @@ define(function () {
         unknownCodes: 'Codes inconnus',
         csvDuplicate : 'Certaines lignes du CSV sont dupliquées',
 
+        // errthrown
+        columnError : 'Au moins une colonne doit être définie',
+        missingCodelist: 'Liste des codes manquants pour la colonne ',
+        missingCodelistSpecificStart: 'Liste des codes manquants ',
+        missingCodelistSpecificEnd: ' pour la colonne ',
+
 
         "nullKey": "Les champs clés ne peuvent pas être vides",
         "sameKeyVals": "Les champs clés ne peuvent pas être dupliqués",
