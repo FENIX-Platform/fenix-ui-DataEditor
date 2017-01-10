@@ -19,8 +19,8 @@ define(function () {
 
         nullDSDCols: 'Les colonnes dans le DSD ne sont pas définies.',
         nullCsvCols: 'Les colonnes dans le CSV ne sont pas définies.',
-        wrongColumnCount: 'Décompte de colonne incorrect',
-        missingDSDHeader: 'L\'en-tête du DSD est manquant',
+        wrongColumnCount: 'Erreur du CSV: mauvais nombre de colonnes ou mauvais séparateur',
+        missingDSDHeader: 'Erreur du CSV: L\'en-tête du DSD est manquant',
         unknownCodes: 'Codes inconnus',
         csvDuplicate : 'Certaines lignes du CSV sont dupliquées',
 

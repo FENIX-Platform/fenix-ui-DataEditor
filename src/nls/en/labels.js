@@ -18,8 +18,8 @@ define(function () {
 
         nullDSDCols: 'DSD columns are not setted.',
         nullCsvCols: 'CSV columns are not setted.',
-        wrongColumnCount: 'Wrong Column Count',
-        missingDSDHeader: 'DSD Header is missing',
+        wrongColumnCount: 'CSV Error: wrong column count or wrong separator',
+        missingDSDHeader: 'CSV Error: DSD Header is missing',
         unknownCodes: 'Unknow codes',
         csvDuplicate : 'Some CSV rows are duplicated',
 

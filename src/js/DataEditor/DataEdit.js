@@ -505,8 +505,8 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
                 this.updateValRes(valRes);
                 //this._trigger("error:showerrormsg", valRes[n]);
             }
-            this._trigger("error:showerrormsg", mlRes[this.lang][valRes[0].error]);
-            log.info(mlRes[this.lang][valRes[0].error]);
+            this._trigger("error:showerrormsg", mlRes[this.lang][valRes[0].type]);
+            log.info(mlRes[this.lang][valRes[0].type]);
             this._trigger("data:restoreupload");
             return;
         }

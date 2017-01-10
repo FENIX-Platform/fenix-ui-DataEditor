@@ -1504,7 +1504,7 @@ define([
             ],
                 "size": 39
         },
-            "Flag" : {
+            "Flag|1.0" : {
             "metadata": {
                 "title": {
                     "EN": "Flag"
