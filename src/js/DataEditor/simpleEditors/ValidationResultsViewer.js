@@ -27,7 +27,7 @@ function ($, mlRes) {
         for (var i = 0; i < valRes.length; i++) {
             toAdd += '<tr><td>';
             if (valRes[i].dataIndex) {
-                toAdd += mlRes[this.lang.toLowerCase()][valRes[i].error];
+                toAdd += mlRes[this.lang.toLowerCase()][valRes[i].type];
                 var lines = "";
                 if (Array.isArray(valRes[i].dataIndex)) {
                     $.each(valRes[i].dataIndex, function(index,obj){

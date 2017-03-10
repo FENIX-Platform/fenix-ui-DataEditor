@@ -386,7 +386,6 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
             //log.info("valRes got errors");
             for (var n = 0; n < valCSV.length; n++) {
                 log.info("valRes: " + [valCSV[n].type] + " - codelist: " + valCSV[n].codelistId + " - codes: " + valCSV[n].codes.join(','));
-                this.updateValRes(valCSV);
                 //this._trigger("error:showerrormsg", [valRes[n].type] + " - codelist: " + valRes[n].codelistId + " - codes: " + valRes[n].codes.join(','));
             }
             this._trigger("error:showerrormsg", mlRes[this.lang][valCSV[0].type]);
@@ -394,6 +393,7 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
             //console.log(mlRes[this.lang][valCSV[0].type]);
             this._trigger("data:restoreupload");
         }
+        this.updateValRes(valCSV);
 
         //log.info("uhm, variables", dv, data, validator, valRes);
 
@@ -401,26 +401,26 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
             //log.info("valRes got errors");
             for (var n = 0; n < valRes.length; n++) {
                 log.info("valRes: " + [valRes[n].type] + " - codelist: " + valRes[n].codelistId + " - codes: " + valRes[n].codes.join(','));
-                this.updateValRes(valRes);
                 //this._trigger("error:showerrormsg", [valRes[n].type] + " - codelist: " + valRes[n].codelistId + " - codes: " + valRes[n].codes.join(','));
             }
             this._trigger("error:showerrormsg", mlRes[this.lang][valRes[0].type]);
             log.info(mlRes[this.lang][valRes[0].type]);
             this._trigger("data:restoreupload");
         }
+        this.updateValRes(valRes);
+
         //Validates the CSV contents
         var wrongDatatypes = dv.checkWrongDataTypes(this.getColumns(), this.codelists, this.tmpCsvData);
+        this.updateValRes(wrongDatatypes);
         //log.info("wrongDatatypes", wrongDatatypes);
-
         if (wrongDatatypes && wrongDatatypes.length > 0) {
             //log.info("wrongDatatypes got errors");
             for (n = 0; n < wrongDatatypes.length; n++) {
-                log.info("wrongDatatypes: " + [wrongDatatypes[n].error] + " - Row: " + wrongDatatypes[n].dataIndex);
-                this.updateValRes(wrongDatatypes);
+                log.info("wrongDatatypes: " + [wrongDatatypes[n].type] + " - Row: " + wrongDatatypes[n].dataIndex);
                 //this._trigger("error:showerrormsg", [wrongDatatypes[n].error] + " - Row: " + wrongDatatypes[n].dataIndex);
             }
-            this._trigger("error:showerrormsg", mlRes[this.lang][wrongDatatypes[0].error]);
-            log.info(mlRes[this.lang][wrongDatatypes[0].error]);
+            this._trigger("error:showerrormsg", mlRes[this.lang][wrongDatatypes[0].type]);
+            log.info(mlRes[this.lang][wrongDatatypes[0].type]);
             //Don't merge, return.
             //log.info("Don't merge, return.");
             this._switchPanelVisibility($((s.dataEditorContainer)));
@@ -460,6 +460,7 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
         var self = this;
         var conv = new CSV_To_Dataset(conf, separator);
 
+        this.setStatus('loaded');
         conv.convert(data);
 
         this.tmpCsvCols = conv.getColumns();
@@ -498,11 +499,10 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
 
         //Validates the CSV structure (null columns, less columns than the DSD...)
         var valRes = validator.validate(this.getColumns(), this.getCodelists(), this.tmpCsvCols, this.tmpCsvData);
-
+        this.updateValRes(valRes);
         if (valRes && valRes.length > 0) {
             for (var n = 0; n < valRes.length; n++) {
                 log.info(valRes[n].type);
-                this.updateValRes(valRes);
                 //this._trigger("error:showerrormsg", valRes[n]);
             }
             this._trigger("error:showerrormsg", mlRes[this.lang][valRes[0].type]);

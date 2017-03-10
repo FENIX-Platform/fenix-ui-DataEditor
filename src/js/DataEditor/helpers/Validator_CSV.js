@@ -25,7 +25,7 @@
                 return toRet;
             }
 
-            if (dsdCols.length > csvCols.length) {
+            if (dsdCols.length != csvCols.length) {
                 toRet.push({ type: Err.WRONG_COLUMN_COUNT });
                 return toRet;
             }
@@ -94,7 +94,7 @@
             });
 
             $.each(duplicates, function(index,object){
-                toRet.push({ error: Err.CSV_DUPLICATE, dataIndex: getAllIndexes(keys, object) });
+                toRet.push({ type: Err.CSV_DUPLICATE, dataIndex: getAllIndexes(keys, object) });
             });
 
             var row = 0;
