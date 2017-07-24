@@ -419,7 +419,10 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
                 log.info("wrongDatatypes: " + [wrongDatatypes[n].type] + " - Row: " + wrongDatatypes[n].dataIndex);
                 //this._trigger("error:showerrormsg", [wrongDatatypes[n].error] + " - Row: " + wrongDatatypes[n].dataIndex);
             }
-            this._trigger("error:showerrormsg", mlRes[this.lang][wrongDatatypes[0].type]);
+            // switch between msg type
+            if (wrongDatatypes[0].hasOwnProperty("error")) this._trigger("error:showerrormsg", mlRes[this.lang][wrongDatatypes[0].error]);
+            if (wrongDatatypes[0].hasOwnProperty("type")) this._trigger("error:showerrormsg", mlRes[this.lang][wrongDatatypes[0].type]);
+            log.info(mlRes[this.lang][wrongDatatypes[0].error]);
             log.info(mlRes[this.lang][wrongDatatypes[0].type]);
             //Don't merge, return.
             //log.info("Don't merge, return.");
@@ -520,18 +523,26 @@ function ($, log, mlRes, DataEditor, ValidationResultsViewer, Data_Validator, CS
         //Validates the CSV contents
         var dv = new Data_Validator();
         var wrongDatatypes = dv.checkWrongDataTypes(this.getColumns(), this.codelists, this.tmpCsvData);
+        var saveLastError;
 
         if (wrongDatatypes && wrongDatatypes.length > 0) {
             for (n = 0; n < wrongDatatypes.length; n++) {
                 //this.updateValRes(wrongDatatypes);
                 var title = wrongDatatypes[n].colId[this.lang.toLowerCase()] || wrongDatatypes[n].colId[Object.keys(wrongDatatypes[n].colId)[0]]
-                log.info("wrongDatatypes>" + [wrongDatatypes[n].error] + " - Row: " + wrongDatatypes[n].dataIndex, wrongDatatypes[n].cListUID, title);
+                log.info("wrongDatatypes>" + [wrongDatatypes[n].error] + " - "+mlRes[this.lang]['rowError']+": " + wrongDatatypes[n].dataIndex, wrongDatatypes[n].cListUID, title);
                 //this._trigger("error:showerrormsg", [wrongDatatypes[n].error] + " - Row: " + wrongDatatypes[n].dataIndex);
+                saveLastError = [wrongDatatypes[n].error] + " - "+mlRes[this.lang]['rowError']+": " + wrongDatatypes[n].dataIndex;
             }
-            if (this.tmpCsvData.length == wrongDatatypes.length) this._trigger("error:showerrormsg", mlRes[this.lang]['CodeListError']);
+            if (this.tmpCsvData.length == wrongDatatypes.length) {
+                this._trigger("error:showerrormsg", mlRes[this.lang]['CodeListError']);
+                log.info("error:showerrormsg", mlRes[this.lang]['CodeListError']);
+            }  else {
+                this._trigger("error:showerrormsg", saveLastError);
+                log.info("[TRIGGERING LAST ERROR]error:showerrormsg", mlRes[this.lang]['CodeListError']);
+            }
             log.info(mlRes[this.lang][wrongDatatypes[0].error]);
-            this._trigger("error:showerrormsg", mlRes[this.lang][wrongDatatypes[0].error]);
-            //this._trigger("data:restoreupload");
+            //this._trigger("error:showerrormsg", mlRes[this.lang][wrongDatatypes[0].error]);
+            this._trigger("data:restoreupload");
             return;
         }
 

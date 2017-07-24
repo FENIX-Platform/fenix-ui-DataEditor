@@ -29,6 +29,7 @@ define(function () {
         missingCodelist: 'Liste des codes manquants pour la colonne ',
         missingCodelistSpecificStart: 'Liste des codes manquants ',
         missingCodelistSpecificEnd: ' pour la colonne ',
+        rowError: 'Ligne',
 
 
         "nullKey": "Les champs clés ne peuvent pas être vides",

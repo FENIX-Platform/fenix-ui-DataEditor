@@ -308,7 +308,7 @@
                 return false;
             if (month.toString().length != 6)
                 return false;
-            if (month.substring(4, 6) > 12 || month.substring(4, 6) < 1)
+            if (month.substring(0, 2) > 12 || month.substring(0, 2) < 1)
                 return false;
             return true;
         }
@@ -322,7 +322,9 @@
                 return false;
             if (date.toString().length != 8)
                 return false;
-            if (date.substring(4, 6) > 12 || date.substring(4, 6) < 1)
+            if (date.substring(0, 2) > 31 || date.substring(0, 2) < 1)
+                return false;
+            if (date.substring(2, 4) > 12 || date.substring(2, 4) < 1)
                 return false;
 
             return true;

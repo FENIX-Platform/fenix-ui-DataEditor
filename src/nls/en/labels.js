@@ -28,6 +28,7 @@ define(function () {
         missingCodelist: 'Missing codelist for the column ',
         missingCodelistSpecificStart: 'Missing codelist ',
         missingCodelistSpecificEnd: ' for the column ',
+        rowError: 'Row',
 
         "nullKey": "Key fields cannot be empty",
         "sameKeyVals": "Key fields cannot be duplicated",
